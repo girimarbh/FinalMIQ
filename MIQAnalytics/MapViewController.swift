@@ -209,7 +209,7 @@ class MapViewController : UIViewController, CLLocationManagerDelegate, GMSMapVie
     }
     
     func initGoogleMaps() {
-        let camera = GMSCameraPosition.camera(withLatitude: 33.56451, longitude: -84.57889, zoom: 4.0)
+        let camera = GMSCameraPosition.camera(withLatitude: 33.56451, longitude: -84.57889, zoom: 5.0)
         self.myMapView.camera = camera
         self.myMapView.delegate = self
         self.myMapView.isMyLocationEnabled = true

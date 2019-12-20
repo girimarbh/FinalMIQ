@@ -12,23 +12,37 @@ class CustomMarkerView: UIView {
     var img: UIImage!
     var borderColor: UIColor!
     var title : String!
+    var code :   Int!
+    var healthperc : Float!
     
     
-    init(frame: CGRect, image: UIImage, borderColor: UIColor, tag: Int , title:String ) {
+//    init(frame: CGRect, image: UIImage, borderColor: UIColor, tag: Int , title:String ) {
+//        super.init(frame: frame)
+//        self.img=image
+//        self.borderColor=borderColor
+//        self.tag = tag
+//        self.title =  title
+//        var titlewidth = title.stringWidth
+//        
+//        
+//        setupViews(strWidth: titlewidth)
+//    }
+    init(frame: CGRect, borderColor: UIColor, tag: Int , title:String  , code : Int , healthperc : Float) {
         super.init(frame: frame)
-        self.img=image
+        
         self.borderColor=borderColor
         self.tag = tag
         self.title =  title
-        var titlewidth = title.stringWidth
-        
+        let titlewidth = title.stringWidth
+        self.code = code
+        self.healthperc = healthperc
         
         setupViews(strWidth: titlewidth)
     }
     
     func setupViews(strWidth : CGFloat) {
         let imgView = UIImageView(image: img)
-       let lbl=UILabel()
+         let lbl=UILabel()
          let lbl2 = UILabel()
         
         imgView.frame=CGRect(x: 0, y: 0, width: 100, height: 50)
@@ -55,12 +69,22 @@ class CustomMarkerView: UIView {
         
         
          lbl2.frame  = CGRect(x: 40, y: 0,width: 25,height: 25)
-         lbl2.text = "65"
+        let health = Int(healthperc)
+         lbl2.text = String(health)
          lbl2.font=UIFont.boldSystemFont(ofSize: 16)
          lbl2.textColor=UIColor.white
+        if code == 3 {
+             lbl2.layer.borderColor = UIColor.orange.cgColor
+        }
+        if code == 2 {
+             lbl2.layer.borderColor = UIColor.yellow.cgColor
+        }
+        if code == 1 {
+             lbl2.layer.borderColor = UIColor(hexString: "#039dfc")?.cgColor;
+        }
          lbl2.backgroundColor=UIColor.black
-         lbl2.layer.borderColor = UIColor.green.cgColor
-         lbl2.layer.borderWidth = 1.0;
+        
+         lbl2.layer.borderWidth = 2.0;
          
          lbl2.textAlignment = .center
          lbl2.layer.cornerRadius =  lbl2.frame.height/2

@@ -21,17 +21,23 @@ class InfoPreviewView: UIView {
     func setData(title: String, img: UIImage, price: String) {
         lblTitle.text = title + ",  " + price
         imgView.image = img
-        lblPrice.text = price
+        lblComments.text = price
         
         
     }
     
     func setDatanew( displayname: String, healthPrec : Int , hirarchy : Int )   {
         lblTitle.text = displayname
-        lblPrice.text = displayname
+        lblComments.text = displayname
         progressView.progress = Float(healthPrec) / 100
         percentageLabel.text = String(healthPrec) + "%" + "  " + "Healthy"
     }
+    func setDataInfoview( displayname: String, comments: String, healthPrec : Int , hirarchy : Int )   {
+           lblTitle.text = displayname
+           lblComments.text = comments
+           progressView.progress = Float(healthPrec) / 100
+           percentageLabel.text = String(healthPrec) + "%" + "  " + "Healthy"
+       }
     
     func setupViews() {
         
@@ -51,16 +57,16 @@ class InfoPreviewView: UIView {
         
         
         
-        containerView.addSubview(lblPrice)
-        lblPrice.leftAnchor.constraint(equalTo: containerView.leftAnchor, constant: 10).isActive=true
-        lblPrice.topAnchor.constraint(equalTo: lblTitle.bottomAnchor, constant: 0).isActive=true
-        lblPrice.rightAnchor.constraint(equalTo: containerView.rightAnchor, constant: 10).isActive=true
-        lblPrice.heightAnchor.constraint(equalToConstant: 20).isActive=true
+        containerView.addSubview(lblComments)
+        lblComments.leftAnchor.constraint(equalTo: containerView.leftAnchor, constant: 10).isActive=true
+        lblComments.topAnchor.constraint(equalTo: lblTitle.bottomAnchor, constant: 0).isActive=true
+        lblComments.rightAnchor.constraint(equalTo: containerView.rightAnchor, constant: 10).isActive=true
+        lblComments.heightAnchor.constraint(equalToConstant: 20).isActive=true
         
         
         containerView.addSubview(progressView)
         
-        progressView.topAnchor.constraint(equalTo: lblPrice.bottomAnchor, constant: 10).isActive=true
+        progressView.topAnchor.constraint(equalTo: lblComments.bottomAnchor, constant: 10).isActive=true
         progressView.leftAnchor.constraint(equalTo: containerView.leftAnchor, constant: 10).isActive=true
         progressView.heightAnchor.constraint(equalToConstant: 10).isActive=true
         progressView.widthAnchor.constraint(equalToConstant: 350).isActive=true
@@ -104,7 +110,7 @@ class InfoPreviewView: UIView {
         return lbl
     }()
     
-    let lblPrice: UILabel = {
+    let lblComments: UILabel = {
         let lbl=UILabel()
         lbl.text = "Name"
         lbl.font=UIFont.boldSystemFont(ofSize: 18)

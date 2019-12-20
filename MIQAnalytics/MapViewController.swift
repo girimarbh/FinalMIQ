@@ -61,6 +61,21 @@ class MapViewController : UIViewController, CLLocationManagerDelegate, GMSMapVie
 //    let previewDemoData = [(title: "washington", img: #imageLiteral(resourceName: "restaurant1"), price: "wa"), (title: "Newyork", img: #imageLiteral(resourceName: "restaurant2"), price: "Nw"), (title: "Dallas", img: #imageLiteral(resourceName: "restaurant3"), price: "Da")]
     
     override func viewDidLoad() {
+        if ReachabilityTest.isConnectedToNetwork() {
+            
+            mapviewmodel.fetchData()
+            
+            //Calling Viewmodel class to fetchdata
+        }
+        else{
+           let alert = UIAlertController(title: internetConnection, message: noInternetAvailable , preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: cancel , style: .cancel, handler: {[weak self] _ in
+                guard let weakSelf = self else { return }
+               
+            }))
+            self.present(alert, animated: true, completion: nil)
+           
+        }
         mapviewmodel.fetchData()
         GMSServices.provideAPIKey("AIzaSyBU0SPK0agG9uyGpUwXsc0uEwLe01OVLis")
         GMSPlacesClient.provideAPIKey("AIzaSyBU0SPK0agG9uyGpUwXsc0uEwLe01OVLis")
@@ -262,7 +277,8 @@ class MapViewController : UIViewController, CLLocationManagerDelegate, GMSMapVie
         guard let customMarkerView = marker.iconView as? CustomMarkerView else { return nil }
         //let data = previewDemoData[customMarkerView.tag]
         let data = self.mapviewmodel.placearray[customMarkerView.tag]
-        infoPreviewView.setDatanew( displayname: data.displayName ?? "aa", healthPrec: data.healthperc ?? 11, hirarchy: data.hirarchy ?? 11)
+       // infoPreviewView.setDatanew( displayname: data.displayName ?? "aa", healthPrec: data.healthperc ?? 11, hirarchy: data.hirarchy ?? 11)
+        infoPreviewView.setDataInfoview(displayname: data.displayName ?? "aa", comments: data.comments ?? "aa", healthPrec: data.healthperc ?? 11, hirarchy: data.healthperc ?? 11)
         //infoPreviewView.setData(title: data.title, img: data.img, price: data.price)
         return infoPreviewView
     }
@@ -275,37 +291,37 @@ class MapViewController : UIViewController, CLLocationManagerDelegate, GMSMapVie
     
     func mapView(_ mapView: GMSMapView, didCloseInfoWindowOf marker: GMSMarker) {
         guard let customMarkerView = marker.iconView as? CustomMarkerView else { return }
-        let img = customMarkerView.img!
-        let customMarker = CustomMarkerView(frame: CGRect(x: 0, y: 0, width: customMarkerWidth, height: customMarkerHeight), image: img, borderColor: UIColor.darkGray, tag: customMarkerView.tag , title : customMarkerView.title)
-        marker.iconView = customMarker
+      //  let img = customMarkerView.img!
+//        let customMarker = CustomMarkerView(frame: CGRect(x: 0, y: 0, width: customMarkerWidth, height: customMarkerHeight), image: img, borderColor: UIColor.darkGray, tag: customMarkerView.tag , title : customMarkerView.title)
+//        marker.iconView = customMarker
     }
     
-    func showPartyMarkers(lat: Double, long: Double) {
-        myMapView.clear()
-        for i in 0..<3 {
-            let randNum=Double(arc4random_uniform(30))/10000
-            let marker=GMSMarker()
-            let customMarker = CustomMarkerView(frame: CGRect(x: 0, y: 0, width: customMarkerWidth, height: customMarkerHeight), image: previewDemoData[i].img, borderColor: UIColor.darkGray, tag: i , title : previewDemoData[i].title )
-            marker.iconView=customMarker
-            let randInt = arc4random_uniform(4)
-            if randInt == 0 {
-                marker.position = CLLocationCoordinate2D(latitude: lat+randNum, longitude: long-randNum)
-            } else if randInt == 1 {
-                marker.position = CLLocationCoordinate2D(latitude: lat-randNum, longitude: long+randNum)
-            } else if randInt == 2 {
-                marker.position = CLLocationCoordinate2D(latitude: lat-randNum, longitude: long-randNum)
-            } else {
-                marker.position = CLLocationCoordinate2D(latitude: lat+randNum, longitude: long+randNum)
-            }
-            marker.map = self.myMapView
-        }
-    }
+//    func showPartyMarkers(lat: Double, long: Double) {
+//        myMapView.clear()
+//        for i in 0..<3 {
+//            let randNum=Double(arc4random_uniform(30))/10000
+//            let marker=GMSMarker()
+//            let customMarker = CustomMarkerView(frame: CGRect(x: 0, y: 0, width: customMarkerWidth, height: customMarkerHeight), image: previewDemoData[i].img, borderColor: UIColor.darkGray, tag: i , title : previewDemoData[i].title )
+//            marker.iconView=customMarker
+//            let randInt = arc4random_uniform(4)
+//            if randInt == 0 {
+//                marker.position = CLLocationCoordinate2D(latitude: lat+randNum, longitude: long-randNum)
+//            } else if randInt == 1 {
+//                marker.position = CLLocationCoordinate2D(latitude: lat-randNum, longitude: long+randNum)
+//            } else if randInt == 2 {
+//                marker.position = CLLocationCoordinate2D(latitude: lat-randNum, longitude: long-randNum)
+//            } else {
+//                marker.position = CLLocationCoordinate2D(latitude: lat+randNum, longitude: long+randNum)
+//            }
+//            marker.map = self.myMapView
+//        }
+//    }
     
     func showPartyMarkersNew() {
         myMapView.clear()
-        for i in 0..<self.mapviewmodel.placearray.count - 1 {
+        for i in 0..<self.mapviewmodel.placearray.count  {
             let marker=GMSMarker()
-            let customMarker = CustomMarkerView(frame: CGRect(x: 0, y: 0, width: customMarkerWidth, height: customMarkerHeight), image: previewDemoData[1].img, borderColor: UIColor.darkGray, tag: i , title : mapviewmodel.placearray[i].displayName ?? "aa" )
+            let customMarker = CustomMarkerView(frame: CGRect(x: 0, y: 0, width: customMarkerWidth, height: customMarkerHeight),  borderColor: UIColor.darkGray, tag: i , title : mapviewmodel.placearray[i].displayName ?? "aa"  , code: mapviewmodel.placearray[i].code ?? 11 , healthperc: Float(mapviewmodel.placearray[i].healthperc ?? 11)  )
                        marker.iconView=customMarker
             marker.position = CLLocationCoordinate2D(latitude:mapviewmodel.placearray[i].latitude ?? 1 , longitude: mapviewmodel.placearray[i].longitude ?? 11)
              marker.map = self.myMapView

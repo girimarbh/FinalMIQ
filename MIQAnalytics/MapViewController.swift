@@ -158,12 +158,12 @@ class MapViewController : UIViewController, CLLocationManagerDelegate, GMSMapVie
                 let Comments = dict["COMMENTS"] as! String
                 let displayname = dict["DISPLAYNAME"] as! String
                 let healthPrec = (dict["HEALTHPERC"] as! NSString).intValue
-                let hirarchy = (dict["HIRARCHY"] as! NSString).intValue
+                let hirarchy = (dict["HIRARCHY"] as! NSString) ?? "0" 
                 let latitude = (dict["LATITUDE"] as! NSString).doubleValue
                 let longitude = (dict["LONGITUDE"] as! NSString).doubleValue
                 let map = (dict["MAP"] as! NSString).intValue
                 let plantid = dict["PLANTID"] as! String
-                self.placearray.append(Place(code: Int(code), comments: Comments, displayName: displayname, healthperc: Int(healthPrec), hirarchy: Int(hirarchy), latitude: latitude, longitude: longitude, map: Int(map), plantID: plantid))
+                self.placearray.append(Place(code: Int(code), comments: Comments, displayName: displayname, healthperc: Int(healthPrec), hirarchy: Int(hirarchy as String), latitude: latitude, longitude: longitude, map: Int(map), plantID: plantid))
                 
             }
             
@@ -340,9 +340,10 @@ class MapViewController : UIViewController, CLLocationManagerDelegate, GMSMapVie
     }
     
     @objc func restaurantTapped(tag: Int) {
-       // let v=DetailsVC()
-       // v.passedData = previewDemoData[tag]//
-      //  self.navigationController?.pushViewController(v, animated: true)
+        let v=DetailsVC()
+        //v.passedData = previewDemoData[tag]//
+     
+      self.present(v , animated: true , completion: nil)
     }
     
     func setupTextField(textField: UITextField, img: UIImage){

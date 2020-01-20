@@ -136,6 +136,44 @@ class PlantStatusCell: UITableViewCell {
 //        // Configure the view for the selected state
 //    }
     
+//    func updateCellContentt(property:[String],value :[Double] , health : Health)
+//        {
+//            var entries = [PieChartDataEntry]()
+//                   for (index, value) in value.enumerated() {
+//                       let entry = PieChartDataEntry()
+//                       entry.y = value
+//                       entry.label = property[index]
+//                       entries.append( entry)
+//                   }
+//
+//                   let set = PieChartDataSet( entries: entries, label: nil)
+//           var colors = [UIColor.init(hexString: "#138b4a"),UIColor.init(hexString: "#f54450"),UIColor.init(hexString: "#e49e0d")]
+//            set.colors = colors as! [NSUIColor]
+//                   let data = PieChartData(dataSet: set)
+//                   chart2.data = data
+//                   chart2.noDataText = "No data available"
+//                   chart2.isUserInteractionEnabled = true
+//                   chart2.backgroundColor = .clear
+//                   let d = Description()
+//                   d.text = ""
+//                   chart2.chartDescription = d
+//                   chart2.centerText = "MIQ"
+//
+//            onTargetLabel.text = "ON-Target"
+//            vulnerableLabel.text = "Vulnerable"
+//            offTatgetLabel.text = "OFF-Targer"
+//
+//
+//    //                   let attachment = NSTextAttachment()
+//    //                   attachment.image = UIImage(named: "download.jpeg")
+//    //                   let attachmentString = NSAttributedString(attachment: attachment)
+//    //                   let labelImg = NSMutableAttributedString(string: "")
+//    //                   labelImg.append(attachmentString)
+//                  // chart2.centerAttributedText = labelImg
+//                   chart2.holeColor = UIColor(red:255,green:255,blue:255,alpha:0.5)
+//
+//        }
+    
     func updateCellContentt(property:[String],value :[Double])
     {
         var entries = [PieChartDataEntry]()
@@ -158,12 +196,12 @@ class PlantStatusCell: UITableViewCell {
                d.text = ""
                chart2.chartDescription = d
                chart2.centerText = "MIQ"
-        
+
         onTargetLabel.text = "ON-Target"
         vulnerableLabel.text = "Vulnerable"
         offTatgetLabel.text = "OFF-Targer"
-      
-               
+
+
 //                   let attachment = NSTextAttachment()
 //                   attachment.image = UIImage(named: "download.jpeg")
 //                   let attachmentString = NSAttributedString(attachment: attachment)
@@ -171,7 +209,7 @@ class PlantStatusCell: UITableViewCell {
 //                   labelImg.append(attachmentString)
               // chart2.centerAttributedText = labelImg
                chart2.holeColor = UIColor(red:255,green:255,blue:255,alpha:0.5)
-               
+
     }
     func createPieChart(chart:PieChartView,property:[String],value:[Double])  {
         var entries = [PieChartDataEntry]()

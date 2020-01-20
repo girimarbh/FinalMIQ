@@ -10,7 +10,7 @@
 
 import UIKit
 
-class DetailsVC : UIViewController, UITableViewDelegate, UITableViewDataSource {
+class DetailsVC : UIViewController, UITableViewDelegate, UITableViewDataSource , DashbardNotificationProtocal {
     var properties = [String]()
     var values = [Double]()
     var passdata : String?
@@ -22,10 +22,13 @@ class DetailsVC : UIViewController, UITableViewDelegate, UITableViewDataSource {
     let cellId3 = "cellId3"
 
     override func viewDidLoad() {
+       
         
         if ReachabilityTest.isConnectedToNetwork() {
+           
             
             dashboardviewmodel.fetchData()
+             dashboardviewmodel.delegate = self as? DashbardNotificationProtocal
             
             //Calling Viewmodel class to fetchdata
         }
@@ -50,10 +53,11 @@ class DetailsVC : UIViewController, UITableViewDelegate, UITableViewDataSource {
         myTableView.register(PieChartCell.self, forCellReuseIdentifier: cellId)
         myTableView.register(PlantStatusCell.self, forCellReuseIdentifier: cellId2)
         myTableView.register(KPIStstusCell.self, forCellReuseIdentifier: cellId3)
-        myTableView.dataSource = self
-        myTableView.delegate = self
+//        myTableView.dataSource = self
+//        myTableView.delegate = self
         myTableView.showsVerticalScrollIndicator = false
         self.view.addSubview(myTableView)
+        self.myTableView.isHidden = true
         
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -64,7 +68,8 @@ class DetailsVC : UIViewController, UITableViewDelegate, UITableViewDataSource {
                    let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! PieChartCell
                            cell.properties = ["United States","Mexico","Canada","Chile"]
                            cell.values = [1000.0,2000.0,3000.0,4000.0]
-                   cell.updateCellContentt(property:properties , value: values)
+                //   cell.updateCellContentt(property:properties , value: values
+            cell.updateCellContentt(categoryhealth: dashboardviewmodel.health!)
                            return cell
                }
             
@@ -79,7 +84,7 @@ class DetailsVC : UIViewController, UITableViewDelegate, UITableViewDataSource {
                    let cell = tableView.dequeueReusableCell(withIdentifier: cellId3, for: indexPath) as! KPIStstusCell
                            cell.properties = ["United States","Mexico","Canada","Chile"]
                            cell.values = [1000.0,2000.0,3000.0,4000.0]
-                   cell.updateCellContentt(property:properties , value: values)
+                cell.updateCellContentt(categoryhealth: dashboardviewmodel.arrcategoryhealth[indexPath.row - 2] )
                            return cell
                }
         
@@ -96,7 +101,7 @@ class DetailsVC : UIViewController, UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return dashboardviewmodel.arrcategoryhealth.count + 2
         
         
     }
@@ -112,4 +117,16 @@ class DetailsVC : UIViewController, UITableViewDelegate, UITableViewDataSource {
         }
     
 }
+    
+    func updateContentOnView(){
+        DispatchQueue.main.async{ [weak self] in
+            guard let weakSelf = self else { return }
+            // and then dismiss the control
+            self?.myTableView.isHidden = false
+            self?.myTableView.dataSource = self
+            self?.myTableView.delegate = self
+            self?.myTableView.reloadData()
+            
+        }
+    }
 }

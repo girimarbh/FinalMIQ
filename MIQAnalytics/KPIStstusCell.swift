@@ -41,7 +41,7 @@ class KPIStstusCell: UITableViewCell {
         lbl.textColor = .white
         lbl.font = UIFont.boldSystemFont(ofSize: 14)
         lbl.textAlignment = .center
-        lbl.text = "22"
+       // lbl.text = "22"
         // lbl.layer.borderColor = UIColor(red:227/255, green:83/255, blue:86/255, alpha: 1).cgColor
         // lbl.layer.borderWidth = 1.0;
         //lbl.layer.cornerRadius = 12.5
@@ -68,7 +68,7 @@ class KPIStstusCell: UITableViewCell {
         lbl.textColor = .white
         lbl.font = UIFont.boldSystemFont(ofSize: 12)
         lbl.textAlignment = .center
-        lbl.text = "22"
+      //  lbl.text = "22"
         //lbl.layer.borderColor = UIColor(red:218/255, green:160/255, blue:58/255, alpha: 1).cgColor
         //lbl.layer.borderColor = UIColor.black.cgColor
         // lbl.layer.borderWidth = 1.0;
@@ -96,7 +96,7 @@ class KPIStstusCell: UITableViewCell {
         lbl.textColor = .white
         lbl.font = UIFont.boldSystemFont(ofSize: 12)
         lbl.textAlignment = .center
-        lbl.text = "22"
+      //  lbl.text = "22"
         //lbl.layer.borderColor = UIColor(red:64/255, green:136/255, blue:80/255, alpha: 1).cgColor
         //  lbl.layer.borderColor = UIColor.black.cgColor
         //lbl.layer.borderWidth = 1.0;
@@ -168,20 +168,26 @@ class KPIStstusCell: UITableViewCell {
     //        // Configure the view for the selected state
     //    }
     
-    func updateCellContentt(property:[String],value :[Double])
+    func updateCellContentt( categoryhealth : CategoryHealth)
     {
+        var valuearray = [Int]()
+        valuearray.append(categoryhealth.onTarget ?? 0)
+        valuearray.append(categoryhealth.vulenrable ?? 0)
+        valuearray.append(categoryhealth.offTarget ?? 0)
+        
         var entries = [PieChartDataEntry]()
-        for (index, value) in value.enumerated() {
+        for (index, value) in valuearray.enumerated() {
             let entry = PieChartDataEntry()
-            entry.y = value
-            entry.label = property[index]
+            entry.y = Double(value)
+           // entry.label = property[index]
             entries.append( entry)
         }
         
-        let set = PieChartDataSet( entries: entries, label: nil)
-        var colors = [UIColor.init(hexString: "#138b4a"),UIColor.init(hexString: "#f54450"),UIColor.init(hexString: "#e49e0d")]
+        let set = PieChartDataSet( entries: entries, label: nil) 
+        var colors = [UIColor.init(hexString: "#138b4a"),UIColor.init(hexString: "#e49e0d"),UIColor.init(hexString: "#f54450")]
         // set.colors = colors as! [NSUIColor]
         set.colors = colors as! [NSUIColor]
+        
         let data = PieChartData(dataSet: set)
         chart2.data = data
         chart2.noDataText = "No data available"
@@ -190,11 +196,30 @@ class KPIStstusCell: UITableViewCell {
         let d = Description()
         d.text = ""
         chart2.chartDescription = d
-        chart2.centerText = "Saftey"
+        chart2.centerText = categoryhealth.categoryName
         
         onTargetLabel.text = "On Target"
         vulnerableLabel.text = "Vulnerable"
         // offTatgetLabel.text = "OFF-Target"
+        let ontarget : Int = categoryhealth.onTarget ?? 0
+        var ontargetmyString = String(ontarget)
+        onTargetValueLabel.text = ontargetmyString
+        
+      
+        let offtarget : Int = categoryhealth.offTarget ?? 0
+        var offtargetmyString = String(offtarget)
+        offTatgetValueLabel.text = offtargetmyString
+        
+        
+        let vulenerable : Int = categoryhealth.vulenrable ?? 0
+        var vulenerablemyString = String(vulenerable)
+        vulnerableValueLabel.text = vulenerablemyString
+        
+        
+        set.drawValuesEnabled = false
+        chart2.drawEntryLabelsEnabled = false
+       // offTatgetValueLabel.text = categoryhealth.offTarget
+        //vulnerableValueLabel.text = categoryhealth.vulenrable
         
         
         //                   let attachment = NSTextAttachment()
@@ -206,6 +231,45 @@ class KPIStstusCell: UITableViewCell {
         chart2.holeColor = UIColor(red:255,green:255,blue:255,alpha:0.5)
         
     }
+    
+  //  func updateCellContentt(property:[String],value :[Double])
+//    {
+//        var entries = [PieChartDataEntry]()
+//        for (index, value) in value.enumerated() {
+//            let entry = PieChartDataEntry()
+//            entry.y = value
+//            entry.label = property[index]
+//            entries.append( entry)
+//        }
+//
+//        let set = PieChartDataSet( entries: entries, label: nil)
+//        var colors = [UIColor.init(hexString: "#138b4a"),UIColor.init(hexString: "#f54450"),UIColor.init(hexString: "#e49e0d")]
+//        // set.colors = colors as! [NSUIColor]
+//        set.colors = colors as! [NSUIColor]
+//        let data = PieChartData(dataSet: set)
+//        chart2.data = data
+//        chart2.noDataText = "No data available"
+//        chart2.isUserInteractionEnabled = true
+//        chart2.backgroundColor = .clear
+//        let d = Description()
+//        d.text = ""
+//        chart2.chartDescription = d
+//        chart2.centerText = "Saftey"
+//
+//        onTargetLabel.text = "On Target"
+//        vulnerableLabel.text = "Vulnerable"
+//        // offTatgetLabel.text = "OFF-Target"
+//
+//
+//        //                   let attachment = NSTextAttachment()
+//        //                   attachment.image = UIImage(named: "download.jpeg")
+//        //                   let attachmentString = NSAttributedString(attachment: attachment)
+//        //                   let labelImg = NSMutableAttributedString(string: "")
+//        //                   labelImg.append(attachmentString)
+//        // chart2.centerAttributedText = labelImg
+//        chart2.holeColor = UIColor(red:255,green:255,blue:255,alpha:0.5)
+//
+//    }
     func createPieChart(chart:PieChartView,property:[String],value:[Double])  {
         var entries = [PieChartDataEntry]()
         for (index, value) in value.enumerated() {

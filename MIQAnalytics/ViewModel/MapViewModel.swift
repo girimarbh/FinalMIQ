@@ -44,7 +44,7 @@ class MapViewModel: NSObject {
                         let Comments = dict["COMMENTS"] as! String
                         let displayname = dict["DISPLAYNAME"] as! String
                         let healthPrec = (dict["HEALTHPERC"] as! NSString).intValue
-                        let hirarchy = (dict["HIRARCHY"] as! NSString).intValue
+                        let hirarchy = (dict["HIRARCHY"] as? NSString ?? "0").intValue
                         let latitude = (dict["LATITUDE"] as! NSString).doubleValue
                         let longitude = (dict["LONGITUDE"] as! NSString).doubleValue
                         let map = (dict["MAP"] as! NSString).intValue

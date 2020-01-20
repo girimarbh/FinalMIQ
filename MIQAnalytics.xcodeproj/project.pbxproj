@@ -9,6 +9,13 @@
 /* Begin PBXBuildFile section */
 		2829D344AE9F4ED42ACD3465 /* Pods_MIQAnalytics_MIQAnalyticsUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60947CB225E2986A66AB517E /* Pods_MIQAnalytics_MIQAnalyticsUITests.framework */; };
 		493FB67FE48C547E7C679B40 /* Pods_MIQAnalyticsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B663AB824E7C6B8C528A1968 /* Pods_MIQAnalyticsTests.framework */; };
+		68598CFE23D02B5200BF216B /* PieChartCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68598CFD23D02B5200BF216B /* PieChartCell.swift */; };
+		68598D0023D02B7D00BF216B /* PlantStatusCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68598CFF23D02B7D00BF216B /* PlantStatusCell.swift */; };
+		68598D0223D02B9F00BF216B /* KPIStstusCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68598D0123D02B9F00BF216B /* KPIStstusCell.swift */; };
+		68598D0423D02BE300BF216B /* DetailsVCV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68598D0323D02BE300BF216B /* DetailsVCV.swift */; };
+		68598D0623D030A500BF216B /* DashboardNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68598D0523D030A500BF216B /* DashboardNetworkManager.swift */; };
+		68598D0823D0329900BF216B /* DashboardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68598D0723D0329900BF216B /* DashboardViewModel.swift */; };
+		68598D0A23D032C100BF216B /* Dashboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68598D0923D032C100BF216B /* Dashboard.swift */; };
 		686DCB30239696B200360A8E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686DCB2F239696B200360A8E /* AppDelegate.swift */; };
 		686DCB34239696B200360A8E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686DCB33239696B200360A8E /* ViewController.swift */; };
 		686DCB37239696B200360A8E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 686DCB35239696B200360A8E /* Main.storyboard */; };
@@ -55,6 +62,13 @@
 		4C6938DA51468265442A9BEF /* Pods-MIQAnalyticsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MIQAnalyticsTests.debug.xcconfig"; path = "Target Support Files/Pods-MIQAnalyticsTests/Pods-MIQAnalyticsTests.debug.xcconfig"; sourceTree = "<group>"; };
 		56133999677B7F2C7399AA84 /* Pods-MIQAnalyticsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MIQAnalyticsTests.release.xcconfig"; path = "Target Support Files/Pods-MIQAnalyticsTests/Pods-MIQAnalyticsTests.release.xcconfig"; sourceTree = "<group>"; };
 		60947CB225E2986A66AB517E /* Pods_MIQAnalytics_MIQAnalyticsUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MIQAnalytics_MIQAnalyticsUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		68598CFD23D02B5200BF216B /* PieChartCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieChartCell.swift; sourceTree = "<group>"; };
+		68598CFF23D02B7D00BF216B /* PlantStatusCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantStatusCell.swift; sourceTree = "<group>"; };
+		68598D0123D02B9F00BF216B /* KPIStstusCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KPIStstusCell.swift; sourceTree = "<group>"; };
+		68598D0323D02BE300BF216B /* DetailsVCV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsVCV.swift; sourceTree = "<group>"; };
+		68598D0523D030A500BF216B /* DashboardNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardNetworkManager.swift; sourceTree = "<group>"; };
+		68598D0723D0329900BF216B /* DashboardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewModel.swift; sourceTree = "<group>"; };
+		68598D0923D032C100BF216B /* Dashboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dashboard.swift; sourceTree = "<group>"; };
 		686DCB2C239696B200360A8E /* MIQAnalytics.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MIQAnalytics.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		686DCB2F239696B200360A8E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		686DCB33239696B200360A8E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -157,6 +171,7 @@
 				686DCB692397C2DF00360A8E /* ViewModel */,
 				686DCB682397C2D200360A8E /* Model */,
 				686DCB5F2396980800360A8E /* MIQAnalytics.entitlements */,
+				68598D0323D02BE300BF216B /* DetailsVCV.swift */,
 				686DCB2F239696B200360A8E /* AppDelegate.swift */,
 				686DCB6423969C6E00360A8E /* MapViewController.swift */,
 				686DCB6223969C3C00360A8E /* InfoPreviewView.swift */,
@@ -166,6 +181,9 @@
 				686DCB3A239696B300360A8E /* LaunchScreen.storyboard */,
 				686DCB3D239696B300360A8E /* Info.plist */,
 				686DCB6023969C1F00360A8E /* CustomMarkerView.swift */,
+				68598CFD23D02B5200BF216B /* PieChartCell.swift */,
+				68598CFF23D02B7D00BF216B /* PlantStatusCell.swift */,
+				68598D0123D02B9F00BF216B /* KPIStstusCell.swift */,
 			);
 			path = MIQAnalytics;
 			sourceTree = "<group>";
@@ -192,6 +210,7 @@
 			isa = PBXGroup;
 			children = (
 				686DCB7D2397CD3F00360A8E /* Map.swift */,
+				68598D0923D032C100BF216B /* Dashboard.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -200,6 +219,7 @@
 			isa = PBXGroup;
 			children = (
 				686DCB7B2397CD0B00360A8E /* MapViewModel.swift */,
+				68598D0723D0329900BF216B /* DashboardViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -220,6 +240,7 @@
 				686DCB772397CB9100360A8E /* DownloadManager.swift */,
 				686DCB792397CB9800360A8E /* ObjectMapper.swift */,
 				686DCB712397CB5800360A8E /* NewtorkManager.swift */,
+				68598D0523D030A500BF216B /* DashboardNetworkManager.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -528,12 +549,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				686DCB34239696B200360A8E /* ViewController.swift in Sources */,
+				68598D0623D030A500BF216B /* DashboardNetworkManager.swift in Sources */,
+				68598D0A23D032C100BF216B /* Dashboard.swift in Sources */,
 				686DCB782397CB9200360A8E /* DownloadManager.swift in Sources */,
 				686DCB7E2397CD3F00360A8E /* Map.swift in Sources */,
+				68598D0823D0329900BF216B /* DashboardViewModel.swift in Sources */,
 				686DCB6323969C3C00360A8E /* InfoPreviewView.swift in Sources */,
+				68598D0023D02B7D00BF216B /* PlantStatusCell.swift in Sources */,
 				686DCB762397CB8900360A8E /* Constant.swift in Sources */,
 				686DCB722397CB5800360A8E /* NewtorkManager.swift in Sources */,
 				686DCB702397CB2600360A8E /* ReachabilityTest.swift in Sources */,
+				68598D0423D02BE300BF216B /* DetailsVCV.swift in Sources */,
+				68598D0223D02B9F00BF216B /* KPIStstusCell.swift in Sources */,
+				68598CFE23D02B5200BF216B /* PieChartCell.swift in Sources */,
 				686DCB30239696B200360A8E /* AppDelegate.swift in Sources */,
 				686DCB7A2397CB9800360A8E /* ObjectMapper.swift in Sources */,
 				686DCB6523969C6E00360A8E /* MapViewController.swift in Sources */,

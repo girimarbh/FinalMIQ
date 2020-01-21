@@ -1,6 +1,6 @@
 //
 //  DownloadManager.swift
-//  TelstraSample
+//  
 //
 //  Created by imgadmin on 13/08/19.
 //  Copyright © 2019 Wipro. All rights reserved.

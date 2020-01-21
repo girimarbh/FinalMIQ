@@ -121,7 +121,7 @@
                    for peopleDict in array
                    {   categoryname = category
                     
-                    if peopleDict.category == categoryname
+                    if peopleDict.category ==  categoryname || peopleDict.category!.caseInsensitiveCompare(category) == .orderedSame
                     {
                        categoryID = peopleDict.categoryID
                        kpiTotalCount = kpiTotalCount + 1
@@ -184,7 +184,8 @@
                    for peopleDict in array
                    {
                      let category = peopleDict.category as! String
-                    if !(arrcatagory.contains(category))
+                    
+                    if !(arrcatagory.contains(category))  && !(arrcatagory.contains(category.uppercased()))
                     {
                     arrcatagory.append(category)
                     }
@@ -213,8 +214,8 @@
                return arr
             }
             
-            func fetchData() {
-                DashboardNetworkManager.dashboardnetworkmanager.retrieveAPIData(userCompletionHandler: { [weak self] data , error in
+        func fetchData(plantid : String) {
+            DashboardNetworkManager.dashboardnetworkmanager.retrieveAPIData(plantid: plantid, userCompletionHandler: { [weak self] data , error in
                     guard let weakSelf = self else {
                         return
                     }
@@ -229,7 +230,7 @@
                     }
                     do {
                         let array =  try JSONSerialization.jsonObject(with: json as Data, options: []) as? [Any]
-                        print("json array is \(String(describing: array))")
+                        print("json array is dashboard \(String(describing: array))")
                         
                         for peopleDict in array!
                         {

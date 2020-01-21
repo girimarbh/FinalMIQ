@@ -20,14 +20,15 @@ class DetailsVC : UIViewController, UITableViewDelegate, UITableViewDataSource ,
     let cellId = "cellId"
      let cellId2 = "cellId2"
     let cellId3 = "cellId3"
-
+var activityView: UIActivityIndicatorView?
     override func viewDidLoad() {
        
         
         if ReachabilityTest.isConnectedToNetwork() {
            
             
-            dashboardviewmodel.fetchData()
+            dashboardviewmodel.fetchData(plantid: passdata!)
+            self.showActivityIndicator()
              dashboardviewmodel.delegate = self as? DashbardNotificationProtocal
             
             //Calling Viewmodel class to fetchdata
@@ -60,6 +61,19 @@ class DetailsVC : UIViewController, UITableViewDelegate, UITableViewDataSource ,
         self.myTableView.isHidden = true
         
     }
+    
+    func showActivityIndicator() {
+        activityView = UIActivityIndicatorView(style: .whiteLarge)
+        activityView?.center = self.view.center
+        self.view.addSubview(activityView!)
+        activityView?.startAnimating()
+    }
+
+    func hideActivityIndicator(){
+        if (activityView != nil){
+            activityView?.stopAnimating()
+        }
+    }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         
@@ -77,7 +91,7 @@ class DetailsVC : UIViewController, UITableViewDelegate, UITableViewDataSource ,
                 let cell = tableView.dequeueReusableCell(withIdentifier: cellId2, for: indexPath) as! PlantStatusCell
                         cell.properties = ["United States","Mexico","Canada","Chile"]
                         cell.values = [1000.0,2000.0,3000.0,4000.0]
-                cell.updateCellContentt(property:properties , value: values)
+                cell.updateCellContentt(categoryhealth: dashboardviewmodel.health!)
                         return cell
             }
                else   {
@@ -122,6 +136,7 @@ class DetailsVC : UIViewController, UITableViewDelegate, UITableViewDataSource ,
         DispatchQueue.main.async{ [weak self] in
             guard let weakSelf = self else { return }
             // and then dismiss the control
+            self?.hideActivityIndicator()
             self?.myTableView.isHidden = false
             self?.myTableView.dataSource = self
             self?.myTableView.delegate = self

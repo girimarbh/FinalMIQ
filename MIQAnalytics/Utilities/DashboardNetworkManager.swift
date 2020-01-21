@@ -67,11 +67,12 @@ class DashboardNetworkManager: NSObject {
 
     }
     
-    func retrieveAPIData(userCompletionHandler : @escaping (NSData? , NSError?) -> Void) {
+    func retrieveAPIData(plantid : String , userCompletionHandler : @escaping (NSData? , NSError?) -> Void) {
       var  mail = "mpddashboard@hotmail.com"
       var  plantname = "Springfield"
+        print("the plant id in fetch data is \(plantid)")
        // var  plantname = "Fairburn"
-       url = self.createURLFromParameters2(parameters: [["PLANTID" : plantname],["EmailID" : mail]], pathparam: "") as NSURL
+       url = self.createURLFromParameters2(parameters: [["PLANTID" : plantid],["EmailID" : mail]], pathparam: "") as NSURL
            var request: URLRequest = URLRequest(url: url! as URL)
             request.cachePolicy = URLRequest.CachePolicy.reloadIgnoringLocalCacheData
             request.addValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")

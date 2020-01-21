@@ -341,8 +341,8 @@ class MapViewController : UIViewController, CLLocationManagerDelegate, GMSMapVie
     
     @objc func restaurantTapped(tag: Int) {
         let v=DetailsVC()
-        //v.passedData = previewDemoData[tag]//
-     
+        v.passdata = mapviewmodel.placearray[tag].comments
+     print("passed value is \(mapviewmodel.placearray[tag].comments)")
       self.present(v , animated: true , completion: nil)
     }
     

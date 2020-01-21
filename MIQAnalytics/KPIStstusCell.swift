@@ -45,7 +45,8 @@ class KPIStstusCell: UITableViewCell {
         // lbl.layer.borderColor = UIColor(red:227/255, green:83/255, blue:86/255, alpha: 1).cgColor
         // lbl.layer.borderWidth = 1.0;
         //lbl.layer.cornerRadius = 12.5
-        lbl.backgroundColor = UIColor(red:227/255, green:83/255, blue:86/255, alpha: 1)
+          lbl.backgroundColor =  UIColor(red:64/255, green:136/255, blue:80/255, alpha: 1)
+       
         //lbl.layer.borderColor = UIColor.black as? CGColor
         return lbl
         
@@ -101,7 +102,7 @@ class KPIStstusCell: UITableViewCell {
         //  lbl.layer.borderColor = UIColor.black.cgColor
         //lbl.layer.borderWidth = 1.0;
         //lbl.layer.cornerRadius = 12.5
-        lbl.backgroundColor =  UIColor(red:64/255, green:136/255, blue:80/255, alpha: 1)
+         lbl.backgroundColor = UIColor(red:227/255, green:83/255, blue:86/255, alpha: 1)
         //lbl.layer.borderColor = UIColor.black as? CGColor
         return lbl
     }()
@@ -183,7 +184,7 @@ class KPIStstusCell: UITableViewCell {
             entries.append( entry)
         }
         
-        let set = PieChartDataSet( entries: entries, label: nil) 
+        let set = PieChartDataSet( entries: entries, label: nil)
         var colors = [UIColor.init(hexString: "#138b4a"),UIColor.init(hexString: "#e49e0d"),UIColor.init(hexString: "#f54450")]
         // set.colors = colors as! [NSUIColor]
         set.colors = colors as! [NSUIColor]
@@ -196,7 +197,7 @@ class KPIStstusCell: UITableViewCell {
         let d = Description()
         d.text = ""
         chart2.chartDescription = d
-        chart2.centerText = categoryhealth.categoryName
+        chart2.centerText = categoryhealth.categoryName?.capitalized
         
         onTargetLabel.text = "On Target"
         vulnerableLabel.text = "Vulnerable"
@@ -204,6 +205,7 @@ class KPIStstusCell: UITableViewCell {
         let ontarget : Int = categoryhealth.onTarget ?? 0
         var ontargetmyString = String(ontarget)
         onTargetValueLabel.text = ontargetmyString
+        onTargetValueLabel.accessibilityLabel = categoryhealth.categoryName! + "ontarget"
         
       
         let offtarget : Int = categoryhealth.offTarget ?? 0

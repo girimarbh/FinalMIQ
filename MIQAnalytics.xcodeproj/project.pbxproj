@@ -16,6 +16,7 @@
 		68598D0623D030A500BF216B /* DashboardNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68598D0523D030A500BF216B /* DashboardNetworkManager.swift */; };
 		68598D0823D0329900BF216B /* DashboardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68598D0723D0329900BF216B /* DashboardViewModel.swift */; };
 		68598D0A23D032C100BF216B /* Dashboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68598D0923D032C100BF216B /* Dashboard.swift */; };
+		68598D1423D966F500BF216B /* DashboardHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68598D1323D966F500BF216B /* DashboardHeaderView.swift */; };
 		686DCB30239696B200360A8E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686DCB2F239696B200360A8E /* AppDelegate.swift */; };
 		686DCB34239696B200360A8E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686DCB33239696B200360A8E /* ViewController.swift */; };
 		686DCB37239696B200360A8E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 686DCB35239696B200360A8E /* Main.storyboard */; };
@@ -69,6 +70,7 @@
 		68598D0523D030A500BF216B /* DashboardNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardNetworkManager.swift; sourceTree = "<group>"; };
 		68598D0723D0329900BF216B /* DashboardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewModel.swift; sourceTree = "<group>"; };
 		68598D0923D032C100BF216B /* Dashboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dashboard.swift; sourceTree = "<group>"; };
+		68598D1323D966F500BF216B /* DashboardHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardHeaderView.swift; sourceTree = "<group>"; };
 		686DCB2C239696B200360A8E /* MIQAnalytics.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MIQAnalytics.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		686DCB2F239696B200360A8E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		686DCB33239696B200360A8E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -255,6 +257,7 @@
 		686DCB6E2397C37500360A8E /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				68598D1323D966F500BF216B /* DashboardHeaderView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -552,6 +555,7 @@
 				68598D0623D030A500BF216B /* DashboardNetworkManager.swift in Sources */,
 				68598D0A23D032C100BF216B /* Dashboard.swift in Sources */,
 				686DCB782397CB9200360A8E /* DownloadManager.swift in Sources */,
+				68598D1423D966F500BF216B /* DashboardHeaderView.swift in Sources */,
 				686DCB7E2397CD3F00360A8E /* Map.swift in Sources */,
 				68598D0823D0329900BF216B /* DashboardViewModel.swift in Sources */,
 				686DCB6323969C3C00360A8E /* InfoPreviewView.swift in Sources */,

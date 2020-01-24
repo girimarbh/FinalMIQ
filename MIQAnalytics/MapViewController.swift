@@ -286,6 +286,7 @@ class MapViewController : UIViewController, CLLocationManagerDelegate, GMSMapVie
     func mapView(_ mapView: GMSMapView, didTapInfoWindowOf marker: GMSMarker) {
         guard let customMarkerView = marker.iconView as? CustomMarkerView else { return }
         let tag = customMarkerView.tag
+        
         restaurantTapped(tag: tag)
     }
     
@@ -341,6 +342,7 @@ class MapViewController : UIViewController, CLLocationManagerDelegate, GMSMapVie
     
     @objc func restaurantTapped(tag: Int) {
         let v=DetailsVC()
+        v.modalPresentationStyle = .fullScreen
         v.passdata = mapviewmodel.placearray[tag].comments
      print("passed value is \(mapviewmodel.placearray[tag].comments)")
       self.present(v , animated: true , completion: nil)

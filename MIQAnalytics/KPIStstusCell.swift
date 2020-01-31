@@ -9,9 +9,16 @@
 import UIKit
 import Charts
 
+protocol NotificationProtocalKPIPopup {
+    func NotifyKPIPopup(str : String)
+   // func updateError()
+    
+    
+}
+
 class KPIStstusCell: UITableViewCell {
     
-    
+     var delegate : NotificationProtocalKPIPopup?
     let containerView: UIView = {
         let v=UIView()
         v.backgroundColor = UIColor.white
@@ -144,7 +151,11 @@ class KPIStstusCell: UITableViewCell {
         
     }
     @objc func longLabelPressed(recognizer:UITapGestureRecognizer){
+        print("Tartget offtarget button pressed")
+        var popuptag : String?
         if let label = recognizer.view as? UILabel {
+            popuptag = label.accessibilityLabel
+            print("The accessability value is \(label.accessibilityLabel)")
             if recognizer.state == .began {
                 label.textColor = UIColor.clear
             }
@@ -156,10 +167,13 @@ class KPIStstusCell: UITableViewCell {
                 label.textColor = UIColor.gray
             }
 
-
+            self.delegate?.NotifyKPIPopup(str: popuptag!)
 
         }
     }
+    
+   
+       
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -205,17 +219,19 @@ class KPIStstusCell: UITableViewCell {
         let ontarget : Int = categoryhealth.onTarget ?? 0
         var ontargetmyString = String(ontarget)
         onTargetValueLabel.text = ontargetmyString
-        onTargetValueLabel.accessibilityLabel = categoryhealth.categoryName! + "ontarget"
+        onTargetLabel.accessibilityLabel = categoryhealth.categoryName! + " " + "ontarget"
         
       
         let offtarget : Int = categoryhealth.offTarget ?? 0
         var offtargetmyString = String(offtarget)
         offTatgetValueLabel.text = offtargetmyString
+        offTatgetLabel.accessibilityLabel = categoryhealth.categoryName! + " " + "offtarget"
         
         
         let vulenerable : Int = categoryhealth.vulenrable ?? 0
         var vulenerablemyString = String(vulenerable)
         vulnerableValueLabel.text = vulenerablemyString
+        vulnerableLabel.accessibilityLabel = categoryhealth.categoryName! + " " + "vulnerable"
         
         
         set.drawValuesEnabled = false
@@ -308,12 +324,28 @@ class KPIStstusCell: UITableViewCell {
     }
     
     func updateUII(){
-        let tapGestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(longLabelPressed))
-        tapGestureRecognizer.minimumPressDuration = 0.001
+        onTargetLabel.isUserInteractionEnabled = true
+        offTatgetLabel.isUserInteractionEnabled = true
+        vulnerableLabel.isUserInteractionEnabled = true
+        
+        
+        let tap1 = UITapGestureRecognizer(target: self, action: #selector(longLabelPressed))
+        tap1.numberOfTapsRequired = 1
+        let tap2 = UITapGestureRecognizer(target: self, action: #selector(longLabelPressed))
+        tap2.numberOfTapsRequired = 1
+        let tap3 = UITapGestureRecognizer(target: self, action: #selector(longLabelPressed))
+        tap3.numberOfTapsRequired = 1
+        //onTargetLabel.addGestureRecognizer(tap)
+        
+        let tapGestureRecognizer1 = UILongPressGestureRecognizer(target: self, action: #selector(longLabelPressed))
+         tapGestureRecognizer1.minimumPressDuration = 0.001
+        let tapGestureRecognizer2 = UILongPressGestureRecognizer(target: self, action: #selector(longLabelPressed))
+        tapGestureRecognizer2.minimumPressDuration = 0.001
+        let tapGestureRecognizer3 = UILongPressGestureRecognizer(target: self, action: #selector(longLabelPressed))
+        tapGestureRecognizer3.minimumPressDuration = 0.001
 //        let longgestureRecognizer = UILongPressGestureRecognizer(target: self, action: Selector("longLabelPressed:"))
         
-        onTargetLabel.isUserInteractionEnabled = true
-        onTargetLabel.addGestureRecognizer(tapGestureRecognizer)
+        
         
         containerView.anchor(top: topAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 5, paddingLeft: 5, paddingBottom: 5, paddingRight: 5, width: self.frame.width, height: self.frame.height, enableInsets: true)
         
@@ -345,6 +377,10 @@ class KPIStstusCell: UITableViewCell {
         offTatgetLabel.anchor(top: chart2.bottomAnchor, left: offTatgetValueLabel.rightAnchor, bottom: nil, right: nil, paddingTop: 0, paddingLeft: -10, paddingBottom: 5, paddingRight: 15, width: 100, height: 25, enableInsets: true)
         
         
+        
+        onTargetLabel.addGestureRecognizer(tap1)
+        offTatgetLabel.addGestureRecognizer(tap2)
+       vulnerableLabel.addGestureRecognizer(tap3)
     }
     
 }

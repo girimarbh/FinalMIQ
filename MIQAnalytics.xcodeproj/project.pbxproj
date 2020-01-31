@@ -17,6 +17,7 @@
 		68598D0823D0329900BF216B /* DashboardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68598D0723D0329900BF216B /* DashboardViewModel.swift */; };
 		68598D0A23D032C100BF216B /* Dashboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68598D0923D032C100BF216B /* Dashboard.swift */; };
 		68598D1423D966F500BF216B /* DashboardHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68598D1323D966F500BF216B /* DashboardHeaderView.swift */; };
+		68598D1623E3E5BD00BF216B /* KPIPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68598D1523E3E5BD00BF216B /* KPIPopupView.swift */; };
 		686DCB30239696B200360A8E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686DCB2F239696B200360A8E /* AppDelegate.swift */; };
 		686DCB34239696B200360A8E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686DCB33239696B200360A8E /* ViewController.swift */; };
 		686DCB37239696B200360A8E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 686DCB35239696B200360A8E /* Main.storyboard */; };
@@ -71,6 +72,7 @@
 		68598D0723D0329900BF216B /* DashboardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewModel.swift; sourceTree = "<group>"; };
 		68598D0923D032C100BF216B /* Dashboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dashboard.swift; sourceTree = "<group>"; };
 		68598D1323D966F500BF216B /* DashboardHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardHeaderView.swift; sourceTree = "<group>"; };
+		68598D1523E3E5BD00BF216B /* KPIPopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KPIPopupView.swift; sourceTree = "<group>"; };
 		686DCB2C239696B200360A8E /* MIQAnalytics.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MIQAnalytics.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		686DCB2F239696B200360A8E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		686DCB33239696B200360A8E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -186,6 +188,7 @@
 				68598CFD23D02B5200BF216B /* PieChartCell.swift */,
 				68598CFF23D02B7D00BF216B /* PlantStatusCell.swift */,
 				68598D0123D02B9F00BF216B /* KPIStstusCell.swift */,
+				68598D1523E3E5BD00BF216B /* KPIPopupView.swift */,
 			);
 			path = MIQAnalytics;
 			sourceTree = "<group>";
@@ -565,6 +568,7 @@
 				686DCB702397CB2600360A8E /* ReachabilityTest.swift in Sources */,
 				68598D0423D02BE300BF216B /* DetailsVCV.swift in Sources */,
 				68598D0223D02B9F00BF216B /* KPIStstusCell.swift in Sources */,
+				68598D1623E3E5BD00BF216B /* KPIPopupView.swift in Sources */,
 				68598CFE23D02B5200BF216B /* PieChartCell.swift in Sources */,
 				686DCB30239696B200360A8E /* AppDelegate.swift in Sources */,
 				686DCB7A2397CB9800360A8E /* ObjectMapper.swift in Sources */,

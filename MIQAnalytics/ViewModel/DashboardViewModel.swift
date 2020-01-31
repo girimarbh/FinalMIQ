@@ -30,6 +30,7 @@
         var arrcatagory = [String]()
         var kpivalues = [KPIValues]()
         
+        
 
             func getCategoryListarray(array : [KPI]) -> [KPI]
             {
@@ -101,15 +102,58 @@
                       for peopleDict in array
                       {   categoryname = category
                        
-                       if peopleDict.category == categoryname && peopleDict.status == status
-                       {
-                        kpivalues.append(KPIValues(with: peopleDict.actual, target: peopleDict.target, kpiName: peopleDict.category)!)
-                    }
+                        if  peopleDict.category!.caseInsensitiveCompare(category) == .orderedSame && peopleDict.status == status
+                                     {
+                                      kpivalues.append(KPIValues(with: peopleDict.actual, target: peopleDict.target, kpiName: peopleDict.kpi ,kpidate: peopleDict.actualdate )!)
+                                      
+                                      
+                                     }
                    }
                       
                    return kpivalues
                    
                   }
+        
+        func getvaluesontouchButtonsnew(category : String) ->  [KPIValues]? {
+                             var ontargetcount : Int = 0
+                             var offtargetcount : Int = 0
+                             var vulenrabletargetcount: Int = 0
+                             var kpiTotalCount : Int = 0
+                             var categoryname = String()
+                             var kpipopuparray = [KPIValues]()
+            
+            var status : Int?
+            let items = category.components(separatedBy: " ")
+            categoryname = items[0]
+            var statusstring = items[1]
+            
+            if statusstring == "ontarget"
+            {
+                status = 1
+            }
+            if statusstring == "vuluernable"
+                       {
+                           status = 0
+                       }
+            if statusstring == "offtarget"
+                       {
+                           status = -1
+                       }
+            
+            for peopleDict in self.kpiarray
+                             {  // categoryname = category
+                              
+                               if  peopleDict.category!.caseInsensitiveCompare(categoryname) == .orderedSame && peopleDict.status == status
+                                            {
+                                             kpipopuparray.append(KPIValues(with: peopleDict.actual, target: peopleDict.target, kpiName: peopleDict.kpi ,kpidate: peopleDict.actualdate )!)
+                                             
+                                             
+                                            }
+                          }
+                             
+                          return kpipopuparray
+                          
+                         }
             
             func getHealthPercentageforCategory2(array : [KPI] , category : String) ->  CategoryHealth? {
                    var ontargetcount : Int = 0

@@ -13,7 +13,29 @@ import UIKit
 
 
 
-class DetailsVC : UIViewController, UITableViewDelegate, UITableViewDataSource , DashbardNotificationProtocal , StoreDelegate {
+class DetailsVC : UIViewController, UITableViewDelegate, UITableViewDataSource , DashbardNotificationProtocal , StoreDelegate , NotificationProtocalKPIPopup {
+    
+    var kpipopuparr = [KPIValues]()
+    var count : Double?
+    
+    func NotifyKPIPopup(str: String) {
+        print("Notification for KPIPOPup")
+       
+        kpipopuparr = dashboardviewmodel.getvaluesontouchButtonsnew(category: str) ?? []
+         count = Double(kpipopuparr.count)
+        var h = 100.0 * count!
+        kpipopupview = KPIPopupView(frame: CGRect(x: 10.0, y: 300.0, width: 350, height: h))
+        print("the Kpi array is \(kpipopuparr)")
+        kpipopupview.setData(popuparray: kpipopuparr)
+        kpipopuparr.removeAll()
+        let blurEffect = UIBlurEffect(style: .regular)
+        let blurredEffectView = UIVisualEffectView(effect: blurEffect)
+        blurredEffectView.frame = self.view.bounds
+       // view.addSubview(blurredEffectView)
+        self.view.addSubview(kpipopupview)
+        
+    }
+    
     func didPressButton(button: UIButton) {
         print("didPressButton is called in detailvc")
         self.dismiss(animated: true, completion: nil)
@@ -22,13 +44,14 @@ class DetailsVC : UIViewController, UITableViewDelegate, UITableViewDataSource ,
     var properties = [String]()
     var values = [Double]()
     var passdata : String?
- var dashboardviewmodel = DashboardViewModel()
+    var dashboardviewmodel = DashboardViewModel()
     private let myArray: NSArray = ["First","Second","Third"]
    private var myTableView: UITableView!
     let cellId = "cellId"
      let cellId2 = "cellId2"
     let cellId3 = "cellId3"
 var activityView: UIActivityIndicatorView?
+    
 
     var headerView: DashboardHeaderView = {
         let v = DashboardHeaderView()
@@ -81,7 +104,9 @@ var activityView: UIActivityIndicatorView?
 
        headerView  = DashboardHeaderView(frame: CGRect(x: 0.0, y: barHeight, width: self.view.frame.width, height: 50 ))
         headerView.delegate = self
-      self.view.addSubview(headerView)
+//        kpipopupview = KPIPopupView(frame: CGRect(x: 10.0, y: 300.0, width: 350, height: 200 ))
+        
+        self.view.addSubview(headerView)
 //       headerView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant:0).isActive=true
 //       headerView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 0).isActive=true
 //       headerView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: 0).isActive=true
@@ -164,6 +189,7 @@ var activityView: UIActivityIndicatorView?
                    let cell = tableView.dequeueReusableCell(withIdentifier: cellId3, for: indexPath) as! KPIStstusCell
                            cell.properties = ["United States","Mexico","Canada","Chile"]
                            cell.values = [1000.0,2000.0,3000.0,4000.0]
+                cell.delegate = self
                 cell.updateCellContentt(categoryhealth: dashboardviewmodel.arrcategoryhealth[indexPath.row - 2] )
                            return cell
                }
@@ -210,4 +236,10 @@ var activityView: UIActivityIndicatorView?
 
         }
     }
+    
+    var kpipopupview: KPIPopupView = {
+           let v=KPIPopupView()
+        
+           return v
+       }()
 }

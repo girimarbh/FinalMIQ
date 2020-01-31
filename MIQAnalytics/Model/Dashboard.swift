@@ -44,12 +44,14 @@ struct KPIValues {
     var actual : Int?
     var target : Int?
     var kpiName : String?
+     var kpiDate : String?
    
     
-    init?(with actual:Int?, target:Int?,kpiName : String? ) {
+    init?(with actual:Int?, target:Int?,kpiName : String? , kpidate : String? ) {
         self.actual = actual
-        self.actual = actual
+        self.target = target
         self.kpiName = kpiName
+        self.kpiDate = kpidate
 
        }
 }

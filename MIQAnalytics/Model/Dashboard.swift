@@ -41,13 +41,13 @@ struct CategoryHealth {
 }
 
 struct KPIValues {
-    var actual : Int?
-    var target : Int?
+    var actual : Float?
+    var target : Float?
     var kpiName : String?
      var kpiDate : String?
    
     
-    init?(with actual:Int?, target:Int?,kpiName : String? , kpidate : String? ) {
+    init?(with actual:Float?, target:Float?,kpiName : String? , kpidate : String? ) {
         self.actual = actual
         self.target = target
         self.kpiName = kpiName
@@ -65,8 +65,8 @@ struct KPI
     var kpiID : Int?
     var kpi : String?
     var createdDate : String?
-    var actual : Int?
-    var target : Int?
+    var actual : Float?            //changes
+    var target : Float?             //changes
     var status : Int?
     var unit : String?
     var actualdate : String?

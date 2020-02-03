@@ -131,7 +131,7 @@
             {
                 status = 1
             }
-            if statusstring == "vuluernable"
+            if statusstring == "vulnerable"  
                        {
                            status = 0
                        }
@@ -286,8 +286,8 @@
                                                 let kpiID = (dict["KPIID"] as! NSString).intValue
                                                 let kpi = dict["KPI"] as! NSString
                                                 let createdDate = dict["CREATED_DATE"] as! NSString
-                                                let actual = (dict["ACTUAL"] as! NSString).intValue
-                                                let target = (dict["TARGET"] as! NSString).intValue
+                                                let actual = (dict["ACTUAL"] as! NSString).floatValue         //changes
+                                                let target = (dict["TARGET"] as! NSString).floatValue         //changes
                                                 let status = (dict["STATUS"] as! NSString).intValue
                                                 let unit = dict["UNIT"] as! String
                                                 let actualdate = dict["ACTUAL_DATE"] as! String
@@ -297,7 +297,7 @@
                         //                          let hirarchy = (dict["HIRARCHY"] as? NSString ?? "0").intValue
                                          
                                                 
-                                                self?.kpiarray.append(KPI(plantID: Int(plantid), categoryID: Int(categoryID), category: category, kpiID: Int(category), kpi: kpi as String, createdDate: createdDate as String, actual: Int(actual), target: Int(target), status: Int(status), unit: unit, actualdate: actualdate, authKPI: authKPI, kpiType: kpiType))
+                                                self?.kpiarray.append(KPI(plantID: Int(plantid), categoryID: Int(categoryID), category: category, kpiID: Int(category), kpi: kpi as String, createdDate: createdDate as String, actual: Float(actual), target: Float(target), status: Int(status), unit: unit, actualdate: actualdate, authKPI: authKPI, kpiType: kpiType))
                                                 
                                                
                                                 

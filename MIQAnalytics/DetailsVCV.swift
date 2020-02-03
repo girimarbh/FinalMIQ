@@ -23,17 +23,40 @@ class DetailsVC : UIViewController, UITableViewDelegate, UITableViewDataSource ,
        
         kpipopuparr = dashboardviewmodel.getvaluesontouchButtonsnew(category: str) ?? []
          count = Double(kpipopuparr.count)
+        
+        
         var h = 100.0 * count!
-        kpipopupview = KPIPopupView(frame: CGRect(x: 10.0, y: 300.0, width: 350, height: h))
+        
+        if count == 1
+        {
+            h = 120
+        }
+        else{
+            h = 100.0 * count!
+        }
+        let items = str.components(separatedBy: " ")
+        var categoryname = items[0]
+        var statusstring = items[1]
+        kpipopupview = KPIPopupView(frame: CGRect(x: 10.0, y: 200.0, width: 350, height: h))
         print("the Kpi array is \(kpipopuparr)")
-        kpipopupview.setData(popuparray: kpipopuparr)
+        kpipopupview.setData(popuparray: kpipopuparr ,status: statusstring)
         kpipopuparr.removeAll()
         let blurEffect = UIBlurEffect(style: .regular)
         let blurredEffectView = UIVisualEffectView(effect: blurEffect)
         blurredEffectView.frame = self.view.bounds
-       // view.addSubview(blurredEffectView)
+        blurredEffectView.alpha = 0.9
+        view.addSubview(blurredEffectView)
+        let tap1 = UITapGestureRecognizer(target: self, action: #selector(longLabelPressed))
+               tap1.numberOfTapsRequired = 1
+        blurredEffectView.addGestureRecognizer(tap1)
         self.view.addSubview(kpipopupview)
         
+    }
+     @objc func longLabelPressed(recognizer:UITapGestureRecognizer){
+        if let view = recognizer.view {
+            view.removeFromSuperview()
+            kpipopupview.removeFromSuperview()
+        }
     }
     
     func didPressButton(button: UIButton) {

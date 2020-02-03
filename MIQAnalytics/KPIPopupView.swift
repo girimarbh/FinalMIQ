@@ -23,6 +23,7 @@
     class KPIPopupView: UIView , UITableViewDelegate , UITableViewDataSource {
         let cellId = "cellId"
         var kpipopuparray = [KPIValues]()
+        var currentstatus : String?
         override init(frame: CGRect) {
         super.init(frame: frame)
         self.backgroundColor=UIColor.clear
@@ -33,10 +34,28 @@
         
     }
 
-        func setData(popuparray : [KPIValues]) {
+        func setData(popuparray : [KPIValues] , status : String) {
            self.kpipopuparray = popuparray
+            self.currentstatus = status
+            self.setColors()
             self.table.reloadData()
     
+        }
+        
+        func setColors()  {
+            if currentstatus == "ontarget"
+            {
+                self.leftview.backgroundColor = UIColor(red:64/255, green:136/255, blue:80/255, alpha: 1)
+            }
+            if currentstatus == "offtarget"
+            {
+                self.leftview.backgroundColor = UIColor(red:227/255, green:83/255, blue:86/255, alpha: 1)
+            }
+            if currentstatus == "vulnerable"
+            {
+                 self.leftview.backgroundColor = UIColor(red:218/255, green:160/255, blue:58/255, alpha: 1)
+            }
+            
         }
 
     @objc func close()  {
@@ -50,11 +69,11 @@
         
         func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
             let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! PopupCell
-            cell.updateCellContentt(kpiPopupElement: self.kpipopuparray[indexPath.row])
+            cell.updateCellContentt(kpiPopupElement: self.kpipopuparray[indexPath.row], currentstatus: currentstatus! )
             return cell
         }
         func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-            return 80
+            return 90
         }
 
     func setupViews() {
@@ -76,23 +95,24 @@
         table.register(PopupCell.self, forCellReuseIdentifier: cellId)
         
         
+        
         containerView.addSubview(leftview)
         leftview.anchor(top: containerView.topAnchor, left: containerView.leftAnchor , bottom: containerView.bottomAnchor, right: nil, paddingTop: 30, paddingLeft: 30, paddingBottom: 0, paddingRight: 0, width: 10, height: 0, enableInsets: true)
-        
-        containerView.addSubview(imgView)
-        imgView.topAnchor.constraint(equalTo: table.topAnchor, constant: 30).isActive=true
-        imgView.leftAnchor.constraint(equalTo: table.leftAnchor, constant: -30).isActive=true
-        imgView.heightAnchor.constraint(equalToConstant: 70).isActive=true
-        imgView.widthAnchor.constraint(equalToConstant: 70).isActive=true
-        imgView.makeRounded()
-        
-       containerView.addSubview(closebutton)
-        closebutton.anchor(top: containerView.topAnchor, left: nil, bottom: nil, right: containerView.rightAnchor, paddingTop: 10, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 30, height: 20, enableInsets: true)
-
-        closebutton.layer.cornerRadius = 9 // this value vary as per your desire
-           closebutton.clipsToBounds = true
-
-        closebutton.addTarget(self, action:  #selector(close), for: .touchUpInside)
+       // self.setColors()
+//        containerView.addSubview(imgView)
+//        imgView.topAnchor.constraint(equalTo: table.topAnchor, constant: 20).isActive=true
+//        imgView.leftAnchor.constraint(equalTo: table.leftAnchor, constant: -30).isActive=true
+//        imgView.heightAnchor.constraint(equalToConstant: 70).isActive=true
+//        imgView.widthAnchor.constraint(equalToConstant: 70).isActive=true
+//        imgView.makeRounded()
+//        
+//       containerView.addSubview(closebutton)
+//        closebutton.anchor(top: containerView.topAnchor, left: nil, bottom: nil, right: containerView.rightAnchor, paddingTop: 10, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 30, height: 20, enableInsets: true)
+//
+//        closebutton.layer.cornerRadius = 9 // this value vary as per your desire
+//           closebutton.clipsToBounds = true
+//
+//        closebutton.addTarget(self, action:  #selector(close), for: .touchUpInside)
     }
 
 
@@ -104,7 +124,7 @@
 
     let leftview: UIView = {
         let v=UIView()
-        v.backgroundColor = UIColor(red: 18/255, green: 133/255, blue: 75/255, alpha: 1.0)
+        //v.backgroundColor = UIColor(red: 18/255, green: 133/255, blue: 75/255, alpha: 1.0)
         v.translatesAutoresizingMaskIntoConstraints=false
         return v
     }()
@@ -125,7 +145,7 @@
 
     let imgView: UIImageView = {
         let v=UIImageView()
-        v.image=#imageLiteral(resourceName: "calendar")
+        v.image=#imageLiteral(resourceName: "quality_icon")
         v.contentMode = .scaleAspectFill
         v.translatesAutoresizingMaskIntoConstraints=false
         return v
@@ -158,7 +178,7 @@ required init?(coder aDecoder: NSCoder) {
     private let KPILabel : UILabel = {
         let lbl = UILabel()
         lbl.textColor = .black
-        lbl.font = UIFont.systemFont(ofSize: 18)
+        lbl.font = UIFont.systemFont(ofSize: 17)
         lbl.textAlignment = .center
         lbl.backgroundColor = UIColor.clear
         return lbl
@@ -168,7 +188,7 @@ required init?(coder aDecoder: NSCoder) {
         private let KPILabelButton : UIButton = {
             let lblbtn = UIButton()
             lblbtn.titleLabel?.textColor = UIColor.black
-            lblbtn.titleLabel?.font = UIFont.systemFont(ofSize: 18)
+            lblbtn.titleLabel?.font = UIFont.systemFont(ofSize: 16)
             lblbtn.titleLabel?.textAlignment = .left
             lblbtn.backgroundColor = UIColor.white
             lblbtn.setTitleColor(UIColor.black, for: .normal)
@@ -190,7 +210,7 @@ required init?(coder aDecoder: NSCoder) {
 
     private let KPITargetLabel : UILabel = {
         let lbl = UILabel()
-        lbl.textColor = .black
+        lbl.textColor = .white
         lbl.layer.cornerRadius = 5
         lbl.font = UIFont.systemFont(ofSize: 12)
         lbl.textAlignment = .center
@@ -199,7 +219,7 @@ required init?(coder aDecoder: NSCoder) {
     }()
     private let KPIActualLabel : UILabel = {
         let lbl = UILabel()
-        lbl.textColor = .black
+        lbl.textColor = .white
         lbl.layer.cornerRadius = 5
         lbl.font = UIFont.boldSystemFont(ofSize: 12)
         lbl.textAlignment = .center
@@ -233,13 +253,38 @@ required init?(coder aDecoder: NSCoder) {
     }
     
 
-        func updateCellContentt(kpiPopupElement : KPIValues)
+        func updateCellContentt(kpiPopupElement : KPIValues , currentstatus : String)
     {
-        KPITargetLabel.text = String(kpiPopupElement.target!)
-        KPIDate.text = kpiPopupElement.kpiDate
-        KPIActualLabel.text = String(kpiPopupElement.actual!)
+        
+        let targetAttributedText  = NSMutableAttributedString(string: "T.  ", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 8)])
+        targetAttributedText.append(NSAttributedString(string: String(kpiPopupElement.target!)  , attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 18), NSAttributedString.Key.foregroundColor: UIColor.white]))
+        KPITargetLabel.attributedText = targetAttributedText
+       // KPITargetLabel.text = a + String(kpiPopupElement.target!)
+        let date = kpiPopupElement.kpiDate
+        let items = date!.components(separatedBy: " ")
+        //KPIDate.text = kpiPopupElement.kpiDate
+        KPIDate.text = items[0]
+        
+        let actualAttributedText  = NSMutableAttributedString(string: "A.  ", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 8)])
+        actualAttributedText.append(NSAttributedString(string: String(kpiPopupElement.actual!)  , attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 18), NSAttributedString.Key.foregroundColor: UIColor.white]))
+        KPIActualLabel.attributedText = actualAttributedText
+        
+        //KPIActualLabel.text =  "A." + " " + String(kpiPopupElement.actual!)
         KPILabelButton.setTitle(kpiPopupElement.kpiName!, for: .normal)
         KPILabelButton.addTarget(self, action: #selector(self.pressed), for: .touchUpInside)
+        
+        if currentstatus == "ontarget"
+        {
+            self.KPIActualLabel.backgroundColor = UIColor(red:64/255, green:136/255, blue:80/255, alpha: 1)
+        }
+        if currentstatus == "offtarget"
+        {
+            self.KPIActualLabel.backgroundColor = UIColor(red:227/255, green:83/255, blue:86/255, alpha: 1)
+        }
+        if currentstatus == "vulnerable"
+        {
+             self.KPIActualLabel.backgroundColor = UIColor(red:218/255, green:160/255, blue:58/255, alpha: 1)
+        }
     }
 
         @objc func pressed()  {

@@ -37,6 +37,12 @@
 		686DCB7A2397CB9800360A8E /* ObjectMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686DCB792397CB9800360A8E /* ObjectMapper.swift */; };
 		686DCB7C2397CD0B00360A8E /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686DCB7B2397CD0B00360A8E /* MapViewModel.swift */; };
 		686DCB7E2397CD3F00360A8E /* Map.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686DCB7D2397CD3F00360A8E /* Map.swift */; };
+		68C43BAA23F3CE2500DEE6E8 /* DrilldownModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C43BA923F3CE2500DEE6E8 /* DrilldownModel.swift */; };
+		68C43BAC23F3CE3F00DEE6E8 /* DrildownViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C43BAB23F3CE3F00DEE6E8 /* DrildownViewModel.swift */; };
+		68C43BAE23F3CE7200DEE6E8 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C43BAD23F3CE7200DEE6E8 /* DataManager.swift */; };
+		68C43BB023F3FED600DEE6E8 /* DrilldownViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C43BAF23F3FED600DEE6E8 /* DrilldownViewController.swift */; };
+		68C43BB223F3FF2E00DEE6E8 /* KPIChartCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C43BB123F3FF2E00DEE6E8 /* KPIChartCell.swift */; };
+		68C43BB423F3FF4E00DEE6E8 /* KPIBarChartCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C43BB323F3FF4E00DEE6E8 /* KPIBarChartCell.swift */; };
 		D8422186B2812D7D16133EEA /* Pods_MIQAnalytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41BE0C9FCD57CA7A7193AA80 /* Pods_MIQAnalytics.framework */; };
 /* End PBXBuildFile section */
 
@@ -99,6 +105,12 @@
 		686DCB792397CB9800360A8E /* ObjectMapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectMapper.swift; sourceTree = "<group>"; };
 		686DCB7B2397CD0B00360A8E /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
 		686DCB7D2397CD3F00360A8E /* Map.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Map.swift; sourceTree = "<group>"; };
+		68C43BA923F3CE2500DEE6E8 /* DrilldownModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrilldownModel.swift; sourceTree = "<group>"; };
+		68C43BAB23F3CE3F00DEE6E8 /* DrildownViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrildownViewModel.swift; sourceTree = "<group>"; };
+		68C43BAD23F3CE7200DEE6E8 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		68C43BAF23F3FED600DEE6E8 /* DrilldownViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrilldownViewController.swift; sourceTree = "<group>"; };
+		68C43BB123F3FF2E00DEE6E8 /* KPIChartCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KPIChartCell.swift; sourceTree = "<group>"; };
+		68C43BB323F3FF4E00DEE6E8 /* KPIBarChartCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KPIBarChartCell.swift; sourceTree = "<group>"; };
 		AB2FA401573D51D3FCD74D99 /* Pods-MIQAnalytics.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MIQAnalytics.debug.xcconfig"; path = "Target Support Files/Pods-MIQAnalytics/Pods-MIQAnalytics.debug.xcconfig"; sourceTree = "<group>"; };
 		B663AB824E7C6B8C528A1968 /* Pods_MIQAnalyticsTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MIQAnalyticsTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C31579B349A5AAA428E427D8 /* Pods-MIQAnalytics-MIQAnalyticsUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MIQAnalytics-MIQAnalyticsUITests.debug.xcconfig"; path = "Target Support Files/Pods-MIQAnalytics-MIQAnalyticsUITests/Pods-MIQAnalytics-MIQAnalyticsUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -189,6 +201,9 @@
 				68598CFF23D02B7D00BF216B /* PlantStatusCell.swift */,
 				68598D0123D02B9F00BF216B /* KPIStstusCell.swift */,
 				68598D1523E3E5BD00BF216B /* KPIPopupView.swift */,
+				68C43BAF23F3FED600DEE6E8 /* DrilldownViewController.swift */,
+				68C43BB123F3FF2E00DEE6E8 /* KPIChartCell.swift */,
+				68C43BB323F3FF4E00DEE6E8 /* KPIBarChartCell.swift */,
 			);
 			path = MIQAnalytics;
 			sourceTree = "<group>";
@@ -216,6 +231,7 @@
 			children = (
 				686DCB7D2397CD3F00360A8E /* Map.swift */,
 				68598D0923D032C100BF216B /* Dashboard.swift */,
+				68C43BA923F3CE2500DEE6E8 /* DrilldownModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -225,6 +241,7 @@
 			children = (
 				686DCB7B2397CD0B00360A8E /* MapViewModel.swift */,
 				68598D0723D0329900BF216B /* DashboardViewModel.swift */,
+				68C43BAB23F3CE3F00DEE6E8 /* DrildownViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -253,6 +270,7 @@
 		686DCB6D2397C32400360A8E /* Manager */ = {
 			isa = PBXGroup;
 			children = (
+				68C43BAD23F3CE7200DEE6E8 /* DataManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -559,20 +577,26 @@
 				68598D0A23D032C100BF216B /* Dashboard.swift in Sources */,
 				686DCB782397CB9200360A8E /* DownloadManager.swift in Sources */,
 				68598D1423D966F500BF216B /* DashboardHeaderView.swift in Sources */,
+				68C43BAA23F3CE2500DEE6E8 /* DrilldownModel.swift in Sources */,
 				686DCB7E2397CD3F00360A8E /* Map.swift in Sources */,
 				68598D0823D0329900BF216B /* DashboardViewModel.swift in Sources */,
 				686DCB6323969C3C00360A8E /* InfoPreviewView.swift in Sources */,
+				68C43BAC23F3CE3F00DEE6E8 /* DrildownViewModel.swift in Sources */,
+				68C43BB023F3FED600DEE6E8 /* DrilldownViewController.swift in Sources */,
 				68598D0023D02B7D00BF216B /* PlantStatusCell.swift in Sources */,
 				686DCB762397CB8900360A8E /* Constant.swift in Sources */,
 				686DCB722397CB5800360A8E /* NewtorkManager.swift in Sources */,
 				686DCB702397CB2600360A8E /* ReachabilityTest.swift in Sources */,
+				68C43BB423F3FF4E00DEE6E8 /* KPIBarChartCell.swift in Sources */,
 				68598D0423D02BE300BF216B /* DetailsVCV.swift in Sources */,
 				68598D0223D02B9F00BF216B /* KPIStstusCell.swift in Sources */,
 				68598D1623E3E5BD00BF216B /* KPIPopupView.swift in Sources */,
 				68598CFE23D02B5200BF216B /* PieChartCell.swift in Sources */,
+				68C43BB223F3FF2E00DEE6E8 /* KPIChartCell.swift in Sources */,
 				686DCB30239696B200360A8E /* AppDelegate.swift in Sources */,
 				686DCB7A2397CB9800360A8E /* ObjectMapper.swift in Sources */,
 				686DCB6523969C6E00360A8E /* MapViewController.swift in Sources */,
+				68C43BAE23F3CE7200DEE6E8 /* DataManager.swift in Sources */,
 				686DCB6123969C1F00360A8E /* CustomMarkerView.swift in Sources */,
 				686DCB742397CB8100360A8E /* Extension.swift in Sources */,
 				686DCB7C2397CD0B00360A8E /* MapViewModel.swift in Sources */,

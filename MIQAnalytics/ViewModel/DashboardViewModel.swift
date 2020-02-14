@@ -312,6 +312,7 @@
                     } catch {
                         print(error.localizedDescription)
                     }
+                    DataManager.datamanager.kpiarray = self!.kpiarray
                     self?.getCategoryListarray(array: self?.kpiarray ?? [])
                     self?.getHealthPercentageforPlant( array: self?.kpiarray ?? [])
                     self?.getHealthPercentageforCategory(array: (self?.costarray ?? nil)!)
@@ -321,6 +322,8 @@
                     self?.arrcategoryhealth.append(a!)
                     // print("arr category health is \( self?.arrcategoryhealth)")
                     }
+                    DataManager.datamanager.arrcategoryhealth = self?.arrcategoryhealth ?? []
+                    DataManager.datamanager.arrcatagory = self!.arrcatagory
                     var aa = self!.arrcategoryhealth[0]
 
                     print("arr category health is \(String(describing: self?.arrcategoryhealth))")

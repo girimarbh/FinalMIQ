@@ -24,6 +24,7 @@
         let cellId = "cellId"
         var kpipopuparray = [KPIValues]()
         var currentstatus : String?
+        var currentcategory : String?
         override init(frame: CGRect) {
         super.init(frame: frame)
         self.backgroundColor=UIColor.clear
@@ -34,9 +35,10 @@
         
     }
 
-        func setData(popuparray : [KPIValues] , status : String) {
+        func setData(popuparray : [KPIValues] , status : String , category : String) {
            self.kpipopuparray = popuparray
             self.currentstatus = status
+            self.currentcategory = category
             self.setColors()
             self.table.reloadData()
     
@@ -69,7 +71,7 @@
         
         func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
             let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! PopupCell
-            cell.updateCellContentt(kpiPopupElement: self.kpipopuparray[indexPath.row], currentstatus: currentstatus! )
+            cell.updateCellContentt(kpiPopupElement: self.kpipopuparray[indexPath.row], currentstatus: currentstatus!, currentcategory: currentcategory! )
             return cell
         }
         func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -99,12 +101,12 @@
         containerView.addSubview(leftview)
         leftview.anchor(top: containerView.topAnchor, left: containerView.leftAnchor , bottom: containerView.bottomAnchor, right: nil, paddingTop: 30, paddingLeft: 30, paddingBottom: 0, paddingRight: 0, width: 10, height: 0, enableInsets: true)
        // self.setColors()
-//        containerView.addSubview(imgView)
-//        imgView.topAnchor.constraint(equalTo: table.topAnchor, constant: 20).isActive=true
-//        imgView.leftAnchor.constraint(equalTo: table.leftAnchor, constant: -30).isActive=true
-//        imgView.heightAnchor.constraint(equalToConstant: 70).isActive=true
-//        imgView.widthAnchor.constraint(equalToConstant: 70).isActive=true
-//        imgView.makeRounded()
+        containerView.addSubview(imgView)
+        imgView.topAnchor.constraint(equalTo: table.topAnchor, constant: 20).isActive=true
+        imgView.leftAnchor.constraint(equalTo: table.leftAnchor, constant: -30).isActive=true
+        imgView.heightAnchor.constraint(equalToConstant: 70).isActive=true
+        imgView.widthAnchor.constraint(equalToConstant: 70).isActive=true
+        imgView.makeRounded()
 //        
 //       containerView.addSubview(closebutton)
 //        closebutton.anchor(top: containerView.topAnchor, left: nil, bottom: nil, right: containerView.rightAnchor, paddingTop: 10, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 30, height: 20, enableInsets: true)
@@ -156,9 +158,17 @@ required init?(coder aDecoder: NSCoder) {
     }
     }
     
+
+protocol NotificationProtocalDrilldown {
+    func NotifyKPIDrilldown (str : String)
+   // func updateError()
     
+    
+}
+
     class PopupCell: UITableViewCell {
 
+        var delegatepopup : NotificationProtocalDrilldown?
         let CalenderimgView: UIImageView = {
             let v=UIImageView()
             v.image=#imageLiteral(resourceName: "calendar")
@@ -220,11 +230,11 @@ required init?(coder aDecoder: NSCoder) {
     private let KPIActualLabel : UILabel = {
         let lbl = UILabel()
         lbl.textColor = .white
-        lbl.layer.cornerRadius = 5
+       
         lbl.font = UIFont.boldSystemFont(ofSize: 12)
         lbl.textAlignment = .center
-        lbl.text = "22"
         lbl.layer.backgroundColor = UIColor(red: 18/255, green: 133/255, blue: 75/255, alpha: 1.0).cgColor
+         lbl.layer.cornerRadius = 5
         return lbl
     }()
 
@@ -253,11 +263,20 @@ required init?(coder aDecoder: NSCoder) {
     }
     
 
-        func updateCellContentt(kpiPopupElement : KPIValues , currentstatus : String)
+        func updateCellContentt(kpiPopupElement : KPIValues , currentstatus : String , currentcategory : String)
     {
+        let numberFormatter = NumberFormatter()
+        numberFormatter.numberStyle = .decimal
+        numberFormatter.groupingSize = 3
+        numberFormatter.secondaryGroupingSize = 2
+        var formattedactual = numberFormatter.string(from: kpiPopupElement.actual as! NSNumber)
+        var formatedTarget = numberFormatter.string(from: kpiPopupElement.target as! NSNumber)
         
-        let targetAttributedText  = NSMutableAttributedString(string: "T.  ", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 8)])
-        targetAttributedText.append(NSAttributedString(string: String(kpiPopupElement.target!)  , attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 18), NSAttributedString.Key.foregroundColor: UIColor.white]))
+        print("the formatted num is \(formattedactual)")
+       
+        let targetAttributedText  = NSMutableAttributedString(string: "T.  ", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 10)])
+//        targetAttributedText.append(NSAttributedString(string: String(kpiPopupElement.target!)  , attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 18), NSAttributedString.Key.foregroundColor: UIColor.white]))
+        targetAttributedText.append(NSAttributedString(string: formatedTarget!  , attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 18), NSAttributedString.Key.foregroundColor: UIColor.white]))
         KPITargetLabel.attributedText = targetAttributedText
        // KPITargetLabel.text = a + String(kpiPopupElement.target!)
         let date = kpiPopupElement.kpiDate
@@ -265,11 +284,13 @@ required init?(coder aDecoder: NSCoder) {
         //KPIDate.text = kpiPopupElement.kpiDate
         KPIDate.text = items[0]
         
-        let actualAttributedText  = NSMutableAttributedString(string: "A.  ", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 8)])
-        actualAttributedText.append(NSAttributedString(string: String(kpiPopupElement.actual!)  , attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 18), NSAttributedString.Key.foregroundColor: UIColor.white]))
+        let actualAttributedText  = NSMutableAttributedString(string: "A.  ", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 10)])
+//        actualAttributedText.append(NSAttributedString(string: String(kpiPopupElement.actual!)  , attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 18), NSAttributedString.Key.foregroundColor: UIColor.white]))
+        actualAttributedText.append(NSAttributedString(string: formattedactual!  , attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 18), NSAttributedString.Key.foregroundColor: UIColor.white]))
         KPIActualLabel.attributedText = actualAttributedText
         
         //KPIActualLabel.text =  "A." + " " + String(kpiPopupElement.actual!)
+        KPILabelButton.accessibilityLabel = currentcategory + " " + kpiPopupElement.kpiName!
         KPILabelButton.setTitle(kpiPopupElement.kpiName!, for: .normal)
         KPILabelButton.addTarget(self, action: #selector(self.pressed), for: .touchUpInside)
         
@@ -287,8 +308,12 @@ required init?(coder aDecoder: NSCoder) {
         }
     }
 
-        @objc func pressed()  {
-            print("Button is pressed")
+        @objc func pressed(_ sender: UIButton)  {
+            var btn = sender
+            let nc = NotificationCenter.default
+            nc.post(name: Notification.Name("UserLoggedIn"), object: nil)
+             self.delegatepopup?.NotifyKPIDrilldown(str: "abc")
+            print("Button is pressed , accessibilityLabel value  is \(btn.accessibilityLabel)")
         }
 
 
@@ -304,6 +329,8 @@ required init?(coder aDecoder: NSCoder) {
         KPIDate.anchor(top: KPILabelButton.bottomAnchor, left: CalenderimgView.leftAnchor, bottom: containerView.bottomAnchor, right: nil, paddingTop: 10, paddingLeft: 0, paddingBottom: 10, paddingRight: 20, width: 133, height: 40, enableInsets: true)
         
         KPIActualLabel.anchor(top: KPITargetLabel.bottomAnchor, left: KPIDate.rightAnchor, bottom: nil, right: nil, paddingTop: 10, paddingLeft: 0, paddingBottom: 10, paddingRight: 0, width: 140, height: 30, enableInsets: true)
+        KPIActualLabel.layer.cornerRadius = 5
+        KPIActualLabel.clipsToBounds = true
         }
 
     }
@@ -321,4 +348,5 @@ extension UIImageView {
         self.contentMode = UIView.ContentMode.scaleAspectFill
     }
 }
+
 

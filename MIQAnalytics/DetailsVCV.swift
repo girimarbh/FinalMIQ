@@ -13,7 +13,8 @@ import UIKit
 
 
 
-class DetailsVC : UIViewController, UITableViewDelegate, UITableViewDataSource , DashbardNotificationProtocal , StoreDelegate , NotificationProtocalKPIPopup {
+class DetailsVC : UIViewController, UITableViewDelegate, UITableViewDataSource , DashbardNotificationProtocal , StoreDelegate , NotificationProtocalKPIPopup , NotificationProtocalDrilldown{
+   
     
     var kpipopuparr = [KPIValues]()
     var count : Double?
@@ -39,7 +40,7 @@ class DetailsVC : UIViewController, UITableViewDelegate, UITableViewDataSource ,
         var statusstring = items[1]
         kpipopupview = KPIPopupView(frame: CGRect(x: 10.0, y: 200.0, width: 350, height: h))
         print("the Kpi array is \(kpipopuparr)")
-        kpipopupview.setData(popuparray: kpipopuparr ,status: statusstring)
+        kpipopupview.setData(popuparray: kpipopuparr ,status: statusstring , category : categoryname )
         kpipopuparr.removeAll()
         let blurEffect = UIBlurEffect(style: .regular)
         let blurredEffectView = UIVisualEffectView(effect: blurEffect)
@@ -52,6 +53,11 @@ class DetailsVC : UIViewController, UITableViewDelegate, UITableViewDataSource ,
         self.view.addSubview(kpipopupview)
         
     }
+    
+    func NotifyKPIDrilldown(str: String) {
+           print("press from popupcell")
+       }
+       
      @objc func longLabelPressed(recognizer:UITapGestureRecognizer){
         if let view = recognizer.view {
             view.removeFromSuperview()
@@ -73,6 +79,7 @@ class DetailsVC : UIViewController, UITableViewDelegate, UITableViewDataSource ,
     let cellId = "cellId"
      let cellId2 = "cellId2"
     let cellId3 = "cellId3"
+     let cellId4 = "cellId4"
 var activityView: UIActivityIndicatorView?
     
 
@@ -93,8 +100,12 @@ var activityView: UIActivityIndicatorView?
 
 
     override func viewDidLoad() {
-
+         let nc = NotificationCenter.default
+nc.addObserver(self, selector: #selector(userLoggedIn), name: Notification.Name("UserLoggedIn"), object: nil)
       super.viewDidLoad()
+      var cell = PopupCell()
+      cell.delegatepopup = self
+        
 
         if ReachabilityTest.isConnectedToNetwork() {
 
@@ -149,6 +160,7 @@ var activityView: UIActivityIndicatorView?
         myTableView.register(PieChartCell.self, forCellReuseIdentifier: cellId)
         myTableView.register(PlantStatusCell.self, forCellReuseIdentifier: cellId2)
         myTableView.register(KPIStstusCell.self, forCellReuseIdentifier: cellId3)
+        myTableView.register(PopupCell.self, forCellReuseIdentifier: cellId4)
      //   myTableView.dataSource = self
        // myTableView.delegate = self
         myTableView.showsVerticalScrollIndicator = false
@@ -165,6 +177,16 @@ var activityView: UIActivityIndicatorView?
 
 
 
+    }
+    
+    @objc func userLoggedIn()  {
+        
+        let v=DrilldownViewController()
+        v.modalPresentationStyle = .fullScreen
+               //v.passdata = mapviewmodel.placearray[tag].comments
+            //print("passed value is \(mapviewmodel.placearray[tag].comments)")
+             self.present(v , animated: true , completion: nil)
+        print("jfjhjfh")
     }
 
     func showActivityIndicator() {
@@ -190,7 +212,8 @@ var activityView: UIActivityIndicatorView?
 //    }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
-
+//      let cell = tableView.dequeueReusableCell(withIdentifier: cellId4, for: indexPath) as! PopupCell
+//         cell.delegatepopup = self
 
         if indexPath.row == 0 {
                    let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! PieChartCell
@@ -217,7 +240,8 @@ var activityView: UIActivityIndicatorView?
                            return cell
                }
 
-//                 let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! PieChartCell
+               // let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! PopupCell
+      //  cell.delegatepopup = self
 //                cell.properties = ["United States","Mexico","Canada","Chile"]
 //                cell.values = [1000.0,2000.0,3000.0,4000.0]
 //        cell.updateCellContentt(property:properties , value: values)
@@ -248,6 +272,9 @@ var activityView: UIActivityIndicatorView?
 }
 
     func updateContentOnView(){
+        print("Data manager KPI array data is \(DataManager.datamanager.kpiarray)")
+        print("Data manager category array data is \(DataManager.datamanager.arrcategoryhealth)")
+        
         DispatchQueue.main.async{ [weak self] in
             guard let weakSelf = self else { return }
             // and then dismiss the control

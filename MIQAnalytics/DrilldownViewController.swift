@@ -12,6 +12,9 @@ class DrilldownViewController: UIViewController , UITableViewDelegate, UITableVi
     var properties = [String]()
     var values = [Double]()
     var passdata : String?
+    var passdataCategory : String?
+    var passdataKPI : String?
+    
 
     private let myArray: NSArray = ["First","Second","Third"]
     private var myTableView: UITableView!
@@ -19,6 +22,8 @@ class DrilldownViewController: UIViewController , UITableViewDelegate, UITableVi
      let cellId2 = "cellId2"
     let cellId3 = "cellId3"
     let cellID4 = "cellID4"
+    
+     var drildownviewModel = DrildownViewModel()
     
     var headerView: DashboardHeaderView = {
         let v = DashboardHeaderView()
@@ -28,6 +33,10 @@ class DrilldownViewController: UIViewController , UITableViewDelegate, UITableVi
     
 
     override func viewDidLoad() {
+        drildownviewModel.getParticularCategory(category: passdataCategory!)
+        print("thae drildownview category maodel values is ,\(drildownviewModel.drilldowncategory) ")
+        drildownviewModel.getKPIValues(kpiname: passdataKPI!)
+        print("thae drildownview kpi maodel values is ,\(drildownviewModel.drilldownKPI) ")
         super.viewDidLoad()
         properties = ["","",""]
                values = [1000.0,2000.0,3000.0]
@@ -65,7 +74,8 @@ class DrilldownViewController: UIViewController , UITableViewDelegate, UITableVi
                    let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! KPIChartCell
                            cell.properties = ["United States","Mexico","Canada","Chile"]
                            cell.values = [1000.0,2000.0,3000.0,4000.0]
-                   cell.updateCellContentt(property:properties , value: values)
+                  // cell.updateCellContentt(property:properties , value: values)
+            cell.updateCellContenttt(categoryhealth: drildownviewModel.drilldowncategory!)
                            return cell
                }
             
@@ -73,6 +83,7 @@ class DrilldownViewController: UIViewController , UITableViewDelegate, UITableVi
                 let cell = tableView.dequeueReusableCell(withIdentifier: cellId2, for: indexPath) as! KPIBarChartCell
                 cell.properties = ["United States","Mexico","Canada","Chile"]
                 cell.values = [1000.0,2000.0,3000.0,4000.0]
+                cell.updateCellContentt(kpivalues: drildownviewModel.drilldownKPI!, category: drildownviewModel.drilldowncategory!)
                 //cell.updateCellContentt(property:properties , value: values)
                         return cell
             }

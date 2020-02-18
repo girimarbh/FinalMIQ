@@ -155,6 +155,92 @@ required init?(coder: NSCoder) {
 //        // Configure the view for the selected state
 //    }
 
+    func updateCellContenttt( categoryhealth : CategoryHealth)
+           {
+            
+            var percentagearray = self.convertnumbertopercentage(first: Double(categoryhealth.onTarget ?? Int(0.0)), second: Double(categoryhealth.vulenrable ?? Int(0.0)), third: Double(categoryhealth.offTarget ?? Int(0.0)))
+               var valuearray = [Double]()
+            valuearray.append(percentagearray[0])
+            valuearray.append(percentagearray[1])
+            valuearray.append(percentagearray[2])
+            
+            
+    //           valuearray.append(categoryhealth.onTarget ?? 0)
+    //           valuearray.append(categoryhealth.vulenrable ?? 0)
+    //           valuearray.append(categoryhealth.offTarget ?? 0)
+    //
+               var entries = [PieChartDataEntry]()
+               for (index, value) in valuearray.enumerated() {
+                   let entry = PieChartDataEntry()
+                   entry.y = Double(value)
+                  // entry.label = property[index]
+                   entries.append( entry)
+               }
+               
+               let set = PieChartDataSet( entries: entries, label: nil)
+               var colors = [UIColor.init(hexString: "#138b4a"),UIColor.init(hexString: "#e49e0d"),UIColor.init(hexString: "#f54450")]
+               // set.colors = colors as! [NSUIColor]
+               set.colors = colors as! [NSUIColor]
+               
+               let data = PieChartData(dataSet: set)
+               chart2.data = data
+               chart2.noDataText = "No data available"
+               chart2.isUserInteractionEnabled = true
+               chart2.backgroundColor = .clear
+               let d = Description()
+               d.text = ""
+               chart2.chartDescription = d
+            
+            let totalKPI : Int = categoryhealth.kpiTotalCount ?? 0
+            var totalKPIStr = String(totalKPI)
+               chart2.centerText = totalKPIStr + "KPI"
+               
+               onTargetLabel.text = "On Target"
+               vulnerableLabel.text = "Vulnerable"
+                offTatgetLabel.text = "OFF-Target"
+               let ontarget : Int = categoryhealth.onTarget ?? 0
+               var ontargetmyString = String(ontarget)
+               onTargetValueLabel.text = ontargetmyString
+               
+             
+               let offtarget : Int = categoryhealth.offTarget ?? 0
+               var offtargetmyString = String(offtarget)
+               offTatgetValueLabel.text = offtargetmyString
+               
+               
+               let vulenerable : Int = categoryhealth.vulenrable ?? 0
+               var vulenerablemyString = String(vulenerable)
+               vulnerableValueLabel.text = vulenerablemyString
+               
+               
+              // set.drawValuesEnabled = false
+               chart2.drawEntryLabelsEnabled = false
+            chart2.usePercentValuesEnabled = true
+              // offTatgetValueLabel.text = categoryhealth.offTarget
+               //vulnerableValueLabel.text = categoryhealth.vulenrable
+               
+               
+               //                   let attachment = NSTextAttachment()
+               //                   attachment.image = UIImage(named: "download.jpeg")
+               //                   let attachmentString = NSAttributedString(attachment: attachment)
+               //                   let labelImg = NSMutableAttributedString(string: "")
+               //                   labelImg.append(attachmentString)
+               // chart2.centerAttributedText = labelImg
+               chart2.holeColor = UIColor(red:255,green:255,blue:255,alpha:0.5)
+               
+           }
+        
+    func convertnumbertopercentage(first : Double , second : Double , third : Double) -> [Double]{
+                      var arr = [Double]()
+                      var total = first + second + third
+                      var a = ((first / total ) * 100)
+                      arr.append(Double(a))
+                      var b = (second / total ) * 100
+                      arr.append(Double(b))
+                      var c = (third / total ) * 100
+                      arr.append(Double(c))
+                     return arr
+                  }
 func updateCellContentt(property:[String],value :[Double])
 {
     var entries = [PieChartDataEntry]()

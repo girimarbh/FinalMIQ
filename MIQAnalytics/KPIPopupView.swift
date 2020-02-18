@@ -290,7 +290,7 @@ protocol NotificationProtocalDrilldown {
         KPIActualLabel.attributedText = actualAttributedText
         
         //KPIActualLabel.text =  "A." + " " + String(kpiPopupElement.actual!)
-        KPILabelButton.accessibilityLabel = currentcategory + " " + kpiPopupElement.kpiName!
+        KPILabelButton.accessibilityLabel = currentcategory + "*" + kpiPopupElement.kpiName!
         KPILabelButton.setTitle(kpiPopupElement.kpiName!, for: .normal)
         KPILabelButton.addTarget(self, action: #selector(self.pressed), for: .touchUpInside)
         
@@ -309,9 +309,10 @@ protocol NotificationProtocalDrilldown {
     }
 
         @objc func pressed(_ sender: UIButton)  {
-            var btn = sender
+            var DataDict:[String: String] = ["data" : sender.accessibilityLabel!]
+          var btn = sender
             let nc = NotificationCenter.default
-            nc.post(name: Notification.Name("UserLoggedIn"), object: nil)
+            nc.post(name: Notification.Name("UserLoggedIn"), object: nil, userInfo: DataDict)
              self.delegatepopup?.NotifyKPIDrilldown(str: "abc")
             print("Button is pressed , accessibilityLabel value  is \(btn.accessibilityLabel)")
         }

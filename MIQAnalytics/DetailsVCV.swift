@@ -101,7 +101,7 @@ var activityView: UIActivityIndicatorView?
 
     override func viewDidLoad() {
          let nc = NotificationCenter.default
-nc.addObserver(self, selector: #selector(userLoggedIn), name: Notification.Name("UserLoggedIn"), object: nil)
+nc.addObserver(self, selector: #selector(userLoggedIn(_:)), name: Notification.Name("UserLoggedIn"), object: nil)
       super.viewDidLoad()
       var cell = PopupCell()
       cell.delegatepopup = self
@@ -179,10 +179,32 @@ nc.addObserver(self, selector: #selector(userLoggedIn), name: Notification.Name(
 
     }
     
+    @objc func userLoggedIn(_ notification: NSNotification) {
+           print(notification.userInfo ?? "")
+           if let dict = notification.userInfo as NSDictionary? {
+               if let id = dict["data"] as? String{
+                print("The string in notification is \(id)")
+                let items = id.components(separatedBy: "*")
+                var categoryname = items[0]
+                var kpistring = items[1]
+                let v=DrilldownViewController()
+                v.passdataCategory = categoryname
+                v.passdataKPI = kpistring
+                v.modalPresentationStyle = .fullScreen
+
+                       //v.passdata = mapviewmodel.placearray[tag].comments
+                    //print("passed value is \(mapviewmodel.placearray[tag].comments)")
+                     self.present(v , animated: true , completion: nil)
+                   // do something with your image
+               }
+           }
+    }
+    
     @objc func userLoggedIn()  {
         
         let v=DrilldownViewController()
         v.modalPresentationStyle = .fullScreen
+
                //v.passdata = mapviewmodel.placearray[tag].comments
             //print("passed value is \(mapviewmodel.placearray[tag].comments)")
              self.present(v , animated: true , completion: nil)

@@ -379,7 +379,7 @@ override func awakeFromNib() {
     
     
     updateUII()
-    setChart()
+    //setChart()
     var dietChart = PieChartView(frame: CGRect(x:0,y:0,width:400,height:400))
     dietChart.backgroundColor = .black
 
@@ -395,19 +395,20 @@ required init?(coder: NSCoder) {
 //
 //        // Configure the view for the selected state
 //    }
-    func setChart() {
-
-         let unitsSold = [2000.0, 40000.0, 8000.0]
-         
-         let test = [1, 2, 3]
-         
-         
-         var dataEntries: [BarChartDataEntry] = []
-    var months = ["Jan", "Feb", "Mar"]
+    func setChart(x : [Float] , y : [Float] , t : Float) {
+        let actual = x  //v
+        let target = y //th
+        var dataEntries: [BarChartDataEntry] = []
+        var months = y
+        
+//         let unitsSold = [2000.0, 40000.0, 8000.0]  //v
+//         let test = [1, 2, 3] //th
+//         var dataEntries: [BarChartDataEntry] = [
+//         var months = ["Jan", "Feb", "Mar"]
          
          for i in 0..<months.count {
              
-             let dataEntry = BarChartDataEntry(x: Double(test[i]), y: Double(unitsSold[i]))
+             let dataEntry = BarChartDataEntry(x: Double(target[i]), y: Double(actual[i]))
              
              dataEntries.append(dataEntry)
          }
@@ -419,18 +420,26 @@ required init?(coder: NSCoder) {
         chart2.backgroundColor = UIColor.black
         chartDataSet.colors = [UIColor(red: 16/255, green: 135/255, blue: 72/255, alpha: 1)]
         chart2.animate(xAxisDuration: 2.0, yAxisDuration: 2.0, easingOption: .easeInCubic)
-        let ll = ChartLimitLine(limit: 20000.0, label: "Target")
-        chart2.rightAxis.addLimitLine(ll)
+       // let ll = ChartLimitLine(limit: Double(x[0]), label: "Target")
+       // chart2.rightAxis.addLimitLine(ll)
         var xAxis = chart2.xAxis
         var yAxis = chart2.leftAxis
         xAxis.labelTextColor = UIColor.white
         yAxis.labelTextColor = UIColor.white
-         chart2.data = chartData
+        chart2.data = chartData
          
      }
     
 func updateCellContentt(kpivalues : KPIValues , category : CategoryHealth)
 {
+    KpiNameLabel.text = kpivalues.kpiName
+    scnearioDatevalueLabel.text = kpivalues.kpiDate
+    targetValueLabel.text = kpivalues.target?.description
+    actualValueLabel.text = kpivalues.actual?.description
+    lastupdatedDateLabel.text = kpivalues.kpiDate
+    currentrunningtargetValueLabel.text = "Current Running Target Value:" + kpivalues.target!.description
+    setChart(x: [kpivalues.actual!], y: [kpivalues.target!] , t : kpivalues.target!)
+    
     
 }
 

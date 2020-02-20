@@ -395,7 +395,7 @@ required init?(coder: NSCoder) {
 //
 //        // Configure the view for the selected state
 //    }
-    func setChart(x : [Float] , y : [Float] , t : Float) {
+    func setChart(x : [Int] , y : [Int] , t : Float) {
         let actual = x  //v
         let target = y //th
         var dataEntries: [BarChartDataEntry] = []
@@ -422,23 +422,26 @@ required init?(coder: NSCoder) {
         chart2.animate(xAxisDuration: 2.0, yAxisDuration: 2.0, easingOption: .easeInCubic)
        // let ll = ChartLimitLine(limit: Double(x[0]), label: "Target")
        // chart2.rightAxis.addLimitLine(ll)
-        var xAxis = chart2.xAxis
+      //  var xAxis = chart2.xAxis
         var yAxis = chart2.leftAxis
-        xAxis.labelTextColor = UIColor.white
+     //   xAxis.labelTextColor = UIColor.white
         yAxis.labelTextColor = UIColor.white
+        chartData.barWidth = Double(0.30)
         chart2.data = chartData
          
      }
     
 func updateCellContentt(kpivalues : KPIValues , category : CategoryHealth)
 {
+    
+    
     KpiNameLabel.text = kpivalues.kpiName
     scnearioDatevalueLabel.text = kpivalues.kpiDate
     targetValueLabel.text = kpivalues.target?.description
     actualValueLabel.text = kpivalues.actual?.description
     lastupdatedDateLabel.text = kpivalues.kpiDate
     currentrunningtargetValueLabel.text = "Current Running Target Value:" + kpivalues.target!.description
-    setChart(x: [kpivalues.actual!], y: [kpivalues.target!] , t : kpivalues.target!)
+    setChart(x: [Int(kpivalues.actual!)], y: [Int(kpivalues.target!)] , t : kpivalues.target!)
     
     
 }
@@ -527,6 +530,16 @@ func updateUII(){
     
    }
 
+}
+extension String {
+  func toDate(withFormat format: String = "yyyy-MM-dd") -> Date {
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = format
+    guard let date = dateFormatter.date(from: self) else {
+      preconditionFailure("Take a look to your format")
+    }
+    return date
+  }
 }
 extension CALayer {
 

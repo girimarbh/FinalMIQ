@@ -8,7 +8,12 @@
 
 import UIKit
 
-class DrilldownViewController: UIViewController , UITableViewDelegate, UITableViewDataSource {
+class DrilldownViewController: UIViewController , UITableViewDelegate, UITableViewDataSource , DrilldownDelegate {
+    func didPressButton(button: UIButton) {
+        print("didPressButton is called in drilldown")
+        self.dismiss(animated: true, completion: nil)
+    }
+    
     var properties = [String]()
     var values = [Double]()
     var passdata : String?
@@ -25,8 +30,8 @@ class DrilldownViewController: UIViewController , UITableViewDelegate, UITableVi
     
      var drildownviewModel = DrildownViewModel()
     
-    var headerView: DashboardHeaderView = {
-        let v = DashboardHeaderView()
+    var headerView: DrilldownheaderView = {
+        let v = DrilldownheaderView()
      
         return v
     }()
@@ -37,6 +42,8 @@ class DrilldownViewController: UIViewController , UITableViewDelegate, UITableVi
         print("thae drildownview category maodel values is ,\(drildownviewModel.drilldowncategory) ")
         drildownviewModel.getKPIValues(kpiname: passdataKPI!)
         print("thae drildownview kpi maodel values is ,\(drildownviewModel.drilldownKPI) ")
+        var a = drildownviewModel.getkpiarr(category: passdataCategory!)
+        print("drilldownviewmode kpiarray is \(drildownviewModel.drilldownkpiarray)")
         super.viewDidLoad()
         properties = ["","",""]
                values = [1000.0,2000.0,3000.0]
@@ -44,8 +51,10 @@ class DrilldownViewController: UIViewController , UITableViewDelegate, UITableVi
         let barHeight: CGFloat = UIApplication.shared.statusBarFrame.size.height
         let displayWidth: CGFloat = self.view.frame.width
         let displayHeight: CGFloat = self.view.frame.height
-
-        myTableView = UITableView(frame: CGRect(x: 0, y: barHeight , width: displayWidth, height: displayHeight - barHeight))
+        headerView  = DrilldownheaderView(frame: CGRect(x: 0.0, y: barHeight, width: self.view.frame.size.width, height: 50 ))
+        headerView.delegate = self
+        self.view.addSubview(headerView)
+        myTableView = UITableView(frame: CGRect(x: 0, y: barHeight + 60 , width: displayWidth, height: displayHeight - barHeight))
         myTableView.register(KPIChartCell.self, forCellReuseIdentifier: cellId)
         myTableView.register(KPIBarChartCell.self, forCellReuseIdentifier: cellId2)
          //myTableView.register(OperationCell.self, forCellReuseIdentifier: cellId3)
@@ -55,7 +64,7 @@ class DrilldownViewController: UIViewController , UITableViewDelegate, UITableVi
         myTableView.showsVerticalScrollIndicator = false
         
         self.view.addSubview(myTableView)
-         headerView  = DashboardHeaderView(frame: CGRect(x: 0.0, y: 0.0, width: 200, height: 50 ))
+         
         
     }
      func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {

@@ -317,8 +317,7 @@ public let chart2 : BarChartView = {
         btn.titleLabel?.textAlignment = .left
         btn.layer.cornerRadius = 5
         btn.layer.borderWidth = 1
-       
-       btn.titleLabel?.font = UIFont.systemFont(ofSize: 10)
+        btn.titleLabel?.font = UIFont.systemFont(ofSize: 10)
         btn.backgroundColor = UIColor(red:61/255, green:188/255, blue:252/255, alpha: 1)
         
         return btn
@@ -395,28 +394,31 @@ required init?(coder: NSCoder) {
 //
 //        // Configure the view for the selected state
 //    }
-    func setChart(x : [Int] , y : [Int] , t : Float) {
+    
+   
+    
+   func setChart(x : [Int] , y : [Int] , t : Float) {
         let actual = x  //v
         let target = y //th
         var dataEntries: [BarChartDataEntry] = []
         var months = y
-        
+
 //         let unitsSold = [2000.0, 40000.0, 8000.0]  //v
 //         let test = [1, 2, 3] //th
 //         var dataEntries: [BarChartDataEntry] = [
 //         var months = ["Jan", "Feb", "Mar"]
-         
+
          for i in 0..<months.count {
-             
+
              let dataEntry = BarChartDataEntry(x: Double(target[i]), y: Double(actual[i]))
-             
+
              dataEntries.append(dataEntry)
          }
-         
+
         let chartDataSet = BarChartDataSet(entries: dataEntries, label: "KPI")
-         
+
          let chartData = BarChartData(dataSet: chartDataSet)
-    
+
         chart2.backgroundColor = UIColor.black
         chartDataSet.colors = [UIColor(red: 16/255, green: 135/255, blue: 72/255, alpha: 1)]
         chart2.animate(xAxisDuration: 2.0, yAxisDuration: 2.0, easingOption: .easeInCubic)
@@ -428,24 +430,45 @@ required init?(coder: NSCoder) {
         yAxis.labelTextColor = UIColor.white
         chartData.barWidth = Double(0.30)
         chart2.data = chartData
-         
+
      }
     
-func updateCellContentt(kpivalues : KPIValues , category : CategoryHealth)
+    func updateCellContentt(kpivalues : KPIValues , category : CategoryHealth , KPIValuesdrilldownnew: [KPIValuesdrilldownnew])
 {
+   var xr = [Int]()
+   var yr = [Int]()
+    for arr in KPIValuesdrilldownnew
+    {
+        if let dict = arr  as? KPIValuesdrilldownnew {
+            xr.append(Int(dict.actual!))
+            yr.append(Int(dict.target!))
+            
+        }
+    }
     
+        //KpiNameLabel.text = KPIValuesdrilldownnew[0].k
+       scnearioDatevalueLabel.text = KPIValuesdrilldownnew[0].kpiDate
+       targetValueLabel.text = KPIValuesdrilldownnew[0].target?.description
+       actualValueLabel.text = KPIValuesdrilldownnew[0].actual?.description
     
     KpiNameLabel.text = kpivalues.kpiName
-    scnearioDatevalueLabel.text = kpivalues.kpiDate
-    targetValueLabel.text = kpivalues.target?.description
-    actualValueLabel.text = kpivalues.actual?.description
+//    scnearioDatevalueLabel.text = kpivalues.kpiDate
+//    targetValueLabel.text = kpivalues.target?.description
+//    actualValueLabel.text = kpivalues.actual?.description
     lastupdatedDateLabel.text = kpivalues.kpiDate
     currentrunningtargetValueLabel.text = "Current Running Target Value:" + kpivalues.target!.description
     setChart(x: [Int(kpivalues.actual!)], y: [Int(kpivalues.target!)] , t : kpivalues.target!)
+    //setChart(x: xr, y: yr , t : kpivalues.target!)
+    
+    //setChart(dataEntryX: xr, dataEntryY: yr)
+    
+//    let months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun"]
+//    let unitsSold = [20.0, 4.0, 6.0, 3.0, 12.0, 16.0]
+//
     
     
+   // setChart(dataPoints: months, values: unitsSold)
 }
-
 
 
 func updateUII(){

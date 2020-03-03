@@ -37,6 +37,7 @@
 		686DCB7A2397CB9800360A8E /* ObjectMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686DCB792397CB9800360A8E /* ObjectMapper.swift */; };
 		686DCB7C2397CD0B00360A8E /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686DCB7B2397CD0B00360A8E /* MapViewModel.swift */; };
 		686DCB7E2397CD3F00360A8E /* Map.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686DCB7D2397CD3F00360A8E /* Map.swift */; };
+		68A2DDFC240E2B6F00E0612B /* DrillNewtworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68A2DDFB240E2B6F00E0612B /* DrillNewtworkManager.swift */; };
 		68C43BAA23F3CE2500DEE6E8 /* DrilldownModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C43BA923F3CE2500DEE6E8 /* DrilldownModel.swift */; };
 		68C43BAC23F3CE3F00DEE6E8 /* DrildownViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C43BAB23F3CE3F00DEE6E8 /* DrildownViewModel.swift */; };
 		68C43BAE23F3CE7200DEE6E8 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C43BAD23F3CE7200DEE6E8 /* DataManager.swift */; };
@@ -106,6 +107,7 @@
 		686DCB792397CB9800360A8E /* ObjectMapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectMapper.swift; sourceTree = "<group>"; };
 		686DCB7B2397CD0B00360A8E /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
 		686DCB7D2397CD3F00360A8E /* Map.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Map.swift; sourceTree = "<group>"; };
+		68A2DDFB240E2B6F00E0612B /* DrillNewtworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrillNewtworkManager.swift; sourceTree = "<group>"; };
 		68C43BA923F3CE2500DEE6E8 /* DrilldownModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrilldownModel.swift; sourceTree = "<group>"; };
 		68C43BAB23F3CE3F00DEE6E8 /* DrildownViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrildownViewModel.swift; sourceTree = "<group>"; };
 		68C43BAD23F3CE7200DEE6E8 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
@@ -265,6 +267,7 @@
 				686DCB792397CB9800360A8E /* ObjectMapper.swift */,
 				686DCB712397CB5800360A8E /* NewtorkManager.swift */,
 				68598D0523D030A500BF216B /* DashboardNetworkManager.swift */,
+				68A2DDFB240E2B6F00E0612B /* DrillNewtworkManager.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -597,6 +600,7 @@
 				68598D1623E3E5BD00BF216B /* KPIPopupView.swift in Sources */,
 				68598CFE23D02B5200BF216B /* PieChartCell.swift in Sources */,
 				68C43BB223F3FF2E00DEE6E8 /* KPIChartCell.swift in Sources */,
+				68A2DDFC240E2B6F00E0612B /* DrillNewtworkManager.swift in Sources */,
 				686DCB30239696B200360A8E /* AppDelegate.swift in Sources */,
 				686DCB7A2397CB9800360A8E /* ObjectMapper.swift in Sources */,
 				686DCB6523969C6E00360A8E /* MapViewController.swift in Sources */,

@@ -291,7 +291,10 @@ extension ViewController {
                 // self.updateLogging(text: "Couldn't deserialize result JSON")
                 return
             }
-            
+            if let dict = result as? [String: Any]{
+            let mail = dict["mail"] as! NSString
+                print("Mail is \(mail)")
+            }
             
             // self.updateLogging(text: "Result from Graph: \(result))")
             

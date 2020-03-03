@@ -343,9 +343,9 @@ class MapViewController : UIViewController, CLLocationManagerDelegate, GMSMapVie
     @objc func restaurantTapped(tag: Int) {
         let v=DetailsVC()
         v.modalPresentationStyle = .fullScreen
-        v.passdata = mapviewmodel.placearray[tag].comments
-     print("passed value is \(mapviewmodel.placearray[tag].comments)")
-      self.present(v , animated: true , completion: nil)
+        v.passdata = mapviewmodel.placearray[tag].plantID
+        print("passed value is \(mapviewmodel.placearray[tag].plantID)")
+        self.present(v , animated: true , completion: nil)
     }
     
     func setupTextField(textField: UITextField, img: UIImage){

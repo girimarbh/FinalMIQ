@@ -187,9 +187,12 @@ nc.addObserver(self, selector: #selector(userLoggedIn(_:)), name: Notification.N
                 let items = id.components(separatedBy: "*")
                 var categoryname = items[0]
                 var kpistring = items[1]
+                var kpiid = items[2]
                 let v=DrilldownViewController()
                 v.passdataCategory = categoryname
                 v.passdataKPI = kpistring
+                v.passedkpiid = Int(kpiid)
+                v.passedPlantID = passdata
                 v.modalPresentationStyle = .fullScreen
 
                        //v.passdata = mapviewmodel.placearray[tag].comments

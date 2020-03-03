@@ -8,17 +8,33 @@
 
 import UIKit
 
-class DrilldownViewController: UIViewController , UITableViewDelegate, UITableViewDataSource , DrilldownDelegate {
+class DrilldownViewController: UIViewController , UITableViewDelegate, UITableViewDataSource , DrilldownDelegate , NotificationProtocaldrill {
+    func updateContentOnViewdrillcontroller() {
+        DispatchQueue.main.async{ [weak self] in
+            guard let weakSelf = self else { return }
+            // and then dismiss the control
+            self?.hideActivityIndicator()
+            self!.drilldowncontrollerKPIarray = self!.drildownviewModel.drilldownKPIarraynew
+            self?.myTableView.isHidden = false
+            self?.myTableView.dataSource = self
+            self?.myTableView.delegate = self
+            self?.myTableView.reloadData()
+
+        }
+    }
+    
     func didPressButton(button: UIButton) {
         print("didPressButton is called in drilldown")
         self.dismiss(animated: true, completion: nil)
     }
-    
+    var drilldowncontrollerKPIarray = [KPIValuesdrilldownnew]()
     var properties = [String]()
     var values = [Double]()
     var passdata : String?
     var passdataCategory : String?
     var passdataKPI : String?
+    var passedkpiid : Int?
+    var passedPlantID : String?
     
 
     private let myArray: NSArray = ["First","Second","Third"]
@@ -27,7 +43,7 @@ class DrilldownViewController: UIViewController , UITableViewDelegate, UITableVi
      let cellId2 = "cellId2"
     let cellId3 = "cellId3"
     let cellID4 = "cellID4"
-    
+    var activityView: UIActivityIndicatorView?
      var drildownviewModel = DrildownViewModel()
     
     var headerView: DrilldownheaderView = {
@@ -38,6 +54,12 @@ class DrilldownViewController: UIViewController , UITableViewDelegate, UITableVi
     
 
     override func viewDidLoad() {
+         if ReachabilityTest.isConnectedToNetwork() {
+        drildownviewModel.fetchdata(id: 1 ,  Kpiid: passedkpiid! , plantid: passedPlantID!)
+             drildownviewModel.delegate = self as? NotificationProtocaldrill
+            self.showActivityIndicator()
+        }
+//        drildownviewModel.delegate = self as? NotificationProtocaldrill
         drildownviewModel.getParticularCategory(category: passdataCategory!)
         print("thae drildownview category maodel values is ,\(drildownviewModel.drilldowncategory) ")
         drildownviewModel.getKPIValues(kpiname: passdataKPI!)
@@ -59,9 +81,10 @@ class DrilldownViewController: UIViewController , UITableViewDelegate, UITableVi
         myTableView.register(KPIBarChartCell.self, forCellReuseIdentifier: cellId2)
          //myTableView.register(OperationCell.self, forCellReuseIdentifier: cellId3)
        // myTableView.register(KPIStstusCell.self, forCellReuseIdentifier: cellId3)
-        myTableView.dataSource = self
-        myTableView.delegate = self
-        myTableView.showsVerticalScrollIndicator = false
+        myTableView.isHidden = true
+//        myTableView.dataSource = self
+//        myTableView.delegate = self
+//        myTableView.showsVerticalScrollIndicator = false
         
         self.view.addSubview(myTableView)
          
@@ -92,7 +115,7 @@ class DrilldownViewController: UIViewController , UITableViewDelegate, UITableVi
                 let cell = tableView.dequeueReusableCell(withIdentifier: cellId2, for: indexPath) as! KPIBarChartCell
                 cell.properties = ["United States","Mexico","Canada","Chile"]
                 cell.values = [1000.0,2000.0,3000.0,4000.0]
-                cell.updateCellContentt(kpivalues: drildownviewModel.drilldownKPI!, category: drildownviewModel.drilldowncategory!)
+                cell.updateCellContentt(kpivalues: drildownviewModel.drilldownKPI!, category: drildownviewModel.drilldowncategory!, KPIValuesdrilldownnew : drilldowncontrollerKPIarray)
                 //cell.updateCellContentt(property:properties , value: values)
                         return cell
             }
@@ -136,4 +159,15 @@ class DrilldownViewController: UIViewController , UITableViewDelegate, UITableVi
         }
     
 }
+    func showActivityIndicator() {
+        activityView = UIActivityIndicatorView(style: .whiteLarge)
+        activityView?.center = self.view.center
+        self.view.addSubview(activityView!)
+        activityView?.startAnimating()
+    }
+    func hideActivityIndicator(){
+           if (activityView != nil){
+               activityView?.stopAnimating()
+           }
+       }
 }

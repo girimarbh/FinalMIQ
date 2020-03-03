@@ -1,14 +1,14 @@
 //
-//  DashboardNetworkManager.swift
+//  DrillNewtworkManager.swift
 //  MIQAnalytics
 //
-//  Created by Girish on 16/01/20.
+//  Created by Girish on 03/03/20.
 //  Copyright © 2020 Girish. All rights reserved.
 //
 
 import UIKit
 
-struct Constants2 {
+struct Constants3 {
     
     struct APIDetails {
         static let APIScheme = "https"
@@ -16,8 +16,7 @@ struct Constants2 {
         static let APIPath = "/api/mpd"
     }
 }
-
-class DashboardNetworkManager: NSObject {
+class DrillNewtworkManager: NSObject {
     
     var url : NSURL?
     var placearray = [Place]()
@@ -60,19 +59,21 @@ class DashboardNetworkManager: NSObject {
             return components.url!
         }
     
-    static public let dashboardnetworkmanager = DashboardNetworkManager()
+    static public let networkmanager = DrillNewtworkManager()
     
     public override init() {
         
 
     }
     
-    func retrieveAPIData(plantid : String , userCompletionHandler : @escaping (NSData? , NSError?) -> Void) {
+   // https://azurewebapiwiprodevelopment.azurewebsites.net/api/mpd?id=1&plantid=Andover&kpiid=11
+    
+    func retrieveAPIData(id : Int , plantid : String , Kpiid : Int , userCompletionHandler : @escaping (NSData? , NSError?) -> Void) {
       var  mail = "miqdemo@outlook.com"
       var  plantname = "Andover"
         print("the plant id in fetch data is \(plantid)")
        // var  plantname = "Fairburn"
-       url = self.createURLFromParameters2(parameters: [["PLANTID" : plantid],["EmailID" : mail]], pathparam: "") as NSURL
+       url = self.createURLFromParameters2(parameters: [["PLANTID" : plantid],["id" : id] , ["kpiid" : Kpiid]], pathparam: "") as NSURL
            var request: URLRequest = URLRequest(url: url! as URL)
             request.cachePolicy = URLRequest.CachePolicy.reloadIgnoringLocalCacheData
             request.addValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
@@ -116,4 +117,3 @@ class DashboardNetworkManager: NSObject {
     }
 
 }
-

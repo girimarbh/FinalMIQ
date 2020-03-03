@@ -288,9 +288,11 @@ protocol NotificationProtocalDrilldown {
 //        actualAttributedText.append(NSAttributedString(string: String(kpiPopupElement.actual!)  , attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 18), NSAttributedString.Key.foregroundColor: UIColor.white]))
         actualAttributedText.append(NSAttributedString(string: formattedactual!  , attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 18), NSAttributedString.Key.foregroundColor: UIColor.white]))
         KPIActualLabel.attributedText = actualAttributedText
+       var kpiidint = kpiPopupElement.kpiid!
+        
         
         //KPIActualLabel.text =  "A." + " " + String(kpiPopupElement.actual!)
-        KPILabelButton.accessibilityLabel = currentcategory + "*" + kpiPopupElement.kpiName!
+        KPILabelButton.accessibilityLabel = currentcategory + "*" + kpiPopupElement.kpiName!  + "*" + String(kpiidint)
         KPILabelButton.setTitle(kpiPopupElement.kpiName!, for: .normal)
         KPILabelButton.addTarget(self, action: #selector(self.pressed), for: .touchUpInside)
         

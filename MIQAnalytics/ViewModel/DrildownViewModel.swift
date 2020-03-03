@@ -8,6 +8,30 @@
 
 import UIKit
 
+protocol NotificationProtocaldrill {
+    func updateContentOnViewdrillcontroller()
+   // func updateError()
+    
+    
+}
+
+struct KPIValuesdrilldownnew {
+    var actual : Float?
+    var target : Float?
+    var kpiDate : String?
+    var status : Int?
+   
+    
+    init?(with actual:Float?, target:Float?,  kpidate : String? , kpistatus : Int?) {
+        self.actual = actual
+        self.target = target
+        self.kpiDate = kpidate
+        self.status = kpistatus
+
+       }
+}
+
+
 struct KPIValuesdrilldown {
     var actual : Float?
     var target : Float?
@@ -27,11 +51,12 @@ struct KPIValuesdrilldown {
 }
 
 class DrildownViewModel: NSObject {
-    
+    var delegate : NotificationProtocaldrill?
     var drilldownarrcategoryhealth = [CategoryHealth]()
     var drilldowncategory : CategoryHealth?
     var drilldownKPI : KPIValues?
     var drilldownkpiarray = [KPIValuesdrilldown]()
+    var drilldownKPIarraynew = [KPIValuesdrilldownnew]()
     
     
 //    func getParticularCategory(category : String) -> CategoryHealth   {
@@ -76,7 +101,7 @@ class DrildownViewModel: NSObject {
            {
                if arr.kpi == kpiname
                {
-                   drilldownKPI = KPIValues.init(with: arr.actual, target: arr.target, kpiName: arr.kpi, kpidate: arr.actualdate)
+                drilldownKPI = KPIValues.init(with: arr.actual, target: arr.target, kpiName: arr.kpi, kpidate: arr.actualdate, kpiid: arr.kpiID)
                }
            }
            
@@ -125,4 +150,79 @@ class DrildownViewModel: NSObject {
                              return kpipopuparray
                              
                             }
+    
+    
+    func fetchdata(id : Int , Kpiid : Int  , plantid : String)  {
+    DrillNewtworkManager.networkmanager.retrieveAPIData(id : id , plantid : plantid , Kpiid : Kpiid, userCompletionHandler: { [weak self] data , error in
+            guard let weakSelf = self else {
+                return
+            }
+            guard error == nil else {
+                print(error!)
+                //self?.delegate?.updateError()
+                return
+            }
+            guard let json = data else {
+                print("No data")
+                return
+            }
+            do {
+                let array =  try JSONSerialization.jsonObject(with: json as Data, options: []) as? [Any]
+                print("json array in drilldown nm \(String(describing: array))")
+                
+                for peopleDict in array!
+                {
+//                    ACTUAL = "3.5";
+//                    "ACTUAL_DATE" = "1/31/2019 12:00:00 AM";
+//                    ANNUAL = "<null>";
+//                    FROMDATE = "<null>";
+//                    "KPI_TYPE" = M;
+//                    MONTHNAME = "<null>";
+//                    NO = "<null>";
+//                    STATUS = "-1";
+//                    TARGET = "2.85";
+//                    TODATE = "<null>";
+//                    UNIT = "%";
+//                    YEAR = "<null>";
+                    
+                  if let dict = peopleDict as? [String: Any]{
+                       let actual = (dict["ACTUAL"] as! NSString).floatValue
+                       let actualdate = dict["ACTUAL_DATE"] as! String
+                      let status = (dict["STATUS"] as! NSString).intValue
+                       let target = (dict["TARGET"] as! NSString).floatValue
+                  
+//                        let hirarchy = (dict["HIRARCHY"] as? NSString ?? "0").intValue
+//                        let latitude = (dict["LATITUDE"] as! NSString).doubleValue
+//                        let longitude = (dict["LONGITUDE"] as! NSString).doubleValue
+//                        let map = (dict["MAP"] as! NSString).intValue
+//                        let plantid = dict["PLANTID"] as! String
+//                        self?.placearray.append(Place(code: Int(code), comments: Comments, displayName: displayname, healthperc: Int(healthPrec), hirarchy: Int(hirarchy), latitude: latitude, longitude: longitude, map: Int(map), plantID: plantid))
+                    self?.drilldownKPIarraynew.append(KPIValuesdrilldownnew(with: actual, target: target, kpidate: actualdate, kpistatus: Int(status))!)
+                      }
+                   
+                    
+                    }
+                 print("the new drill down kpi array is new \(self!.drilldownKPIarraynew)")
+                
+            } catch {
+                print(error.localizedDescription)
+            }
+            //weakSelf.delegate?.updateContentOnView()
+
+            guard json.count != 0 else {
+                print("Zero bytes of data")
+                return
+            }
+            weakSelf.delegate?.updateContentOnViewdrillcontroller()
+            //  print("string is \(String(decoding: json, as: UTF8.self))")
+            // let dict = self.convertToDictionary(text: String(decoding: json, as: UTF8.self))
+            //                guard let tittle = list.productTittle else {
+            //                    return
+            //                }
+            
+            //                weakSelf.headerTittle = tittle
+            //                weakSelf.datalist = list.productlist
+            //weakSelf.delegate?.updateContentOnView()
+        })
+    }
 }

@@ -104,7 +104,7 @@
                        
                         if  peopleDict.category!.caseInsensitiveCompare(category) == .orderedSame && peopleDict.status == status
                                      {
-                                      kpivalues.append(KPIValues(with: peopleDict.actual, target: peopleDict.target, kpiName: peopleDict.kpi ,kpidate: peopleDict.actualdate )!)
+                                        kpivalues.append(KPIValues(with: peopleDict.actual, target: peopleDict.target, kpiName: peopleDict.kpi ,kpidate: peopleDict.actualdate, kpiid: peopleDict.kpiID )!)
                                       
                                       
                                      }
@@ -145,7 +145,7 @@
                               
                                if  peopleDict.category!.caseInsensitiveCompare(categoryname) == .orderedSame && peopleDict.status == status
                                             {
-                                             kpipopuparray.append(KPIValues(with: peopleDict.actual, target: peopleDict.target, kpiName: peopleDict.kpi ,kpidate: peopleDict.actualdate )!)
+                                                kpipopuparray.append(KPIValues(with: peopleDict.actual, target: peopleDict.target, kpiName: peopleDict.kpi ,kpidate: peopleDict.actualdate, kpiid: peopleDict.kpiID )!)
                                              
                                              
                                             }
@@ -297,7 +297,9 @@
                         //                          let hirarchy = (dict["HIRARCHY"] as? NSString ?? "0").intValue
                                          
                                                 
-                                                self?.kpiarray.append(KPI(plantID: Int(plantid), categoryID: Int(categoryID), category: category, kpiID: Int(category), kpi: kpi as String, createdDate: createdDate as String, actual: Float(actual), target: Float(target), status: Int(status), unit: unit, actualdate: actualdate, authKPI: authKPI, kpiType: kpiType))
+//                                                self?.kpiarray.append(KPI(plantID: Int(plantid), categoryID: Int(categoryID), category: category, kpiID: Int(category), kpi: kpi as String, createdDate: createdDate as String, actual: Float(actual), target: Float(target), status: Int(status), unit: unit, actualdate: actualdate, authKPI: authKPI, kpiType: kpiType))
+                                                
+                                                self?.kpiarray.append(KPI(plantID: Int(plantid), categoryID: Int(categoryID), category: category, kpiID: Int(kpiID), kpi: kpi as String, createdDate: createdDate as String, actual: Float(actual), target: Float(target), status: Int(status), unit: unit, actualdate: actualdate, authKPI: authKPI, kpiType: kpiType))
                                                 
                                                
                                                 

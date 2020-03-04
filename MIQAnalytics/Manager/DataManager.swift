@@ -18,6 +18,7 @@ class DataManager: NSObject {
     var kpivalues = [KPIValues]()
     
     static public let datamanager = DataManager()
+    var selectbtn : Int?
     
     public override init() {
         

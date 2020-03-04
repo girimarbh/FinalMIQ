@@ -169,7 +169,9 @@ class DrildownViewModel: NSObject {
             do {
                 let array =  try JSONSerialization.jsonObject(with: json as Data, options: []) as? [Any]
                 print("json array in drilldown nm \(String(describing: array))")
-                
+                if self!.drilldownKPIarraynew.count > 1 {
+                self?.drilldownKPIarraynew.removeAll()
+                }
                 for peopleDict in array!
                 {
 //                    ACTUAL = "3.5";

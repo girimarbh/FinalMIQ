@@ -8,7 +8,16 @@
 
 import UIKit
 
-class DrilldownViewController: UIViewController , UITableViewDelegate, UITableViewDataSource , DrilldownDelegate , NotificationProtocaldrill {
+class DrilldownViewController: UIViewController , UITableViewDelegate, UITableViewDataSource , DrilldownDelegate , NotificationProtocaldrill , NotificationSelect{
+    func NotifySelect(str: Int) {
+        drildownviewModel.drilldownKPIarraynew.removeAll()
+        drildownviewModel.fetchdata(id: str ,  Kpiid: passedkpiid! , plantid: passedPlantID!)
+        self.Selecteditem = str
+       // myTableView.reloadData()
+    
+        self.showActivityIndicator()
+    }
+    
     func updateContentOnViewdrillcontroller() {
         DispatchQueue.main.async{ [weak self] in
             guard let weakSelf = self else { return }
@@ -19,6 +28,7 @@ class DrilldownViewController: UIViewController , UITableViewDelegate, UITableVi
             self?.myTableView.dataSource = self
             self?.myTableView.delegate = self
             self?.myTableView.reloadData()
+//            self?.myTableView.register(KPIBarChartCell.self, forCellReuseIdentifier: self!.cellId2)
 
         }
     }
@@ -45,6 +55,7 @@ class DrilldownViewController: UIViewController , UITableViewDelegate, UITableVi
     let cellID4 = "cellID4"
     var activityView: UIActivityIndicatorView?
      var drildownviewModel = DrildownViewModel()
+    var Selecteditem : Int?
     
     var headerView: DrilldownheaderView = {
         let v = DrilldownheaderView()
@@ -54,6 +65,8 @@ class DrilldownViewController: UIViewController , UITableViewDelegate, UITableVi
     
 
     override func viewDidLoad() {
+        DataManager.datamanager.selectbtn = 1
+        self.Selecteditem = 1
          if ReachabilityTest.isConnectedToNetwork() {
         drildownviewModel.fetchdata(id: 1 ,  Kpiid: passedkpiid! , plantid: passedPlantID!)
              drildownviewModel.delegate = self as? NotificationProtocaldrill
@@ -100,8 +113,7 @@ class DrilldownViewController: UIViewController , UITableViewDelegate, UITableVi
 //    }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        
-        
+      
         if indexPath.row == 0 {
                    let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! KPIChartCell
                            cell.properties = ["United States","Mexico","Canada","Chile"]
@@ -115,7 +127,9 @@ class DrilldownViewController: UIViewController , UITableViewDelegate, UITableVi
                 let cell = tableView.dequeueReusableCell(withIdentifier: cellId2, for: indexPath) as! KPIBarChartCell
                 cell.properties = ["United States","Mexico","Canada","Chile"]
                 cell.values = [1000.0,2000.0,3000.0,4000.0]
+                cell.selecteditem =  self.Selecteditem
                 cell.updateCellContentt(kpivalues: drildownviewModel.drilldownKPI!, category: drildownviewModel.drilldowncategory!, KPIValuesdrilldownnew : drilldowncontrollerKPIarray)
+                cell.delegate = self as! NotificationSelect
                 //cell.updateCellContentt(property:properties , value: values)
                         return cell
             }

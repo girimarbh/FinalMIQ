@@ -9,10 +9,18 @@
 import UIKit
 import Charts
 
+protocol NotificationSelect {
+    func NotifySelect(str : Int)
+   // func updateError()
+    
+    
+}
+
+
 class KPIBarChartCell: UITableViewCell {
 
 //     var colors = [UIColor.init(hexString: "#138b4a"),UIColor.init(hexString: "#f54450"),UIColor.init(hexString: "#e49e0d")]
-
+ var delegate : NotificationSelect?
 let containerView: UIView = {
         let v=UIView()
         let yourColor : UIColor = UIColor(red:223/255, green:220/255, blue:224/255, alpha: 1)
@@ -97,6 +105,7 @@ public let dailyLabelbtn : UIButton = {
     btn.setTitle("Daily", for: .normal)
     btn.titleLabel?.textAlignment = .left
     btn.layer.cornerRadius = 0.5
+    btn.tag = 1
     btn.backgroundColor = UIColor(red:61/255, green:188/255, blue:252/255, alpha: 1)
     
     return btn
@@ -108,6 +117,7 @@ public let monthlyLabelbtn : UIButton = {
     btn.titleLabel?.textAlignment = .left
     btn.layer.cornerRadius = 0.5
     btn.titleLabel?.textColor = UIColor.white
+    btn.tag = 3
     btn.backgroundColor = UIColor(red:135/255, green:104/255, blue:166/255, alpha: 1)
     
     return btn
@@ -116,6 +126,7 @@ public let weeklyLabelbtn : UIButton = {
     let btn = UIButton()
     btn.setTitle("Weekly", for: .normal)
     btn.titleLabel?.textAlignment = .left
+    btn.tag = 2
     btn.layer.cornerRadius = 0.5
   
     btn.backgroundColor = UIColor(red:250/255, green:125/255, blue:57/255, alpha: 1)
@@ -249,6 +260,11 @@ public let chart2 : BarChartView = {
     let barchart = BarChartView()
     return barchart
 }()
+    
+    public let linechart : LineChartView = {
+        let linechart = LineChartView()
+        return linechart
+    }()
 
     let leftOperationview: UIView = {
            let v=UIView()
@@ -339,6 +355,7 @@ public let chart2 : BarChartView = {
     
 var properties = ["United States","Mexico","Canada"]
 var values = [1000.0,2000.0,3000.0]
+var selecteditem:Int?
 
 override func awakeFromNib() {
     super.awakeFromNib()
@@ -355,6 +372,7 @@ override func awakeFromNib() {
     addSubview(containerView)
     addSubview(containerview2)
     addSubview(barchartcontainerView)
+        
     addSubview(KpiNameLabel)
     addSubview(dailyLabelbtn)
     addSubview(dailybtnRightview)
@@ -368,6 +386,7 @@ override func awakeFromNib() {
     addSubview(actualLabel)
     addSubview(actualValueLabel)
     barchartcontainerView.addSubview(chart2)
+        barchartcontainerView.addSubview(linechart)
     addSubview(lastupdatedLabel)
     addSubview(lastupdatedDateLabel)
     addSubview(textField)
@@ -375,6 +394,7 @@ override func awakeFromNib() {
     addSubview(sendMailbtn)
     addSubview(eprintbtn)
     addSubview(currentrunningtargetValueLabel)
+       
     
     
     updateUII()
@@ -411,7 +431,6 @@ required init?(coder: NSCoder) {
          for i in 0..<months.count {
 
              let dataEntry = BarChartDataEntry(x: Double(target[i]), y: Double(actual[i]))
-
              dataEntries.append(dataEntry)
          }
 
@@ -435,13 +454,23 @@ required init?(coder: NSCoder) {
     
     func updateCellContentt(kpivalues : KPIValues , category : CategoryHealth , KPIValuesdrilldownnew: [KPIValuesdrilldownnew])
 {
-   var xr = [Int]()
-   var yr = [Int]()
+    if DataManager.datamanager.selectbtn == 1 || DataManager.datamanager.selectbtn == 2
+    {
+        linechart.isHidden = true
+        chart2.isHidden = false
+    }
+    else
+    {
+        chart2.isHidden = true
+        linechart.isHidden = false
+    }
+   var xr = [Double]()
+   var yr = [String]()
     for arr in KPIValuesdrilldownnew
     {
         if let dict = arr  as? KPIValuesdrilldownnew {
-            xr.append(Int(dict.actual!))
-            yr.append(Int(dict.target!))
+            xr.append(Double(dict.actual!))
+            yr.append(dict.kpiDate!)
             
         }
     }
@@ -457,20 +486,131 @@ required init?(coder: NSCoder) {
 //    actualValueLabel.text = kpivalues.actual?.description
     lastupdatedDateLabel.text = kpivalues.kpiDate
     currentrunningtargetValueLabel.text = "Current Running Target Value:" + kpivalues.target!.description
-    setChart(x: [Int(kpivalues.actual!)], y: [Int(kpivalues.target!)] , t : kpivalues.target!)
+   // setChart(x: [Int(kpivalues.actual!)], y: [Int(kpivalues.target!)] , t : kpivalues.target!)
     //setChart(x: xr, y: yr , t : kpivalues.target!)
     
     //setChart(dataEntryX: xr, dataEntryY: yr)
     
-//    let months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun"]
-//    let unitsSold = [20.0, 4.0, 6.0, 3.0, 12.0, 16.0]
-//
+   let months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun"]
+   let unitsSold = [20.0, 4.0, 6.0, 3.0, 12.0, 16.0]
+   
+   
+
+    if DataManager.datamanager.selectbtn == 1 || DataManager.datamanager.selectbtn == 2
+    {
+       setChart(dataPoints: yr, values: xr)
+    }
+    else
+    {
+       
+        Chartlinechar(dataPoints: yr, values: xr)
+    }
     
+//    setChart(dataPoints: yr, values: xr)
     
-   // setChart(dataPoints: months, values: unitsSold)
+//    setChart(dataEntryX: months, dataEntryY: unitsSold)
 }
 
+   
+     
+    
+    
+//    func setChart(dataEntryX forX:[String],dataEntryY forY: [Double]) {
+//         weak var axisFormatDelegate: IAxisValueFormatter?
+//         let months = ["J", "F", "M", "A", "M", "J"]
+//        chart2.noDataText = "You need to provide data for the chart."
+//        var dataEntries:[BarChartDataEntry] = []
+//        for i in 0..<forX.count{
+//           // print(forX[i])
+//           // let dataEntry = BarChartDataEntry(x: (forX[i] as NSString).doubleValue, y: Double(unitsSold[i]))
+//            let dataEntry = BarChartDataEntry(x: Double(i), y: Double(forY[i]) , data: months as AnyObject?)
+//            print(dataEntry)
+//            dataEntries.append(dataEntry)
+//        }
+//        let chartDataSet = BarChartDataSet(entries: dataEntries, label: "Units Sold")
+//        let chartData = BarChartData(dataSet: chartDataSet)
+//        chart2.data = chartData
+//        let xAxisValue = chart2.xAxis
+////        xAxisValue.valueFormatter = axisFormatDelegate
+//
+//    }
+    func Chartlinechar(dataPoints: [String], values: [Double]) {
+            weak var axisFormatDelegate: IAxisValueFormatter?
+          linechart.noDataText = "You need to provide data for the chart."
+          var dataEntries: [BarChartDataEntry] = []
+          for i in 0..<dataPoints.count {
+          let dataEntry = BarChartDataEntry(x: Double(i), y: Double(values[i]))
+          dataEntries.append(dataEntry)
+          }
+          let chartDataSet = BarChartDataSet(entries: dataEntries, label: "MIQ")
+          chartDataSet.colors = [UIColor(red: 16/255, green: 135/255, blue: 72/255, alpha: 1)]
+          linechart.animate(xAxisDuration: 2.0, yAxisDuration: 2.0, easingOption: .easeInCubic)
+          let chartData = BarChartData(dataSet: chartDataSet)
+          linechart.data = chartData
+//          linechart.drawValueAboveBarEnabled = false
+          linechart.drawGridBackgroundEnabled = false
+           linechart.xAxis.drawLabelsEnabled = true
+            let ll = ChartLimitLine(limit: 100.0, label: "Target")
+            linechart.rightAxis.addLimitLine(ll)
+            linechart.leftAxis.axisMinimum = 0.0
+            linechart.xAxis.labelPosition = .bottom
+    //        chart2.leftAxis.axisMaximum = 1000.0
+            
+            
+           
+            
+            
+         var yAxis = chart2.leftAxis
+         var xAxis = chart2.rightAxis
+         xAxis.labelTextColor = UIColor.white
+         yAxis.labelTextColor = UIColor.white
+          chartData.barWidth = Double(0.50)
+               //chart2.data = chartData
+        }
+    
+    func setChart(dataPoints: [String], values: [Double]) {
+        weak var axisFormatDelegate: IAxisValueFormatter?
+      chart2.noDataText = "You need to provide data for the chart."
+      var dataEntries: [BarChartDataEntry] = []
+      for i in 0..<dataPoints.count {
+      let dataEntry = BarChartDataEntry(x: Double(i), y: Double(values[i]))
+      dataEntries.append(dataEntry)
+      }
+      let chartDataSet = BarChartDataSet(entries: dataEntries, label: "MIQ")
+      chartDataSet.colors = [UIColor(red: 16/255, green: 135/255, blue: 72/255, alpha: 1)]
+      chart2.animate(xAxisDuration: 2.0, yAxisDuration: 2.0, easingOption: .easeInCubic)
+      let chartData = BarChartData(dataSet: chartDataSet)
+      chart2.data = chartData
+      chart2.drawValueAboveBarEnabled = false
+      chart2.drawGridBackgroundEnabled = false
+       chart2.xAxis.drawLabelsEnabled = true
+        let ll = ChartLimitLine(limit: 100.0, label: "Target")
+        chart2.rightAxis.addLimitLine(ll)
+        chart2.leftAxis.axisMinimum = 0.0
+        chart2.xAxis.labelPosition = .bottom
+//        chart2.leftAxis.axisMaximum = 1000.0
+        
+        
+       
+        
+        
+     var yAxis = chart2.leftAxis
+     var xAxis = chart2.rightAxis
+     xAxis.labelTextColor = UIColor.white
+     yAxis.labelTextColor = UIColor.white
+      chartData.barWidth = Double(0.50)
+           //chart2.data = chartData
+    }
+    
 
+    @objc func pressed(_ sender: UIButton)  {
+       var btn = sender
+        print("the tag value is \(btn.tag)")
+        self.delegate?.NotifySelect(str: btn.tag)
+        DataManager.datamanager.selectbtn = btn.tag
+        
+    }
+    
 func updateUII(){
     
     containerview3.anchor(top: topAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, paddingTop: 0, paddingLeft: 10, paddingBottom: 10, paddingRight: 20, width: self.frame.width, height: 100, enableInsets: true)
@@ -522,7 +662,18 @@ func updateUII(){
     
     commentBtn.anchor(top: barchartcontainerView.topAnchor, left: textField.rightAnchor, bottom: nil, right: nil, paddingTop: 25, paddingLeft: 25, paddingBottom: 5, paddingRight: 5, width: 70,  height: 20, enableInsets: true)
     
+//    if  DataManager.datamanager.selectbtn == 1 || DataManager.datamanager.selectbtn == 2 {
+//        chart2.anchor(top: lastupdatedDateLabel.bottomAnchor, left: barchartcontainerView.leftAnchor, bottom: nil, right: barchartcontainerView.rightAnchor, paddingTop: 50, paddingLeft: 10, paddingBottom: 10, paddingRight: 10, width: 300, height: 300, enableInsets: true)
+//    }
+//
+//    else
+//    {
+//        linechart.anchor(top: lastupdatedDateLabel.bottomAnchor, left: barchartcontainerView.leftAnchor, bottom: nil, right: barchartcontainerView.rightAnchor, paddingTop: 50, paddingLeft: 10, paddingBottom: 10, paddingRight: 10, width: 300, height: 300, enableInsets: true)
+//    }
+    
     chart2.anchor(top: lastupdatedDateLabel.bottomAnchor, left: barchartcontainerView.leftAnchor, bottom: nil, right: barchartcontainerView.rightAnchor, paddingTop: 50, paddingLeft: 10, paddingBottom: 10, paddingRight: 10, width: 300, height: 300, enableInsets: true)
+    
+    linechart.anchor(top: lastupdatedDateLabel.bottomAnchor, left: barchartcontainerView.leftAnchor, bottom: nil, right: barchartcontainerView.rightAnchor, paddingTop: 50, paddingLeft: 10, paddingBottom: 10, paddingRight: 10, width: 300, height: 300, enableInsets: true)
     
     currentrunningtargetValueLabel.anchor(top: chart2.bottomAnchor, left: barchartcontainerView.leftAnchor, bottom: nil, right: nil, paddingTop: 10, paddingLeft: 10, paddingBottom: 10, paddingRight: 10, width: 200, height: 30, enableInsets: true)
     
@@ -548,7 +699,9 @@ func updateUII(){
        actualValueLabel.layer.addBorder(edge: UIRectEdge.bottom, color: UIColor.red, thickness: 0.5)
       actualValueLabel.layer.borderWidth = 0.5
        
-       
+       dailyLabelbtn.addTarget(self, action: #selector(self.pressed), for: .touchUpInside)
+    weeklyLabelbtn.addTarget(self, action: #selector(self.pressed), for: .touchUpInside)
+     monthlyLabelbtn.addTarget(self, action: #selector(self.pressed), for: .touchUpInside)
        
     
    }

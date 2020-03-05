@@ -9,6 +9,10 @@
 import UIKit
 
 class DrilldownViewController: UIViewController , UITableViewDelegate, UITableViewDataSource , DrilldownDelegate , NotificationProtocaldrill , NotificationSelect{
+    func managementoperationSelected(str: Int) {
+        drildownviewModel.managementviewfetchdata(id: 3, Kpiid: passedkpiid!, plantid: passedPlantID!)
+    }
+    
     func NotifySelect(str: Int) {
         drildownviewModel.drilldownKPIarraynew.removeAll()
         drildownviewModel.fetchdata(id: str ,  Kpiid: passedkpiid! , plantid: passedPlantID!)
@@ -28,6 +32,7 @@ class DrilldownViewController: UIViewController , UITableViewDelegate, UITableVi
             self?.myTableView.dataSource = self
             self?.myTableView.delegate = self
             self?.myTableView.reloadData()
+           
 //            self?.myTableView.register(KPIBarChartCell.self, forCellReuseIdentifier: self!.cellId2)
 
         }
@@ -69,6 +74,7 @@ class DrilldownViewController: UIViewController , UITableViewDelegate, UITableVi
         self.Selecteditem = 1
          if ReachabilityTest.isConnectedToNetwork() {
         drildownviewModel.fetchdata(id: 1 ,  Kpiid: passedkpiid! , plantid: passedPlantID!)
+            
              drildownviewModel.delegate = self as? NotificationProtocaldrill
             self.showActivityIndicator()
         }

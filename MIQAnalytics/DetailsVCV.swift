@@ -117,6 +117,7 @@ nc.addObserver(self, selector: #selector(userLoggedIn(_:)), name: Notification.N
             //Calling Viewmodel class to fetchdata
         }
         else{
+            print("internet not there")
            let alert = UIAlertController(title: internetConnection, message: noInternetAvailable , preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: cancel , style: .cancel, handler: {[weak self] _ in
                 guard let weakSelf = self else { return }

@@ -11,10 +11,13 @@ import Charts
 
 protocol NotificationSelect {
     func NotifySelect(str : Int)
+    func managementoperationSelected(str : Int)
    // func updateError()
     
     
 }
+
+
 
 
 class KPIBarChartCell: UITableViewCell {
@@ -238,7 +241,7 @@ public let scnearioDateLabel : UILabel = {
         btn.titleLabel?.textColor = UIColor.green
         btn.layer.cornerRadius = 0.5
         btn.backgroundColor = UIColor.black
-        
+        btn.tag = 1
         return btn
     }()
 
@@ -249,6 +252,7 @@ public let scnearioDateLabel : UILabel = {
         btn.titleLabel?.textColor = UIColor.green
         btn.layer.cornerRadius = 0.5
         btn.backgroundColor = UIColor.black
+        btn.tag = 2
         
         return btn
     }()
@@ -535,37 +539,57 @@ required init?(coder: NSCoder) {
 //
 //    }
     func Chartlinechar(dataPoints: [String], values: [Double]) {
-            weak var axisFormatDelegate: IAxisValueFormatter?
-          linechart.noDataText = "You need to provide data for the chart."
-          var dataEntries: [BarChartDataEntry] = []
-          for i in 0..<dataPoints.count {
-          let dataEntry = BarChartDataEntry(x: Double(i), y: Double(values[i]))
+        var dataEntries: [ChartDataEntry] = []
+        for i in 0..<dataPoints.count {
+          let dataEntry = ChartDataEntry(x: Double(i), y: values[i])
           dataEntries.append(dataEntry)
-          }
-          let chartDataSet = BarChartDataSet(entries: dataEntries, label: "MIQ")
-          chartDataSet.colors = [UIColor(red: 16/255, green: 135/255, blue: 72/255, alpha: 1)]
-          linechart.animate(xAxisDuration: 2.0, yAxisDuration: 2.0, easingOption: .easeInCubic)
-          let chartData = BarChartData(dataSet: chartDataSet)
-          linechart.data = chartData
-//          linechart.drawValueAboveBarEnabled = false
-          linechart.drawGridBackgroundEnabled = false
-           linechart.xAxis.drawLabelsEnabled = true
-            let ll = ChartLimitLine(limit: 100.0, label: "Target")
-            linechart.rightAxis.addLimitLine(ll)
-            linechart.leftAxis.axisMinimum = 0.0
-            linechart.xAxis.labelPosition = .bottom
-    //        chart2.leftAxis.axisMaximum = 1000.0
-            
-            
-           
-            
-            
-         var yAxis = chart2.leftAxis
-         var xAxis = chart2.rightAxis
-         xAxis.labelTextColor = UIColor.white
-         yAxis.labelTextColor = UIColor.white
-          chartData.barWidth = Double(0.50)
-               //chart2.data = chartData
+        }
+        let lineChartDataSet = LineChartDataSet(entries: dataEntries, label: nil)
+         lineChartDataSet.colors = [UIColor(red: 16/255, green: 135/255, blue: 72/255, alpha: 1)]
+        let lineChartData = LineChartData(dataSet: lineChartDataSet)
+        
+       
+        linechart.drawGridBackgroundEnabled = false
+         linechart.xAxis.drawLabelsEnabled = true
+          let ll = ChartLimitLine(limit: 100.0, label: "Target")
+          linechart.rightAxis.addLimitLine(ll)
+          linechart.leftAxis.axisMinimum = 0.0
+          linechart.xAxis.labelPosition = .bottom
+        
+        linechart.data = lineChartData
+        
+        
+//            weak var axisFormatDelegate: IAxisValueFormatter?
+//          linechart.noDataText = "You need to provide data for the chart."
+//          var dataEntries: [BarChartDataEntry] = []
+//          for i in 0..<dataPoints.count {
+//          let dataEntry = BarChartDataEntry(x: Double(i), y: Double(values[i]))
+//          dataEntries.append(dataEntry)
+//          }
+//          let chartDataSet = BarChartDataSet(entries: dataEntries, label: "MIQ")
+//          chartDataSet.colors = [UIColor(red: 16/255, green: 135/255, blue: 72/255, alpha: 1)]
+//          linechart.animate(xAxisDuration: 2.0, yAxisDuration: 2.0, easingOption: .easeInCubic)
+//          let chartData = BarChartData(dataSet: chartDataSet)
+//          linechart.data = chartData
+////          linechart.drawValueAboveBarEnabled = false
+//          linechart.drawGridBackgroundEnabled = false
+//           linechart.xAxis.drawLabelsEnabled = true
+//            let ll = ChartLimitLine(limit: 100.0, label: "Target")
+//            linechart.rightAxis.addLimitLine(ll)
+//            linechart.leftAxis.axisMinimum = 0.0
+//            linechart.xAxis.labelPosition = .bottom
+//    //        chart2.leftAxis.axisMaximum = 1000.0
+//
+//
+//
+//
+//
+//         var yAxis = chart2.leftAxis
+//         var xAxis = chart2.rightAxis
+//         xAxis.labelTextColor = UIColor.white
+//         yAxis.labelTextColor = UIColor.white
+//          chartData.barWidth = Double(0.50)
+//               //chart2.data = chartData
         }
     
     func setChart(dataPoints: [String], values: [Double]) {
@@ -608,6 +632,14 @@ required init?(coder: NSCoder) {
         print("the tag value is \(btn.tag)")
         self.delegate?.NotifySelect(str: btn.tag)
         DataManager.datamanager.selectbtn = btn.tag
+        
+    }
+    
+    @objc func managementoperationviewSelected(_ sender: UIButton)  {
+       var btn = sender
+        print("the tag value is \(btn.tag)")
+        self.delegate?.managementoperationSelected(str: btn.tag)
+//        DataManager.datamanager.selectbtn = btn.tag
         
     }
     
@@ -702,6 +734,8 @@ func updateUII(){
        dailyLabelbtn.addTarget(self, action: #selector(self.pressed), for: .touchUpInside)
     weeklyLabelbtn.addTarget(self, action: #selector(self.pressed), for: .touchUpInside)
      monthlyLabelbtn.addTarget(self, action: #selector(self.pressed), for: .touchUpInside)
+    
+     managementViewbtn.addTarget(self, action: #selector(self.managementoperationviewSelected), for: .touchUpInside)
        
     
    }

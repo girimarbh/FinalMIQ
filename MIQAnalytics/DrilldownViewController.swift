@@ -182,10 +182,19 @@ class DrilldownViewController: UIViewController , UITableViewDelegate, UITableVi
                 cell.properties = ["United States","Mexico","Canada","Chile"]
                 cell.values = [1000.0,2000.0,3000.0,4000.0]
                 cell.selecteditem =  self.Selecteditem
+                if DataManager.datamanager.operationSelected == 1 {
                 cell.updateCellContentt(kpivalues: drildownviewModel.drilldownKPI!, category: drildownviewModel.drilldowncategory!, KPIValuesdrilldownnew : drilldowncontrollerKPIarray)
                 cell.delegate = self as! NotificationSelect
                 //cell.updateCellContentt(property:properties , value: values)
                         return cell
+                }
+                if DataManager.datamanager.operationSelected == 2 {
+                cell.updateCellContenttmanagement(kpivalues: drildownviewModel.drilldownKPI!, category: drildownviewModel.drilldowncategory!, KPIValuesdrilldownnewmanagement : drilldownmanagementkpiarray)
+                   
+                cell.delegate = self as! NotificationSelect
+                //cell.updateCellContentt(property:properties , value: values)
+                        return cell
+                }
             }
 //               else   {
 //                   let cell = tableView.dequeueReusableCell(withIdentifier: cellId3, for: indexPath) as! KPIStstusCell

@@ -456,6 +456,66 @@ required init?(coder: NSCoder) {
 
      }
     
+    func updateCellContenttmanagement(kpivalues : KPIValues , category : CategoryHealth , KPIValuesdrilldownnewmanagement: [Managemenviewtmodel])
+    {
+        if DataManager.datamanager.selectbtn == 1 || DataManager.datamanager.selectbtn == 2 || DataManager.datamanager.selectbtn == 3
+        {
+            linechart.isHidden = true
+            chart2.isHidden = false
+        }
+        else
+        {
+            chart2.isHidden = true
+            linechart.isHidden = false
+        }
+       var xr = [Double]()
+       var yr = [String]()
+        for arr in KPIValuesdrilldownnewmanagement
+        {
+            if let dict = arr  as? Managemenviewtmodel {
+                xr.append(Double(dict.actual!))
+                yr.append(dict.fromdate!)
+                
+            }
+        }
+        
+            //KpiNameLabel.text = KPIValuesdrilldownnew[0].k
+           scnearioDatevalueLabel.text = KPIValuesdrilldownnewmanagement[0].fromdate
+           targetValueLabel.text = KPIValuesdrilldownnewmanagement[0].target?.description
+           actualValueLabel.text = KPIValuesdrilldownnewmanagement[0].actual?.description
+        
+        KpiNameLabel.text = kpivalues.kpiName
+    //    scnearioDatevalueLabel.text = kpivalues.kpiDate
+    //    targetValueLabel.text = kpivalues.target?.description
+    //    actualValueLabel.text = kpivalues.actual?.description
+        lastupdatedDateLabel.text = kpivalues.kpiDate
+        currentrunningtargetValueLabel.text = "Current Running Target Value:" + kpivalues.target!.description
+       // setChart(x: [Int(kpivalues.actual!)], y: [Int(kpivalues.target!)] , t : kpivalues.target!)
+        //setChart(x: xr, y: yr , t : kpivalues.target!)
+        
+        //setChart(dataEntryX: xr, dataEntryY: yr)
+        
+       let months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun"]
+       let unitsSold = [20.0, 4.0, 6.0, 3.0, 12.0, 16.0]
+       
+       
+
+        if DataManager.datamanager.selectbtn == 1 || DataManager.datamanager.selectbtn == 2 || DataManager.datamanager.selectbtn == 3
+        {
+           setChart(dataPoints: yr, values: xr)
+        }
+        else
+        {
+           
+            Chartlinechar(dataPoints: yr, values: xr)
+        }
+        
+    //    setChart(dataPoints: yr, values: xr)
+        
+    //    setChart(dataEntryX: months, dataEntryY: unitsSold)
+    }
+
+    
     func updateCellContentt(kpivalues : KPIValues , category : CategoryHealth , KPIValuesdrilldownnew: [KPIValuesdrilldownnew])
 {
     if DataManager.datamanager.selectbtn == 1 || DataManager.datamanager.selectbtn == 2

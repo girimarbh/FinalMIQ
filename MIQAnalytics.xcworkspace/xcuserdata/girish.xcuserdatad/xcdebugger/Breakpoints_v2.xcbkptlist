@@ -443,10 +443,10 @@
             filePath = "MIQAnalytics/DetailsVCV.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "288"
-            endingLineNumber = "288"
-            landmarkName = "DetailsVC"
-            landmarkType = "3">
+            startingLineNumber = "306"
+            endingLineNumber = "306"
+            landmarkName = "tableView(_:didSelectRowAt:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -667,9 +667,9 @@
             filePath = "MIQAnalytics/DetailsVCV.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "207"
-            endingLineNumber = "207"
-            landmarkName = "userLoggedIn()"
+            startingLineNumber = "225"
+            endingLineNumber = "225"
+            landmarkName = "userLoggedIn(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -779,9 +779,9 @@
             filePath = "MIQAnalytics/DetailsVCV.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "210"
-            endingLineNumber = "210"
-            landmarkName = "userLoggedIn()"
+            startingLineNumber = "228"
+            endingLineNumber = "228"
+            landmarkName = "userLoggedIn(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -789,7 +789,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "99B72A7B-7609-48E5-9467-FD3D5DD689B5"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MIQAnalytics/ViewModel/DrildownViewModel.swift"
@@ -875,8 +875,8 @@
             filePath = "MIQAnalytics/DrilldownViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "16"
-            endingLineNumber = "16"
+            startingLineNumber = "26"
+            endingLineNumber = "26"
             landmarkName = "NotifySelect(str:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1019,8 +1019,8 @@
             filePath = "MIQAnalytics/DetailsVCV.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "110"
-            endingLineNumber = "110"
+            startingLineNumber = "135"
+            endingLineNumber = "135"
             landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1086,6 +1086,38 @@
             startingLineNumber = "343"
             endingLineNumber = "343"
             landmarkName = "managementviewfetchdata(id:Kpiid:plantid:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "8E64206B-811E-40AB-B788-8969B7322A42"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MIQAnalytics/DetailsVCV.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "100"
+            endingLineNumber = "100"
+            landmarkName = "DetailsVC"
+            landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "EFE3355A-C6BE-4D97-950E-FE68E7238414"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MIQAnalytics/DrilldownViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "50"
+            endingLineNumber = "50"
+            landmarkName = "updateContentOnViewdrillcontroller()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

@@ -736,6 +736,7 @@ func updateUII(){
      monthlyLabelbtn.addTarget(self, action: #selector(self.pressed), for: .touchUpInside)
     
      managementViewbtn.addTarget(self, action: #selector(self.managementoperationviewSelected), for: .touchUpInside)
+    operationViewbtn.addTarget(self, action: #selector(self.managementoperationviewSelected), for: .touchUpInside)
        
     
    }

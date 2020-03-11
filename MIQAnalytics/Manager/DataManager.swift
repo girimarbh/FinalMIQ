@@ -19,6 +19,7 @@ class DataManager: NSObject {
     
     static public let datamanager = DataManager()
     var selectbtn : Int?
+    var operationSelected : Int?
     
     public override init() {
         

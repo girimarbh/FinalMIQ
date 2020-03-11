@@ -10,19 +10,47 @@ import UIKit
 
 class DrilldownViewController: UIViewController , UITableViewDelegate, UITableViewDataSource , DrilldownDelegate , NotificationProtocaldrill , NotificationSelect{
     func managementoperationSelected(str: Int) {
-        drildownviewModel.managementviewfetchdata(id: 3, Kpiid: passedkpiid!, plantid: passedPlantID!)
+        DataManager.datamanager.operationSelected = str
+        if DataManager.datamanager.operationSelected == 2 {
+        drildownviewModel.managementviewfetchdata(id: 2, Kpiid: passedkpiid!, plantid: passedPlantID!)
+        }
+        if DataManager.datamanager.operationSelected == 1 {
+            drildownviewModel.drilldownKPIarraynew.removeAll()
+            drildownviewModel.fetchdata(id: 1 ,  Kpiid: passedkpiid! , plantid: passedPlantID!)
+            DataManager.datamanager.selectbtn = 1
+        }
+        
+        
     }
     
     func NotifySelect(str: Int) {
+        
+        if DataManager.datamanager.operationSelected == 1
+        {
         drildownviewModel.drilldownKPIarraynew.removeAll()
         drildownviewModel.fetchdata(id: str ,  Kpiid: passedkpiid! , plantid: passedPlantID!)
         self.Selecteditem = str
        // myTableView.reloadData()
     
         self.showActivityIndicator()
+        }
+        
+        if DataManager.datamanager.operationSelected == 2
+            {
+           drildownviewModel.drilldownmanagementarray.removeAll()
+            drildownviewModel.managementviewfetchdata(id: str, Kpiid: passedkpiid!, plantid: passedPlantID!)
+            self.Selecteditem = str
+           // myTableView.reloadData()
+        
+            self.showActivityIndicator()
+            }
+        
     }
     
     func updateContentOnViewdrillcontroller() {
+        
+        if DataManager.datamanager.operationSelected == 1 {
+        
         DispatchQueue.main.async{ [weak self] in
             guard let weakSelf = self else { return }
             // and then dismiss the control
@@ -36,6 +64,24 @@ class DrilldownViewController: UIViewController , UITableViewDelegate, UITableVi
 //            self?.myTableView.register(KPIBarChartCell.self, forCellReuseIdentifier: self!.cellId2)
 
         }
+        }
+        
+         if DataManager.datamanager.operationSelected == 2 {
+                
+                DispatchQueue.main.async{ [weak self] in
+                    guard let weakSelf = self else { return }
+                    // and then dismiss the control
+                    self?.hideActivityIndicator()
+                    self!.drilldownmanagementkpiarray = self!.drildownviewModel.drilldownmanagementarray
+                    self?.myTableView.isHidden = false
+                    self?.myTableView.dataSource = self
+                    self?.myTableView.delegate = self
+                    self?.myTableView.reloadData()
+                   
+        //            self?.myTableView.register(KPIBarChartCell.self, forCellReuseIdentifier: self!.cellId2)
+
+                }
+                }
     }
     
     func didPressButton(button: UIButton) {
@@ -43,6 +89,7 @@ class DrilldownViewController: UIViewController , UITableViewDelegate, UITableVi
         self.dismiss(animated: true, completion: nil)
     }
     var drilldowncontrollerKPIarray = [KPIValuesdrilldownnew]()
+    var drilldownmanagementkpiarray = [Managemenviewtmodel]()
     var properties = [String]()
     var values = [Double]()
     var passdata : String?
@@ -71,6 +118,7 @@ class DrilldownViewController: UIViewController , UITableViewDelegate, UITableVi
 
     override func viewDidLoad() {
         DataManager.datamanager.selectbtn = 1
+        DataManager.datamanager.operationSelected = 1
         self.Selecteditem = 1
          if ReachabilityTest.isConnectedToNetwork() {
         drildownviewModel.fetchdata(id: 1 ,  Kpiid: passedkpiid! , plantid: passedPlantID!)

@@ -97,7 +97,32 @@ var activityView: UIActivityIndicatorView?
 //    }()
 
 
-
+//    override func viewDidAppear(_ animated: Bool) {
+//        if ReachabilityTest.isConnectedToNetwork() {
+//
+//
+//                   dashboardviewmodel.fetchData(plantid: passdata!)
+//                   self.showActivityIndicator()
+//                    dashboardviewmodel.delegate = self as? DashbardNotificationProtocal
+//
+//                   //Calling Viewmodel class to fetchdata
+//               }
+//               else{
+//
+//                   print("internet not there")
+//                  let alert = UIAlertController(title: internetConnection, message: noInternetAvailable , preferredStyle: .alert)
+//                   alert.addAction(UIAlertAction(title: cancel , style: .cancel, handler: {[weak self] _ in
+//                       guard let weakSelf = self else { return }
+//
+//                   }))
+//
+//
+//
+//                   self.present(alert, animated: true, completion: nil)
+//
+//               }
+//
+//    }
 
     override func viewDidLoad() {
          let nc = NotificationCenter.default
@@ -117,12 +142,16 @@ nc.addObserver(self, selector: #selector(userLoggedIn(_:)), name: Notification.N
             //Calling Viewmodel class to fetchdata
         }
         else{
+            
             print("internet not there")
            let alert = UIAlertController(title: internetConnection, message: noInternetAvailable , preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: cancel , style: .cancel, handler: {[weak self] _ in
                 guard let weakSelf = self else { return }
 
             }))
+            
+            
+            
             self.present(alert, animated: true, completion: nil)
 
         }

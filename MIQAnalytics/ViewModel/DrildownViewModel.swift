@@ -296,9 +296,9 @@ class DrildownViewModel: NSObject {
                     do {
                         let array =  try JSONSerialization.jsonObject(with: json as Data, options: []) as? [Any]
                         print("json array in drilldown nm \(String(describing: array))")
-//                        if self!.drilldownKPIarraynew.count > 1 {
-//                        self?.drilldownKPIarraynew.removeAll()
-//                        }
+                        if self!.drilldownmanagementarray.count > 1 {
+                        self?.drilldownmanagementarray.removeAll()
+                        }
                         for peopleDict in array!
                         {
         //                    ACTUAL = "3.5";
@@ -345,13 +345,13 @@ class DrildownViewModel: NSObject {
                     } catch {
                         print(error.localizedDescription)
                     }
-                    //weakSelf.delegate?.updateContentOnView()
+//                    weakSelf.delegate?.updateContentOnView()
 
                     guard json.count != 0 else {
                         print("Zero bytes of data")
                         return
                     }
-//                    weakSelf.delegate?.updateContentOnViewdrillcontroller()
+                    weakSelf.delegate?.updateContentOnViewdrillcontroller()
                     //  print("string is \(String(decoding: json, as: UTF8.self))")
                     // let dict = self.convertToDictionary(text: String(decoding: json, as: UTF8.self))
                     //                guard let tittle = list.productTittle else {

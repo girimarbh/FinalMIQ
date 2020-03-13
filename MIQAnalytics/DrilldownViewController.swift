@@ -12,7 +12,7 @@ class DrilldownViewController: UIViewController , UITableViewDelegate, UITableVi
     func managementoperationSelected(str: Int) {
         DataManager.datamanager.operationSelected = str
         if DataManager.datamanager.operationSelected == 2 {
-        drildownviewModel.managementviewfetchdata(id: 2, Kpiid: passedkpiid!, plantid: passedPlantID!)
+        drildownviewModel.managementviewfetchdata(id: 3, Kpiid: passedkpiid!, plantid: passedPlantID!)
         }
         if DataManager.datamanager.operationSelected == 1 {
             drildownviewModel.drilldownKPIarraynew.removeAll()

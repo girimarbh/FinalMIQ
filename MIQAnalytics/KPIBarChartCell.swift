@@ -697,6 +697,14 @@ required init?(coder: NSCoder) {
     
     @objc func managementoperationviewSelected(_ sender: UIButton)  {
        var btn = sender
+        if btn.tag == 2{
+        dailyLabelbtn.isHidden = true
+            dailybtnRightview.isHidden = true
+        }
+        if btn.tag == 1{
+        dailyLabelbtn.isHidden = false
+        dailybtnRightview.isHidden = false
+        }
         print("the tag value is \(btn.tag)")
         self.delegate?.managementoperationSelected(str: btn.tag)
 //        DataManager.datamanager.selectbtn = btn.tag

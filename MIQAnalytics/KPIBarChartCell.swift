@@ -369,6 +369,7 @@ override func awakeFromNib() {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
     super.init(style: style, reuseIdentifier: reuseIdentifier)
     self.backgroundColor = UIColor.white
+        chart2.delegate = self
     addSubview(containerview3)
     addSubview(operationViewbtn)
     addSubview(leftOperationview)
@@ -652,6 +653,53 @@ required init?(coder: NSCoder) {
 //               //chart2.data = chartData
         }
     
+    
+    func setChart2(dataPoints: [String], values: [Double])
+    {
+        chart2.noDataText = "You need to provide data for the chart."
+      var dataEntries: [BarChartDataEntry] = []
+        for i in 1..<values.count
+        {
+            let dataEntry = BarChartDataEntry(x: Double(i), yValues: [Double(values[i])])
+            dataEntries.append(dataEntry)
+        }
+
+//        let chartDataSet:BarChartDataSet!
+         let chartDataSet = BarChartDataSet(entries: dataEntries, label: "MIQ")
+//        let chartDataSet = BarChartDataSet(entries: dataEntries, label: "BarChart Data")
+        let chartData = BarChartData(dataSet: chartDataSet)
+        chart2.data = chartData
+        chart2.xAxis.valueFormatter = IndexAxisValueFormatter(values: dataPoints)
+        chart2.xAxis.granularityEnabled = true
+        chart2.xAxis.drawGridLinesEnabled = false
+        chart2.xAxis.labelPosition = .bottom
+        chart2.xAxis.labelCount = 30
+        chart2.xAxis.granularity = 2
+        chart2.leftAxis.enabled = true
+        //barChartView.leftAxis.labelPosition = .outsideChart
+        //barChartView.leftAxis.decimals = 0
+        let minn = Double(values.min()!) - 0.1
+        chart2.leftAxis.axisMinimum = Double(values.min()! - 0.1)
+        //barChartView.leftAxis.granularityEnabled = true
+        //barChartView.leftAxis.granularity = 1.0
+        //barChartView.leftAxis.labelCount = 5
+        chart2.leftAxis.axisMaximum = Double(values.max()! + 0.05)
+        chart2.data?.setDrawValues(false)
+        chart2.pinchZoomEnabled = true
+        chart2.scaleYEnabled = true
+        chart2.scaleXEnabled = true
+        chart2.highlighter = nil
+        chart2.doubleTapToZoomEnabled = true
+        chart2.chartDescription?.text = ""
+        chart2.rightAxis.enabled = false
+
+
+        chart2.animate(xAxisDuration: 2.0, yAxisDuration: 2.0, easingOption: .easeInOutQuart)
+        chartDataSet.colors = [UIColor(red: 0/255, green: 76/255, blue: 153/255, alpha: 1)]
+
+    }
+    
+    
     func setChart(dataPoints: [String], values: [Double]) {
         weak var axisFormatDelegate: IAxisValueFormatter?
       chart2.noDataText = "You need to provide data for the chart."
@@ -665,13 +713,16 @@ required init?(coder: NSCoder) {
       chart2.animate(xAxisDuration: 2.0, yAxisDuration: 2.0, easingOption: .easeInCubic)
       let chartData = BarChartData(dataSet: chartDataSet)
       chart2.data = chartData
+       
       chart2.drawValueAboveBarEnabled = false
       chart2.drawGridBackgroundEnabled = false
        chart2.xAxis.drawLabelsEnabled = true
         let ll = ChartLimitLine(limit: 100.0, label: "Target")
         chart2.rightAxis.addLimitLine(ll)
         chart2.leftAxis.axisMinimum = 0.0
-        chart2.xAxis.labelPosition = .bottom
+//        chart2.xAxis.axisMinimum = 0.0
+        chart2.xAxis.labelPosition = .top
+        chart2.xAxis.labelTextColor = UIColor.white
 //        chart2.leftAxis.axisMaximum = 1000.0
         
         
@@ -683,12 +734,67 @@ required init?(coder: NSCoder) {
      xAxis.labelTextColor = UIColor.white
      yAxis.labelTextColor = UIColor.white
       chartData.barWidth = Double(0.50)
-           //chart2.data = chartData
+        
+        
+        
+        
+        
+        
+        
+         chart2.xAxis.valueFormatter = IndexAxisValueFormatter(values: dataPoints)
+                 chart2.xAxis.granularityEnabled = true
+               chart2.xAxis.drawGridLinesEnabled = false
+                 chart2.xAxis.labelPosition = .bottom
+                chart2.xAxis.labelCount = 30
+                 chart2.xAxis.granularity = 1
+                chart2.leftAxis.enabled = true
+                 //barChartView.leftAxis.labelPosition = .outsideChart
+                 //barChartView.leftAxis.decimals = 0
+                 let minn = Double(values.min()!) - 0.1
+                 chart2.leftAxis.axisMinimum = Double(values.min()! - 0.1)
+        chart2.leftAxis.axisMinimum = 0.0
+                 //barChartView.leftAxis.granularityEnabled = true
+                 //barChartView.leftAxis.granularity = 1.0
+                 //barChartView.leftAxis.labelCount = 5
+                 chart2.leftAxis.axisMaximum = Double(values.max()! + 0.05)
+                chart2.data?.setDrawValues(true)
+                 chart2.pinchZoomEnabled = true
+                 chart2.scaleYEnabled = true
+                 chart2.scaleXEnabled = true
+                chart2.highlighter = nil
+                chart2.doubleTapToZoomEnabled = true
+                 chart2.chartDescription?.text = ""
+               chart2.rightAxis.enabled = false
+        
+        
+        
+//        let l2 = ChartLimitLine(limit: 10.0, label: "Target")
+//        chart2.rightAxis.addLimitLine(ll)
+//        chart2.xAxis.drawLabelsEnabled = false
+//       chart2.drawValueAboveBarEnabled = true
     }
     
 
     @objc func pressed(_ sender: UIButton)  {
        var btn = sender
+        
+        if btn.tag == 1
+        {
+            actualLabel.isHidden = false
+            actualValueLabel.isHidden = false
+        }
+        if btn.tag == 2 && DataManager.datamanager.operationSelected == 1
+        {
+            actualLabel.isHidden = true
+            actualValueLabel.isHidden = true
+        }
+        if btn.tag == 3 && DataManager.datamanager.operationSelected == 1
+        {
+            actualLabel.isHidden = true
+            actualValueLabel.isHidden = true
+        }
+        
+        
         print("the tag value is \(btn.tag)")
         self.delegate?.NotifySelect(str: btn.tag)
         DataManager.datamanager.selectbtn = btn.tag
@@ -696,10 +802,13 @@ required init?(coder: NSCoder) {
     }
     
     @objc func managementoperationviewSelected(_ sender: UIButton)  {
+        dailybtnRightview.isHidden = true
        var btn = sender
+        actualLabel.isHidden = false
+        actualValueLabel.isHidden = false
         if btn.tag == 2{
         dailyLabelbtn.isHidden = true
-            dailybtnRightview.isHidden = true
+        dailybtnRightview.isHidden = true
         }
         if btn.tag == 1{
         dailyLabelbtn.isHidden = false
@@ -715,9 +824,9 @@ func updateUII(){
     
     containerview3.anchor(top: topAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, paddingTop: 0, paddingLeft: 10, paddingBottom: 10, paddingRight: 20, width: self.frame.width, height: 100, enableInsets: true)
     
-    leftOperationview.anchor(top: containerview3.topAnchor, left: containerview3.leftAnchor, bottom: nil, right: nil, paddingTop: 5, paddingLeft: 5, paddingBottom: 5, paddingRight: 5, width: 5, height: 40, enableInsets: true)
-    
-    operationViewbtn.anchor(top: containerview3.topAnchor, left: leftOperationview.leftAnchor, bottom: nil, right: containerview3.rightAnchor, paddingTop: 5, paddingLeft: 10, paddingBottom: 10, paddingRight: 0, width: 100, height: 40, enableInsets: true)
+//    leftOperationview.anchor(top: containerview3.topAnchor, left: containerview3.leftAnchor, bottom: nil, right: nil, paddingTop: 5, paddingLeft: 5, paddingBottom: 5, paddingRight: 5, width: 5, height: 40, enableInsets: true)
+//
+    operationViewbtn.anchor(top: containerview3.topAnchor, left: containerview3.leftAnchor, bottom: nil, right: containerview3.rightAnchor, paddingTop: 5, paddingLeft: 10, paddingBottom: 10, paddingRight: 0, width: 100, height: 40, enableInsets: true)
     
     
     managementViewbtn.anchor(top: operationViewbtn.bottomAnchor, left: containerview3.leftAnchor, bottom: nil, right: containerview3.rightAnchor, paddingTop: 10, paddingLeft: 10, paddingBottom: 10, paddingRight: 0, width: 100, height: 40, enableInsets: true)
@@ -729,6 +838,8 @@ func updateUII(){
     dailyLabelbtn.anchor(top: KpiNameLabel.bottomAnchor, left: containerView.leftAnchor, bottom: nil, right: nil, paddingTop: 10, paddingLeft: -5, paddingBottom: 10, paddingRight: 10, width: 160, height: 30, enableInsets: true)
     
     dailybtnRightview.anchor(top: KpiNameLabel.bottomAnchor, left: dailyLabelbtn.rightAnchor, bottom: nil, right: nil, paddingTop: 8, paddingLeft: -5, paddingBottom: 0, paddingRight: 0, width: 10, height: 32, enableInsets: true)
+    
+    dailybtnRightview.isHidden = true
     
      weeklyLabelbtn.anchor(top: dailyLabelbtn.bottomAnchor, left: containerView.leftAnchor, bottom: nil, right: nil, paddingTop: 10, paddingLeft: -5, paddingBottom: 10, paddingRight: 10, width: 160, height: 30, enableInsets: true)
     
@@ -806,7 +917,7 @@ func updateUII(){
      managementViewbtn.addTarget(self, action: #selector(self.managementoperationviewSelected), for: .touchUpInside)
     operationViewbtn.addTarget(self, action: #selector(self.managementoperationviewSelected), for: .touchUpInside)
        
-    
+    dailybtnRightview.isHidden = true
    }
 
 }
@@ -847,3 +958,15 @@ extension CALayer {
          self.addSublayer(border)
      }
  }
+extension KPIBarChartCell: ChartViewDelegate
+{
+    public func chartValueSelected(_ chartView: ChartViewBase, entry: ChartDataEntry, highlight: Highlight)
+    {
+        print("chartValueSelected : x = \(highlight.x)")
+    }
+    
+    public func chartValueNothingSelected(_ chartView: ChartViewBase)
+    {
+        print("chartValueNothingSelected")
+    }
+}

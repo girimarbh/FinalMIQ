@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		2829D344AE9F4ED42ACD3465 /* Pods_MIQAnalytics_MIQAnalyticsUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60947CB225E2986A66AB517E /* Pods_MIQAnalytics_MIQAnalyticsUITests.framework */; };
 		493FB67FE48C547E7C679B40 /* Pods_MIQAnalyticsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B663AB824E7C6B8C528A1968 /* Pods_MIQAnalyticsTests.framework */; };
+		683320EB2420D30D00D7A236 /* Graphmarkerview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683320EA2420D30D00D7A236 /* Graphmarkerview.swift */; };
 		68598CFE23D02B5200BF216B /* PieChartCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68598CFD23D02B5200BF216B /* PieChartCell.swift */; };
 		68598D0023D02B7D00BF216B /* PlantStatusCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68598CFF23D02B7D00BF216B /* PlantStatusCell.swift */; };
 		68598D0223D02B9F00BF216B /* KPIStstusCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68598D0123D02B9F00BF216B /* KPIStstusCell.swift */; };
@@ -72,6 +73,7 @@
 		4C6938DA51468265442A9BEF /* Pods-MIQAnalyticsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MIQAnalyticsTests.debug.xcconfig"; path = "Target Support Files/Pods-MIQAnalyticsTests/Pods-MIQAnalyticsTests.debug.xcconfig"; sourceTree = "<group>"; };
 		56133999677B7F2C7399AA84 /* Pods-MIQAnalyticsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MIQAnalyticsTests.release.xcconfig"; path = "Target Support Files/Pods-MIQAnalyticsTests/Pods-MIQAnalyticsTests.release.xcconfig"; sourceTree = "<group>"; };
 		60947CB225E2986A66AB517E /* Pods_MIQAnalytics_MIQAnalyticsUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MIQAnalytics_MIQAnalyticsUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		683320EA2420D30D00D7A236 /* Graphmarkerview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Graphmarkerview.swift; sourceTree = "<group>"; };
 		68598CFD23D02B5200BF216B /* PieChartCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieChartCell.swift; sourceTree = "<group>"; };
 		68598CFF23D02B7D00BF216B /* PlantStatusCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantStatusCell.swift; sourceTree = "<group>"; };
 		68598D0123D02B9F00BF216B /* KPIStstusCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KPIStstusCell.swift; sourceTree = "<group>"; };
@@ -208,6 +210,7 @@
 				68C43BAF23F3FED600DEE6E8 /* DrilldownViewController.swift */,
 				68C43BB123F3FF2E00DEE6E8 /* KPIChartCell.swift */,
 				68C43BB323F3FF4E00DEE6E8 /* KPIBarChartCell.swift */,
+				683320EA2420D30D00D7A236 /* Graphmarkerview.swift */,
 			);
 			path = MIQAnalytics;
 			sourceTree = "<group>";
@@ -590,6 +593,7 @@
 				68C43BAC23F3CE3F00DEE6E8 /* DrildownViewModel.swift in Sources */,
 				68C43BB023F3FED600DEE6E8 /* DrilldownViewController.swift in Sources */,
 				68598D0023D02B7D00BF216B /* PlantStatusCell.swift in Sources */,
+				683320EB2420D30D00D7A236 /* Graphmarkerview.swift in Sources */,
 				686DCB762397CB8900360A8E /* Constant.swift in Sources */,
 				686DCB722397CB5800360A8E /* NewtorkManager.swift in Sources */,
 				68C43BBA23FE8DE400DEE6E8 /* DrilldownheaderView.swift in Sources */,

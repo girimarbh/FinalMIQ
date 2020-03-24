@@ -10,6 +10,9 @@
 		2829D344AE9F4ED42ACD3465 /* Pods_MIQAnalytics_MIQAnalyticsUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60947CB225E2986A66AB517E /* Pods_MIQAnalytics_MIQAnalyticsUITests.framework */; };
 		493FB67FE48C547E7C679B40 /* Pods_MIQAnalyticsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B663AB824E7C6B8C528A1968 /* Pods_MIQAnalyticsTests.framework */; };
 		683320EB2420D30D00D7A236 /* Graphmarkerview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683320EA2420D30D00D7A236 /* Graphmarkerview.swift */; };
+		683320F52429EEC900D7A236 /* BalloonMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683320F22429EEC900D7A236 /* BalloonMarker.swift */; };
+		683320F62429EEC900D7A236 /* RadarMarkerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683320F32429EEC900D7A236 /* RadarMarkerView.swift */; };
+		683320F72429EEC900D7A236 /* XYMarkerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683320F42429EEC900D7A236 /* XYMarkerView.swift */; };
 		68598CFE23D02B5200BF216B /* PieChartCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68598CFD23D02B5200BF216B /* PieChartCell.swift */; };
 		68598D0023D02B7D00BF216B /* PlantStatusCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68598CFF23D02B7D00BF216B /* PlantStatusCell.swift */; };
 		68598D0223D02B9F00BF216B /* KPIStstusCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68598D0123D02B9F00BF216B /* KPIStstusCell.swift */; };
@@ -74,6 +77,9 @@
 		56133999677B7F2C7399AA84 /* Pods-MIQAnalyticsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MIQAnalyticsTests.release.xcconfig"; path = "Target Support Files/Pods-MIQAnalyticsTests/Pods-MIQAnalyticsTests.release.xcconfig"; sourceTree = "<group>"; };
 		60947CB225E2986A66AB517E /* Pods_MIQAnalytics_MIQAnalyticsUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MIQAnalytics_MIQAnalyticsUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		683320EA2420D30D00D7A236 /* Graphmarkerview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Graphmarkerview.swift; sourceTree = "<group>"; };
+		683320F22429EEC900D7A236 /* BalloonMarker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BalloonMarker.swift; sourceTree = "<group>"; };
+		683320F32429EEC900D7A236 /* RadarMarkerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadarMarkerView.swift; sourceTree = "<group>"; };
+		683320F42429EEC900D7A236 /* XYMarkerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XYMarkerView.swift; sourceTree = "<group>"; };
 		68598CFD23D02B5200BF216B /* PieChartCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieChartCell.swift; sourceTree = "<group>"; };
 		68598CFF23D02B7D00BF216B /* PlantStatusCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantStatusCell.swift; sourceTree = "<group>"; };
 		68598D0123D02B9F00BF216B /* KPIStstusCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KPIStstusCell.swift; sourceTree = "<group>"; };
@@ -195,6 +201,9 @@
 				686DCB5F2396980800360A8E /* MIQAnalytics.entitlements */,
 				68598D0323D02BE300BF216B /* DetailsVCV.swift */,
 				686DCB2F239696B200360A8E /* AppDelegate.swift */,
+				683320F22429EEC900D7A236 /* BalloonMarker.swift */,
+				683320F32429EEC900D7A236 /* RadarMarkerView.swift */,
+				683320F42429EEC900D7A236 /* XYMarkerView.swift */,
 				686DCB6423969C6E00360A8E /* MapViewController.swift */,
 				686DCB6223969C3C00360A8E /* InfoPreviewView.swift */,
 				686DCB33239696B200360A8E /* ViewController.swift */,
@@ -582,11 +591,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				686DCB34239696B200360A8E /* ViewController.swift in Sources */,
+				683320F72429EEC900D7A236 /* XYMarkerView.swift in Sources */,
 				68598D0623D030A500BF216B /* DashboardNetworkManager.swift in Sources */,
 				68598D0A23D032C100BF216B /* Dashboard.swift in Sources */,
 				686DCB782397CB9200360A8E /* DownloadManager.swift in Sources */,
 				68598D1423D966F500BF216B /* DashboardHeaderView.swift in Sources */,
 				68C43BAA23F3CE2500DEE6E8 /* DrilldownModel.swift in Sources */,
+				683320F62429EEC900D7A236 /* RadarMarkerView.swift in Sources */,
 				686DCB7E2397CD3F00360A8E /* Map.swift in Sources */,
 				68598D0823D0329900BF216B /* DashboardViewModel.swift in Sources */,
 				686DCB6323969C3C00360A8E /* InfoPreviewView.swift in Sources */,
@@ -604,6 +615,7 @@
 				68598D1623E3E5BD00BF216B /* KPIPopupView.swift in Sources */,
 				68598CFE23D02B5200BF216B /* PieChartCell.swift in Sources */,
 				68C43BB223F3FF2E00DEE6E8 /* KPIChartCell.swift in Sources */,
+				683320F52429EEC900D7A236 /* BalloonMarker.swift in Sources */,
 				68A2DDFC240E2B6F00E0612B /* DrillNewtworkManager.swift in Sources */,
 				686DCB30239696B200360A8E /* AppDelegate.swift in Sources */,
 				686DCB7A2397CB9800360A8E /* ObjectMapper.swift in Sources */,

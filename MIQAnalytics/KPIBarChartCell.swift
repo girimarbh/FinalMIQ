@@ -20,8 +20,9 @@ protocol NotificationSelect {
 
 
 
-class KPIBarChartCell: UITableViewCell {
+class KPIBarChartCell: UITableViewCell  {
 
+   
 //     var colors = [UIColor.init(hexString: "#138b4a"),UIColor.init(hexString: "#f54450"),UIColor.init(hexString: "#e49e0d")]
  var delegate : NotificationSelect?
 let containerView: UIView = {
@@ -699,79 +700,46 @@ required init?(coder: NSCoder) {
 
     }
     
+
+    
     
     func setChart(dataPoints: [String], values: [Double]) {
+        chart2.delegate = self
         weak var axisFormatDelegate: IAxisValueFormatter?
-      chart2.noDataText = "You need to provide data for the chart."
-      var dataEntries: [BarChartDataEntry] = []
-      for i in 0..<dataPoints.count {
-      let dataEntry = BarChartDataEntry(x: Double(i), y: Double(values[i]))
-      dataEntries.append(dataEntry)
-      }
-      let chartDataSet = BarChartDataSet(entries: dataEntries, label: "MIQ")
-      chartDataSet.colors = [UIColor(red: 16/255, green: 135/255, blue: 72/255, alpha: 1)]
-      chart2.animate(xAxisDuration: 2.0, yAxisDuration: 2.0, easingOption: .easeInCubic)
-      let chartData = BarChartData(dataSet: chartDataSet)
-      chart2.data = chartData
-       
-      chart2.drawValueAboveBarEnabled = false
-      chart2.drawGridBackgroundEnabled = false
-       chart2.xAxis.drawLabelsEnabled = true
-        let ll = ChartLimitLine(limit: 100.0, label: "Target")
-        chart2.rightAxis.addLimitLine(ll)
+        chart2.noDataText = "You need to provide data for the chart."
+        var dataEntries: [BarChartDataEntry] = []
+        for i in 0..<dataPoints.count {
+            let dataEntry = BarChartDataEntry(x: Double(i), y: Double(values[i]))
+            dataEntries.append(dataEntry)
+        }
+        let chartDataSet = BarChartDataSet(entries: dataEntries, label: "MIQ")
+        chartDataSet.colors = [UIColor(red: 16/255, green: 135/255, blue: 72/255, alpha: 1)]
+        chart2.animate(xAxisDuration: 2.0, yAxisDuration: 2.0, easingOption: .easeInCubic)
+        let chartData = BarChartData(dataSet: chartDataSet)
+        chart2.data = chartData
+        chart2.drawValueAboveBarEnabled = false
+        let marker:BalloonMarker = BalloonMarker(color: UIColor.white, font: UIFont(name: "Helvetica", size: 12)!, textColor: UIColor.red, insets: UIEdgeInsets(top: 7.0, left: 7.0, bottom: 7.0, right: 7.0))
+        marker.minimumSize = CGSize(width: 55.0, height: 55.0)
+        marker.setLabel("abc")
+        chart2.marker = marker
+        chart2.drawMarkers = true
         chart2.leftAxis.axisMinimum = 0.0
-//        chart2.xAxis.axisMinimum = 0.0
-        chart2.xAxis.labelPosition = .top
         chart2.xAxis.labelTextColor = UIColor.white
-//        chart2.leftAxis.axisMaximum = 1000.0
-        
-        
-       
-        
-        
-     var yAxis = chart2.leftAxis
-     var xAxis = chart2.rightAxis
-     xAxis.labelTextColor = UIColor.white
-     yAxis.labelTextColor = UIColor.white
-      chartData.barWidth = Double(0.50)
-        
-        
-        
-        
-        
-        
-        
-         chart2.xAxis.valueFormatter = IndexAxisValueFormatter(values: dataPoints)
-                 chart2.xAxis.granularityEnabled = true
-               chart2.xAxis.drawGridLinesEnabled = false
-                 chart2.xAxis.labelPosition = .bottom
-                chart2.xAxis.labelCount = 30
-                 chart2.xAxis.granularity = 1
-                chart2.leftAxis.enabled = true
-                 //barChartView.leftAxis.labelPosition = .outsideChart
-                 //barChartView.leftAxis.decimals = 0
-                 let minn = Double(values.min()!) - 0.1
-                 chart2.leftAxis.axisMinimum = Double(values.min()! - 0.1)
+        var yAxis = chart2.leftAxis
+        yAxis.labelTextColor = UIColor.white
+        chartData.barWidth = Double(0.50)
+        chart2.xAxis.valueFormatter = IndexAxisValueFormatter(values: dataPoints)
+        chart2.xAxis.labelPosition = .bottom
+        chart2.xAxis.labelCount = 30
+        chart2.xAxis.granularity = 1
+        chart2.leftAxis.enabled = true
+        let minn = Double(values.min()!) - 0.1
+        chart2.leftAxis.axisMinimum = Double(values.min()! - 0.1)
         chart2.leftAxis.axisMinimum = 0.0
-                 //barChartView.leftAxis.granularityEnabled = true
-                 //barChartView.leftAxis.granularity = 1.0
-                 //barChartView.leftAxis.labelCount = 5
-                 chart2.leftAxis.axisMaximum = Double(values.max()! + 0.05)
-                chart2.data?.setDrawValues(true)
-                 chart2.pinchZoomEnabled = true
-                 chart2.scaleYEnabled = true
-                 chart2.scaleXEnabled = true
-                chart2.highlighter = nil
-                chart2.doubleTapToZoomEnabled = true
-                 chart2.chartDescription?.text = ""
-               chart2.rightAxis.enabled = false
-        
-        
-        
-//        let l2 = ChartLimitLine(limit: 10.0, label: "Target")
-//        chart2.rightAxis.addLimitLine(ll)
-//        chart2.xAxis.drawLabelsEnabled = false
-//       chart2.drawValueAboveBarEnabled = true
+        chart2.leftAxis.axisMaximum = Double(values.max()! + 0.05)
+        chart2.data?.highlightEnabled = true
+        chart2.drawMarkers = true
+        chart2.data?.highlightEnabled = true
     }
     
 
@@ -960,13 +928,19 @@ extension CALayer {
  }
 extension KPIBarChartCell: ChartViewDelegate
 {
-    public func chartValueSelected(_ chartView: ChartViewBase, entry: ChartDataEntry, highlight: Highlight)
-    {
-        print("chartValueSelected : x = \(highlight.x)")
+    public func chartValueSelected(_ chartView: ChartViewBase, entry: ChartDataEntry, highlight: Highlight) {
+        print("Bar selected")
     }
+    
+    
+    
+    func chartValueSelected(chartView: ChartViewBase, entry: ChartDataEntry, dataSetIndex: Int, highlight: Highlight) {
+        
+    }
+    
     
     public func chartValueNothingSelected(_ chartView: ChartViewBase)
     {
-        print("chartValueNothingSelected")
+        
     }
 }

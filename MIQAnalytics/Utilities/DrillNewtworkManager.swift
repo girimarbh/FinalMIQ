@@ -8,19 +8,22 @@
 
 import UIKit
 
+
 //https://azurewebapiwiprodevelopment.azurewebsites.net/api/managementview?id=2&plantid=Reedsville&kpiid=21
 
 struct Constants3 {
     
     struct APIDetails {
         static let APIScheme = "https"
-        static let APIHost = "azurewebapiwiprodevelopment.azurewebsites.net"
+//        static let APIHost = "azurewebapiwiprodevelopment.azurewebsites.net"
+         static let APIHost = "azurewebapitestmpd.azurewebsites.net"
         static let APIPath = "/api/mpd"
     }
     
     struct APIDetailsmanagementView {
            static let APIScheme = "https"
-           static let APIHost = "azurewebapiwiprodevelopment.azurewebsites.net"
+//           static let APIHost = "azurewebapiwiprodevelopment.azurewebsites.net"
+         static let APIHost = "azurewebapitestmpd.azurewebsites.net"
            static let APIPath = "/api/managementview"
        }
     
@@ -116,7 +119,7 @@ class DrillNewtworkManager: NSObject {
    // https://azurewebapiwiprodevelopment.azurewebsites.net/api/mpd?id=1&plantid=Andover&kpiid=11
     
     func retrieveAPIData(id : Int , plantid : String , Kpiid : Int , userCompletionHandler : @escaping (NSData? , NSError?) -> Void) {
-      var  mail = "miqdemo@outlook.com"
+      var  mail = "girish.k49@wipro.com"
       var  plantname = "Andover"
         print("the plant id in fetch data is \(plantid)")
        // var  plantname = "Fairburn"
@@ -153,7 +156,7 @@ class DrillNewtworkManager: NSObject {
         }
     
     func retrieveAPIDatamanagementview(id : Int , plantid : String , Kpiid : Int , userCompletionHandler : @escaping (NSData? , NSError?) -> Void) {
-      var  mail = "miqdemo@outlook.com"
+      var  mail = "girish.k49@wipro.com"
       var  plantname = "Andover"
         print("the plant id in fetch data is \(plantid)")
        // var  plantname = "Fairburn"

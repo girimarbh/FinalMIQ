@@ -29,6 +29,7 @@
         var safteyarray = [KPI]()
         var arrcatagory = [String]()
         var kpivalues = [KPIValues]()
+        var insightsarray = [Insights]()
         
         
 
@@ -347,6 +348,71 @@
                     
                 })
             }
+        
+        
+        
+         func fetchInsightsData(plantid : String) {
+                    DashboardNetworkManager.dashboardnetworkmanager.retrieveInsightAPIData(plantid: plantid, userCompletionHandler: { [weak self] data , error in
+                            guard let weakSelf = self else {
+                                return
+                            }
+                            guard error == nil else {
+                                print(error!)
+                                //self?.delegate?.updateError()
+                                return
+                            }
+                            guard let json = data else {
+                                print("No data")
+                                return
+                            }
+                            do {
+                                let array =  try JSONSerialization.jsonObject(with: json as Data, options: []) as? [Any]
+                                print("Insights json array  \(String(describing: array))")
+                                
+                                for peopleDict in array!
+                                {
+                                                    if let dict = peopleDict as? [String: Any]{
+                                                        let insight = dict["Insight"] as! NSString
+                                                        let header =   dict["Header"] as! NSString
+                                                        let color =  (dict["Color"] as! NSString).intValue
+                                                        
+                                                        
+                                                        
+                                                        self?.insightsarray.append(Insights(with: insight as String, header: header as String, color: Int(color)))
+                              
+                                                        
+                                                       
+                                                        
+                                                       
+                                                        
+                                //                        self.placearray.append(Place(code: Int(code), comments: Comments, displayName: displayname, healthperc: Int(healthPrec), hirarchy: Int(hirarchy), latitude: latitude, longitude: longitude, map: Int(map), plantID: plantid))
+                                                        
+                                                    }
+                                                    
+                                                    
+                                                    
+                                                }
+                                
+                            } catch {
+                                print(error.localizedDescription)
+                            }
+                           
+                            guard json.count != 0 else {
+                                print("Zero bytes of data")
+                                return
+                            }
+                            
+                            //  print("string is \(String(decoding: json, as: UTF8.self))")
+                            // let dict = self.convertToDictionary(text: String(decoding: json, as: UTF8.self))
+                            //                guard let tittle = list.productTittle else {
+                            //                    return
+                            //                }
+                            
+                            //                weakSelf.headerTittle = tittle
+                            //                weakSelf.datalist = list.productlist
+                            
+                        })
+                    }
         }
 
 

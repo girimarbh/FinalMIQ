@@ -11,8 +11,11 @@ import UIKit
 struct Constants {
     
     struct APIDetails {
+      
+        
         static let APIScheme = "https"
-        static let APIHost = "azurewebapiwiprodevelopment.azurewebsites.net"
+//        static let APIHost = "azurewebapiwiprodevelopment.azurewebsites.net"
+         static let APIHost = "azurewebapitestmpd.azurewebsites.net"
         static let APIPath = "/api/central/CenGetHealthIndex"
     }
 }
@@ -50,7 +53,7 @@ class NewtorkManager: NSObject {
     }
     
     func retrieveAPIData(userCompletionHandler : @escaping (NSData? , NSError?) -> Void) {
-        url = createURLFromParameters(parameters: ["EmailID" : "miqdemo@outlook.com"], pathparam: "") as NSURL
+        url = createURLFromParameters(parameters: ["EmailID" : "girish.k49@wipro.com"], pathparam: "") as NSURL
             var request: URLRequest = URLRequest(url: url! as URL)
             request.cachePolicy = URLRequest.CachePolicy.reloadIgnoringLocalCacheData
             request.addValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")

@@ -10,7 +10,7 @@
 
 import UIKit
 
-
+import UserNotifications
 
 
 class DetailsVC : UIViewController, UITableViewDelegate, UITableViewDataSource , DashbardNotificationProtocal , StoreDelegate , NotificationProtocalKPIPopup , NotificationProtocalDrilldown{
@@ -18,6 +18,8 @@ class DetailsVC : UIViewController, UITableViewDelegate, UITableViewDataSource ,
     
     var kpipopuparr = [KPIValues]()
     var count : Double?
+    var appDelegate = UIApplication.shared.delegate as? AppDelegate
+     let notificationCenter = UNUserNotificationCenter.current()
     
     func NotifyKPIPopup(str: String) {
         print("Notification for KPIPOPup")
@@ -125,6 +127,21 @@ var activityView: UIActivityIndicatorView?
 //    }
 
     override func viewDidLoad() {
+        
+        
+        
+        notificationCenter.delegate = self as! UNUserNotificationCenterDelegate
+        
+        let options: UNAuthorizationOptions = [.alert, .sound, .badge]
+        
+        notificationCenter.requestAuthorization(options: options) {
+            (didAllow, error) in
+            if !didAllow {
+                print("User has declined notifications")
+            }
+        }
+        
+       
          let nc = NotificationCenter.default
 nc.addObserver(self, selector: #selector(userLoggedIn(_:)), name: Notification.Name("UserLoggedIn"), object: nil)
       super.viewDidLoad()
@@ -338,8 +355,14 @@ nc.addObserver(self, selector: #selector(userLoggedIn(_:)), name: Notification.N
             self?.myTableView.dataSource = self
             self?.myTableView.delegate = self
             self?.myTableView.reloadData()
-
+            
+//            self!.dashboardviewmodel.fetchInsightsData(plantid: self!.passdata!)
+          
         }
+        self.scheduleNotification(notificationType: "Local Notification1")
+        self.scheduleNotification(notificationType: "Local Notification2")
+        self.scheduleNotification(notificationType: "Local Notification3")
+
     }
     
     var kpipopupview: KPIPopupView = {
@@ -347,4 +370,55 @@ nc.addObserver(self, selector: #selector(userLoggedIn(_:)), name: Notification.N
         
            return v
        }()
+}
+extension DetailsVC: UNUserNotificationCenterDelegate {
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter,
+                                willPresent notification: UNNotification,
+                                withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        
+        completionHandler([.alert, .sound])
+    }
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter,
+                                didReceive response: UNNotificationResponse,
+                                withCompletionHandler completionHandler: @escaping () -> Void) {
+        
+        if response.notification.request.identifier == "Local Notification" {
+            print("Handling notifications with the Local Notification Identifier")
+        }
+        
+        completionHandler()
+    }
+    
+    func scheduleNotification(notificationType: String) {
+        
+        let content = UNMutableNotificationContent() // Содержимое уведомления
+        let categoryIdentifire = "Delete Notification Type"
+        
+        content.title = notificationType
+        content.body = "This is example how to create " + notificationType
+        content.sound = UNNotificationSound.default
+        content.badge = 1
+        content.categoryIdentifier = categoryIdentifire
+        
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 2, repeats: false)
+        let identifier = "Local Notification"
+        let request = UNNotificationRequest(identifier: identifier, content: content, trigger: trigger)
+        
+        notificationCenter.add(request) { (error) in
+            if let error = error {
+                print("Error notification\(error.localizedDescription)")
+            }
+        }
+        
+        let snoozeAction = UNNotificationAction(identifier: "Snooze", title: "Snooze", options: [])
+        let deleteAction = UNNotificationAction(identifier: "DeleteAction", title: "Delete", options: [.destructive])
+        let category = UNNotificationCategory(identifier: categoryIdentifire,
+                                              actions: [snoozeAction, deleteAction],
+                                              intentIdentifiers: [],
+                                              options: [])
+        
+        notificationCenter.setNotificationCategories([category])
+    }
 }

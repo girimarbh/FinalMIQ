@@ -8,6 +8,19 @@
 
 import UIKit
 
+
+struct Insights {
+    var insight : String?
+    var header : String?
+    var Color : Int?
+    
+    init(with insight : String? , header : String? , color : Int?) {
+        self.insight = insight
+        self.header = header
+        self.Color = color
+    }
+}
+
 struct Health {
     var onTarget : Int?
     var vulenrable : Int?

@@ -10,6 +10,7 @@
 
     protocol DashbardNotificationProtocal {
         func updateContentOnView()
+         func updateContentOnViewforInsights()
        // func updateError()
         
         
@@ -396,7 +397,7 @@
                             } catch {
                                 print(error.localizedDescription)
                             }
-                           
+                            weakSelf.delegate?.updateContentOnViewforInsights()
                             guard json.count != 0 else {
                                 print("Zero bytes of data")
                                 return

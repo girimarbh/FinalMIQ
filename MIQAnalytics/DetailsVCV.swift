@@ -14,6 +14,8 @@ import UserNotifications
 
 
 class DetailsVC : UIViewController, UITableViewDelegate, UITableViewDataSource , DashbardNotificationProtocal , StoreDelegate , NotificationProtocalKPIPopup , NotificationProtocalDrilldown{
+    
+    
    
     
     var kpipopuparr = [KPIValues]()
@@ -356,13 +358,34 @@ nc.addObserver(self, selector: #selector(userLoggedIn(_:)), name: Notification.N
             self?.myTableView.delegate = self
             self?.myTableView.reloadData()
             
-//            self!.dashboardviewmodel.fetchInsightsData(plantid: self!.passdata!)
+            
           
         }
-        self.scheduleNotification(notificationType: "Local Notification1")
-        self.scheduleNotification(notificationType: "Local Notification2")
-        self.scheduleNotification(notificationType: "Local Notification3")
+        
+        self.dashboardviewmodel.fetchInsightsData(plantid: self.passdata!)
 
+    }
+    
+    func updateContentOnViewforInsights() {
+        print("the insight array in dashboard is \(dashboardviewmodel.insightsarray)" )
+        
+        
+               var count = 1
+        for  insightarr in dashboardviewmodel.insightsarray
+        {
+            print("for loop count")
+            count = count + 1
+//           var header = insightarr.header
+//           var insigt = insightarr.insight
+            self.scheduleNotification(notificationType: "Local Notification1" , insight: insightarr ,identifier: insightarr.header!, count: count )
+            
+            
+            
+        }
+        
+//               self.scheduleNotification(notificationType: "Local Notification2")
+//               self.scheduleNotification(notificationType: "Local Notification3")
+//
     }
     
     var kpipopupview: KPIPopupView = {
@@ -391,20 +414,20 @@ extension DetailsVC: UNUserNotificationCenterDelegate {
         completionHandler()
     }
     
-    func scheduleNotification(notificationType: String) {
-        
+    func scheduleNotification(notificationType: String , insight : Insights , identifier : String , count : Int) {
+    print("schedule count")
         let content = UNMutableNotificationContent() // Содержимое уведомления
         let categoryIdentifire = "Delete Notification Type"
         
-        content.title = notificationType
-        content.body = "This is example how to create " + notificationType
+        content.title = insight.header ?? ""
+        content.body = insight.insight ?? ""
         content.sound = UNNotificationSound.default
-        content.badge = 1
+        content.badge = count as NSNumber
         content.categoryIdentifier = categoryIdentifire
         
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 2, repeats: false)
-        let identifier = "Local Notification"
-        let request = UNNotificationRequest(identifier: identifier, content: content, trigger: trigger)
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 3, repeats: false)
+        let identifier = insight.header
+        var request = UNNotificationRequest(identifier: identifier!, content: content, trigger: trigger)
         
         notificationCenter.add(request) { (error) in
             if let error = error {

@@ -1,4 +1,5 @@
 PODS:
+  - ABGaugeViewKit (1.0.1)
   - ADALiOS (1.2.10)
   - Charts (3.4.0):
     - Charts/Core (= 3.4.0)
@@ -18,6 +19,7 @@ PODS:
   - MSAL/app-lib (1.0.3)
 
 DEPENDENCIES:
+  - ABGaugeViewKit
   - ADALiOS
   - Charts
   - GoogleMaps
@@ -27,6 +29,7 @@ DEPENDENCIES:
 
 SPEC REPOS:
   trunk:
+    - ABGaugeViewKit
     - ADALiOS
     - Charts
     - GoogleMaps
@@ -35,6 +38,7 @@ SPEC REPOS:
     - MSAL
 
 SPEC CHECKSUMS:
+  ABGaugeViewKit: b69c855c2878e5ba49605b0662d409c1577ed198
   ADALiOS: 505c364827c25dd37811e660a943dace9c0ff094
   Charts: 74c9f256eaf0460c0c416522d1cf8c634ea6b286
   GoogleMaps: 5c13302e6fe6bb6e686b267196586b91cd594225
@@ -42,6 +46,6 @@ SPEC CHECKSUMS:
   GooglePlaces: e874db179f2675c4f3eeda0b686b540273a578b0
   MSAL: 351711995bd31170a2e887941115a3ed17b178e8
 
-PODFILE CHECKSUM: d8b25a76f5857c0886ef046566ccdb33d37d06fb
+PODFILE CHECKSUM: 15a5c3f5912aa375539c30e844cfde61a46bc529
 
 COCOAPODS: 1.8.4

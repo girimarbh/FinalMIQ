@@ -58,6 +58,8 @@ class MapViewController : UIViewController, CLLocationManagerDelegate, GMSMapVie
      var mapviewmodel = MapViewModel()
     var placearray = [Place]()
     
+     var menuSelected = false
+    
 //    let previewDemoData = [(title: "washington", img: #imageLiteral(resourceName: "restaurant1"), price: "wa"), (title: "Newyork", img: #imageLiteral(resourceName: "restaurant2"), price: "Nw"), (title: "Dallas", img: #imageLiteral(resourceName: "restaurant3"), price: "Da")]
     
     override func viewDidLoad() {
@@ -333,6 +335,21 @@ class MapViewController : UIViewController, CLLocationManagerDelegate, GMSMapVie
     
    
     
+        @objc func add()  {
+            
+            if !menuSelected {
+    
+            self.view.addSubview(leftmenu)
+            menuSelected = true
+            }
+            else
+            {
+                self.leftmenu.removeFromSuperview()
+                menuSelected = false
+                
+            }
+        }
+    
     @objc func btnMyLocationAction() {
         let location: CLLocation? = myMapView.myLocation
         if location != nil {
@@ -358,6 +375,9 @@ class MapViewController : UIViewController, CLLocationManagerDelegate, GMSMapVie
     }
     
     func setupViews() {
+        
+        leftmenu=LeftSideMenuView(frame: CGRect(x: 170.0, y: 96.0, width: 200, height: 300 ))
+        
         view.addSubview(myMapView)
         myMapView.topAnchor.constraint(equalTo: view.topAnchor).isActive=true
         myMapView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive=true
@@ -368,9 +388,14 @@ class MapViewController : UIViewController, CLLocationManagerDelegate, GMSMapVie
         self.view.addSubview(txtFieldSearch)
         txtFieldSearch.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10).isActive=true
         txtFieldSearch.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 10).isActive=true
-        txtFieldSearch.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -10).isActive=true
+      //  txtFieldSearch.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -10).isActive=true
         txtFieldSearch.heightAnchor.constraint(equalToConstant: 35).isActive=true
+         txtFieldSearch.widthAnchor.constraint(equalToConstant: 320).isActive=true
         setupTextField(textField: txtFieldSearch, img: #imageLiteral(resourceName: "map_Pin"))
+        
+        self.view.addSubview(settingsbutton)
+        settingsbutton.anchor(top: view.safeAreaLayoutGuide.topAnchor, left: txtFieldSearch.rightAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 10, paddingLeft: 5, paddingBottom:0, paddingRight: 5, width: 30, height: 35, enableInsets: true)
+        settingsbutton.addTarget(self, action: #selector(add), for: .touchUpInside)
         
         infoPreviewView=InfoPreviewView(frame: CGRect(x: 10.0, y: 10.0, width: self.view.frame.width - 10, height: 150))
         
@@ -414,6 +439,24 @@ class MapViewController : UIViewController, CLLocationManagerDelegate, GMSMapVie
     
     var infoPreviewView: InfoPreviewView = {
         let v=InfoPreviewView()
+        return v
+    }()
+    
+    let settingsbutton: UIButton = {
+           let btn = UIButton()
+           //btn.titleLabel?.text = "locate Plant"
+           btn.backgroundColor = UIColor.white
+          btn.setTitleColor(.black, for: .normal)
+          // btn.setTitle(" locate Plant ", for: .normal)
+           btn.setImage(UIImage(named: "setbutton"), for: .normal)
+         
+        
+           return btn
+       }()
+    
+    var leftmenu: LeftSideMenuView = {
+        let v=LeftSideMenuView()
+     
         return v
     }()
 }

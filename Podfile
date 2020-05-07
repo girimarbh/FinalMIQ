@@ -14,6 +14,7 @@ target 'MIQAnalytics' do
     pod 'GooglePlacePicker'
     pod 'GoogleMaps'
     pod 'Charts'
+    pod 'ABGaugeViewKit'
 
   target 'MIQAnalyticsTests' do
     inherit! :search_paths

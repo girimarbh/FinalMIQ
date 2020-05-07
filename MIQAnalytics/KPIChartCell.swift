@@ -8,6 +8,7 @@
 
 import UIKit
 import Charts
+import ABGaugeViewKit 
 
 class KPIChartCell: UITableViewCell {
 

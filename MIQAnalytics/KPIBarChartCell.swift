@@ -8,6 +8,7 @@
 
 import UIKit
 import Charts
+import ABGaugeViewKit
 
 protocol NotificationSelect {
     func NotifySelect(str : Int)
@@ -601,57 +602,72 @@ required init?(coder: NSCoder) {
 //
 //    }
     func Chartlinechar(dataPoints: [String], values: [Double]) {
-        var dataEntries: [ChartDataEntry] = []
-        for i in 0..<dataPoints.count {
-          let dataEntry = ChartDataEntry(x: Double(i), y: values[i])
-          dataEntries.append(dataEntry)
-        }
-        let lineChartDataSet = LineChartDataSet(entries: dataEntries, label: nil)
-         lineChartDataSet.colors = [UIColor(red: 16/255, green: 135/255, blue: 72/255, alpha: 1)]
-        let lineChartData = LineChartData(dataSet: lineChartDataSet)
-        
-       
-        linechart.drawGridBackgroundEnabled = false
-         linechart.xAxis.drawLabelsEnabled = true
-          let ll = ChartLimitLine(limit: 100.0, label: "Target")
-          linechart.rightAxis.addLimitLine(ll)
-          linechart.leftAxis.axisMinimum = 0.0
-          linechart.xAxis.labelPosition = .bottom
-        
-        linechart.data = lineChartData
         
         
-//            weak var axisFormatDelegate: IAxisValueFormatter?
-//          linechart.noDataText = "You need to provide data for the chart."
-//          var dataEntries: [BarChartDataEntry] = []
-//          for i in 0..<dataPoints.count {
-//          let dataEntry = BarChartDataEntry(x: Double(i), y: Double(values[i]))
+         linechart.delegate = self
+                  weak var axisFormatDelegate: IAxisValueFormatter?
+                  linechart.noDataText = "You need to provide data for the chart."
+                  var dataEntries: [ChartDataEntry] = []
+                  for i in 0..<dataPoints.count {
+                  let dataEntry = BarChartDataEntry(x: Double(i), y: Double(values[i]))
+                  dataEntries.append(dataEntry)
+                  }
+                let chartDataSet = LineChartDataSet(entries: dataEntries, label: "MIQ")
+        //          let chartDataSet = BarChartDataSet(entries: dataEntries, label: "MIQ")
+                  chartDataSet.colors = [UIColor(red: 16/255, green: 135/255, blue: 72/255, alpha: 1)]
+                  linechart.animate(xAxisDuration: 2.0, yAxisDuration: 2.0, easingOption: .easeInCubic)
+                 let chartData = LineChartData(dataSet: chartDataSet)
+                 
+                  linechart.data = chartData
+                  
+                  
+                    let marker:BalloonMarker = BalloonMarker(color: UIColor.white, font: UIFont(name: "Helvetica", size: 12)!, textColor: UIColor.red, insets: UIEdgeInsets(top: 7.0, left: 7.0, bottom: 7.0, right: 7.0))
+                    marker.minimumSize = CGSize(width: 95.0, height: 65.0)
+                   marker.setLabel("abc")
+                    linechart.marker = marker
+                    linechart.drawMarkers = true
+                  linechart.leftAxis.axisMinimum = 0.0
+                  linechart.xAxis.labelTextColor = UIColor.white
+                
+          
+              var yAxis = linechart.leftAxis
+               yAxis.labelTextColor = UIColor.white
+        //          chartData.barWidth = Double(0.50)
+                linechart.xAxis.valueFormatter = IndexAxisValueFormatter(values: dataPoints)
+                 linechart.xAxis.labelPosition = .bottom
+                linechart.xAxis.labelCount = 30
+                linechart.xAxis.granularity = 1
+                linechart.leftAxis.enabled = true
+               let minn = Double(values.min()!) - 0.1
+              linechart.leftAxis.axisMinimum = Double(values.min()! - 0.1)
+                linechart.leftAxis.axisMinimum = 0.0
+            linechart.leftAxis.axisMaximum = Double(values.max()! + 0.05)
+        linechart.data?.highlightEnabled = true
+        linechart.drawMarkers = true
+                 linechart.data?.highlightEnabled = true
+
+        
+//        var dataEntries: [ChartDataEntry] = []
+//        for i in 0..<dataPoints.count {
+//          let dataEntry = ChartDataEntry(x: Double(i), y: values[i])
 //          dataEntries.append(dataEntry)
-//          }
-//          let chartDataSet = BarChartDataSet(entries: dataEntries, label: "MIQ")
-//          chartDataSet.colors = [UIColor(red: 16/255, green: 135/255, blue: 72/255, alpha: 1)]
-//          linechart.animate(xAxisDuration: 2.0, yAxisDuration: 2.0, easingOption: .easeInCubic)
-//          let chartData = BarChartData(dataSet: chartDataSet)
-//          linechart.data = chartData
-////          linechart.drawValueAboveBarEnabled = false
-//          linechart.drawGridBackgroundEnabled = false
-//           linechart.xAxis.drawLabelsEnabled = true
-//            let ll = ChartLimitLine(limit: 100.0, label: "Target")
-//            linechart.rightAxis.addLimitLine(ll)
-//            linechart.leftAxis.axisMinimum = 0.0
-//            linechart.xAxis.labelPosition = .bottom
-//    //        chart2.leftAxis.axisMaximum = 1000.0
+//        }
+//        let lineChartDataSet = LineChartDataSet(entries: dataEntries, label: nil)
+//         lineChartDataSet.colors = [UIColor(red: 16/255, green: 135/255, blue: 72/255, alpha: 1)]
+//        let lineChartData = LineChartData(dataSet: lineChartDataSet)
 //
 //
+//        linechart.drawGridBackgroundEnabled = false
+//         linechart.xAxis.drawLabelsEnabled = true
+//          let ll = ChartLimitLine(limit: 100.0, label: "Target")
+//          linechart.rightAxis.addLimitLine(ll)
+//          linechart.leftAxis.axisMinimum = 0.0
+//          linechart.xAxis.labelPosition = .bottom
 //
-//
-//
-//         var yAxis = chart2.leftAxis
-//         var xAxis = chart2.rightAxis
-//         xAxis.labelTextColor = UIColor.white
-//         yAxis.labelTextColor = UIColor.white
-//          chartData.barWidth = Double(0.50)
-//               //chart2.data = chartData
+//        linechart.data = lineChartData
+        
+        
+
         }
     
     
@@ -930,6 +946,11 @@ extension KPIBarChartCell: ChartViewDelegate
 {
     public func chartValueSelected(_ chartView: ChartViewBase, entry: ChartDataEntry, highlight: Highlight) {
         print("Bar selected")
+        var blackSquare = UIView()
+        blackSquare.backgroundColor = UIColor.red
+        blackSquare = UIView(frame: CGRect(x: 100.0, y: 100.0, width: 100, height: 100))
+        chart2.addSubview(blackSquare)
+       
     }
     
     

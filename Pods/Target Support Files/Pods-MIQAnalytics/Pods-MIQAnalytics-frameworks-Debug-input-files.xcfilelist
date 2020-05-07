@@ -1,4 +1,5 @@
 ${PODS_ROOT}/Target Support Files/Pods-MIQAnalytics/Pods-MIQAnalytics-frameworks.sh
+${BUILT_PRODUCTS_DIR}/ABGaugeViewKit/ABGaugeViewKit.framework
 ${BUILT_PRODUCTS_DIR}/ADALiOS/ADALiOS.framework
 ${BUILT_PRODUCTS_DIR}/Charts/Charts.framework
 ${BUILT_PRODUCTS_DIR}/MSAL/MSAL.framework

@@ -161,11 +161,13 @@ strip_invalid_archs() {
 
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
+  install_framework "${BUILT_PRODUCTS_DIR}/ABGaugeViewKit/ABGaugeViewKit.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/ADALiOS/ADALiOS.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/Charts/Charts.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/MSAL/MSAL.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
+  install_framework "${BUILT_PRODUCTS_DIR}/ABGaugeViewKit/ABGaugeViewKit.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/ADALiOS/ADALiOS.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/Charts/Charts.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/MSAL/MSAL.framework"

@@ -81,7 +81,7 @@ class DrilldownheaderView: UIView {
         btn.backgroundColor = UIColor.white
        btn.setTitleColor(.black, for: .normal)
        // btn.setTitle(" locate Plant ", for: .normal)
-        btn.setImage(UIImage(named: "download"), for: .normal)
+        btn.setImage(UIImage(named: "Backbutton"), for: .normal)
       
      
         return btn
@@ -93,13 +93,13 @@ class DrilldownheaderView: UIView {
            lbl.font = UIFont.boldSystemFont(ofSize: 12)
            lbl.textAlignment = .left
            lbl.backgroundColor = UIColor.clear
-        lbl.text = "KPI Popup"
+        lbl.text = "Dashboard"
            return lbl
        }()
     
     let dashboardButton: UIButton = {
         let btn = UIButton()
-        btn.titleLabel?.text = "locate Plant"
+        btn.titleLabel?.text = "Dashboard"
         
         return btn
     }()

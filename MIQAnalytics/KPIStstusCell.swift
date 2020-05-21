@@ -21,7 +21,7 @@ class KPIStstusCell: UITableViewCell {
      var delegate : NotificationProtocalKPIPopup?
     let containerView: UIView = {
         let v=UIView()
-        v.backgroundColor = UIColor.white
+        v.backgroundColor = UIColor.black
         v.translatesAutoresizingMaskIntoConstraints=false
         v.layer.borderWidth  = 0
         //  v.layer.borderColor = (UIColor.red as! CGColor)
@@ -34,7 +34,7 @@ class KPIStstusCell: UITableViewCell {
     public let onTargetLabel : UILabel = {
         let lbl = UILabel()
         lbl.textColor = .lightGray
-        lbl.font = UIFont.boldSystemFont(ofSize: 14)
+        lbl.font = UIFont.systemFont(ofSize: 14)
         lbl.textAlignment = .center
         lbl.backgroundColor = UIColor.clear
         let underlineAttriString = NSAttributedString(string:"On Target", attributes:
@@ -46,7 +46,7 @@ class KPIStstusCell: UITableViewCell {
     public let onTargetValueLabel : UILabel = {
         let lbl = UILabel()
         lbl.textColor = .white
-        lbl.font = UIFont.boldSystemFont(ofSize: 14)
+        lbl.font = UIFont.systemFont(ofSize: 14)
         lbl.textAlignment = .center
        // lbl.text = "22"
         // lbl.layer.borderColor = UIColor(red:227/255, green:83/255, blue:86/255, alpha: 1).cgColor
@@ -62,7 +62,7 @@ class KPIStstusCell: UITableViewCell {
     public let vulnerableLabel : UILabel = {
         let lbl = UILabel()
         lbl.textColor = .lightGray
-        lbl.font = UIFont.boldSystemFont(ofSize: 14)
+        lbl.font = UIFont.systemFont(ofSize: 14)
         lbl.textAlignment = .center
         lbl.backgroundColor = UIColor.clear
         let underlineAttriString = NSAttributedString(string:"Vulnerable", attributes:
@@ -74,7 +74,7 @@ class KPIStstusCell: UITableViewCell {
     public let vulnerableValueLabel : UILabel = {
         let lbl = UILabel()
         lbl.textColor = .white
-        lbl.font = UIFont.boldSystemFont(ofSize: 12)
+        lbl.font = UIFont.systemFont(ofSize: 14)
         lbl.textAlignment = .center
       //  lbl.text = "22"
         //lbl.layer.borderColor = UIColor(red:218/255, green:160/255, blue:58/255, alpha: 1).cgColor
@@ -89,7 +89,7 @@ class KPIStstusCell: UITableViewCell {
     public let offTatgetLabel : UILabel = {
         let lbl = UILabel()
         lbl.textColor = .lightGray
-        lbl.font = UIFont.boldSystemFont(ofSize: 14)
+        lbl.font = UIFont.systemFont(ofSize: 14)
         lbl.textAlignment = .center
         
         let underlineAttriString = NSAttributedString(string:"Off Target", attributes:
@@ -102,7 +102,7 @@ class KPIStstusCell: UITableViewCell {
     public let offTatgetValueLabel : UILabel = {
         let lbl = UILabel()
         lbl.textColor = .white
-        lbl.font = UIFont.boldSystemFont(ofSize: 12)
+        lbl.font = UIFont.systemFont(ofSize: 14)
         lbl.textAlignment = .center
       //  lbl.text = "22"
         //lbl.layer.borderColor = UIColor(red:64/255, green:136/255, blue:80/255, alpha: 1).cgColor

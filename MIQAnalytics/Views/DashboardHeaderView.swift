@@ -48,7 +48,7 @@ class DashboardHeaderView: UIView {
 //        containerView.topAnchor.constraint(equalTo: topAnchor).isActive=true
 //        containerView.rightAnchor.constraint(equalTo: rightAnchor).isActive=true
 //        containerView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive=true
-       containerView.backgroundColor = UIColor.white
+       containerView.backgroundColor = UIColor.black
         
         containerView.addSubview(loacatePlantbutton)
         loacatePlantbutton.anchor(top: containerView.topAnchor, left: containerView.leftAnchor, bottom: nil, right: nil, paddingTop: 10, paddingLeft: 10, paddingBottom: 0, paddingRight: 0, width: 30, height: 30, enableInsets: true)
@@ -91,7 +91,7 @@ class DashboardHeaderView: UIView {
         let btn = UIButton()
         //btn.titleLabel?.text = "locate Plant"
         btn.backgroundColor = UIColor.white
-       btn.setTitleColor(.black, for: .normal)
+       btn.setTitleColor(.green, for: .normal)
        // btn.setTitle(" locate Plant ", for: .normal)
         btn.setImage(UIImage(named: "Backbutton"), for: .normal)
       
@@ -101,7 +101,7 @@ class DashboardHeaderView: UIView {
     
     public let locatePlantLabel : UILabel = {
            let lbl = UILabel()
-           lbl.textColor = .black
+           lbl.textColor = .green
            lbl.font = UIFont.boldSystemFont(ofSize: 12)
            lbl.textAlignment = .left
            lbl.backgroundColor = UIColor.clear

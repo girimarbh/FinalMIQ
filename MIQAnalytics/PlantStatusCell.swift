@@ -207,7 +207,7 @@ class PlantStatusCell: UITableViewCell {
            //                   let labelImg = NSMutableAttributedString(string: "")
            //                   labelImg.append(attachmentString)
            // chart2.centerAttributedText = labelImg
-           chart2.holeColor = UIColor(red:255,green:255,blue:255,alpha:0.5)
+        chart2.holeColor = UIColor.white
            
        }
     func convertnumbertopercentage(first : Double , second : Double , third : Double) -> [Double]{
@@ -288,14 +288,14 @@ class PlantStatusCell: UITableViewCell {
 //            labelImg.append(attachmentString)
 //            chart.centerAttributedText = labelImg
        
-        chart.holeColor = UIColor(red:255,green:255,blue:255,alpha:0.5)
+        chart.holeColor = UIColor.white
         self.addSubview(chart)
 
     }
 
     func updateUII(){
         
-        containerView.anchor(top: topAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 5, paddingLeft: 5, paddingBottom: 5, paddingRight: 5, width: self.frame.width, height: self.frame.height, enableInsets: true)
+        containerView.anchor(top: topAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 1, paddingLeft: 1, paddingBottom: 1, paddingRight: 1, width: self.frame.width, height: self.frame.height, enableInsets: true)
         
         chart2.anchor(top: topAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, paddingTop: 20, paddingLeft: 20, paddingBottom: 20, paddingRight: 20, width: 300, height: 300, enableInsets: true)
         

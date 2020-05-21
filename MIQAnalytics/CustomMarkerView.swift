@@ -12,7 +12,7 @@ class CustomMarkerView: UIView {
     var img: UIImage!
     var borderColor: UIColor!
     var title : String!
-    var code :   Int!
+    var code :   String!
     var healthperc : Float!
     
     
@@ -27,7 +27,7 @@ class CustomMarkerView: UIView {
 //        
 //        setupViews(strWidth: titlewidth)
 //    }
-    init(frame: CGRect, borderColor: UIColor, tag: Int , title:String  , code : Int , healthperc : Float) {
+    init(frame: CGRect, borderColor: UIColor, tag: Int , title:String  , code : String , healthperc : Float) {
         super.init(frame: frame)
         
         self.borderColor=borderColor
@@ -52,18 +52,35 @@ class CustomMarkerView: UIView {
         imgView.layer.borderColor=borderColor?.cgColor
         imgView.layer.borderWidth=2
         imgView.clipsToBounds=true
-        lbl.text = title
-        lbl.font=UIFont.boldSystemFont(ofSize: 14)
+        let result = title.split(separator: ",")
+        print(result)
+        
+        lbl.text = result[0].description
+        lbl.font=UIFont.systemFont(ofSize: 10)
         lbl.textColor=UIColor.white
         lbl.backgroundColor=UIColor.black
         lbl.textColor = UIColor(hexString: "#039dfc")
         lbl.layer.borderColor = UIColor(hexString: "#039dfc")?.cgColor;
-        lbl.layer.borderWidth = 2.0;
+        lbl.layer.borderWidth = 1.0;
         lbl.padding = UIEdgeInsets(top: 2, left: 1, bottom: 3, right: 1)
         
         lbl.textAlignment = .center
-        lbl.layer.cornerRadius = 4
+      //  lbl.layer.cornerRadius = 4
         lbl.clipsToBounds=true
+        
+        if code == "R"  {
+             lbl.layer.borderColor = UIColor(hexString: "#AA4912")?.cgColor
+            lbl.textColor = UIColor(hexString: "#AA4912")
+        }
+        if code == "p" {
+             lbl.layer.borderColor = UIColor(hexString: "#039dfc")?.cgColor
+            lbl.textColor = UIColor(hexString: "#039dfc")
+        }
+        if code == "P" {
+             lbl.layer.borderColor = UIColor(hexString: "#039dfc")?.cgColor;
+            lbl.textColor = UIColor(hexString: "#039dfc")
+        }
+        
        // lbl.translatesAutoresizingMaskIntoConstraints=false
         // self.addSubview(imgView)
         
@@ -71,15 +88,16 @@ class CustomMarkerView: UIView {
          lbl2.frame  = CGRect(x: 40, y: 0,width: 25,height: 25)
         let health = Int(healthperc)
          lbl2.text = String(health)
-         lbl2.font=UIFont.boldSystemFont(ofSize: 16)
+         lbl2.font=UIFont.systemFont(ofSize: 10)
          lbl2.textColor=UIColor.white
-        if code == 3 {
-             lbl2.layer.borderColor = UIColor.orange.cgColor
+       
+        if code == "R"  {
+             lbl2.layer.borderColor = UIColor(hexString: "#AA4912")?.cgColor
         }
-        if code == 2 {
-             lbl2.layer.borderColor = UIColor.yellow.cgColor
+        if code == "p" {
+             lbl2.layer.borderColor = UIColor(hexString: "#039dfc")?.cgColor
         }
-        if code == 1 {
+        if code == "P" {
              lbl2.layer.borderColor = UIColor(hexString: "#039dfc")?.cgColor;
         }
          lbl2.backgroundColor=UIColor.black

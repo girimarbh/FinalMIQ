@@ -341,7 +341,7 @@ func createPieChart(chart:PieChartView,property:[String],value:[Double])  {
 
 func updateUII(){
     
-    containerView.anchor(top: topAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 5, paddingLeft: 5, paddingBottom: 5, paddingRight: 5, width: self.frame.width, height: self.frame.height, enableInsets: true)
+    containerView.anchor(top: topAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 1, paddingLeft: 1, paddingBottom: 1, paddingRight: 1, width: self.frame.width, height: self.frame.height, enableInsets: true)
     
     
     

@@ -252,6 +252,7 @@ required init?(coder: NSCoder) {
         let totalKPI : Int = categoryhealth.kpiTotalCount ?? 0
         var totalKPIStr = String(totalKPI)
            chart2.centerText = totalKPIStr + "KPI"
+    
            
            onTargetLabel.text = "On Target"
            vulnerableLabel.text = "Vulnerable"
@@ -285,6 +286,10 @@ required init?(coder: NSCoder) {
            //                   labelImg.append(attachmentString)
            // chart2.centerAttributedText = labelImg
            chart2.holeColor = UIColor(red:255,green:255,blue:255,alpha:0.5)
+           chart2.holeColor = UIColor.white
+         
+        
+      
            
        }
     
@@ -398,7 +403,7 @@ func createPieChart(chart:PieChartView,property:[String],value:[Double])  {
     
 func updateUII(){
     
-    containerView.anchor(top: topAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 5, paddingLeft: 5, paddingBottom: 5, paddingRight: 5, width: self.frame.width, height: self.frame.height, enableInsets: true)
+    containerView.anchor(top: topAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 1, paddingLeft: 1, paddingBottom: 1, paddingRight: 1, width: self.frame.width, height: self.frame.height, enableInsets: true)
     
     
     

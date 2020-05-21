@@ -302,6 +302,7 @@ public let chart2 : BarChartView = {
         textFiled.backgroundColor = UIColor.white
         textFiled.borderStyle = UITextField.BorderStyle.line
         textFiled.placeholder = "Add your comment"
+        textFiled.font = UIFont.systemFont(ofSize: 8)
         return textFiled
         
     }()
@@ -541,9 +542,11 @@ required init?(coder: NSCoder) {
             
         }
     }
-    
+   
+    let result = KPIValuesdrilldownnew[0].kpiDate!.split(separator: " ")
+    print(result)
         //KpiNameLabel.text = KPIValuesdrilldownnew[0].k
-       scnearioDatevalueLabel.text = KPIValuesdrilldownnew[0].kpiDate
+    scnearioDatevalueLabel.text = result[0].description
        targetValueLabel.text = KPIValuesdrilldownnew[0].target?.description
        actualValueLabel.text = KPIValuesdrilldownnew[0].actual?.description
     

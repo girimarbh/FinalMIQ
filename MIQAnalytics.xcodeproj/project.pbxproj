@@ -42,6 +42,7 @@
 		686DCB7A2397CB9800360A8E /* ObjectMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686DCB792397CB9800360A8E /* ObjectMapper.swift */; };
 		686DCB7C2397CD0B00360A8E /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686DCB7B2397CD0B00360A8E /* MapViewModel.swift */; };
 		686DCB7E2397CD3F00360A8E /* Map.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686DCB7D2397CD3F00360A8E /* Map.swift */; };
+		689F8B942464177700809B15 /* MapheaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 689F8B932464177700809B15 /* MapheaderView.swift */; };
 		68A2DDFC240E2B6F00E0612B /* DrillNewtworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68A2DDFB240E2B6F00E0612B /* DrillNewtworkManager.swift */; };
 		68C43BAA23F3CE2500DEE6E8 /* DrilldownModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C43BA923F3CE2500DEE6E8 /* DrilldownModel.swift */; };
 		68C43BAC23F3CE3F00DEE6E8 /* DrildownViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C43BAB23F3CE3F00DEE6E8 /* DrildownViewModel.swift */; };
@@ -117,6 +118,7 @@
 		686DCB792397CB9800360A8E /* ObjectMapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectMapper.swift; sourceTree = "<group>"; };
 		686DCB7B2397CD0B00360A8E /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
 		686DCB7D2397CD3F00360A8E /* Map.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Map.swift; sourceTree = "<group>"; };
+		689F8B932464177700809B15 /* MapheaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapheaderView.swift; sourceTree = "<group>"; };
 		68A2DDFB240E2B6F00E0612B /* DrillNewtworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrillNewtworkManager.swift; sourceTree = "<group>"; };
 		68C43BA923F3CE2500DEE6E8 /* DrilldownModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrilldownModel.swift; sourceTree = "<group>"; };
 		68C43BAB23F3CE3F00DEE6E8 /* DrildownViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrildownViewModel.swift; sourceTree = "<group>"; };
@@ -300,6 +302,7 @@
 				68598D1323D966F500BF216B /* DashboardHeaderView.swift */,
 				68C43BB923FE8DE400DEE6E8 /* DrilldownheaderView.swift */,
 				6855527F2463F3A900E148F5 /* LeftSideMenuView.swift */,
+				689F8B932464177700809B15 /* MapheaderView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -621,6 +624,7 @@
 				683320F52429EEC900D7A236 /* BalloonMarker.swift in Sources */,
 				68A2DDFC240E2B6F00E0612B /* DrillNewtworkManager.swift in Sources */,
 				686DCB30239696B200360A8E /* AppDelegate.swift in Sources */,
+				689F8B942464177700809B15 /* MapheaderView.swift in Sources */,
 				686DCB7A2397CB9800360A8E /* ObjectMapper.swift in Sources */,
 				686DCB6523969C6E00360A8E /* MapViewController.swift in Sources */,
 				68C43BAE23F3CE7200DEE6E8 /* DataManager.swift in Sources */,

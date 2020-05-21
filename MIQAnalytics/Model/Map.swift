@@ -8,7 +8,7 @@
 
 import UIKit
 struct Place {
-    var code : Int?
+    var code : String?
     var comments : String?
     var displayName : String?
     var healthperc : Int?

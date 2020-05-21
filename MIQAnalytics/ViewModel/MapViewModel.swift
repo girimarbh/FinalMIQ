@@ -49,7 +49,7 @@ class MapViewModel: NSObject {
                         let longitude = (dict["LONGITUDE"] as! NSString).doubleValue
                         let map = (dict["MAP"] as! NSString).intValue
                         let plantid = dict["PLANTID"] as! String
-                        self?.placearray.append(Place(code: Int(code), comments: Comments, displayName: displayname, healthperc: Int(healthPrec), hirarchy: Int(hirarchy), latitude: latitude, longitude: longitude, map: Int(map), plantID: plantid))
+                        self?.placearray.append(Place(code: code, comments: Comments, displayName: displayname, healthperc: Int(healthPrec), hirarchy: Int(hirarchy), latitude: latitude, longitude: longitude, map: Int(map), plantID: plantid))
                         }
                     
                     }

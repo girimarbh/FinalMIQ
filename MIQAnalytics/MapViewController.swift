@@ -46,7 +46,21 @@ struct PreviewDemoData {
     var price: String
 }
 
-class MapViewController : UIViewController, CLLocationManagerDelegate, GMSMapViewDelegate, GMSAutocompleteViewControllerDelegate, UITextFieldDelegate , NotificationProtocal {
+class MapViewController : UIViewController, CLLocationManagerDelegate, GMSMapViewDelegate, GMSAutocompleteViewControllerDelegate, UITextFieldDelegate , NotificationProtocal , NotificationSettingbtn{
+    func Notifysetting() {
+        if !menuSelected {
+           
+                   self.view.addSubview(leftmenu)
+                   menuSelected = true
+                   }
+                   else
+                   {
+                       self.leftmenu.removeFromSuperview()
+                       menuSelected = false
+                       
+                   }
+    }
+    
    let currentLocationMarker = GMSMarker()
     var locationManager = CLLocationManager()
     var chosenPlace: MyPlace?
@@ -376,7 +390,7 @@ class MapViewController : UIViewController, CLLocationManagerDelegate, GMSMapVie
     
     func setupViews() {
         
-        leftmenu=LeftSideMenuView(frame: CGRect(x: self.view.frame.width - 210, y: 96.0, width: 200, height: 600 ))
+        leftmenu=LeftSideMenuView(frame: CGRect(x: self.view.frame.width - 190, y: 100.0, width: 200, height: 300 ))
         headerview = MapheaderView(frame: CGRect(x: 0.0, y: 96.0, width: self.view.frame.width, height: 300 ))
         
         view.addSubview(myMapView)
@@ -389,22 +403,22 @@ class MapViewController : UIViewController, CLLocationManagerDelegate, GMSMapVie
         
         
         
-//        view.addSubview(headerview)
-//        headerview.anchor(top: view.safeAreaLayoutGuide.topAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: self.view.frame.width, height: 60, enableInsets: true)
+        view.addSubview(headerview)
+        headerview.anchor(top: view.safeAreaLayoutGuide.topAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: self.view.frame.width, height: 60, enableInsets: true)
 
-        
+        headerview.delegate = self
       
         
         
 //
-        self.view.addSubview(txtFieldSearch)
-        txtFieldSearch.anchor(top: view.safeAreaLayoutGuide.topAnchor, left:view.safeAreaLayoutGuide.leftAnchor, bottom: nil, right: nil, paddingTop: 10, paddingLeft: 5, paddingBottom: 0, paddingRight: 5, width: 200, height: 25, enableInsets: true)
-
-        setupTextField(textField: txtFieldSearch, img: #imageLiteral(resourceName: "map_Pin"))
-
-        self.view.addSubview(settingsbutton)
-        settingsbutton.anchor(top: view.safeAreaLayoutGuide.topAnchor, left: txtFieldSearch.rightAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 10, paddingLeft: 5, paddingBottom:0, paddingRight: 5, width: 30, height: 25, enableInsets: true)
-        settingsbutton.addTarget(self, action: #selector(add), for: .touchUpInside)
+//        self.view.addSubview(txtFieldSearch)
+//        txtFieldSearch.anchor(top: view.safeAreaLayoutGuide.topAnchor, left:view.safeAreaLayoutGuide.leftAnchor, bottom: nil, right: nil, paddingTop: 10, paddingLeft: 5, paddingBottom: 0, paddingRight: 5, width: 200, height: 25, enableInsets: true)
+//
+//        setupTextField(textField: txtFieldSearch, img: #imageLiteral(resourceName: "map_Pin"))
+//
+//        self.view.addSubview(settingsbutton)
+//        settingsbutton.anchor(top: view.safeAreaLayoutGuide.topAnchor, left: txtFieldSearch.rightAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 10, paddingLeft: 5, paddingBottom:0, paddingRight: 5, width: 30, height: 25, enableInsets: true)
+//        settingsbutton.addTarget(self, action: #selector(add), for: .touchUpInside)
 
         infoPreviewView=InfoPreviewView(frame: CGRect(x: 10.0, y: 10.0, width: self.view.frame.width - 10, height: 150))
         

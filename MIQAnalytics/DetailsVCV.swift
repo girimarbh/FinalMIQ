@@ -215,6 +215,7 @@ nc.addObserver(self, selector: #selector(userLoggedIn(_:)), name: Notification.N
         myTableView.showsVerticalScrollIndicator = false
        self.view.addSubview(myTableView)
         self.myTableView.isHidden = true
+       
 
 
 
@@ -335,12 +336,15 @@ nc.addObserver(self, selector: #selector(userLoggedIn(_:)), name: Notification.N
 
 
      func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.row == 0 || indexPath.row == 1{
-      return  400
+        if indexPath.row == 0 {
+      return  340
     }
+        if indexPath.row == 1{
+                return 300
+        }
         else{
 
-         return   270
+         return   320
         }
 
 }

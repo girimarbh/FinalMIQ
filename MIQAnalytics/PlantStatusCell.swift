@@ -21,11 +21,12 @@ class PlantStatusCell: UITableViewCell {
 
     let containerView: UIView = {
               let v=UIView()
-              v.backgroundColor = UIColor.black
+        v.backgroundColor = UIColor.black
+//              v.backgroundColor = UIColor.init(hexString: "#2C2A2A")
               v.translatesAutoresizingMaskIntoConstraints=false
-              //v.layer.borderWidth  = 2.0
-              //  v.layer.borderColor = (UIColor.red as! CGColor)
-              v.layer.cornerRadius = 0.25
+             v.layer.borderWidth = 0.5
+              v.layer.borderColor = UIColor.lightGray.cgColor
+              v.layer.cornerRadius = 15
               
               
               return v
@@ -33,7 +34,7 @@ class PlantStatusCell: UITableViewCell {
     public let onTargetLabel : UILabel = {
         let lbl = UILabel()
         lbl.textColor = .white
-        lbl.font = UIFont.boldSystemFont(ofSize: 12)
+        lbl.font = UIFont(name: "Apple SD Gothic Neo", size: 14)
         lbl.textAlignment = .center
         lbl.backgroundColor = UIColor.gray
         return lbl
@@ -41,7 +42,7 @@ class PlantStatusCell: UITableViewCell {
     public let onTargetValueLabel : UILabel = {
         let lbl = UILabel()
         lbl.textColor = .green
-        lbl.font = UIFont.boldSystemFont(ofSize: 12)
+       lbl.font = UIFont(name: "Apple SD Gothic Neo", size: 14)
         lbl.textAlignment = .center
         lbl.text = "22"
         lbl.layer.borderColor = UIColor.black.cgColor
@@ -56,7 +57,7 @@ class PlantStatusCell: UITableViewCell {
     public let vulnerableLabel : UILabel = {
          let lbl = UILabel()
          lbl.textColor = .white
-         lbl.font = UIFont.boldSystemFont(ofSize: 12)
+         lbl.font = UIFont(name: "Apple SD Gothic Neo", size: 14)
          lbl.textAlignment = .center
          lbl.backgroundColor = UIColor.gray
          return lbl
@@ -64,7 +65,7 @@ class PlantStatusCell: UITableViewCell {
     public let vulnerableValueLabel : UILabel = {
         let lbl = UILabel()
         lbl.textColor = .green
-        lbl.font = UIFont.boldSystemFont(ofSize: 12)
+        lbl.font = UIFont(name: "Apple SD Gothic Neo", size: 14)
         lbl.textAlignment = .center
         lbl.text = "22"
         lbl.layer.borderColor = UIColor.black.cgColor
@@ -78,7 +79,7 @@ class PlantStatusCell: UITableViewCell {
     public let offTatgetLabel : UILabel = {
         let lbl = UILabel()
                     lbl.textColor = .white
-                    lbl.font = UIFont.boldSystemFont(ofSize: 12)
+                    lbl.font = UIFont(name: "Apple SD Gothic Neo", size: 14)
                     lbl.textAlignment = .center
                     lbl.backgroundColor = UIColor.gray
                     return lbl
@@ -86,7 +87,7 @@ class PlantStatusCell: UITableViewCell {
     public let offTatgetValueLabel : UILabel = {
        let lbl = UILabel()
         lbl.textColor = .green
-        lbl.font = UIFont.boldSystemFont(ofSize: 12)
+        lbl.font = UIFont(name: "Apple SD Gothic Neo", size: 14)
         lbl.textAlignment = .center
         lbl.text = "22"
         lbl.layer.borderColor = UIColor.black.cgColor
@@ -97,6 +98,17 @@ class PlantStatusCell: UITableViewCell {
         return lbl
     }()
     
+    
+    public let topLabel : UILabel = {
+        let lbl = UILabel()
+        lbl.textColor = .white
+       lbl.font = UIFont(name: "Apple SD Gothic Neo", size: 10)
+        lbl.textAlignment = .center
+        lbl.layer.cornerRadius = 0.5
+        lbl.backgroundColor = UIColor.init(hexString: "#2AC1C9")
+        lbl.text = "Plant Status"
+        return lbl
+    }()
     public let chart2 : PieChartView = {
         let piech = PieChartView()
         return piech
@@ -113,10 +125,11 @@ class PlantStatusCell: UITableViewCell {
     }
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        self.backgroundColor = UIColor.white
+        self.backgroundColor = UIColor.black
         
         
         addSubview(containerView)
+        addSubview(topLabel)
         addSubview(chart2)
         updateUII()
 
@@ -176,6 +189,10 @@ class PlantStatusCell: UITableViewCell {
         var totalKPIStr = String(totalKPI)
            chart2.centerText = String(Int(percentagearray[0])) + "%Healthy"
            
+        
+        let attributedString = NSMutableAttributedString(string: String(Int(percentagearray[0])) + "%Healthy", attributes: [NSAttributedString.Key.foregroundColor:UIColor.white , NSAttributedString.Key.font: UIFont(name: "Apple SD Gothic Neo", size: 16.0)])
+                      chart2.centerAttributedText = attributedString
+        
            onTargetLabel.text = "On Target"
            vulnerableLabel.text = "Vulnerable"
             offTatgetLabel.text = "OFF-Target"
@@ -207,7 +224,7 @@ class PlantStatusCell: UITableViewCell {
            //                   let labelImg = NSMutableAttributedString(string: "")
            //                   labelImg.append(attachmentString)
            // chart2.centerAttributedText = labelImg
-        chart2.holeColor = UIColor.white
+        chart2.holeColor = UIColor.black
            
        }
     func convertnumbertopercentage(first : Double , second : Double , third : Double) -> [Double]{
@@ -288,16 +305,18 @@ class PlantStatusCell: UITableViewCell {
 //            labelImg.append(attachmentString)
 //            chart.centerAttributedText = labelImg
        
-        chart.holeColor = UIColor.white
+        chart.holeColor = UIColor(red:223/255, green:220/255, blue:224/255, alpha: 1)
         self.addSubview(chart)
 
     }
 
     func updateUII(){
         
-        containerView.anchor(top: topAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 1, paddingLeft: 1, paddingBottom: 1, paddingRight: 1, width: self.frame.width, height: self.frame.height, enableInsets: true)
+        containerView.anchor(top: topAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 10, paddingLeft: 20, paddingBottom: 10, paddingRight: 20, width: self.frame.width, height: self.frame.height, enableInsets: true)
         
-        chart2.anchor(top: topAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, paddingTop: 20, paddingLeft: 20, paddingBottom: 20, paddingRight: 20, width: 300, height: 300, enableInsets: true)
+        topLabel.anchor(top: containerView.topAnchor, left: leftAnchor, bottom: nil, right: nil, paddingTop: 10, paddingLeft: 10, paddingBottom: 0, paddingRight: 0, width: 120, height: 15, enableInsets: true)
+        
+        chart2.anchor(top: topAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, paddingTop: 20, paddingLeft: 20, paddingBottom: 20, paddingRight: 20, width: 250, height: 250, enableInsets: true)
         
        }
 

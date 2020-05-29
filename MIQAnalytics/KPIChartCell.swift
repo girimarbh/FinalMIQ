@@ -18,9 +18,9 @@ let containerView: UIView = {
        let v=UIView()
        v.backgroundColor = UIColor.black
        v.translatesAutoresizingMaskIntoConstraints=false
-       //v.layer.borderWidth  = 2.0
-       //  v.layer.borderColor = (UIColor.red as! CGColor)
-       v.layer.cornerRadius = 0.25
+       v.layer.borderWidth = 0.5
+       v.layer.borderColor = UIColor.lightGray.cgColor
+        v.layer.cornerRadius = 10
        
        
        return v
@@ -28,7 +28,7 @@ let containerView: UIView = {
 public let topLabel : UILabel = {
     let lbl = UILabel()
     lbl.textColor = .white
-    lbl.font = UIFont.systemFont(ofSize: 8)
+   lbl.font = UIFont(name: "Apple SD Gothic Neo", size: 10)
     lbl.textAlignment = .center
     lbl.layer.cornerRadius = 0.5
     lbl.backgroundColor = UIColor.init(hexString: "#2AC1C9")
@@ -39,7 +39,7 @@ public let topLabel : UILabel = {
 public let onTargetLabel : UILabel = {
     let lbl = UILabel()
     lbl.textColor = .white
-    lbl.font = UIFont.systemFont(ofSize: 14)
+    lbl.font = UIFont(name: "Apple SD Gothic Neo", size: 14)
     lbl.textAlignment = .center
     lbl.backgroundColor = UIColor.init(hexString: "#138b4a")
     return lbl
@@ -47,7 +47,7 @@ public let onTargetLabel : UILabel = {
 public let onTargetValueLabel : UILabel = {
     let lbl = UILabel()
     lbl.textColor = .white
-    lbl.font = UIFont.systemFont(ofSize: 12)
+    lbl.font = UIFont(name: "Apple SD Gothic Neo", size: 14)
     lbl.textAlignment = .center
     lbl.text = "22"
      lbl.layer.borderColor = UIColor(red:64/255, green:136/255, blue:80/255, alpha: 1).cgColor
@@ -64,7 +64,7 @@ public let onTargetValueLabel : UILabel = {
 public let vulnerableLabel : UILabel = {
      let lbl = UILabel()
      lbl.textColor = .white
-     lbl.font = UIFont.systemFont(ofSize: 14)
+     lbl.font = UIFont(name: "Apple SD Gothic Neo", size: 14)
      lbl.textAlignment = .center
      lbl.backgroundColor = UIColor.init(hexString: "#e49e0d")
      return lbl
@@ -72,7 +72,7 @@ public let vulnerableLabel : UILabel = {
 public let vulnerableValueLabel : UILabel = {
     let lbl = UILabel()
     lbl.textColor = .white
-    lbl.font = UIFont.systemFont(ofSize: 12)
+    lbl.font = UIFont(name: "Apple SD Gothic Neo", size: 14)
     lbl.textAlignment = .center
     lbl.text = "22"
      lbl.layer.borderColor = UIColor(red:218/255, green:160/255, blue:58/255, alpha: 1).cgColor
@@ -87,7 +87,7 @@ public let vulnerableValueLabel : UILabel = {
 public let offTatgetLabel : UILabel = {
     let lbl = UILabel()
                 lbl.textColor = .white
-                lbl.font = UIFont.systemFont(ofSize: 14)
+               lbl.font = UIFont(name: "Apple SD Gothic Neo", size: 14)
                 lbl.textAlignment = .center
 //        let underlineAttriString = NSAttributedString(string:"OFF-Target", attributes:
 //            [NSAttributedStringKey.underlineStyle: NSUnderlineStyle.styleSingle.rawValue])
@@ -99,7 +99,7 @@ public let offTatgetLabel : UILabel = {
 public let offTatgetValueLabel : UILabel = {
    let lbl = UILabel()
     lbl.textColor = .white
-    lbl.font = UIFont.systemFont(ofSize: 12)
+    lbl.font = UIFont(name: "Apple SD Gothic Neo", size: 14)
     lbl.textAlignment = .center
     lbl.text = "22"
      lbl.layer.borderColor = UIColor(red:227/255, green:83/255, blue:86/255, alpha: 1).cgColor
@@ -127,7 +127,7 @@ override func awakeFromNib() {
 }
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
     super.init(style: style, reuseIdentifier: reuseIdentifier)
-    self.backgroundColor = UIColor.white
+    self.backgroundColor = UIColor.black
     
     addSubview(containerView)
     addSubview(topLabel)
@@ -194,11 +194,14 @@ required init?(coder: NSCoder) {
             
             let totalKPI : Int = categoryhealth.kpiTotalCount ?? 0
             var totalKPIStr = String(totalKPI)
-               chart2.centerText = totalKPIStr + "KPI"
+            
+            let attributedString = NSMutableAttributedString(string: totalKPIStr + "KPI" , attributes: [NSAttributedString.Key.foregroundColor:UIColor.white , NSAttributedString.Key.font: UIFont(name: "Apple SD Gothic Neo", size: 16.0) ])
+            chart2.centerAttributedText = attributedString
+//               chart2.centerText = totalKPIStr + "KPI"
                
                onTargetLabel.text = "On Target"
                vulnerableLabel.text = "Vulnerable"
-                offTatgetLabel.text = "OFF-Target"
+                offTatgetLabel.text = "Off-Target"
                let ontarget : Int = categoryhealth.onTarget ?? 0
                var ontargetmyString = String(ontarget)
                onTargetValueLabel.text = ontargetmyString
@@ -227,7 +230,7 @@ required init?(coder: NSCoder) {
                //                   let labelImg = NSMutableAttributedString(string: "")
                //                   labelImg.append(attachmentString)
                // chart2.centerAttributedText = labelImg
-               chart2.holeColor = UIColor(red:255,green:255,blue:255,alpha:0.5)
+            chart2.holeColor = UIColor.black
                
            }
         
@@ -341,7 +344,7 @@ func createPieChart(chart:PieChartView,property:[String],value:[Double])  {
 
 func updateUII(){
     
-    containerView.anchor(top: topAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 1, paddingLeft: 1, paddingBottom: 1, paddingRight: 1, width: self.frame.width, height: self.frame.height, enableInsets: true)
+    containerView.anchor(top: topAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 20, paddingLeft: 20, paddingBottom: 20, paddingRight: 20, width: self.frame.width, height: self.frame.height, enableInsets: true)
     
     
     

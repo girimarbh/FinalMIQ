@@ -56,7 +56,7 @@ class CustomMarkerView: UIView {
         print(result)
         
         lbl.text = result[0].description
-        lbl.font=UIFont.systemFont(ofSize: 10)
+        lbl.font = UIFont(name: "Apple SD Gothic Neo", size: 12.0)
         lbl.textColor=UIColor.white
         lbl.backgroundColor=UIColor.black
         lbl.textColor = UIColor(hexString: "#039dfc")
@@ -88,7 +88,7 @@ class CustomMarkerView: UIView {
          lbl2.frame  = CGRect(x: 40, y: 0,width: 25,height: 25)
         let health = Int(healthperc)
          lbl2.text = String(health)
-         lbl2.font=UIFont.systemFont(ofSize: 10)
+         lbl2.font = UIFont(name: "Apple SD Gothic Neo", size: 12.0)
          lbl2.textColor=UIColor.white
        
         if code == "R"  {

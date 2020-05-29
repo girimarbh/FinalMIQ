@@ -32,10 +32,11 @@ let containerView: UIView = {
         v.layer.masksToBounds = true
         v.layer.borderColor = yourColor.cgColor
         v.layer.borderWidth = 1.0
-        v.backgroundColor = UIColor.white
+        v.backgroundColor = UIColor.black
         v.translatesAutoresizingMaskIntoConstraints=false
-        v.layer.borderWidth  = 1.0
-        v.layer.cornerRadius = 0.25
+         v.layer.borderWidth = 0.5
+             v.layer.borderColor = UIColor.lightGray.cgColor
+              v.layer.cornerRadius = 10
        
        
        return v
@@ -47,9 +48,11 @@ let containerView: UIView = {
         v.layer.masksToBounds = true
         v.layer.borderColor = yourColor.cgColor
         v.layer.borderWidth = 1.0
-        v.backgroundColor = UIColor(red:223/255, green:220/255, blue:224/255, alpha: 1)
+        v.backgroundColor = UIColor.black
         v.translatesAutoresizingMaskIntoConstraints=false
-        v.layer.cornerRadius = 0.25
+        v.layer.borderWidth = 0.5
+        v.layer.borderColor = UIColor.lightGray.cgColor
+         v.layer.cornerRadius = 10
         
         
         return v
@@ -57,9 +60,12 @@ let containerView: UIView = {
     
     let containerview3: UIView = {
            let v=UIView()
-           v.backgroundColor = UIColor.white
+           v.backgroundColor = UIColor.black
            v.translatesAutoresizingMaskIntoConstraints=false
            v.layer.cornerRadius = 0.25
+        v.layer.borderWidth = 0
+        v.layer.borderColor = UIColor.lightGray.cgColor
+         v.layer.cornerRadius = 10
            return v
        }()
        
@@ -69,7 +75,9 @@ let containerView: UIView = {
         v.backgroundColor = UIColor.black
         v.translatesAutoresizingMaskIntoConstraints=false
         v.layer.cornerRadius = 0.25
-        
+        v.layer.borderWidth = 0.5
+        v.layer.borderColor = UIColor.lightGray.cgColor
+        v.layer.cornerRadius = 10
         
         return v
     }()
@@ -98,7 +106,7 @@ let containerView: UIView = {
 public let KpiNameLabel : UILabel = {
         let lbl = UILabel()
         lbl.textColor = UIColor(red:42/255, green:152/255, blue:181/255, alpha: 1)
-        lbl.font = UIFont.systemFont(ofSize: 24)
+        lbl.font = UIFont(name: "Apple SD Gothic Neo", size: 20)
         lbl.textAlignment = .center
         lbl.layer.cornerRadius = 0.5
         lbl.backgroundColor = UIColor.clear
@@ -142,10 +150,11 @@ public let weeklyLabelbtn : UIButton = {
 public let scnearioDateLabel : UILabel = {
     let lbl = UILabel()
     lbl.textColor = UIColor(red:190/255, green:61/255, blue:135/255, alpha: 1)
-    lbl.font = UIFont.systemFont(ofSize: 20)
+   lbl.font = UIFont(name: "Apple SD Gothic Neo", size: 18)
     lbl.textAlignment = .center
   lbl.layer.borderColor = UIColor.lightGray.cgColor
-    lbl.layer.borderWidth = 0.6
+    lbl.layer.borderWidth = 0
+    lbl.backgroundColor = UIColor.init(hexString: "#2C2A2A")
     
    // lbl.layer.borderWidth = 0.5
     lbl.layer.addBorder(edge: UIRectEdge.top, color: UIColor.green, thickness: 0.5)
@@ -155,7 +164,7 @@ public let scnearioDateLabel : UILabel = {
     
     
     
-    lbl.backgroundColor = UIColor.clear
+    //lbl.backgroundColor = UIColor.clear
     lbl.numberOfLines = 2
     lbl.text = "Scenario \n Date"
     return lbl
@@ -164,11 +173,11 @@ public let scnearioDateLabel : UILabel = {
     public let scnearioDatevalueLabel : UILabel = {
          let lbl = UILabel()
          lbl.textColor = .gray
-         lbl.font = UIFont.systemFont(ofSize: 19)
+         lbl.font = UIFont(name: "Apple SD Gothic Neo", size: 20)
          lbl.textAlignment = .center
-         lbl.backgroundColor = UIColor.white
+         lbl.backgroundColor = UIColor.clear
         lbl.layer.borderColor = UIColor.lightGray.cgColor
-           lbl.layer.borderWidth = 0.6
+           lbl.layer.borderWidth = 0
        
 //        lbl.layer.addBorder(edge: UIRectEdge.top, color: UIColor.red, thickness: 0.6)
 //        lbl.layer.addBorder(edge: UIRectEdge.bottom, color: UIColor.red, thickness: 0.6)
@@ -176,62 +185,67 @@ public let scnearioDateLabel : UILabel = {
 //        lbl.layer.addBorder(edge: UIRectEdge.left, color: UIColor.red, thickness: 0)
          lbl.text = "9th August  \n 2019"
         lbl.numberOfLines = 2
+         lbl.backgroundColor = UIColor.init(hexString: "#2C2A2A")
          return lbl
     }()
     
     public let targetLabel : UILabel = {
         let lbl = UILabel()
         lbl.textColor = UIColor(red:18/255, green:136/255, blue:175/255, alpha: 1)
-        lbl.font = UIFont.systemFont(ofSize: 20)
+        lbl.font = UIFont(name: "Apple SD Gothic Neo", size: 20)
         lbl.textAlignment = .center
         lbl.layer.cornerRadius = 0.5
         lbl.backgroundColor = UIColor.clear
-        lbl.layer.borderColor = UIColor.lightGray.cgColor
-           lbl.layer.borderWidth = 0.6
+        lbl.layer.borderColor = UIColor.clear.cgColor
+           lbl.layer.borderWidth = 0
         lbl.numberOfLines = 2
         lbl.text = "Target \n  Value"
+         lbl.backgroundColor = UIColor.init(hexString: "#2C2A2A")
         return lbl
     }()
         
         public let targetValueLabel : UILabel = {
              let lbl = UILabel()
             lbl.textColor = .gray
-             lbl.font = UIFont.systemFont(ofSize: 20)
+             lbl.font = UIFont(name: "Apple SD Gothic Neo", size: 20)
              lbl.textAlignment = .center
              lbl.translatesAutoresizingMaskIntoConstraints = false
-             lbl.backgroundColor = UIColor.white
-            lbl.layer.borderColor = UIColor.lightGray.cgColor
-               lbl.layer.borderWidth = 0.6
+             lbl.backgroundColor = UIColor.clear
+            lbl.layer.borderColor = UIColor.clear.cgColor
+               lbl.layer.borderWidth = 0
             lbl.numberOfLines = 2
              lbl.text = "64%"
+             lbl.backgroundColor = UIColor.init(hexString: "#2C2A2A")
              return lbl
         }()
 
     public let actualLabel : UILabel = {
         let lbl = UILabel()
         lbl.textColor = UIColor(red:250/255, green:125/255, blue:57/255, alpha: 1)
-        lbl.font = UIFont.systemFont(ofSize: 20)
+        lbl.font = UIFont(name: "Apple SD Gothic Neo", size: 20)
         lbl.textAlignment = .center
         lbl.layer.cornerRadius = 0.5
         lbl.backgroundColor = UIColor.clear
-        lbl.layer.borderColor = UIColor.lightGray.cgColor
-           lbl.layer.borderWidth = 0.6
+        lbl.layer.borderColor = UIColor.clear.cgColor
+           lbl.layer.borderWidth = 0
         lbl.numberOfLines = 2
         lbl.text = "Actual \n Value"
+         lbl.backgroundColor = UIColor.init(hexString: "#2C2A2A")
         return lbl
     }()
         
         public let actualValueLabel : UILabel = {
              let lbl = UILabel()
              lbl.textColor = .gray
-             lbl.font = UIFont.systemFont(ofSize: 20)
+             lbl.font = UIFont(name: "Apple SD Gothic Neo", size: 20)
              lbl.textAlignment = .center
              lbl.translatesAutoresizingMaskIntoConstraints = false
-            lbl.layer.borderColor = UIColor.lightGray.cgColor
-               lbl.layer.borderWidth = 0.6
-             lbl.backgroundColor = UIColor.white
+            lbl.layer.borderColor = UIColor.clear.cgColor
+               lbl.layer.borderWidth = 0
+             lbl.backgroundColor = UIColor.clear
              lbl.text = "63 \n %"
             lbl.numberOfLines = 2
+             lbl.backgroundColor = UIColor.init(hexString: "#2C2A2A")
              return lbl
         }()
 
@@ -242,7 +256,8 @@ public let scnearioDateLabel : UILabel = {
         btn.titleLabel?.textAlignment = .left
         btn.titleLabel?.textColor = UIColor.green
         btn.layer.cornerRadius = 0.5
-        btn.backgroundColor = UIColor.black
+       // btn.backgroundColor = UIColor.black
+        btn.backgroundColor = UIColor.init(hexString: "#2C2A2A")
         btn.tag = 1
         return btn
     }()
@@ -253,7 +268,7 @@ public let scnearioDateLabel : UILabel = {
         btn.titleLabel?.textAlignment = .left
         btn.titleLabel?.textColor = UIColor.green
         btn.layer.cornerRadius = 0.5
-        btn.backgroundColor = UIColor.black
+        btn.backgroundColor = UIColor.init(hexString: "#2C2A2A")
         btn.tag = 2
         
         return btn
@@ -371,7 +386,7 @@ override func awakeFromNib() {
 }
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
     super.init(style: style, reuseIdentifier: reuseIdentifier)
-    self.backgroundColor = UIColor.white
+    self.backgroundColor = UIColor.black
         chart2.delegate = self
     addSubview(containerview3)
     addSubview(operationViewbtn)
@@ -809,16 +824,16 @@ required init?(coder: NSCoder) {
     
 func updateUII(){
     
-    containerview3.anchor(top: topAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, paddingTop: 0, paddingLeft: 10, paddingBottom: 10, paddingRight: 20, width: self.frame.width, height: 100, enableInsets: true)
+    containerview3.anchor(top: topAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, paddingTop: 0, paddingLeft: 20, paddingBottom: 10, paddingRight: 20, width: self.frame.width, height: 100, enableInsets: true)
     
 //    leftOperationview.anchor(top: containerview3.topAnchor, left: containerview3.leftAnchor, bottom: nil, right: nil, paddingTop: 5, paddingLeft: 5, paddingBottom: 5, paddingRight: 5, width: 5, height: 40, enableInsets: true)
 //
-    operationViewbtn.anchor(top: containerview3.topAnchor, left: containerview3.leftAnchor, bottom: nil, right: containerview3.rightAnchor, paddingTop: 5, paddingLeft: 10, paddingBottom: 10, paddingRight: 0, width: 100, height: 40, enableInsets: true)
+    operationViewbtn.anchor(top: containerview3.topAnchor, left: containerview3.leftAnchor, bottom: nil, right: containerview3.rightAnchor, paddingTop: 5, paddingLeft: 10, paddingBottom: 10, paddingRight: 10, width: 0, height: 40, enableInsets: true)
     
     
-    managementViewbtn.anchor(top: operationViewbtn.bottomAnchor, left: containerview3.leftAnchor, bottom: nil, right: containerview3.rightAnchor, paddingTop: 10, paddingLeft: 10, paddingBottom: 10, paddingRight: 0, width: 100, height: 40, enableInsets: true)
+    managementViewbtn.anchor(top: operationViewbtn.bottomAnchor, left: containerview3.leftAnchor, bottom: nil, right: containerview3.rightAnchor, paddingTop: 10, paddingLeft: 10, paddingBottom: 10, paddingRight: 10, width: 0, height: 40, enableInsets: true)
     
-    containerView.anchor(top: containerview3.bottomAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, paddingTop: 5, paddingLeft: 20, paddingBottom: 5, paddingRight: 20, width: self.frame.width, height: 200, enableInsets: true)
+    containerView.anchor(top: containerview3.bottomAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, paddingTop: 20, paddingLeft: 20, paddingBottom: 20, paddingRight: 20, width: self.frame.width, height: 200, enableInsets: true)
     
     KpiNameLabel.anchor(top: containerView.topAnchor, left: containerView.leftAnchor, bottom:  nil, right: containerView.rightAnchor, paddingTop: 10, paddingLeft: 0, paddingBottom: 10, paddingRight: 10, width: self.frame.width - 20, height: 40, enableInsets: true)
     
@@ -850,7 +865,7 @@ func updateUII(){
     actualValueLabel.anchor(top: targetValueLabel.bottomAnchor, left: actualLabel.rightAnchor, bottom: nil, right: nil, paddingTop: 10, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 150, height: 60, enableInsets: true)
     
     
-    barchartcontainerView.anchor(top: containerview2.bottomAnchor, left: self.leftAnchor, bottom: nil, right: self.rightAnchor, paddingTop: 20, paddingLeft: 20, paddingBottom: 20, paddingRight: 20, width: self.frame.width, height: 500, enableInsets: true)
+    barchartcontainerView.anchor(top: containerview2.bottomAnchor, left: self.leftAnchor, bottom: nil, right: self.rightAnchor, paddingTop: 20, paddingLeft: 20, paddingBottom: 20, paddingRight: 20, width: 0, height: 500, enableInsets: true)
     
     lastupdatedLabel.anchor(top: barchartcontainerView.topAnchor, left: barchartcontainerView.leftAnchor, bottom: nil, right: nil, paddingTop: 5, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 80, height: 50, enableInsets: true)
     

@@ -36,7 +36,7 @@ class DrilldownheaderView: UIView {
 //        containerView.topAnchor.constraint(equalTo: topAnchor).isActive=true
 //        containerView.rightAnchor.constraint(equalTo: rightAnchor).isActive=true
 //        containerView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive=true
-       containerView.backgroundColor = UIColor.white
+      containerView.backgroundColor = UIColor.init(hexString: "#2C2A2A")
         
         containerView.addSubview(loacatePlantbutton)
         loacatePlantbutton.anchor(top: containerView.topAnchor, left: containerView.leftAnchor, bottom: nil, right: nil, paddingTop: 10, paddingLeft: 10, paddingBottom: 0, paddingRight: 0, width: 30, height: 30, enableInsets: true)
@@ -89,8 +89,8 @@ class DrilldownheaderView: UIView {
     
     public let locatePlantLabel : UILabel = {
            let lbl = UILabel()
-           lbl.textColor = .black
-           lbl.font = UIFont.boldSystemFont(ofSize: 12)
+        lbl.textColor = .lightGray
+            lbl.font = UIFont(name: "Apple SD Gothic Neo", size: 16)
            lbl.textAlignment = .left
            lbl.backgroundColor = UIColor.clear
         lbl.text = "Dashboard"

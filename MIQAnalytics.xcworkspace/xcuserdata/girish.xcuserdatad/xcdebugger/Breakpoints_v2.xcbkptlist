@@ -14,8 +14,8 @@
             filePath = "MIQAnalytics/MapViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "63"
-            endingLineNumber = "63"
+            startingLineNumber = "77"
+            endingLineNumber = "77"
             landmarkName = "MapViewController"
             landmarkType = "3">
          </BreakpointContent>
@@ -123,8 +123,8 @@
             filePath = "MIQAnalytics/MapViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "194"
-            endingLineNumber = "194"
+            startingLineNumber = "208"
+            endingLineNumber = "208"
             landmarkName = "MapViewController"
             landmarkType = "3">
          </BreakpointContent>
@@ -139,8 +139,8 @@
             filePath = "MIQAnalytics/MapViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "226"
-            endingLineNumber = "226"
+            startingLineNumber = "240"
+            endingLineNumber = "240"
             landmarkName = "wasCancelled(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -155,8 +155,8 @@
             filePath = "MIQAnalytics/MapViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "251"
-            endingLineNumber = "251"
+            startingLineNumber = "265"
+            endingLineNumber = "265"
             landmarkName = "locationManager(_:didFailWithError:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -219,8 +219,8 @@
             filePath = "MIQAnalytics/MapViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "140"
-            endingLineNumber = "140"
+            startingLineNumber = "154"
+            endingLineNumber = "154"
             landmarkName = "setupMapview()"
             landmarkType = "7">
          </BreakpointContent>
@@ -235,8 +235,8 @@
             filePath = "MIQAnalytics/MapViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "153"
-            endingLineNumber = "153"
+            startingLineNumber = "167"
+            endingLineNumber = "167"
             landmarkName = "updateContentOnView()"
             landmarkType = "7">
          </BreakpointContent>
@@ -251,8 +251,8 @@
             filePath = "MIQAnalytics/MapViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "360"
-            endingLineNumber = "360"
+            startingLineNumber = "374"
+            endingLineNumber = "374"
             landmarkName = "restaurantTapped(tag:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -267,8 +267,8 @@
             filePath = "MIQAnalytics/MapViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "321"
-            endingLineNumber = "321"
+            startingLineNumber = "335"
+            endingLineNumber = "335"
             landmarkName = "MapViewController"
             landmarkType = "3">
          </BreakpointContent>
@@ -283,8 +283,8 @@
             filePath = "MIQAnalytics/MapViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "323"
-            endingLineNumber = "323"
+            startingLineNumber = "337"
+            endingLineNumber = "337"
             landmarkName = "showPartyMarkersNew()"
             landmarkType = "7">
          </BreakpointContent>
@@ -299,8 +299,8 @@
             filePath = "MIQAnalytics/MapViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "276"
-            endingLineNumber = "276"
+            startingLineNumber = "290"
+            endingLineNumber = "290"
             landmarkName = "mapView(_:didTap:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -315,8 +315,8 @@
             filePath = "MIQAnalytics/MapViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "266"
-            endingLineNumber = "266"
+            startingLineNumber = "280"
+            endingLineNumber = "280"
             landmarkName = "MapViewController"
             landmarkType = "3">
          </BreakpointContent>
@@ -363,8 +363,8 @@
             filePath = "MIQAnalytics/MapViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "286"
-            endingLineNumber = "286"
+            startingLineNumber = "300"
+            endingLineNumber = "300"
             landmarkName = "mapView(_:markerInfoContents:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -379,8 +379,8 @@
             filePath = "MIQAnalytics/MapViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "343"
-            endingLineNumber = "343"
+            startingLineNumber = "357"
+            endingLineNumber = "357"
             landmarkName = "add()"
             landmarkType = "7">
          </BreakpointContent>
@@ -443,8 +443,8 @@
             filePath = "MIQAnalytics/DetailsVCV.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "325"
-            endingLineNumber = "325"
+            startingLineNumber = "326"
+            endingLineNumber = "326"
             landmarkName = "tableView(_:didSelectRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -459,8 +459,8 @@
             filePath = "MIQAnalytics/KPIStstusCell.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "186"
-            endingLineNumber = "186"
+            startingLineNumber = "195"
+            endingLineNumber = "195"
             landmarkName = "updateCellContentt(categoryhealth:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -475,8 +475,8 @@
             filePath = "MIQAnalytics/KPIStstusCell.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "221"
-            endingLineNumber = "221"
+            startingLineNumber = "231"
+            endingLineNumber = "231"
             landmarkName = "updateCellContentt(categoryhealth:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -507,8 +507,8 @@
             filePath = "MIQAnalytics/KPIStstusCell.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "153"
-            endingLineNumber = "153"
+            startingLineNumber = "162"
+            endingLineNumber = "162"
             landmarkName = "longLabelPressed(recognizer:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -651,8 +651,8 @@
             filePath = "MIQAnalytics/KPIStstusCell.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "170"
-            endingLineNumber = "170"
+            startingLineNumber = "179"
+            endingLineNumber = "179"
             landmarkName = "longLabelPressed(recognizer:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -667,8 +667,8 @@
             filePath = "MIQAnalytics/DetailsVCV.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "244"
-            endingLineNumber = "244"
+            startingLineNumber = "245"
+            endingLineNumber = "245"
             landmarkName = "userLoggedIn(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -683,8 +683,8 @@
             filePath = "MIQAnalytics/KPIBarChartCell.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "524"
-            endingLineNumber = "524"
+            startingLineNumber = "539"
+            endingLineNumber = "539"
             landmarkName = "updateCellContentt(kpivalues:category:KPIValuesdrilldownnew:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -779,8 +779,8 @@
             filePath = "MIQAnalytics/DetailsVCV.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "247"
-            endingLineNumber = "247"
+            startingLineNumber = "248"
+            endingLineNumber = "248"
             landmarkName = "userLoggedIn(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -811,8 +811,8 @@
             filePath = "MIQAnalytics/KPIBarChartCell.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "523"
-            endingLineNumber = "523"
+            startingLineNumber = "538"
+            endingLineNumber = "538"
             landmarkName = "updateCellContentt(kpivalues:category:KPIValuesdrilldownnew:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -827,8 +827,8 @@
             filePath = "MIQAnalytics/KPIBarChartCell.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "428"
-            endingLineNumber = "428"
+            startingLineNumber = "443"
+            endingLineNumber = "443"
             landmarkName = "setChart(x:y:t:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -843,8 +843,8 @@
             filePath = "MIQAnalytics/KPIBarChartCell.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "441"
-            endingLineNumber = "441"
+            startingLineNumber = "456"
+            endingLineNumber = "456"
             landmarkName = "setChart(x:y:t:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -859,8 +859,8 @@
             filePath = "MIQAnalytics/KPIBarChartCell.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "725"
-            endingLineNumber = "725"
+            startingLineNumber = "740"
+            endingLineNumber = "740"
             landmarkName = "setChart(dataPoints:values:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -891,8 +891,8 @@
             filePath = "MIQAnalytics/KPIBarChartCell.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "765"
-            endingLineNumber = "765"
+            startingLineNumber = "780"
+            endingLineNumber = "780"
             landmarkName = "pressed(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -907,8 +907,8 @@
             filePath = "MIQAnalytics/KPIBarChartCell.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "863"
-            endingLineNumber = "863"
+            startingLineNumber = "878"
+            endingLineNumber = "878"
             landmarkName = "updateUII()"
             landmarkType = "7">
          </BreakpointContent>
@@ -923,8 +923,8 @@
             filePath = "MIQAnalytics/KPIBarChartCell.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "372"
-            endingLineNumber = "372"
+            startingLineNumber = "387"
+            endingLineNumber = "387"
             landmarkName = "init(style:reuseIdentifier:)"
             landmarkType = "7">
             <Locations>
@@ -971,8 +971,8 @@
             filePath = "MIQAnalytics/KPIBarChartCell.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "867"
-            endingLineNumber = "867"
+            startingLineNumber = "882"
+            endingLineNumber = "882"
             landmarkName = "updateUII()"
             landmarkType = "7">
          </BreakpointContent>
@@ -987,8 +987,8 @@
             filePath = "MIQAnalytics/KPIBarChartCell.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "863"
-            endingLineNumber = "863"
+            startingLineNumber = "878"
+            endingLineNumber = "878"
             landmarkName = "updateUII()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1003,8 +1003,8 @@
             filePath = "MIQAnalytics/KPIBarChartCell.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "607"
-            endingLineNumber = "607"
+            startingLineNumber = "622"
+            endingLineNumber = "622"
             landmarkName = "Chartlinechar(dataPoints:values:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1131,8 +1131,8 @@
             filePath = "MIQAnalytics/KPIBarChartCell.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "959"
-            endingLineNumber = "959"
+            startingLineNumber = "974"
+            endingLineNumber = "974"
             landmarkName = "KPIBarChartCell"
             landmarkType = "21">
          </BreakpointContent>
@@ -1147,8 +1147,8 @@
             filePath = "MIQAnalytics/KPIBarChartCell.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "723"
-            endingLineNumber = "723"
+            startingLineNumber = "738"
+            endingLineNumber = "738"
             landmarkName = "KPIBarChartCell"
             landmarkType = "3">
          </BreakpointContent>
@@ -1163,8 +1163,8 @@
             filePath = "MIQAnalytics/KPIBarChartCell.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "961"
-            endingLineNumber = "961"
+            startingLineNumber = "976"
+            endingLineNumber = "976"
             landmarkName = "chartValueSelected(chartView:entry:dataSetIndex:highlight:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1179,8 +1179,8 @@
             filePath = "MIQAnalytics/KPIBarChartCell.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "956"
-            endingLineNumber = "956"
+            startingLineNumber = "971"
+            endingLineNumber = "971"
             landmarkName = "chartValueSelected(_:entry:highlight:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1195,8 +1195,8 @@
             filePath = "MIQAnalytics/KPIBarChartCell.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "950"
-            endingLineNumber = "950"
+            startingLineNumber = "965"
+            endingLineNumber = "965"
             landmarkName = "chartValueSelected(_:entry:highlight:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1371,8 +1371,8 @@
             filePath = "MIQAnalytics/DetailsVCV.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "374"
-            endingLineNumber = "374"
+            startingLineNumber = "378"
+            endingLineNumber = "378"
             landmarkName = "updateContentOnViewforInsights()"
             landmarkType = "7">
          </BreakpointContent>

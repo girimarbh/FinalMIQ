@@ -22,10 +22,13 @@ class KPIStstusCell: UITableViewCell {
     let containerView: UIView = {
         let v=UIView()
         v.backgroundColor = UIColor.black
+        //v.backgroundColor = UIColor.init(hexString: "#2C2A2A")
+        
+        //v.alpha = 0.5
         v.translatesAutoresizingMaskIntoConstraints=false
-        v.layer.borderWidth  = 0
-        //  v.layer.borderColor = (UIColor.red as! CGColor)
-        v.layer.cornerRadius = 0.25
+        v.layer.borderWidth = 0.5
+       v.layer.borderColor = UIColor.lightGray.cgColor
+        v.layer.cornerRadius = 10
         
         
         return v
@@ -33,8 +36,9 @@ class KPIStstusCell: UITableViewCell {
     
     public let onTargetLabel : UILabel = {
         let lbl = UILabel()
-        lbl.textColor = .lightGray
-        lbl.font = UIFont.systemFont(ofSize: 14)
+        lbl.textColor = .white
+       // lbl.font = UIFont.systemFont(ofSize: 14)
+        lbl.font = UIFont(name: "Apple SD Gothic Neo", size: 14)
         lbl.textAlignment = .center
         lbl.backgroundColor = UIColor.clear
         let underlineAttriString = NSAttributedString(string:"On Target", attributes:
@@ -46,7 +50,8 @@ class KPIStstusCell: UITableViewCell {
     public let onTargetValueLabel : UILabel = {
         let lbl = UILabel()
         lbl.textColor = .white
-        lbl.font = UIFont.systemFont(ofSize: 14)
+        //lbl.font = UIFont.systemFont(ofSize: 14)
+        lbl.font = UIFont(name: "Apple SD Gothic Neo", size: 14)
         lbl.textAlignment = .center
        // lbl.text = "22"
         // lbl.layer.borderColor = UIColor(red:227/255, green:83/255, blue:86/255, alpha: 1).cgColor
@@ -61,8 +66,9 @@ class KPIStstusCell: UITableViewCell {
     
     public let vulnerableLabel : UILabel = {
         let lbl = UILabel()
-        lbl.textColor = .lightGray
-        lbl.font = UIFont.systemFont(ofSize: 14)
+        lbl.textColor = .white
+         lbl.font = UIFont(name: "Apple SD Gothic Neo", size: 14)
+        //lbl.font = UIFont.systemFont(ofSize: 14)
         lbl.textAlignment = .center
         lbl.backgroundColor = UIColor.clear
         let underlineAttriString = NSAttributedString(string:"Vulnerable", attributes:
@@ -74,7 +80,8 @@ class KPIStstusCell: UITableViewCell {
     public let vulnerableValueLabel : UILabel = {
         let lbl = UILabel()
         lbl.textColor = .white
-        lbl.font = UIFont.systemFont(ofSize: 14)
+         lbl.font = UIFont(name: "Apple SD Gothic Neo", size: 14)
+        //lbl.font = UIFont.systemFont(ofSize: 14)
         lbl.textAlignment = .center
       //  lbl.text = "22"
         //lbl.layer.borderColor = UIColor(red:218/255, green:160/255, blue:58/255, alpha: 1).cgColor
@@ -88,8 +95,9 @@ class KPIStstusCell: UITableViewCell {
     
     public let offTatgetLabel : UILabel = {
         let lbl = UILabel()
-        lbl.textColor = .lightGray
-        lbl.font = UIFont.systemFont(ofSize: 14)
+        lbl.textColor = .white
+        //lbl.font = UIFont.systemFont(ofSize: 14)
+         lbl.font = UIFont(name: "Apple SD Gothic Neo", size: 14)
         lbl.textAlignment = .center
         
         let underlineAttriString = NSAttributedString(string:"Off Target", attributes:
@@ -102,7 +110,8 @@ class KPIStstusCell: UITableViewCell {
     public let offTatgetValueLabel : UILabel = {
         let lbl = UILabel()
         lbl.textColor = .white
-        lbl.font = UIFont.systemFont(ofSize: 14)
+       // lbl.font = UIFont.systemFont(ofSize: 14)
+         lbl.font = UIFont(name: "Apple SD Gothic Neo", size: 14)
         lbl.textAlignment = .center
       //  lbl.text = "22"
         //lbl.layer.borderColor = UIColor(red:64/255, green:136/255, blue:80/255, alpha: 1).cgColor
@@ -130,7 +139,7 @@ class KPIStstusCell: UITableViewCell {
     }
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        self.backgroundColor = UIColor.white
+        self.backgroundColor = UIColor.black
         addSubview(containerView)
         addSubview(onTargetLabel)
         addSubview(onTargetValueLabel)
@@ -211,6 +220,7 @@ class KPIStstusCell: UITableViewCell {
         let d = Description()
         d.text = ""
         chart2.chartDescription = d
+    
         chart2.centerText = categoryhealth.categoryName?.capitalized
         
         onTargetLabel.text = "On Target"
@@ -240,14 +250,18 @@ class KPIStstusCell: UITableViewCell {
         //vulnerableValueLabel.text = categoryhealth.vulenrable
         
         
-        //                   let attachment = NSTextAttachment()
-        //                   attachment.image = UIImage(named: "download.jpeg")
-        //                   let attachmentString = NSAttributedString(attachment: attachment)
-        //                   let labelImg = NSMutableAttributedString(string: "")
-        //                   labelImg.append(attachmentString)
-        // chart2.centerAttributedText = labelImg
-        chart2.holeColor = UIColor(red:255,green:255,blue:255,alpha:0.5)
+//                           let attachment = NSTextAttachment()
+//                           attachment.image = UIImage(named: "quality_icon")
+//                           let attachmentString = NSAttributedString(attachment: attachment)
+//                           let labelImg = NSMutableAttributedString(string: "")
+//                           labelImg.append(attachmentString)
+//         chart2.centerAttributedText = labelImg
+        chart2.holeColor = UIColor.black
         
+        
+
+        let attributedString = NSMutableAttributedString(string: (categoryhealth.categoryName)!, attributes: [NSAttributedString.Key.foregroundColor:UIColor.white , NSAttributedString.Key.font: UIFont(name: "Apple SD Gothic Neo", size: 16.0)])
+        chart2.centerAttributedText = attributedString
     }
     
   //  func updateCellContentt(property:[String],value :[Double])
@@ -311,12 +325,12 @@ class KPIStstusCell: UITableViewCell {
         chart.chartDescription = d
         chart.centerText = "MIQ"
         
-        //            let attachment = NSTextAttachment()
-        //            attachment.image = UIImage(named: "download.jpeg")
-        //            let attachmentString = NSAttributedString(attachment: attachment)
-        //            let labelImg = NSMutableAttributedString(string: "")
-        //            labelImg.append(attachmentString)
-        //            chart.centerAttributedText = labelImg
+                    let attachment = NSTextAttachment()
+                    attachment.image = UIImage(named: "safety_icon1")
+                    let attachmentString = NSAttributedString(attachment: attachment)
+                    let labelImg = NSMutableAttributedString(string: "")
+                    labelImg.append(attachmentString)
+                    chart.centerAttributedText = labelImg
         
         chart.holeColor = UIColor(red:255,green:255,blue:255,alpha:0.5)
         self.addSubview(chart)
@@ -347,9 +361,9 @@ class KPIStstusCell: UITableViewCell {
         
         
         
-        containerView.anchor(top: topAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 5, paddingLeft: 5, paddingBottom: 5, paddingRight: 5, width: self.frame.width, height: self.frame.height, enableInsets: true)
+        containerView.anchor(top: topAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 10, paddingLeft: 20, paddingBottom: 10, paddingRight: 20, width: self.frame.width, height: self.frame.height, enableInsets: true)
         
-        chart2.anchor(top: topAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, paddingTop: 20, paddingLeft: 20, paddingBottom: 20, paddingRight: 20, width: 200, height: 200, enableInsets: true)
+        chart2.anchor(top: topAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, paddingTop: 20, paddingLeft: 20, paddingBottom: 20, paddingRight: 20, width: 240, height: 240, enableInsets: true)
         
         onTargetValueLabel.anchor(top: chart2.bottomAnchor, left: nil, bottom: nil, right: nil, paddingTop: 0, paddingLeft: 10, paddingBottom: 0, paddingRight: 0, width: 25, height: 25, enableInsets: true)
         

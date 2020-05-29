@@ -8,7 +8,14 @@
 
 import UIKit
 
+protocol NotificationSettingbtn {
+ func Notifysetting()
+// func updateError()
+ 
+}
+
 class MapheaderView: UIView {
+    var delegate : NotificationSettingbtn?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -31,7 +38,7 @@ class MapheaderView: UIView {
         containerView.rightAnchor.constraint(equalTo: rightAnchor).isActive=true
         containerView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive=true
         containerView.backgroundColor = UIColor.black
-        containerView.alpha = 0.5
+        containerView.alpha = 1
         
         containerView.isOpaque = true
         
@@ -39,52 +46,56 @@ class MapheaderView: UIView {
         img.leftAnchor.constraint(equalTo: containerView.leftAnchor, constant: 10).isActive=true
         img.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 10).isActive=true
         img.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: 10).isActive=true
-        img.heightAnchor.constraint(equalToConstant: 70).isActive=true
-        img.widthAnchor.constraint(equalToConstant: 70).isActive=true
-        img.backgroundColor = UIColor.red
+        img.heightAnchor.constraint(equalToConstant: 120).isActive=true
+        img.widthAnchor.constraint(equalToConstant: 80).isActive=true
+        img.backgroundColor = UIColor.black
         
-        plantTypeView1.blink2()
-        containerView.addSubview(plantTypeView1)
-        plantTypeView1.leftAnchor.constraint(equalTo: img.rightAnchor, constant: 20).isActive=true
-        plantTypeView1.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 3).isActive=true
-        plantTypeView1.widthAnchor.constraint(equalToConstant: 10).isActive=true
-        plantTypeView1.heightAnchor.constraint(equalToConstant: 10).isActive=true
-        plantTypeView1.makeRounded2()
+//        plantTypeView1.blink2()
+//        containerView.addSubview(plantTypeView1)
+//        plantTypeView1.leftAnchor.constraint(equalTo: img.rightAnchor, constant: 100).isActive=true
+//        plantTypeView1.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 3).isActive=true
+//        plantTypeView1.widthAnchor.constraint(equalToConstant: 10).isActive=true
+//        plantTypeView1.heightAnchor.constraint(equalToConstant: 10).isActive=true
+//        plantTypeView1.makeRounded2()
+//        
+//        containerView.addSubview(plantTypeView1lbl)
+//        plantTypeView1lbl.leftAnchor.constraint(equalTo: plantTypeView1.rightAnchor, constant: 10).isActive=true
+//        plantTypeView1lbl.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 0).isActive=true
+//        plantTypeView1lbl.widthAnchor.constraint(equalToConstant: 70).isActive=true
+//        plantTypeView1lbl.heightAnchor.constraint(equalToConstant: 20).isActive=true
+//        
+//        containerView.addSubview(plantTypeView2)
+//        plantTypeView2.leftAnchor.constraint(equalTo: img.rightAnchor, constant: 100).isActive=true
+//        plantTypeView2.topAnchor.constraint(equalTo: plantTypeView1.bottomAnchor, constant: 10).isActive=true
+//        // plantTypeView.bottomAnchor.constraint(equalTo: containerView.topAnchor, constant: 0).isActive=true
+//        plantTypeView2.widthAnchor.constraint(equalToConstant: 10).isActive=true
+//        plantTypeView2.heightAnchor.constraint(equalToConstant: 10).isActive=true
+//        plantTypeView2.makeRounded2()
+//        
+//        containerView.addSubview(plantTypeView2lbl)
+//        plantTypeView2lbl.leftAnchor.constraint(equalTo: plantTypeView2.rightAnchor, constant: 10).isActive=true
+//        plantTypeView2lbl.topAnchor.constraint(equalTo: plantTypeView1lbl.bottomAnchor, constant: 0).isActive=true
+//        plantTypeView2lbl.widthAnchor.constraint(equalToConstant: 80).isActive=true
+//        plantTypeView2lbl.heightAnchor.constraint(equalToConstant: 20).isActive=true
+//        
+//        containerView.addSubview(plantTypeView3)
+//        plantTypeView3.leftAnchor.constraint(equalTo: img.rightAnchor, constant: 100).isActive=true
+//        plantTypeView3.topAnchor.constraint(equalTo: plantTypeView2.bottomAnchor, constant: 10).isActive=true
+//        // plantTypeView.bottomAnchor.constraint(equalTo: containerView.topAnchor, constant: 0).isActive=true
+//        plantTypeView3.widthAnchor.constraint(equalToConstant: 10).isActive=true
+//        plantTypeView3.heightAnchor.constraint(equalToConstant: 10).isActive=true
+//        plantTypeView3.makeRounded2()
+//        
+//        
+//        containerView.addSubview(plantTypeView3lbl)
+//        plantTypeView3lbl.leftAnchor.constraint(equalTo: plantTypeView3.rightAnchor, constant: 10).isActive=true
+//        plantTypeView3lbl.topAnchor.constraint(equalTo: plantTypeView2lbl.bottomAnchor, constant: 0).isActive=true
+//        plantTypeView3lbl.widthAnchor.constraint(equalToConstant: 170).isActive=true
+//        plantTypeView3lbl.heightAnchor.constraint(equalToConstant: 20).isActive=true
         
-        containerView.addSubview(plantTypeView1lbl)
-        plantTypeView1lbl.leftAnchor.constraint(equalTo: plantTypeView1.rightAnchor, constant: 10).isActive=true
-        plantTypeView1lbl.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 0).isActive=true
-        plantTypeView1lbl.widthAnchor.constraint(equalToConstant: 70).isActive=true
-        plantTypeView1lbl.heightAnchor.constraint(equalToConstant: 20).isActive=true
-        
-        containerView.addSubview(plantTypeView2)
-        plantTypeView2.leftAnchor.constraint(equalTo: img.rightAnchor, constant: 20).isActive=true
-        plantTypeView2.topAnchor.constraint(equalTo: plantTypeView1.bottomAnchor, constant: 10).isActive=true
-        // plantTypeView.bottomAnchor.constraint(equalTo: containerView.topAnchor, constant: 0).isActive=true
-        plantTypeView2.widthAnchor.constraint(equalToConstant: 10).isActive=true
-        plantTypeView2.heightAnchor.constraint(equalToConstant: 10).isActive=true
-        plantTypeView2.makeRounded2()
-        
-        containerView.addSubview(plantTypeView2lbl)
-        plantTypeView2lbl.leftAnchor.constraint(equalTo: plantTypeView2.rightAnchor, constant: 10).isActive=true
-        plantTypeView2lbl.topAnchor.constraint(equalTo: plantTypeView1lbl.bottomAnchor, constant: 0).isActive=true
-        plantTypeView2lbl.widthAnchor.constraint(equalToConstant: 80).isActive=true
-        plantTypeView2lbl.heightAnchor.constraint(equalToConstant: 20).isActive=true
-        
-        containerView.addSubview(plantTypeView3)
-        plantTypeView3.leftAnchor.constraint(equalTo: img.rightAnchor, constant: 20).isActive=true
-        plantTypeView3.topAnchor.constraint(equalTo: plantTypeView2.bottomAnchor, constant: 10).isActive=true
-        // plantTypeView.bottomAnchor.constraint(equalTo: containerView.topAnchor, constant: 0).isActive=true
-        plantTypeView3.widthAnchor.constraint(equalToConstant: 10).isActive=true
-        plantTypeView3.heightAnchor.constraint(equalToConstant: 10).isActive=true
-        plantTypeView3.makeRounded2()
-        
-        
-        containerView.addSubview(plantTypeView3lbl)
-        plantTypeView3lbl.leftAnchor.constraint(equalTo: plantTypeView3.rightAnchor, constant: 10).isActive=true
-        plantTypeView3lbl.topAnchor.constraint(equalTo: plantTypeView2lbl.bottomAnchor, constant: 0).isActive=true
-        plantTypeView3lbl.widthAnchor.constraint(equalToConstant: 130).isActive=true
-        plantTypeView3lbl.heightAnchor.constraint(equalToConstant: 20).isActive=true
+        containerView.addSubview(settingsbutton)
+        settingsbutton.anchor(top: containerView.topAnchor, left: nil, bottom: containerView.bottomAnchor, right: containerView.rightAnchor, paddingTop: 10, paddingLeft: 0, paddingBottom: 10, paddingRight: 4, width: 30, height: 30, enableInsets: true)
+         settingsbutton.addTarget(self, action: #selector(add), for: .touchUpInside)
     }
     
     let containerView: UIView = {
@@ -152,7 +163,7 @@ class MapheaderView: UIView {
         let lbl=UILabel()
         lbl.text = "Factory"
         lbl.font=UIFont.boldSystemFont(ofSize: 10)
-        lbl.textColor = UIColor(hexString: "#1e91ca")
+        lbl.textColor = UIColor.green
         lbl.backgroundColor = UIColor.clear
         lbl.textAlignment = .left
         lbl.translatesAutoresizingMaskIntoConstraints=false
@@ -171,7 +182,7 @@ class MapheaderView: UIView {
         let lbl=UILabel()
         lbl.text = "Warehouse"
         lbl.font=UIFont.boldSystemFont(ofSize: 10)
-        lbl.textColor = UIColor(hexString: "#1e91ca")
+        lbl.textColor = UIColor.green
         lbl.backgroundColor = UIColor.clear
         lbl.textAlignment = .left
         lbl.translatesAutoresizingMaskIntoConstraints=false
@@ -207,7 +218,7 @@ class MapheaderView: UIView {
         let lbl=UILabel()
         lbl.text = "Regional distribution centre"
         lbl.font=UIFont.boldSystemFont(ofSize: 10)
-        lbl.textColor = UIColor(hexString: "#1e91ca")
+        lbl.textColor = UIColor.green
         lbl.backgroundColor = UIColor.clear
         lbl.textAlignment = .left
         lbl.translatesAutoresizingMaskIntoConstraints=false
@@ -216,12 +227,24 @@ class MapheaderView: UIView {
     let img: UIImageView = {
         var img = UIImageView()
         img.translatesAutoresizingMaskIntoConstraints=false
-        var image: UIImage = UIImage(named: "miqmiq")!
+        var image: UIImage = UIImage(named: "imagewipro")!
         img = UIImageView(image: image)
         img.contentMode = .scaleAspectFill
         return img
     }()
     
+    
+    let settingsbutton: UIButton = {
+        let btn = UIButton()
+        //btn.titleLabel?.text = "locate Plant"
+        btn.backgroundColor = UIColor.white
+       btn.setTitleColor(.black, for: .normal)
+       // btn.setTitle(" locate Plant ", for: .normal)
+        btn.setImage(UIImage(named: "setbutton"), for: .normal)
+      
+     
+        return btn
+    }()
     let progressView : UIProgressView = {
         
         let progess = UIView()
@@ -241,6 +264,10 @@ class MapheaderView: UIView {
     }()
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    @objc func add()  {
+        delegate?.Notifysetting()
     }
 }
 extension UIView {

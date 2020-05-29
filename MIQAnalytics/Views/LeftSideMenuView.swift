@@ -35,7 +35,7 @@ class LeftSideMenuView: UIView {
         //containerView.heightAnchor.constraint(equalToConstant: 40).isActive=true
         containerView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive=true
         containerView.backgroundColor = UIColor.gray
-        containerView.alpha = 0.7
+        containerView.alpha = 0.8
         
         containerView.addSubview(imgView)
         imgView.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 20).isActive=true
@@ -200,7 +200,7 @@ class LeftSideMenuView: UIView {
       btn.titleLabel?.textColor = UIColor.green
         
         btn.backgroundColor = UIColor.lightGray
-        btn.setTitle("MAP", for: .normal)
+        btn.setTitle("Settings", for: .normal)
         
         btn.translatesAutoresizingMaskIntoConstraints=false
         btn.addTarget(self, action: #selector(handleButton(_:)), for: .touchUpInside)
@@ -219,7 +219,7 @@ class LeftSideMenuView: UIView {
     let settingButton : UIButton = {
         let btn = UIButton()
         btn.backgroundColor = UIColor.lightGray
-        btn.setTitle("Settings", for: .normal)
+        btn.setTitle("Logout", for: .normal)
          btn.titleLabel?.textColor = UIColor.green
         
         btn.translatesAutoresizingMaskIntoConstraints=false

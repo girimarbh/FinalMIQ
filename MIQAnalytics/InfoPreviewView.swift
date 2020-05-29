@@ -102,7 +102,7 @@ class InfoPreviewView: UIView {
     let lblTitle: UILabel = {
         let lbl=UILabel()
         lbl.text = "     Name"
-        lbl.font=UIFont.boldSystemFont(ofSize: 24)
+        lbl.font=UIFont(name: "Apple SD Gothic Neo", size: 20.0)
         lbl.textColor = UIColor(hexString: "#1e91ca")
         lbl.backgroundColor = UIColor.clear
         lbl.textAlignment = .left
@@ -113,7 +113,7 @@ class InfoPreviewView: UIView {
     let lblComments: UILabel = {
         let lbl=UILabel()
         lbl.text = "Name"
-        lbl.font=UIFont.boldSystemFont(ofSize: 18)
+        lbl.font=UIFont(name: "Apple SD Gothic Neo", size: 20.0)
         lbl.textColor = UIColor.white
         lbl.backgroundColor = UIColor.clear
         lbl.textAlignment = .left
@@ -123,7 +123,7 @@ class InfoPreviewView: UIView {
     let percentageLabel: UILabel = {
         let lbl=UILabel()
         //lbl.text = "54% healthy"
-        lbl.font=UIFont.boldSystemFont(ofSize:20)
+        lbl.font=UIFont(name: "Apple SD Gothic Neo", size: 20.0)
         lbl.textColor = UIColor.green
         lbl.backgroundColor = UIColor.clear
         lbl.textAlignment = .left

@@ -149,6 +149,7 @@ class DrilldownViewController: UIViewController , UITableViewDelegate, UITableVi
          //myTableView.register(OperationCell.self, forCellReuseIdentifier: cellId3)
        // myTableView.register(KPIStstusCell.self, forCellReuseIdentifier: cellId3)
         myTableView.isHidden = true
+        myTableView.allowsSelection = false
 //        myTableView.dataSource = self
 //        myTableView.delegate = self
 //        myTableView.showsVerticalScrollIndicator = false

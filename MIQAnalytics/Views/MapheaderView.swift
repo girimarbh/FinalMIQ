@@ -43,11 +43,12 @@ class MapheaderView: UIView {
         containerView.isOpaque = true
         
         containerView.addSubview(img)
-        img.leftAnchor.constraint(equalTo: containerView.leftAnchor, constant: 10).isActive=true
-        img.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 10).isActive=true
-        img.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: 10).isActive=true
-        img.heightAnchor.constraint(equalToConstant: 120).isActive=true
-        img.widthAnchor.constraint(equalToConstant: 80).isActive=true
+        img.leftAnchor.constraint(equalTo: containerView.leftAnchor, constant: 2).isActive=true
+        img.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 2).isActive=true
+        img.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: 2).isActive=true
+        img.heightAnchor.constraint(equalToConstant: 40).isActive=true
+        img.widthAnchor.constraint(equalToConstant: 40).isActive=true
+        img.contentMode = .scaleAspectFill
         img.backgroundColor = UIColor.black
         
 //        plantTypeView1.blink2()
@@ -240,7 +241,7 @@ class MapheaderView: UIView {
         btn.backgroundColor = UIColor.white
        btn.setTitleColor(.black, for: .normal)
        // btn.setTitle(" locate Plant ", for: .normal)
-        btn.setImage(UIImage(named: "setbutton"), for: .normal)
+        btn.setImage(UIImage(named: "settingnew"), for: .normal)
       
      
         return btn

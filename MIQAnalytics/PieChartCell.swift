@@ -238,8 +238,8 @@ required init?(coder: NSCoder) {
            
            let set = PieChartDataSet( entries: entries, label: nil)
 
-     //  var colors = [UIColor.init(hexString: "#138b4a"),UIColor.init(hexString: "#e49e0d"),UIColor.init(hexString: "#f54450")]
-      var colors = [UIColor.init(hexString: "#5ca8c6"),UIColor.init(hexString: "#5659d2"),UIColor.init(hexString: "#bf4cd3")]
+       var colors = [UIColor.init(hexString: "#138b4a"),UIColor.init(hexString: "#e49e0d"),UIColor.init(hexString: "#f54450")]
+      //var colors = [UIColor.init(hexString: "#5ca8c6"),UIColor.init(hexString: "#5659d2"),UIColor.init(hexString: "#bf4cd3")]
            // set.colors = colors as! [NSUIColor]
            set.colors = colors as! [NSUIColor]
            
@@ -260,7 +260,7 @@ required init?(coder: NSCoder) {
     
         let attributedString = NSMutableAttributedString(string: totalKPIStr + "KPI", attributes: [NSAttributedString.Key.foregroundColor:UIColor.white , NSAttributedString.Key.font: UIFont(name: "Apple SD Gothic Neo", size: 16.0)])
                chart2.centerAttributedText = attributedString
-           
+        chart2.isUserInteractionEnabled = false
            onTargetLabel.text = "On Target"
            vulnerableLabel.text = "Vulnerable"
             offTatgetLabel.text = "Off-Target"

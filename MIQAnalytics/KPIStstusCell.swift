@@ -16,7 +16,7 @@ protocol NotificationProtocalKPIPopup {
     
 }
 
-class KPIStstusCell: UITableViewCell {
+class KPIStstusCell: UITableViewCell  {
     
      var delegate : NotificationProtocalKPIPopup?
     let containerView: UIView = {
@@ -38,7 +38,7 @@ class KPIStstusCell: UITableViewCell {
         let lbl = UILabel()
         lbl.textColor = .white
        // lbl.font = UIFont.systemFont(ofSize: 14)
-        lbl.font = UIFont(name: "Apple SD Gothic Neo", size: 14)
+        lbl.font = UIFont(name: "Apple SD Gothic Neo", size: 15)
         lbl.textAlignment = .center
         lbl.backgroundColor = UIColor.clear
         let underlineAttriString = NSAttributedString(string:"On Target", attributes:
@@ -51,7 +51,7 @@ class KPIStstusCell: UITableViewCell {
         let lbl = UILabel()
         lbl.textColor = .white
         //lbl.font = UIFont.systemFont(ofSize: 14)
-        lbl.font = UIFont(name: "Apple SD Gothic Neo", size: 14)
+        lbl.font = UIFont(name: "Apple SD Gothic Neo", size: 15)
         lbl.textAlignment = .center
        // lbl.text = "22"
         // lbl.layer.borderColor = UIColor(red:227/255, green:83/255, blue:86/255, alpha: 1).cgColor
@@ -67,7 +67,7 @@ class KPIStstusCell: UITableViewCell {
     public let vulnerableLabel : UILabel = {
         let lbl = UILabel()
         lbl.textColor = .white
-         lbl.font = UIFont(name: "Apple SD Gothic Neo", size: 14)
+         lbl.font = UIFont(name: "Apple SD Gothic Neo", size: 15)
         //lbl.font = UIFont.systemFont(ofSize: 14)
         lbl.textAlignment = .center
         lbl.backgroundColor = UIColor.clear
@@ -80,7 +80,7 @@ class KPIStstusCell: UITableViewCell {
     public let vulnerableValueLabel : UILabel = {
         let lbl = UILabel()
         lbl.textColor = .white
-         lbl.font = UIFont(name: "Apple SD Gothic Neo", size: 14)
+         lbl.font = UIFont(name: "Apple SD Gothic Neo", size: 15)
         //lbl.font = UIFont.systemFont(ofSize: 14)
         lbl.textAlignment = .center
       //  lbl.text = "22"
@@ -97,7 +97,7 @@ class KPIStstusCell: UITableViewCell {
         let lbl = UILabel()
         lbl.textColor = .white
         //lbl.font = UIFont.systemFont(ofSize: 14)
-         lbl.font = UIFont(name: "Apple SD Gothic Neo", size: 14)
+         lbl.font = UIFont(name: "Apple SD Gothic Neo", size: 15)
         lbl.textAlignment = .center
         
         let underlineAttriString = NSAttributedString(string:"Off Target", attributes:
@@ -111,7 +111,7 @@ class KPIStstusCell: UITableViewCell {
         let lbl = UILabel()
         lbl.textColor = .white
        // lbl.font = UIFont.systemFont(ofSize: 14)
-         lbl.font = UIFont(name: "Apple SD Gothic Neo", size: 14)
+         lbl.font = UIFont(name: "Apple SD Gothic Neo", size: 15)
         lbl.textAlignment = .center
       //  lbl.text = "22"
         //lbl.layer.borderColor = UIColor(red:64/255, green:136/255, blue:80/255, alpha: 1).cgColor
@@ -262,6 +262,7 @@ class KPIStstusCell: UITableViewCell {
 
         let attributedString = NSMutableAttributedString(string: (categoryhealth.categoryName)!, attributes: [NSAttributedString.Key.foregroundColor:UIColor.white , NSAttributedString.Key.font: UIFont(name: "Apple SD Gothic Neo", size: 16.0)])
         chart2.centerAttributedText = attributedString
+        chart2.isUserInteractionEnabled = false
     }
     
   //  func updateCellContentt(property:[String],value :[Double])
@@ -365,18 +366,18 @@ class KPIStstusCell: UITableViewCell {
         
         chart2.anchor(top: topAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, paddingTop: 20, paddingLeft: 20, paddingBottom: 20, paddingRight: 20, width: 240, height: 240, enableInsets: true)
         
-        onTargetValueLabel.anchor(top: chart2.bottomAnchor, left: nil, bottom: nil, right: nil, paddingTop: 0, paddingLeft: 10, paddingBottom: 0, paddingRight: 0, width: 25, height: 25, enableInsets: true)
+        onTargetValueLabel.anchor(top: chart2.bottomAnchor, left: nil, bottom: nil, right: onTargetLabel.leftAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: -5, width: 25, height: 25, enableInsets: true)
         
         onTargetValueLabel.layer.masksToBounds = true
         onTargetValueLabel.layer.cornerRadius = 25/2
         
-        onTargetLabel.anchor(top: chart2.bottomAnchor, left: onTargetValueLabel.rightAnchor, bottom: nil, right: nil, paddingTop: 0, paddingLeft: -10, paddingBottom: 5, paddingRight: 5, width: 90, height: 25, enableInsets: true)
+        onTargetLabel.anchor(top: chart2.bottomAnchor, left: nil, bottom: nil, right: nil, paddingTop: 0, paddingLeft: 6, paddingBottom: 5, paddingRight: 0, width: 80, height: 25, enableInsets: true)
         
-        vulnerableValueLabel.anchor(top: chart2.bottomAnchor, left: onTargetLabel.rightAnchor, bottom: nil, right: nil, paddingTop: 0, paddingLeft: 10, paddingBottom: 0, paddingRight: 0, width: 25, height: 25, enableInsets: true)
+        vulnerableValueLabel.anchor(top: chart2.bottomAnchor, left: onTargetLabel.rightAnchor, bottom: nil, right: nil, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 25, height: 25, enableInsets: true)
         vulnerableValueLabel.layer.masksToBounds = true
         vulnerableValueLabel.layer.cornerRadius = 25/2
         
-        vulnerableLabel.anchor(top: chart2.bottomAnchor, left: vulnerableValueLabel.rightAnchor, bottom: nil, right: nil, paddingTop: 0, paddingLeft: -10, paddingBottom: 5, paddingRight: 5, width: 100, height: 25, enableInsets: true)
+        vulnerableLabel.anchor(top: chart2.bottomAnchor, left: vulnerableValueLabel.rightAnchor, bottom: nil, right: nil, paddingTop: 0, paddingLeft: -2, paddingBottom: 5, paddingRight: 5, width: 80, height: 25, enableInsets: true)
         
         //            vulnerableValueLabel.layer.masksToBounds = true
         //            vulnerableValueLabel.layer.cornerRadius = 25/2

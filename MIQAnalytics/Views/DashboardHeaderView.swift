@@ -23,8 +23,13 @@ protocol StoreDelegate {
     func didPressButton(button:UIButton)
 }
 
+protocol insightdelegate {
+    func didPressnotificationButton(button:UIButton)
+}
+
 class DashboardHeaderView: UIView {
     var delegate:StoreDelegate!
+    var notidelegate: insightdelegate!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -51,6 +56,7 @@ class DashboardHeaderView: UIView {
        containerView.backgroundColor = UIColor.init(hexString: "#2C2A2A")
         
         containerView.addSubview(loacatePlantbutton)
+        containerView.addSubview(Notificationbutton)
         loacatePlantbutton.anchor(top: containerView.topAnchor, left: containerView.leftAnchor, bottom: nil, right: nil, paddingTop: 10, paddingLeft: 10, paddingBottom: 0, paddingRight: 0, width: 30, height: 30, enableInsets: true)
         
         
@@ -58,6 +64,11 @@ class DashboardHeaderView: UIView {
         locatePlantLabel.anchor(top: containerView.topAnchor, left: loacatePlantbutton.rightAnchor, bottom: nil, right: nil, paddingTop: 10, paddingLeft: 10, paddingBottom: 0, paddingRight: 0, width: 100, height: 30, enableInsets: true)
         
         loacatePlantbutton.addTarget(self, action: #selector(buttonPress(button:)), for: .touchUpInside)
+        
+        Notificationbutton.addTarget(self, action: #selector(buttonPressnotification(button:)), for: .touchUpInside)
+        
+        
+        Notificationbutton.anchor(top: containerView.topAnchor, left: nil, bottom: nil, right: containerView.rightAnchor, paddingTop: 5, paddingLeft: 0, paddingBottom: 0, paddingRight: 5, width: 30, height: 30, enableInsets: true)
 //        loacatePlantbutton.leftAnchor.constraint(equalTo: containerView.leftAnchor, constant: 10).isActive=true
 //        loacatePlantbutton.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 10).isActive=true
 //        loacatePlantbutton.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: 30).isActive=true
@@ -116,6 +127,16 @@ class DashboardHeaderView: UIView {
         return btn
     }()
     
+    let Notificationbutton: UIButton = {
+        let btn = UIButton()
+         //btn.titleLabel?.text = "locate Plant"
+         btn.backgroundColor = UIColor.white
+        btn.setTitleColor(.green, for: .normal)
+        // btn.setTitle(" locate Plant ", for: .normal)
+         btn.setImage(UIImage(named: "notification"), for: .normal)
+        return btn
+    }()
+    
    
     
     required init?(coder aDecoder: NSCoder) {
@@ -124,7 +145,12 @@ class DashboardHeaderView: UIView {
     @objc func buttonPress(button:UIButton) {
         delegate.didPressButton(button: button)
     }
+    
+    @objc func buttonPressnotification(button:UIButton) {
+        notidelegate.didPressnotificationButton(button: button)
+    }
 }
+
 
 
 

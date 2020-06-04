@@ -814,7 +814,7 @@ required init?(coder: NSCoder) {
         }
         if btn.tag == 1{
         dailyLabelbtn.isHidden = false
-        dailybtnRightview.isHidden = false
+        dailybtnRightview.isHidden = true
         }
         print("the tag value is \(btn.tag)")
         self.delegate?.managementoperationSelected(str: btn.tag)

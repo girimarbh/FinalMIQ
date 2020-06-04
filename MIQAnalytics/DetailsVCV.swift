@@ -13,7 +13,26 @@ import UIKit
 import UserNotifications
 
 
-class DetailsVC : UIViewController, UITableViewDelegate, UITableViewDataSource , DashbardNotificationProtocal , StoreDelegate , NotificationProtocalKPIPopup , NotificationProtocalDrilldown{
+class DetailsVC : UIViewController, UITableViewDelegate, UITableViewDataSource , DashbardNotificationProtocal , StoreDelegate , NotificationProtocalKPIPopup , NotificationProtocalDrilldown , insightdelegate  {
+    func didPressnotificationButton(button: UIButton) {
+        print("pressed notification button")
+        
+        notificationinsightview = NotificationvView(frame: CGRect(x: 10.0, y: 200.0, width: 350, height: 300))
+        notificationinsightview.setData(popuparray: dashboardviewmodel.insightsarray)
+        let blurEffect = UIBlurEffect(style: .regular)
+        let blurredEffectView = UIVisualEffectView(effect: blurEffect)
+        blurredEffectView.frame = self.view.bounds
+        blurredEffectView.alpha = 0.9
+        view.addSubview(blurredEffectView)
+        let tap1 = UITapGestureRecognizer(target: self, action: #selector(longLabelPressed2))
+               tap1.numberOfTapsRequired = 1
+        blurredEffectView.addGestureRecognizer(tap1)
+        self.view.addSubview(notificationinsightview)
+    }
+    
+    
+    
+   
     
     
    
@@ -66,6 +85,13 @@ class DetailsVC : UIViewController, UITableViewDelegate, UITableViewDataSource ,
         if let view = recognizer.view {
             view.removeFromSuperview()
             kpipopupview.removeFromSuperview()
+        }
+    }
+    
+    @objc func longLabelPressed2(recognizer:UITapGestureRecognizer){
+        if let view = recognizer.view {
+            view.removeFromSuperview()
+            notificationinsightview.removeFromSuperview()
         }
     }
     
@@ -187,6 +213,7 @@ nc.addObserver(self, selector: #selector(userLoggedIn(_:)), name: Notification.N
 
        headerView  = DashboardHeaderView(frame: CGRect(x: 0.0, y: barHeight, width: self.view.frame.width, height: 50 ))
         headerView.delegate = self
+        headerView.notidelegate = self
 //        kpipopupview = KPIPopupView(frame: CGRect(x: 10.0, y: 300.0, width: 350, height: 200 ))
         
         self.view.addSubview(headerView)
@@ -215,6 +242,7 @@ nc.addObserver(self, selector: #selector(userLoggedIn(_:)), name: Notification.N
         myTableView.showsVerticalScrollIndicator = false
        self.view.addSubview(myTableView)
         self.myTableView.isHidden = true
+        self.myTableView.allowsSelection = false
        
 
 
@@ -397,6 +425,12 @@ nc.addObserver(self, selector: #selector(userLoggedIn(_:)), name: Notification.N
         
            return v
        }()
+    
+    var notificationinsightview : NotificationvView = {
+        let v = NotificationvView()
+     
+        return v
+    }()
 }
 extension DetailsVC: UNUserNotificationCenterDelegate {
     

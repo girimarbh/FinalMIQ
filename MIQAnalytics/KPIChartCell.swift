@@ -197,6 +197,7 @@ required init?(coder: NSCoder) {
             
             let attributedString = NSMutableAttributedString(string: totalKPIStr + "KPI" , attributes: [NSAttributedString.Key.foregroundColor:UIColor.white , NSAttributedString.Key.font: UIFont(name: "Apple SD Gothic Neo", size: 16.0) ])
             chart2.centerAttributedText = attributedString
+            chart2.isUserInteractionEnabled = false
 //               chart2.centerText = totalKPIStr + "KPI"
                
                onTargetLabel.text = "On Target"

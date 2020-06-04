@@ -192,6 +192,7 @@ class PlantStatusCell: UITableViewCell {
         
         let attributedString = NSMutableAttributedString(string: String(Int(percentagearray[0])) + "%Healthy", attributes: [NSAttributedString.Key.foregroundColor:UIColor.white , NSAttributedString.Key.font: UIFont(name: "Apple SD Gothic Neo", size: 16.0)])
                       chart2.centerAttributedText = attributedString
+        chart2.isUserInteractionEnabled = false
         
            onTargetLabel.text = "On Target"
            vulnerableLabel.text = "Vulnerable"

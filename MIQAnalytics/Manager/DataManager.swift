@@ -20,6 +20,7 @@ class DataManager: NSObject {
     static public let datamanager = DataManager()
     var selectbtn : Int?
     var operationSelected : Int?
+    var darkmode : Bool?
     
     public override init() {
         

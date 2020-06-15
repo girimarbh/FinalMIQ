@@ -8,7 +8,14 @@
 
 import UIKit
 
+protocol Notificationmapbtn {
+ func Notifymap()
+// func updateError()
+ 
+}
+
 class LeftSideMenuView: UIView {
+     var mapdelegate : Notificationmapbtn?
    
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -93,6 +100,14 @@ class LeftSideMenuView: UIView {
         //settingButton.rightAnchor.constraint(equalTo: containerView.rightAnchor, constant: 20).isActive=true
         settingButton.heightAnchor.constraint(equalToConstant: 40).isActive=true
         settingButton.widthAnchor.constraint(equalToConstant: 180).isActive=true
+        
+        
+        containerView.addSubview(darkmodelbl)
+        containerView.addSubview(switchbtn)
+        
+        darkmodelbl.anchor(top: settingButton.bottomAnchor, left: containerView.leftAnchor, bottom: nil, right: nil, paddingTop: 5, paddingLeft: 15, paddingBottom: 0, paddingRight: 0, width: 100, height: 40, enableInsets: true)
+        
+        switchbtn.anchor(top: settingButton.bottomAnchor, left: darkmodelbl.rightAnchor, bottom: nil, right: nil, paddingTop: 15, paddingLeft: 5, paddingBottom: 0, paddingRight: 0, width: 50, height: 20, enableInsets: true)
 
 
         
@@ -123,7 +138,7 @@ class LeftSideMenuView: UIView {
         v.backgroundColor = UIColor.gray
         v.translatesAutoresizingMaskIntoConstraints=false
         
-        v.layer.borderWidth  = 2.0
+       // v.layer.borderWidth  = 2.0
         //  v.layer.borderColor = (UIColor.red as! CGColor)
         v.layer.cornerRadius = 0.25
         
@@ -142,6 +157,25 @@ class LeftSideMenuView: UIView {
            
            return v
        }()
+    
+    let switchbtn : UISwitch = {
+        let switchbtn = UISwitch()
+       switchbtn.addTarget(self, action: #selector(switchStateDidChange(_:)), for: .valueChanged)
+        switchbtn.setOn(true, animated: false)
+      return switchbtn
+        
+    }()
+    
+    let darkmodelbl: UILabel = {
+        let lbl=UILabel()
+        lbl.text = "Dark mode"
+        lbl.font=UIFont.boldSystemFont(ofSize: 18)
+        lbl.textColor = UIColor.white
+        lbl.backgroundColor = UIColor.gray
+        lbl.textAlignment = .left
+        lbl.translatesAutoresizingMaskIntoConstraints=false
+        return lbl
+    }()
     
     let imgView: UIImageView = {
         let v=UIImageView()
@@ -253,6 +287,19 @@ class LeftSideMenuView: UIView {
         @objc func handleButton(_ sender: AnyObject) {
 
 //         delegate?.updateContentOnView()
+    }
+    
+    @objc func switchStateDidChange(_ sender:UISwitch){
+        if (sender.isOn == true){
+            print("UISwitch state is now ON")
+           DataManager.datamanager.darkmode = true
+            mapdelegate?.Notifymap()
+        }
+        else{
+            print("UISwitch state is now Off")
+            DataManager.datamanager.darkmode = false
+            mapdelegate?.Notifymap()
+        }
     }
 }
 

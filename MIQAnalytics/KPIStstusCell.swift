@@ -21,7 +21,12 @@ class KPIStstusCell: UITableViewCell  {
      var delegate : NotificationProtocalKPIPopup?
     let containerView: UIView = {
         let v=UIView()
-        v.backgroundColor = UIColor.black
+        if DataManager.datamanager.darkmode! {
+                  v.backgroundColor = UIColor.black
+                  }
+                  else{
+                      v.backgroundColor = UIColor.init(hexString: "#daecf0")
+                  }
         //v.backgroundColor = UIColor.init(hexString: "#2C2A2A")
         
         //v.alpha = 0.5
@@ -36,7 +41,14 @@ class KPIStstusCell: UITableViewCell  {
     
     public let onTargetLabel : UILabel = {
         let lbl = UILabel()
+        //lbl.textColor = .white
+        if DataManager.datamanager.darkmode!
+        {
         lbl.textColor = .white
+        }
+        else{
+             lbl.textColor = .gray
+        }
        // lbl.font = UIFont.systemFont(ofSize: 14)
         lbl.font = UIFont(name: "Apple SD Gothic Neo", size: 15)
         lbl.textAlignment = .center
@@ -49,7 +61,13 @@ class KPIStstusCell: UITableViewCell  {
     }()
     public let onTargetValueLabel : UILabel = {
         let lbl = UILabel()
+        if DataManager.datamanager.darkmode!
+        {
         lbl.textColor = .white
+        }
+        else{
+             lbl.textColor = .white
+        }
         //lbl.font = UIFont.systemFont(ofSize: 14)
         lbl.font = UIFont(name: "Apple SD Gothic Neo", size: 15)
         lbl.textAlignment = .center
@@ -57,7 +75,15 @@ class KPIStstusCell: UITableViewCell  {
         // lbl.layer.borderColor = UIColor(red:227/255, green:83/255, blue:86/255, alpha: 1).cgColor
         // lbl.layer.borderWidth = 1.0;
         //lbl.layer.cornerRadius = 12.5
-          lbl.backgroundColor =  UIColor(red:64/255, green:136/255, blue:80/255, alpha: 1)
+        //  lbl.backgroundColor =  UIColor(red:64/255, green:136/255, blue:80/255, alpha: 1)
+        
+        if DataManager.datamanager.darkmode! {
+           lbl.backgroundColor = UIColor.init(hexString: "#138b4a")
+           }
+           else
+           {
+               lbl.backgroundColor = UIColor.init(hexString: "#2b9e94")
+           }
        
         //lbl.layer.borderColor = UIColor.black as? CGColor
         return lbl
@@ -66,7 +92,14 @@ class KPIStstusCell: UITableViewCell  {
     
     public let vulnerableLabel : UILabel = {
         let lbl = UILabel()
+      //  lbl.textColor = .white
+        if DataManager.datamanager.darkmode!
+        {
         lbl.textColor = .white
+        }
+        else{
+             lbl.textColor = .gray
+        }
          lbl.font = UIFont(name: "Apple SD Gothic Neo", size: 15)
         //lbl.font = UIFont.systemFont(ofSize: 14)
         lbl.textAlignment = .center
@@ -88,14 +121,28 @@ class KPIStstusCell: UITableViewCell  {
         //lbl.layer.borderColor = UIColor.black.cgColor
         // lbl.layer.borderWidth = 1.0;
         //lbl.layer.cornerRadius = 12.5
-        lbl.backgroundColor =  UIColor(red:218/255, green:160/255, blue:58/255, alpha: 1)
+      //  lbl.backgroundColor =  UIColor(red:218/255, green:160/255, blue:58/255, alpha: 1)
+        if DataManager.datamanager.darkmode!{
+                lbl.backgroundColor = UIColor.init(hexString: "#e49e0d")
+           }
+           else
+           {
+                lbl.backgroundColor = UIColor.init(hexString: "#c086d1")
+           }
         //lbl.layer.borderColor = UIColor.black as? CGColor
         return lbl
     }()
     
     public let offTatgetLabel : UILabel = {
         let lbl = UILabel()
+       // lbl.textColor = .white
+        if DataManager.datamanager.darkmode!
+        {
         lbl.textColor = .white
+        }
+        else{
+             lbl.textColor = .gray
+        }
         //lbl.font = UIFont.systemFont(ofSize: 14)
          lbl.font = UIFont(name: "Apple SD Gothic Neo", size: 15)
         lbl.textAlignment = .center
@@ -118,7 +165,14 @@ class KPIStstusCell: UITableViewCell  {
         //  lbl.layer.borderColor = UIColor.black.cgColor
         //lbl.layer.borderWidth = 1.0;
         //lbl.layer.cornerRadius = 12.5
-         lbl.backgroundColor = UIColor(red:227/255, green:83/255, blue:86/255, alpha: 1)
+        // lbl.backgroundColor = UIColor(red:227/255, green:83/255, blue:86/255, alpha: 1)
+        if DataManager.datamanager.darkmode! {
+                       lbl.backgroundColor = UIColor.init(hexString: "#f54450")
+           }
+           else
+           {
+            lbl.backgroundColor = UIColor.init(hexString: "#6aa5c4")
+           }
         //lbl.layer.borderColor = UIColor.black as? CGColor
         return lbl
     }()
@@ -139,7 +193,16 @@ class KPIStstusCell: UITableViewCell  {
     }
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        self.backgroundColor = UIColor.black
+      //  self.backgroundColor = UIColor.black
+        if DataManager.datamanager.darkmode! {
+            self.backgroundColor = UIColor.black
+            
+        }
+        
+        else {
+            self.backgroundColor = UIColor.init(hexString: "edf8fa")
+        }
+          
         addSubview(containerView)
         addSubview(onTargetLabel)
         addSubview(onTargetValueLabel)
@@ -208,9 +271,19 @@ class KPIStstusCell: UITableViewCell  {
         }
         
         let set = PieChartDataSet( entries: entries, label: nil)
-        var colors = [UIColor.init(hexString: "#138b4a"),UIColor.init(hexString: "#e49e0d"),UIColor.init(hexString: "#f54450")]
+      //  var colors = [UIColor.init(hexString: "#138b4a"),UIColor.init(hexString: "#e49e0d"),UIColor.init(hexString: "#f54450")]
+        if DataManager.datamanager.darkmode! {
+                var colors = [UIColor.init(hexString: "#138b4a"),UIColor.init(hexString: "#e49e0d"),UIColor.init(hexString: "#f54450")]
+                      set.colors = colors as! [NSUIColor]
+                 }
+                 else {
+               var colors = [UIColor.init(hexString: "#2b9e94"),UIColor.init(hexString: "#c086d1"),UIColor.init(hexString: "#6aa5c4")]
+                 
+                    // set.colors = colors as! [NSUIColor]
+                    set.colors = colors as! [NSUIColor]
+                 }
         // set.colors = colors as! [NSUIColor]
-        set.colors = colors as! [NSUIColor]
+       // set.colors = colors as! [NSUIColor]
         
         let data = PieChartData(dataSet: set)
         chart2.data = data
@@ -250,18 +323,31 @@ class KPIStstusCell: UITableViewCell  {
         //vulnerableValueLabel.text = categoryhealth.vulenrable
         
         
-//                           let attachment = NSTextAttachment()
-//                           attachment.image = UIImage(named: "quality_icon")
-//                           let attachmentString = NSAttributedString(attachment: attachment)
-//                           let labelImg = NSMutableAttributedString(string: "")
-//                           labelImg.append(attachmentString)
-//         chart2.centerAttributedText = labelImg
-        chart2.holeColor = UIColor.black
+                           let attachment = NSTextAttachment()
+                           attachment.image = UIImage(named: "quality_icon")
+                           let attachmentString = NSAttributedString(attachment: attachment)
+                           let labelImg = NSMutableAttributedString(string: "")
+                           labelImg.append(attachmentString)
+         chart2.centerAttributedText = labelImg
+        //chart2.holeColor = UIColor.black
+        if DataManager.datamanager.darkmode! {
+               chart2.holeColor = UIColor.black
+               }
+               else{
+                   chart2.holeColor = UIColor.init(hexString: "#daecf0")
+               }
         
-        
+        if DataManager.datamanager.darkmode! {
 
         let attributedString = NSMutableAttributedString(string: (categoryhealth.categoryName)!, attributes: [NSAttributedString.Key.foregroundColor:UIColor.white , NSAttributedString.Key.font: UIFont(name: "Apple SD Gothic Neo", size: 16.0)])
-        chart2.centerAttributedText = attributedString
+        
+      //  chart2.centerAttributedText = attributedString
+        }
+        else{
+            let attributedString = NSMutableAttributedString(string: (categoryhealth.categoryName)!, attributes: [NSAttributedString.Key.foregroundColor:UIColor.gray , NSAttributedString.Key.font: UIFont(name: "Apple SD Gothic Neo", size: 16.0)])
+            
+         //   chart2.centerAttributedText = attributedString
+        }
         chart2.isUserInteractionEnabled = false
     }
     
@@ -314,8 +400,19 @@ class KPIStstusCell: UITableViewCell  {
         
         let set = PieChartDataSet( entries: entries, label: nil)
         
-        var colors = [UIColor.green,UIColor.red,UIColor(red:218/255 ,green:165/255 ,blue:32/255,alpha:1.0 ),UIColor.blue,UIColor.red]
-        set.colors = colors
+       // var colors = [UIColor.green,UIColor.red,UIColor(red:218/255 ,green:165/255 ,blue:32/255,alpha:1.0 ),UIColor.blue,UIColor.red]
+        
+        if DataManager.datamanager.darkmode! {
+         var colors = [UIColor.init(hexString: "#138b4a"),UIColor.init(hexString: "#e49e0d"),UIColor.init(hexString: "#f54450")]
+               set.colors = colors as! [NSUIColor]
+          }
+          else {
+        var colors = [UIColor.init(hexString: "#2b9e94"),UIColor.init(hexString: "#c086d1"),UIColor.init(hexString: "#6aa5c4")]
+          
+             // set.colors = colors as! [NSUIColor]
+             set.colors = colors as! [NSUIColor]
+          }
+       // set.colors = colors
         let data = PieChartData(dataSet: set)
         chart.data = data
         chart.noDataText = "No data available"

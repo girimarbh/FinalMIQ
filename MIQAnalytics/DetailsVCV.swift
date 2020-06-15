@@ -17,7 +17,7 @@ class DetailsVC : UIViewController, UITableViewDelegate, UITableViewDataSource ,
     func didPressnotificationButton(button: UIButton) {
         print("pressed notification button")
         
-        notificationinsightview = NotificationvView(frame: CGRect(x: 10.0, y: 200.0, width: 350, height: 300))
+        notificationinsightview = NotificationvView(frame: CGRect(x: self.view.frame.width/2 - 172, y: self.view.frame.height/2 - 150, width: 350, height: 300))
         notificationinsightview.setData(popuparray: dashboardviewmodel.insightsarray)
         let blurEffect = UIBlurEffect(style: .regular)
         let blurredEffectView = UIVisualEffectView(effect: blurEffect)

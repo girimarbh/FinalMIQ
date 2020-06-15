@@ -13,6 +13,7 @@ class NotificationvView: UIView , UITableViewDelegate , UITableViewDataSource{
         var kpipopuparray = [Insights]()
         var currentstatus : String?
         var currentcategory : String?
+    
         override init(frame: CGRect) {
         super.init(frame: frame)
         self.backgroundColor=UIColor.black
@@ -48,7 +49,7 @@ class NotificationvView: UIView , UITableViewDelegate , UITableViewDataSource{
             return cell
         }
         func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-            return 200
+            return UITableView.automaticDimension
         }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -73,8 +74,11 @@ class NotificationvView: UIView , UITableViewDelegate , UITableViewDataSource{
         table.dataSource = self
         table.delegate = self
         table.register(NotificationPopupCell.self, forCellReuseIdentifier: cellId)
+        table.separatorStyle = .singleLine
 
-
+        table.estimatedRowHeight = 300
+        table.rowHeight = UITableView.automaticDimension
+         table.allowsSelection = false
 
         
        
@@ -159,28 +163,39 @@ class NotificationPopupCell: UITableViewCell {
     private let notificationLabel : UILabel = {
         let lbl = UILabel()
         lbl.textColor = .green
-        UIFont(name: "Apple SD Gothic Neo", size: 20)
+        lbl.font = UIFont.boldSystemFont(ofSize: 16)
         lbl.textAlignment = .center
-        lbl.backgroundColor = UIColor.clear
+        lbl.numberOfLines = 0
+       // lbl.backgroundColor = UIColor.white
         return lbl
     }()
     
+    
     private let notificationContentLabel : UILabel = {
-           let lbl = UILabel()
-           lbl.textColor = .white
-          UIFont(name: "Apple SD Gothic Neo", size: 14)
-           lbl.textAlignment = .center
-           lbl.backgroundColor = UIColor.clear
-       
+        let lbl = UILabel()
+        lbl.textColor = .white
+        lbl.font = UIFont.systemFont(ofSize: 14)
+        lbl.textAlignment = .left
         lbl.numberOfLines = 0
-
-        lbl.preferredMaxLayoutWidth = 700
-
-        lbl.lineBreakMode = NSLineBreakMode.byWordWrapping
-
-        lbl.sizeToFit()
-           return lbl
-       }()
+        // lbl.backgroundColor = UIColor.white
+        return lbl
+    }()
+    
+//    private let notificationContentLabel : UILabel = {
+//           let lbl = UILabel()
+//           lbl.textColor = .white
+//          UIFont(name: "Apple SD Gothic Neo", size: 12)
+//           lbl.textAlignment = .center
+//           lbl.backgroundColor = UIColor.clear
+//        lbl.textAlignment = .left
+//       lbl.numberOfLines = 0
+//lbl.preferredMaxLayoutWidth = 700
+//
+//        lbl.lineBreakMode = NSLineBreakMode.byWordWrapping
+//
+//        lbl.sizeToFit()
+//           return lbl
+//       }()
 
 
         
@@ -199,10 +214,10 @@ class NotificationPopupCell: UITableViewCell {
     }
         override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        self.backgroundColor = UIColor.white
-        addSubview(containerView)
-        containerView.addSubview(notificationLabel)
-            containerView.addSubview(notificationContentLabel)
+        self.backgroundColor = UIColor.black
+//        addSubview(containerView)
+        addSubview(notificationLabel)
+        addSubview(notificationContentLabel)
       
         updateUII()
         }
@@ -227,11 +242,14 @@ class NotificationPopupCell: UITableViewCell {
 
 
     func updateUII(){
-        containerView.anchor(top: topAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: self.frame.width, height: self.frame.height, enableInsets: true)
+//        containerView.anchor(top: topAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: self.frame.width, height: self.frame.height, enableInsets: true)
 
-        notificationLabel.anchor(top: containerView.topAnchor, left: containerView.leftAnchor, bottom: nil, right: containerView.rightAnchor, paddingTop: 10.0, paddingLeft: 10.0, paddingBottom: 0, paddingRight: 10, width: 100.0, height: 40.0, enableInsets: true)
+//        notificationLabel.anchor(top: topAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, paddingTop: 10.0, paddingLeft: 10.0, paddingBottom: 0, paddingRight: 10, width: 100.0, height: 20.0, enableInsets: true)
+        notificationLabel.anchor(top: topAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, paddingTop: 20, paddingLeft: 10, paddingBottom: 0, paddingRight: 5, width: 0, height: 0, enableInsets: false)
         
-        notificationContentLabel.anchor(top: notificationLabel.bottomAnchor, left: containerView.leftAnchor, bottom: containerView.bottomAnchor, right: containerView.rightAnchor, paddingTop: 0, paddingLeft: 10, paddingBottom: 0, paddingRight: 10, width: 100, height: 0, enableInsets: true)
+        
+        notificationContentLabel.anchor(top: notificationLabel.bottomAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 10, paddingLeft: 10, paddingBottom: 10, paddingRight: 10, width: 0, height: 120, enableInsets: false)
+//        notificationContentLabel.anchor(top: notificationLabel.bottomAnchor, left: containerView.leftAnchor, bottom: containerView.bottomAnchor, right: containerView.rightAnchor, paddingTop: 0, paddingLeft: 10, paddingBottom: 0, paddingRight: 10, width: 100, height: 0, enableInsets: true)
         
         }
     

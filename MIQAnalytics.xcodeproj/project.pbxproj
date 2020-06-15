@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		2829D344AE9F4ED42ACD3465 /* Pods_MIQAnalytics_MIQAnalyticsUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60947CB225E2986A66AB517E /* Pods_MIQAnalytics_MIQAnalyticsUITests.framework */; };
 		493FB67FE48C547E7C679B40 /* Pods_MIQAnalyticsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B663AB824E7C6B8C528A1968 /* Pods_MIQAnalyticsTests.framework */; };
-		683320EB2420D30D00D7A236 /* Graphmarkerview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683320EA2420D30D00D7A236 /* Graphmarkerview.swift */; };
 		683320F52429EEC900D7A236 /* BalloonMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683320F22429EEC900D7A236 /* BalloonMarker.swift */; };
 		683320F62429EEC900D7A236 /* RadarMarkerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683320F32429EEC900D7A236 /* RadarMarkerView.swift */; };
 		683320F72429EEC900D7A236 /* XYMarkerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683320F42429EEC900D7A236 /* XYMarkerView.swift */; };
@@ -44,6 +43,9 @@
 		686DCB7E2397CD3F00360A8E /* Map.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686DCB7D2397CD3F00360A8E /* Map.swift */; };
 		689F8B942464177700809B15 /* MapheaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 689F8B932464177700809B15 /* MapheaderView.swift */; };
 		68A2541424878D2B003E1EA9 /* NotificationvView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68A2541324878D2B003E1EA9 /* NotificationvView.swift */; };
+		68A25454248E0CF7003E1EA9 /* style.metal in Sources */ = {isa = PBXBuildFile; fileRef = 68A25453248E0CF7003E1EA9 /* style.metal */; };
+		68A25458248E15BB003E1EA9 /* stylenew.json in Sources */ = {isa = PBXBuildFile; fileRef = 68A25457248E15BB003E1EA9 /* stylenew.json */; };
+		68A2545A248E1B43003E1EA9 /* mapnewstyle.json in Resources */ = {isa = PBXBuildFile; fileRef = 68A25459248E1B43003E1EA9 /* mapnewstyle.json */; };
 		68A2DDFC240E2B6F00E0612B /* DrillNewtworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68A2DDFB240E2B6F00E0612B /* DrillNewtworkManager.swift */; };
 		68C43BAA23F3CE2500DEE6E8 /* DrilldownModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C43BA923F3CE2500DEE6E8 /* DrilldownModel.swift */; };
 		68C43BAC23F3CE3F00DEE6E8 /* DrildownViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C43BAB23F3CE3F00DEE6E8 /* DrildownViewModel.swift */; };
@@ -79,7 +81,6 @@
 		4C6938DA51468265442A9BEF /* Pods-MIQAnalyticsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MIQAnalyticsTests.debug.xcconfig"; path = "Target Support Files/Pods-MIQAnalyticsTests/Pods-MIQAnalyticsTests.debug.xcconfig"; sourceTree = "<group>"; };
 		56133999677B7F2C7399AA84 /* Pods-MIQAnalyticsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MIQAnalyticsTests.release.xcconfig"; path = "Target Support Files/Pods-MIQAnalyticsTests/Pods-MIQAnalyticsTests.release.xcconfig"; sourceTree = "<group>"; };
 		60947CB225E2986A66AB517E /* Pods_MIQAnalytics_MIQAnalyticsUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MIQAnalytics_MIQAnalyticsUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		683320EA2420D30D00D7A236 /* Graphmarkerview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Graphmarkerview.swift; sourceTree = "<group>"; };
 		683320F22429EEC900D7A236 /* BalloonMarker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BalloonMarker.swift; sourceTree = "<group>"; };
 		683320F32429EEC900D7A236 /* RadarMarkerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadarMarkerView.swift; sourceTree = "<group>"; };
 		683320F42429EEC900D7A236 /* XYMarkerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XYMarkerView.swift; sourceTree = "<group>"; };
@@ -121,6 +122,9 @@
 		686DCB7D2397CD3F00360A8E /* Map.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Map.swift; sourceTree = "<group>"; };
 		689F8B932464177700809B15 /* MapheaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapheaderView.swift; sourceTree = "<group>"; };
 		68A2541324878D2B003E1EA9 /* NotificationvView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationvView.swift; sourceTree = "<group>"; };
+		68A25453248E0CF7003E1EA9 /* style.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = style.metal; sourceTree = "<group>"; };
+		68A25457248E15BB003E1EA9 /* stylenew.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = stylenew.json; sourceTree = "<group>"; };
+		68A25459248E1B43003E1EA9 /* mapnewstyle.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = mapnewstyle.json; sourceTree = "<group>"; };
 		68A2DDFB240E2B6F00E0612B /* DrillNewtworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrillNewtworkManager.swift; sourceTree = "<group>"; };
 		68C43BA923F3CE2500DEE6E8 /* DrilldownModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrilldownModel.swift; sourceTree = "<group>"; };
 		68C43BAB23F3CE3F00DEE6E8 /* DrildownViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrildownViewModel.swift; sourceTree = "<group>"; };
@@ -176,6 +180,7 @@
 			isa = PBXGroup;
 			children = (
 				686DCB6623969CE600360A8E /* style.json */,
+				68A25457248E15BB003E1EA9 /* stylenew.json */,
 				686DCB2E239696B200360A8E /* MIQAnalytics */,
 				686DCB45239696B300360A8E /* MIQAnalyticsTests */,
 				686DCB50239696B300360A8E /* MIQAnalyticsUITests */,
@@ -225,7 +230,8 @@
 				68C43BAF23F3FED600DEE6E8 /* DrilldownViewController.swift */,
 				68C43BB123F3FF2E00DEE6E8 /* KPIChartCell.swift */,
 				68C43BB323F3FF4E00DEE6E8 /* KPIBarChartCell.swift */,
-				683320EA2420D30D00D7A236 /* Graphmarkerview.swift */,
+				68A25453248E0CF7003E1EA9 /* style.metal */,
+				68A25459248E1B43003E1EA9 /* mapnewstyle.json */,
 			);
 			path = MIQAnalytics;
 			sourceTree = "<group>";
@@ -434,6 +440,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				68A2545A248E1B43003E1EA9 /* mapnewstyle.json in Resources */,
 				686DCB3C239696B300360A8E /* LaunchScreen.storyboard in Resources */,
 				686DCB39239696B300360A8E /* Assets.xcassets in Resources */,
 				686DCB37239696B200360A8E /* Main.storyboard in Resources */,
@@ -603,6 +610,7 @@
 				683320F72429EEC900D7A236 /* XYMarkerView.swift in Sources */,
 				68598D0623D030A500BF216B /* DashboardNetworkManager.swift in Sources */,
 				68598D0A23D032C100BF216B /* Dashboard.swift in Sources */,
+				68A25458248E15BB003E1EA9 /* stylenew.json in Sources */,
 				686DCB782397CB9200360A8E /* DownloadManager.swift in Sources */,
 				68598D1423D966F500BF216B /* DashboardHeaderView.swift in Sources */,
 				68C43BAA23F3CE2500DEE6E8 /* DrilldownModel.swift in Sources */,
@@ -614,12 +622,12 @@
 				68C43BAC23F3CE3F00DEE6E8 /* DrildownViewModel.swift in Sources */,
 				68C43BB023F3FED600DEE6E8 /* DrilldownViewController.swift in Sources */,
 				68598D0023D02B7D00BF216B /* PlantStatusCell.swift in Sources */,
-				683320EB2420D30D00D7A236 /* Graphmarkerview.swift in Sources */,
 				686DCB762397CB8900360A8E /* Constant.swift in Sources */,
 				686DCB722397CB5800360A8E /* NewtorkManager.swift in Sources */,
 				68C43BBA23FE8DE400DEE6E8 /* DrilldownheaderView.swift in Sources */,
 				686DCB702397CB2600360A8E /* ReachabilityTest.swift in Sources */,
 				68C43BB423F3FF4E00DEE6E8 /* KPIBarChartCell.swift in Sources */,
+				68A25454248E0CF7003E1EA9 /* style.metal in Sources */,
 				68598D0423D02BE300BF216B /* DetailsVCV.swift in Sources */,
 				68598D0223D02B9F00BF216B /* KPIStstusCell.swift in Sources */,
 				68598D1623E3E5BD00BF216B /* KPIPopupView.swift in Sources */,

@@ -13,6 +13,8 @@ import GoogleMaps
 import GooglePlaces
 
 
+
+
 let kMapStyle = "[" +
 "  {" +
 "    \"featureType\": \"poi.business\"," +
@@ -46,7 +48,23 @@ struct PreviewDemoData {
     var price: String
 }
 
-class MapViewController : UIViewController, CLLocationManagerDelegate, GMSMapViewDelegate, GMSAutocompleteViewControllerDelegate, UITextFieldDelegate , NotificationProtocal , NotificationSettingbtn{
+class MapViewController : UIViewController, CLLocationManagerDelegate, GMSMapViewDelegate, GMSAutocompleteViewControllerDelegate, UITextFieldDelegate , NotificationProtocal , NotificationSettingbtn ,Notificationmapbtn {
+    func Notifymap() {
+        if DataManager.datamanager.darkmode!  {
+            darkmode = true
+           
+          setstyle()
+        }
+        else{
+            darkmode = false
+           
+           setstyle()
+           
+        }
+        
+        
+    }
+    
     func Notifysetting() {
         if !menuSelected {
            
@@ -74,9 +92,13 @@ class MapViewController : UIViewController, CLLocationManagerDelegate, GMSMapVie
     
      var menuSelected = false
     
+    var darkmode = true
+    
+    
 //    let previewDemoData = [(title: "washington", img: #imageLiteral(resourceName: "restaurant1"), price: "wa"), (title: "Newyork", img: #imageLiteral(resourceName: "restaurant2"), price: "Nw"), (title: "Dallas", img: #imageLiteral(resourceName: "restaurant3"), price: "Da")]
     
     override func viewDidLoad() {
+         DataManager.datamanager.darkmode = true
         if ReachabilityTest.isConnectedToNetwork() {
             
             mapviewmodel.fetchData()
@@ -244,9 +266,17 @@ class MapViewController : UIViewController, CLLocationManagerDelegate, GMSMapVie
         self.myMapView.camera = camera
         self.myMapView.delegate = self
         self.myMapView.isMyLocationEnabled = true
-        //self.myMapView.mapType = .hybrid
+        self.myMapView.mapType = .normal
+        
+        setstyle()
+    }
+    func setstyle(){
+        
+        if darkmode {
         do {
           // Set the map style by passing a valid JSON string.
+            
+            
             if let styleURL = Bundle.main.url(forResource: "style", withExtension: "json") {
             myMapView.mapStyle = try GMSMapStyle(contentsOfFileURL: styleURL)
                 
@@ -256,6 +286,25 @@ class MapViewController : UIViewController, CLLocationManagerDelegate, GMSMapVie
           NSLog("One or more of the map styles failed to load. \(error)")
         }
         //showPartyMarkersNew()
+    }
+        
+        else {
+
+            do {
+              // Set the map style by passing a valid JSON string.
+                
+                if let styleURL2 = Bundle.main.url(forResource: "mapnewstyle", withExtension: "json") {
+                myMapView.mapStyle = try GMSMapStyle(contentsOfFileURL: styleURL2)
+                   
+                    
+                    
+                    
+                }
+                
+            } catch {
+              NSLog("One or more of the map styles failed to load. \(error)")
+            }
+        }
     }
     
     // MARK: CLLocation Manager Delegate
@@ -390,7 +439,7 @@ class MapViewController : UIViewController, CLLocationManagerDelegate, GMSMapVie
     
     func setupViews() {
         
-        leftmenu=LeftSideMenuView(frame: CGRect(x: self.view.frame.width - 190, y: 100.0, width: 200, height: 300 ))
+        leftmenu=LeftSideMenuView(frame: CGRect(x: self.view.frame.width - 190, y: 100.0, width: 200, height: 370 ))
         headerview = MapheaderView(frame: CGRect(x: 0.0, y: 96.0, width: self.view.frame.width, height: 300 ))
         
         view.addSubview(myMapView)
@@ -407,6 +456,7 @@ class MapViewController : UIViewController, CLLocationManagerDelegate, GMSMapVie
         headerview.anchor(top: view.safeAreaLayoutGuide.topAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: self.view.frame.width, height: 60, enableInsets: true)
 
         headerview.delegate = self
+        leftmenu.mapdelegate = self
       
         
         

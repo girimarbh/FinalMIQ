@@ -14,8 +14,8 @@
             filePath = "MIQAnalytics/MapViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "77"
-            endingLineNumber = "77"
+            startingLineNumber = "95"
+            endingLineNumber = "95"
             landmarkName = "MapViewController"
             landmarkType = "3">
          </BreakpointContent>
@@ -32,8 +32,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "49"
             endingLineNumber = "49"
-            landmarkName = "MapViewController"
-            landmarkType = "3">
+            landmarkName = "PreviewDemoData"
+            landmarkType = "14">
             <Locations>
                <Location
                   uuid = "378C5702-CE5B-478D-8A0A-CCB7EA3F25DC - 1aec9b98f2e2aaad"
@@ -123,10 +123,10 @@
             filePath = "MIQAnalytics/MapViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "208"
-            endingLineNumber = "208"
-            landmarkName = "MapViewController"
-            landmarkType = "3">
+            startingLineNumber = "228"
+            endingLineNumber = "228"
+            landmarkName = "textFieldShouldBeginEditing(_:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -139,8 +139,8 @@
             filePath = "MIQAnalytics/MapViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "240"
-            endingLineNumber = "240"
+            startingLineNumber = "260"
+            endingLineNumber = "260"
             landmarkName = "wasCancelled(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -155,8 +155,8 @@
             filePath = "MIQAnalytics/MapViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "265"
-            endingLineNumber = "265"
+            startingLineNumber = "312"
+            endingLineNumber = "312"
             landmarkName = "locationManager(_:didFailWithError:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -219,8 +219,8 @@
             filePath = "MIQAnalytics/MapViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "154"
-            endingLineNumber = "154"
+            startingLineNumber = "174"
+            endingLineNumber = "174"
             landmarkName = "setupMapview()"
             landmarkType = "7">
          </BreakpointContent>
@@ -235,8 +235,8 @@
             filePath = "MIQAnalytics/MapViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "167"
-            endingLineNumber = "167"
+            startingLineNumber = "187"
+            endingLineNumber = "187"
             landmarkName = "updateContentOnView()"
             landmarkType = "7">
          </BreakpointContent>
@@ -251,9 +251,9 @@
             filePath = "MIQAnalytics/MapViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "374"
-            endingLineNumber = "374"
-            landmarkName = "restaurantTapped(tag:)"
+            startingLineNumber = "421"
+            endingLineNumber = "421"
+            landmarkName = "btnMyLocationAction()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -267,26 +267,10 @@
             filePath = "MIQAnalytics/MapViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "335"
-            endingLineNumber = "335"
+            startingLineNumber = "382"
+            endingLineNumber = "382"
             landmarkName = "MapViewController"
             landmarkType = "3">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "1AC9E19B-33C2-4EA2-9732-23FADAEBFE42"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MIQAnalytics/MapViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "337"
-            endingLineNumber = "337"
-            landmarkName = "showPartyMarkersNew()"
-            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -299,8 +283,8 @@
             filePath = "MIQAnalytics/MapViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "290"
-            endingLineNumber = "290"
+            startingLineNumber = "337"
+            endingLineNumber = "337"
             landmarkName = "mapView(_:didTap:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -315,10 +299,10 @@
             filePath = "MIQAnalytics/MapViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "280"
-            endingLineNumber = "280"
-            landmarkName = "MapViewController"
-            landmarkType = "3">
+            startingLineNumber = "327"
+            endingLineNumber = "327"
+            landmarkName = "locationManager(_:didUpdateLocations:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -363,8 +347,8 @@
             filePath = "MIQAnalytics/MapViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "300"
-            endingLineNumber = "300"
+            startingLineNumber = "347"
+            endingLineNumber = "347"
             landmarkName = "mapView(_:markerInfoContents:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -379,8 +363,8 @@
             filePath = "MIQAnalytics/MapViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "357"
-            endingLineNumber = "357"
+            startingLineNumber = "404"
+            endingLineNumber = "404"
             landmarkName = "add()"
             landmarkType = "7">
          </BreakpointContent>
@@ -459,10 +443,10 @@
             filePath = "MIQAnalytics/KPIStstusCell.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "195"
-            endingLineNumber = "195"
-            landmarkName = "updateCellContentt(categoryhealth:)"
-            landmarkType = "7">
+            startingLineNumber = "246"
+            endingLineNumber = "246"
+            landmarkName = "KPIStstusCell"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -475,8 +459,8 @@
             filePath = "MIQAnalytics/KPIStstusCell.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "231"
-            endingLineNumber = "231"
+            startingLineNumber = "292"
+            endingLineNumber = "292"
             landmarkName = "updateCellContentt(categoryhealth:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -491,8 +475,8 @@
             filePath = "MIQAnalytics/Views/DashboardHeaderView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "70"
-            endingLineNumber = "70"
+            startingLineNumber = "75"
+            endingLineNumber = "75"
             landmarkName = "setupViews()"
             landmarkType = "7">
          </BreakpointContent>
@@ -507,9 +491,9 @@
             filePath = "MIQAnalytics/KPIStstusCell.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "162"
-            endingLineNumber = "162"
-            landmarkName = "longLabelPressed(recognizer:)"
+            startingLineNumber = "213"
+            endingLineNumber = "213"
+            landmarkName = "init(style:reuseIdentifier:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -651,8 +635,8 @@
             filePath = "MIQAnalytics/KPIStstusCell.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "179"
-            endingLineNumber = "179"
+            startingLineNumber = "230"
+            endingLineNumber = "230"
             landmarkName = "longLabelPressed(recognizer:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -715,8 +699,8 @@
             filePath = "MIQAnalytics/Views/DashboardHeaderView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "124"
-            endingLineNumber = "124"
+            startingLineNumber = "129"
+            endingLineNumber = "129"
             landmarkName = "dashboardButton"
             landmarkType = "24">
          </BreakpointContent>
@@ -1390,6 +1374,163 @@
             startingLineNumber = "478"
             endingLineNumber = "478"
             landmarkName = "updateCellContenttmanagement(kpivalues:category:KPIValuesdrilldownnewmanagement:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "C951E6C6-6D0D-4212-A7B4-E513185AF09A"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MIQAnalytics/Utilities/DashboardNetworkManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "120"
+            endingLineNumber = "120"
+            landmarkName = "retrieveAPIData(plantid:userCompletionHandler:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E3F485CD-048A-47DC-9B22-B8A572F9EDF3"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MIQAnalytics/MapViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "50"
+            endingLineNumber = "50"
+            landmarkName = "unknown"
+            landmarkType = "0">
+            <Locations>
+               <Location
+                  uuid = "E3F485CD-048A-47DC-9B22-B8A572F9EDF3 - 1aec9b98f2e2aaad"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MIQAnalytics.MapViewController.__allocating_init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__C.NSBundle&gt;) -&gt; MIQAnalytics.MapViewController"
+                  moduleName = "MIQAnalytics"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/girish/Desktop/MIQAnalytics/MIQAnalytics/MapViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "12">
+               </Location>
+               <Location
+                  uuid = "E3F485CD-048A-47DC-9B22-B8A572F9EDF3 - 544ebd829ab70cfc"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MIQAnalytics.MapViewController.init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__C.NSBundle&gt;) -&gt; MIQAnalytics.MapViewController"
+                  moduleName = "MIQAnalytics"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/girish/Desktop/MIQAnalytics/MIQAnalytics/MapViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "81"
+                  endingLineNumber = "81"
+                  offsetFromSymbolStart = "189">
+               </Location>
+               <Location
+                  uuid = "E3F485CD-048A-47DC-9B22-B8A572F9EDF3 - 5fa49bc0ce377ae4"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MIQAnalytics.MapViewController.__allocating_init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;MIQAnalytics.MapViewController&gt;"
+                  moduleName = "MIQAnalytics"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/girish/Desktop/MIQAnalytics/MIQAnalytics/MapViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "12">
+               </Location>
+               <Location
+                  uuid = "E3F485CD-048A-47DC-9B22-B8A572F9EDF3 - c5ec7b45dd4ba5e7"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MIQAnalytics.MapViewController.init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;MIQAnalytics.MapViewController&gt;"
+                  moduleName = "MIQAnalytics"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/girish/Desktop/MIQAnalytics/MIQAnalytics/MapViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "81"
+                  endingLineNumber = "81"
+                  offsetFromSymbolStart = "126">
+               </Location>
+               <Location
+                  uuid = "E3F485CD-048A-47DC-9B22-B8A572F9EDF3 - 5a55cb1562813b8e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MIQAnalytics.MapViewController.__deallocating_deinit"
+                  moduleName = "MIQAnalytics"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/girish/Desktop/MIQAnalytics/MIQAnalytics/MapViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "16">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "11134C66-0E00-46C7-BC93-DE0D3A1DE14D"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MIQAnalytics/MapViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "269"
+            endingLineNumber = "269"
+            landmarkName = "initGoogleMaps()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "30190E34-3478-4F29-AF38-CE978BDC3FAA"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MIQAnalytics/MapViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "100"
+            endingLineNumber = "100"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "533D2B97-B587-4D1C-89A3-E203FAAD4DD8"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MIQAnalytics/MapViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "264"
+            endingLineNumber = "264"
+            landmarkName = "initGoogleMaps()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

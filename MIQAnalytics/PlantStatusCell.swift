@@ -21,7 +21,12 @@ class PlantStatusCell: UITableViewCell {
 
     let containerView: UIView = {
               let v=UIView()
-        v.backgroundColor = UIColor.black
+         if DataManager.datamanager.darkmode! {
+           v.backgroundColor = UIColor.black
+           }
+           else{
+               v.backgroundColor = UIColor.init(hexString: "#daecf0")
+           }
 //              v.backgroundColor = UIColor.init(hexString: "#2C2A2A")
               v.translatesAutoresizingMaskIntoConstraints=false
              v.layer.borderWidth = 0.5
@@ -125,7 +130,14 @@ class PlantStatusCell: UITableViewCell {
     }
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        self.backgroundColor = UIColor.black
+         if DataManager.datamanager.darkmode! {
+                   self.backgroundColor = UIColor.black
+                   
+               }
+               
+               else {
+                   self.backgroundColor = UIColor.init(hexString: "edf8fa")
+               }
         
         
         addSubview(containerView)
@@ -172,9 +184,20 @@ class PlantStatusCell: UITableViewCell {
            }
            
            let set = PieChartDataSet( entries: entries, label: nil)
-           var colors = [UIColor.init(hexString: "#138b4a"),UIColor.init(hexString: "#e49e0d"),UIColor.init(hexString: "#f54450")]
-           // set.colors = colors as! [NSUIColor]
-           set.colors = colors as! [NSUIColor]
+        if DataManager.datamanager.darkmode! {
+         var colors = [UIColor.init(hexString: "#138b4a"),UIColor.init(hexString: "#e49e0d"),UIColor.init(hexString: "#f54450")]
+               set.colors = colors as! [NSUIColor]
+          }
+          else {
+        var colors = [UIColor.init(hexString: "#2b9e94"),UIColor.init(hexString: "#c086d1"),UIColor.init(hexString: "#6aa5c4")]
+          
+             // set.colors = colors as! [NSUIColor]
+             set.colors = colors as! [NSUIColor]
+          }
+        
+//           var colors = [UIColor.init(hexString: "#138b4a"),UIColor.init(hexString: "#e49e0d"),UIColor.init(hexString: "#f54450")]
+//           // set.colors = colors as! [NSUIColor]
+//           set.colors = colors as! [NSUIColor]
            
            let data = PieChartData(dataSet: set)
            chart2.data = data
@@ -189,9 +212,14 @@ class PlantStatusCell: UITableViewCell {
         var totalKPIStr = String(totalKPI)
            chart2.centerText = String(Int(percentagearray[0])) + "%Healthy"
            
-        
+        if DataManager.datamanager.darkmode! {
         let attributedString = NSMutableAttributedString(string: String(Int(percentagearray[0])) + "%Healthy", attributes: [NSAttributedString.Key.foregroundColor:UIColor.white , NSAttributedString.Key.font: UIFont(name: "Apple SD Gothic Neo", size: 16.0)])
                       chart2.centerAttributedText = attributedString
+        }
+        else{
+            let attributedString = NSMutableAttributedString(string: String(Int(percentagearray[0])) + "%Healthy", attributes: [NSAttributedString.Key.foregroundColor:UIColor.gray , NSAttributedString.Key.font: UIFont(name: "Apple SD Gothic Neo", size: 16.0)])
+            chart2.centerAttributedText = attributedString
+        }
         chart2.isUserInteractionEnabled = false
         
            onTargetLabel.text = "On Target"
@@ -225,7 +253,13 @@ class PlantStatusCell: UITableViewCell {
            //                   let labelImg = NSMutableAttributedString(string: "")
            //                   labelImg.append(attachmentString)
            // chart2.centerAttributedText = labelImg
-        chart2.holeColor = UIColor.black
+       // chart2.holeColor = UIColor.black
+        if DataManager.datamanager.darkmode! {
+               chart2.holeColor = UIColor.black
+               }
+               else{
+                   chart2.holeColor = UIColor.init(hexString: "#daecf0")
+               }
            
        }
     func convertnumbertopercentage(first : Double , second : Double , third : Double) -> [Double]{

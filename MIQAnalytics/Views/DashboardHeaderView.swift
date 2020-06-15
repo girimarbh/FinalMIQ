@@ -53,7 +53,12 @@ class DashboardHeaderView: UIView {
 //        containerView.topAnchor.constraint(equalTo: topAnchor).isActive=true
 //        containerView.rightAnchor.constraint(equalTo: rightAnchor).isActive=true
 //        containerView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive=true
+        if DataManager.datamanager.darkmode!{
        containerView.backgroundColor = UIColor.init(hexString: "#2C2A2A")
+        }
+        else{
+            containerView.backgroundColor = UIColor.white
+        }
         
         containerView.addSubview(loacatePlantbutton)
         containerView.addSubview(Notificationbutton)
@@ -68,7 +73,7 @@ class DashboardHeaderView: UIView {
         Notificationbutton.addTarget(self, action: #selector(buttonPressnotification(button:)), for: .touchUpInside)
         
         
-        Notificationbutton.anchor(top: containerView.topAnchor, left: nil, bottom: nil, right: containerView.rightAnchor, paddingTop: 5, paddingLeft: 0, paddingBottom: 0, paddingRight: 5, width: 30, height: 30, enableInsets: true)
+        Notificationbutton.anchor(top: containerView.topAnchor, left: nil, bottom: nil, right: containerView.rightAnchor, paddingTop: 4, paddingLeft: 0, paddingBottom: 0, paddingRight: 5, width: 40, height: 40, enableInsets: true)
 //        loacatePlantbutton.leftAnchor.constraint(equalTo: containerView.leftAnchor, constant: 10).isActive=true
 //        loacatePlantbutton.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 10).isActive=true
 //        loacatePlantbutton.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: 30).isActive=true
@@ -133,7 +138,7 @@ class DashboardHeaderView: UIView {
          btn.backgroundColor = UIColor.white
         btn.setTitleColor(.green, for: .normal)
         // btn.setTitle(" locate Plant ", for: .normal)
-         btn.setImage(UIImage(named: "notification"), for: .normal)
+         btn.setImage(UIImage(named: "blacknoti"), for: .normal)
         return btn
     }()
     

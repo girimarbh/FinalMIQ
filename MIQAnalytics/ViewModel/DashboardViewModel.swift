@@ -231,11 +231,18 @@
                    {
                      let category = peopleDict.category as! String
                     
-                    if !(arrcatagory.contains(category))  && !(arrcatagory.contains(category.uppercased()))
-                    {
-                    arrcatagory.append(category)
-                    }
+                
+                   
+//                    if !(arrcatagory.contains(category))  && !(arrcatagory.contains(category.uppercased()))
+//                    {
+//                    arrcatagory.append(category)
+//                    }
                            
+                    
+                    if !(arrcatagory.contains(category))  && !(arrcatagory.contains(category.lowercased()))
+                    {
+                        arrcatagory.append(category.lowercased())
+                    }
                   
                }
                 print("category list is \(arrcatagory)")

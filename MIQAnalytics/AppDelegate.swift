@@ -22,7 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate  {
 
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-      
+       
         print("appdelegate class")
         notificationCenter.delegate = self as! UNUserNotificationCenterDelegate
         
@@ -35,8 +35,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate  {
             }
         }
         
-        GMSServices.provideAPIKey("AIzaSyBU0SPK0agG9uyGpUwXsc0uEwLe01OVLis")
-        GMSPlacesClient.provideAPIKey("AIzaSyBU0SPK0agG9uyGpUwXsc0uEwLe01OVLis")
+        GMSServices.provideAPIKey("AIzaSyC5XRgjRKK5XvPUy0tVk5_9DCEi5iGYTiA")
+        GMSPlacesClient.provideAPIKey("AIzaSyC5XRgjRKK5XvPUy0tVk5_9DCEi5iGYTiA")
+        
+       // GMSServices.provideAPIKey("AIzaSyBU0SPK0agG9uyGpUwXsc0uEwLe01OVLis")
+      //  GMSPlacesClient.provideAPIKey("AIzaSyBU0SPK0agG9uyGpUwXsc0uEwLe01OVLis")
         
         
         return true

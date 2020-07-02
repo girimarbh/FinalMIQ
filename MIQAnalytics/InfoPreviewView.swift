@@ -15,16 +15,71 @@ class InfoPreviewView: UIView {
         self.backgroundColor=UIColor.clear
         self.clipsToBounds=true
         self.layer.masksToBounds=true
+        let nc = NotificationCenter.default
+        nc.addObserver(self, selector: #selector(darkmode(_:)), name: Notification.Name("darkmode"), object: nil)
         setupViews()
+        
     }
+    
+    func change()
+    {
+        if DataManager.datamanager.darkmode! {
+            containerView.backgroundColor = UIColor.black
+            lblTitle.font=UIFont(name: "Apple SD Gothic Neo", size: 25.0)
+            lblTitle.textColor = UIColor(hexString: "#1e91ca")
+            lblComments.font=UIFont(name: "Apple SD Gothic Neo", size: 15.0)
+            lblComments.textColor = UIColor.white
+            percentageLabel.font=UIFont(name: "Apple SD Gothic Neo", size: 20.0)
+            percentageLabel.textColor = UIColor.green
+            progressView.trackTintColor = UIColor.white
+            progressView.tintColor = UIColor.green
+            progressView.backgroundColor = UIColor.green
+                      }
+                      else{
+                          containerView.backgroundColor = UIColor.init(hexString: "#daecf0")
+                       lblTitle.font=UIFont(name: "Apple SD Gothic Neo", size: 25.0)
+            lblTitle.textColor = UIColor.gray
+                       lblComments.font=UIFont(name: "Apple SD Gothic Neo", size: 15.0)
+                       lblComments.textColor = UIColor.gray
+                       percentageLabel.font=UIFont(name: "Apple SD Gothic Neo", size: 20.0)
+                       percentageLabel.textColor = UIColor.gray
+                       progressView.trackTintColor = UIColor.white
+                       progressView.tintColor = UIColor.green
+                       progressView.backgroundColor = UIColor.lightGray
+            self.backgroundColor = UIColor.init(hexString: "#daecf0")
+             containerView.layer.borderColor = UIColor.lightGray.cgColor
+            //containerView.layer.borderColor = UIColor.gray as? CGColor
+                      }
+               
+               
+           }
     
     func setData(title: String, img: UIImage, price: String) {
         lblTitle.text = title + ",  " + price
         imgView.image = img
         lblComments.text = price
-        
-        
-    }
+          
+              
+          }
+    
+    @objc func darkmode(_ notification: NSNotification)
+    {
+        if let dict = notification.userInfo as NSDictionary? {
+                     if let id = dict["data"] as? Bool{
+                        if id == true {
+                           // containerView.backgroundColor = UIColor.black
+
+                            self.change()
+                           }
+                        else
+                        {
+                          //  containerView.backgroundColor = UIColor.init(hexString: "#daecf0")
+                            self.change()
+                         //self.removeFromSuperview()
+                        }
+            }
+            }
+       }
     
     func setDatanew( displayname: String, healthPrec : Int , hirarchy : Int )   {
         lblTitle.text = displayname
@@ -42,11 +97,13 @@ class InfoPreviewView: UIView {
     func setupViews() {
         
         addSubview(containerView)
+        //containerView.anchor(top: topAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 20, paddingLeft: 20, paddingBottom: 20, paddingRight: 20, width: 0, height: 0, enableInsets: true)
         containerView.leftAnchor.constraint(equalTo: leftAnchor).isActive=true
-        containerView.topAnchor.constraint(equalTo: topAnchor).isActive=true
+       containerView.topAnchor.constraint(equalTo: topAnchor).isActive=true
         containerView.rightAnchor.constraint(equalTo: rightAnchor).isActive=true
         containerView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive=true
-        containerView.backgroundColor = UIColor.black
+       containerView.backgroundColor = UIColor.black
+        
         
         
         containerView.addSubview(lblTitle)
@@ -82,12 +139,14 @@ class InfoPreviewView: UIView {
     let containerView: UIView = {
         let v=UIView()
         v.backgroundColor = UIColor.gray
+        
         v.translatesAutoresizingMaskIntoConstraints=false
         
-        v.layer.borderWidth  = 2.0
-        //  v.layer.borderColor = (UIColor.red as! CGColor)
+       // v.layer.borderWidth  = 5.0
+       // v.layer.borderColor = UIColor.red as! CGColor
         v.layer.cornerRadius = 0.25
-        
+        v.layer.borderColor = UIColor.lightGray.cgColor
+        v.clipsToBounds = true
         
         return v
     }()
@@ -102,7 +161,7 @@ class InfoPreviewView: UIView {
     let lblTitle: UILabel = {
         let lbl=UILabel()
         lbl.text = "     Name"
-        lbl.font=UIFont(name: "Apple SD Gothic Neo", size: 20.0)
+        lbl.font=UIFont(name: "Apple SD Gothic Neo", size: 25.0)
         lbl.textColor = UIColor(hexString: "#1e91ca")
         lbl.backgroundColor = UIColor.clear
         lbl.textAlignment = .left
@@ -113,7 +172,7 @@ class InfoPreviewView: UIView {
     let lblComments: UILabel = {
         let lbl=UILabel()
         lbl.text = "Name"
-        lbl.font=UIFont(name: "Apple SD Gothic Neo", size: 20.0)
+        lbl.font=UIFont(name: "Apple SD Gothic Neo", size: 15.0)
         lbl.textColor = UIColor.white
         lbl.backgroundColor = UIColor.clear
         lbl.textAlignment = .left
@@ -123,7 +182,7 @@ class InfoPreviewView: UIView {
     let percentageLabel: UILabel = {
         let lbl=UILabel()
         //lbl.text = "54% healthy"
-        lbl.font=UIFont(name: "Apple SD Gothic Neo", size: 20.0)
+        lbl.font=UIFont(name: "Apple SD Gothic Neo", size: 15.0)
         lbl.textColor = UIColor.green
         lbl.backgroundColor = UIColor.clear
         lbl.textAlignment = .left

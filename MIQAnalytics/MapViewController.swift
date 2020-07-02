@@ -53,12 +53,23 @@ class MapViewController : UIViewController, CLLocationManagerDelegate, GMSMapVie
         if DataManager.datamanager.darkmode!  {
             darkmode = true
            
-          setstyle()
+         setstyle()
+             leftmenu.removeFromSuperview()
+            if infoPreviewView != nil {
+               
+           // infoPreviewView.removeFromSuperview()
+                
+            }
         }
         else{
             darkmode = false
+             leftmenu.removeFromSuperview()
+          if infoPreviewView != nil {
            
-           setstyle()
+            
+           // infoPreviewView.removeFromSuperview()
+            }
+          setstyle()
            
         }
         
@@ -98,7 +109,7 @@ class MapViewController : UIViewController, CLLocationManagerDelegate, GMSMapVie
 //    let previewDemoData = [(title: "washington", img: #imageLiteral(resourceName: "restaurant1"), price: "wa"), (title: "Newyork", img: #imageLiteral(resourceName: "restaurant2"), price: "Nw"), (title: "Dallas", img: #imageLiteral(resourceName: "restaurant3"), price: "Da")]
     
     override func viewDidLoad() {
-         DataManager.datamanager.darkmode = true
+        DataManager.datamanager.darkmode = true
         if ReachabilityTest.isConnectedToNetwork() {
             
             mapviewmodel.fetchData()
@@ -115,8 +126,12 @@ class MapViewController : UIViewController, CLLocationManagerDelegate, GMSMapVie
            
         }
         mapviewmodel.fetchData()
-        GMSServices.provideAPIKey("AIzaSyBU0SPK0agG9uyGpUwXsc0uEwLe01OVLis")
-        GMSPlacesClient.provideAPIKey("AIzaSyBU0SPK0agG9uyGpUwXsc0uEwLe01OVLis")
+        GMSServices.provideAPIKey("AIzaSyC5XRgjRKK5XvPUy0tVk5_9DCEi5iGYTiA")
+        GMSPlacesClient.provideAPIKey("AIzaSyC5XRgjRKK5XvPUy0tVk5_9DCEi5iGYTiA")
+        
+        
+       // GMSServices.provideAPIKey("AIzaSyBU0SPK0agG9uyGpUwXsc0uEwLe01OVLis")
+       // GMSPlacesClient.provideAPIKey("AIzaSyBU0SPK0agG9uyGpUwXsc0uEwLe01OVLis")
         mapviewmodel.delegate = self
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
@@ -150,9 +165,14 @@ class MapViewController : UIViewController, CLLocationManagerDelegate, GMSMapVie
     func setupMapview()  {
         
         mapviewmodel.delegate = self
-        GMSServices.provideAPIKey("AIzaSyBU0SPK0agG9uyGpUwXsc0uEwLe01OVLis")
-        GMSPlacesClient.provideAPIKey("AIzaSyBU0SPK0agG9uyGpUwXsc0uEwLe01OVLis")
         
+        GMSServices.provideAPIKey("AIzaSyC5XRgjRKK5XvPUy0tVk5_9DCEi5iGYTiA")
+        GMSPlacesClient.provideAPIKey("AIzaSyC5XRgjRKK5XvPUy0tVk5_9DCEi5iGYTiA")
+        
+        
+//        GMSServices.provideAPIKey("AIzaSyBU0SPK0agG9uyGpUwXsc0uEwLe01OVLis")
+//        GMSPlacesClient.provideAPIKey("AIzaSyBU0SPK0agG9uyGpUwXsc0uEwLe01OVLis")
+//
         
        
         self.title = "Home"
@@ -261,15 +281,47 @@ class MapViewController : UIViewController, CLLocationManagerDelegate, GMSMapVie
         self.dismiss(animated: true, completion: nil)
     }
     
+    
+    
     func initGoogleMaps() {
         let camera = GMSCameraPosition.camera(withLatitude: 33.56451, longitude: -84.57889, zoom: 5.0)
         self.myMapView.camera = camera
         self.myMapView.delegate = self
         self.myMapView.isMyLocationEnabled = true
-        self.myMapView.mapType = .normal
-        
-        setstyle()
+        //self.myMapView.mapType = .hybrid
+        do {
+          // Set the map style by passing a valid JSON string.
+            if let styleURL = Bundle.main.url(forResource: "style", withExtension: "json") {
+            myMapView.mapStyle = try GMSMapStyle(contentsOfFileURL: styleURL)
+                
+            }
+            
+        } catch {
+          NSLog("One or more of the map styles failed to load. \(error)")
+        }
+        //showPartyMarkersNew()
     }
+    
+//    func initGoogleMaps() {
+//        let camera = GMSCameraPosition.camera(withLatitude: 33.56451, longitude: -84.57889, zoom: 5.0)
+//        self.myMapView.camera = camera
+//        self.myMapView.delegate = self
+//        self.myMapView.isMyLocationEnabled = true
+//       // self.myMapView.mapType = .normal
+//        do {
+//          // Set the map style by passing a valid JSON string.
+//
+//
+//            if let styleURL = Bundle.main.url(forResource: "style", withExtension:"json") {
+//            myMapView.mapStyle = try GMSMapStyle(contentsOfFileURL: styleURL)
+//
+//            }
+//
+//        } catch {
+//          NSLog("One or more of the map styles failed to load. \(error)")
+//        }
+//       // setstyle()
+//    }
     func setstyle(){
         
         if darkmode {
@@ -277,7 +329,7 @@ class MapViewController : UIViewController, CLLocationManagerDelegate, GMSMapVie
           // Set the map style by passing a valid JSON string.
             
             
-            if let styleURL = Bundle.main.url(forResource: "style", withExtension: "json") {
+            if let styleURL = Bundle.main.url(forResource: "style", withExtension:"json") {
             myMapView.mapStyle = try GMSMapStyle(contentsOfFileURL: styleURL)
                 
             }
@@ -339,11 +391,14 @@ class MapViewController : UIViewController, CLLocationManagerDelegate, GMSMapVie
     }
     
     func mapView(_ mapView: GMSMapView, markerInfoContents marker: GMSMarker) -> UIView? {
+        headerview.settingsbutton.isHidden = true
         guard let customMarkerView = marker.iconView as? CustomMarkerView else { return nil }
         //let data = previewDemoData[customMarkerView.tag]
         let data = self.mapviewmodel.placearray[customMarkerView.tag]
        // infoPreviewView.setDatanew( displayname: data.displayName ?? "aa", healthPrec: data.healthperc ?? 11, hirarchy: data.hirarchy ?? 11)
         infoPreviewView.setDataInfoview(displayname: data.displayName ?? "aa", comments: data.comments ?? "aa", healthPrec: data.healthperc ?? 11, hirarchy: data.healthperc ?? 11)
+      // marker.layer.backgroundColor = (UIColor.red as! CGColor)
+     //   marker.layer.backgroundColor = UIColor.red.cgColor
         //infoPreviewView.setData(title: data.title, img: data.img, price: data.price)
         return infoPreviewView
     }
@@ -356,6 +411,7 @@ class MapViewController : UIViewController, CLLocationManagerDelegate, GMSMapVie
     }
     
     func mapView(_ mapView: GMSMapView, didCloseInfoWindowOf marker: GMSMarker) {
+        headerview.settingsbutton.isHidden = false
         guard let customMarkerView = marker.iconView as? CustomMarkerView else { return }
       //  let img = customMarkerView.img!
 //        let customMarker = CustomMarkerView(frame: CGRect(x: 0, y: 0, width: customMarkerWidth, height: customMarkerHeight), image: img, borderColor: UIColor.darkGray, tag: customMarkerView.tag , title : customMarkerView.title)
@@ -439,7 +495,7 @@ class MapViewController : UIViewController, CLLocationManagerDelegate, GMSMapVie
     
     func setupViews() {
         
-        leftmenu=LeftSideMenuView(frame: CGRect(x: self.view.frame.width - 190, y: 100.0, width: 200, height: 370 ))
+        leftmenu=LeftSideMenuView(frame: CGRect(x: self.view.frame.width - 155, y: 105.0, width: 155, height: 160 ))
         headerview = MapheaderView(frame: CGRect(x: 0.0, y: 96.0, width: self.view.frame.width, height: 300 ))
         
         view.addSubview(myMapView)
@@ -470,7 +526,7 @@ class MapViewController : UIViewController, CLLocationManagerDelegate, GMSMapVie
 //        settingsbutton.anchor(top: view.safeAreaLayoutGuide.topAnchor, left: txtFieldSearch.rightAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 10, paddingLeft: 5, paddingBottom:0, paddingRight: 5, width: 30, height: 25, enableInsets: true)
 //        settingsbutton.addTarget(self, action: #selector(add), for: .touchUpInside)
 
-        infoPreviewView=InfoPreviewView(frame: CGRect(x: 10.0, y: 10.0, width: self.view.frame.width - 10, height: 150))
+        infoPreviewView=InfoPreviewView(frame: CGRect(x: 0.0, y: 0.0, width: self.view.frame.width - 10, height: 150))
         
         self.view.addSubview(btnMyLocation)
         btnMyLocation.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -30).isActive=true
@@ -480,8 +536,10 @@ class MapViewController : UIViewController, CLLocationManagerDelegate, GMSMapVie
     }
     
     let myMapView: GMSMapView = {
-        GMSServices.provideAPIKey("AIzaSyBU0SPK0agG9uyGpUwXsc0uEwLe01OVLis")
-        GMSPlacesClient.provideAPIKey("AIzaSyBU0SPK0agG9uyGpUwXsc0uEwLe01OVLis")
+      // GMSServices.provideAPIKey("AIzaSyBU0SPK0agG9uyGpUwXsc0uEwLe01OVLis")
+      //  GMSPlacesClient.provideAPIKey("AIzaSyBU0SPK0agG9uyGpUwXsc0uEwLe01OVLis")
+      GMSServices.provideAPIKey("AIzaSyC5XRgjRKK5XvPUy0tVk5_9DCEi5iGYTiA")
+             GMSPlacesClient.provideAPIKey("AIzaSyC5XRgjRKK5XvPUy0tVk5_9DCEi5iGYTiA")
         let v = GMSMapView()
         v.translatesAutoresizingMaskIntoConstraints=false
         return v

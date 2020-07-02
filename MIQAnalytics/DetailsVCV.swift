@@ -19,7 +19,7 @@ class DetailsVC : UIViewController, UITableViewDelegate, UITableViewDataSource ,
         
         notificationinsightview = NotificationvView(frame: CGRect(x: self.view.frame.width/2 - 172, y: self.view.frame.height/2 - 150, width: 350, height: 300))
         notificationinsightview.setData(popuparray: dashboardviewmodel.insightsarray)
-        let blurEffect = UIBlurEffect(style: .regular)
+        let blurEffect = UIBlurEffect(style: .light)
         let blurredEffectView = UIVisualEffectView(effect: blurEffect)
         blurredEffectView.frame = self.view.bounds
         blurredEffectView.alpha = 0.9
@@ -232,7 +232,7 @@ nc.addObserver(self, selector: #selector(userLoggedIn(_:)), name: Notification.N
 //        myTableView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: 60).isActive=true
 
 
-        myTableView = UITableView(frame: CGRect(x: 0, y: barHeight+60 , width: displayWidth, height: displayHeight - barHeight))
+        myTableView = UITableView(frame: CGRect(x: 0, y: barHeight+53 , width: displayWidth, height: displayHeight - barHeight))
         myTableView.register(PieChartCell.self, forCellReuseIdentifier: cellId)
         myTableView.register(PlantStatusCell.self, forCellReuseIdentifier: cellId2)
         myTableView.register(KPIStstusCell.self, forCellReuseIdentifier: cellId3)

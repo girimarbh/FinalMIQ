@@ -106,7 +106,7 @@ class MapheaderView: UIView {
 //    switchbtn.anchor(top: containerView.topAnchor, left: img.rightAnchor, bottom: containerView.bottomAnchor, right: nil, paddingTop: 10, paddingLeft: 3, paddingBottom: 3, paddingRight: 0, width: 50, height: 20, enableInsets: true)
 //        
        // maptype.addTarget(self, action: #selector(buttonPressmap(button:)), for: .touchUpInside)
-        settingsbutton.anchor(top: containerView.topAnchor, left: nil, bottom: containerView.bottomAnchor, right: containerView.rightAnchor, paddingTop: 10, paddingLeft: 0, paddingBottom: 10, paddingRight: 4, width: 25, height: 25, enableInsets: true)
+        settingsbutton.anchor(top: containerView.topAnchor, left: nil, bottom: containerView.bottomAnchor, right: containerView.rightAnchor, paddingTop: 15, paddingLeft: 0, paddingBottom: 15, paddingRight: 4, width: 25, height: 25, enableInsets: true)
          settingsbutton.addTarget(self, action: #selector(add), for: .touchUpInside)
     }
     
@@ -262,7 +262,7 @@ class MapheaderView: UIView {
         btn.backgroundColor = UIColor.white
        btn.setTitleColor(.black, for: .normal)
        // btn.setTitle(" locate Plant ", for: .normal)
-        btn.setImage(UIImage(named: "leftside"), for: .normal)
+        btn.setImage(UIImage(named: "bar2"), for: .normal)
       
      
         return btn

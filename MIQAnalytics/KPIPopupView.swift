@@ -47,15 +47,30 @@
         func setColors()  {
             if currentstatus == "ontarget"
             {
+                if DataManager.datamanager.darkmode! {
                 self.leftview.backgroundColor = UIColor(red:64/255, green:136/255, blue:80/255, alpha: 1)
+                }
+                else{
+                    self.leftview.backgroundColor = UIColor.init(hexString:"#2b9e94" )
+                }
             }
             if currentstatus == "offtarget"
             {
+                if DataManager.datamanager.darkmode! {
                 self.leftview.backgroundColor = UIColor(red:227/255, green:83/255, blue:86/255, alpha: 1)
+                }
+                else{
+                    self.leftview.backgroundColor = UIColor.init(hexString:"#6aa5c4" )
+                }
             }
             if currentstatus == "vulnerable"
             {
+                if DataManager.datamanager.darkmode! {
                  self.leftview.backgroundColor = UIColor(red:218/255, green:160/255, blue:58/255, alpha: 1)
+                }
+                else {
+                     self.leftview.backgroundColor = UIColor.init(hexString:"#c086d1" )
+                }
             }
             
         }
@@ -147,7 +162,7 @@
 
     let imgView: UIImageView = {
         let v=UIImageView()
-        v.image=#imageLiteral(resourceName: "quality_icon")
+       // v.image=#imageLiteral(resourceName: "quality_icon")
         v.contentMode = .scaleAspectFill
         v.translatesAutoresizingMaskIntoConstraints=false
         return v
@@ -298,15 +313,32 @@ protocol NotificationProtocalDrilldown {
         
         if currentstatus == "ontarget"
         {
+            if DataManager.datamanager.darkmode! {
             self.KPIActualLabel.backgroundColor = UIColor(red:64/255, green:136/255, blue:80/255, alpha: 1)
+            }
+            else{
+                self.KPIActualLabel.backgroundColor = UIColor.init(hexString: "#2b9e94")
+            }
         }
         if currentstatus == "offtarget"
         {
+           if DataManager.datamanager.darkmode! {
             self.KPIActualLabel.backgroundColor = UIColor(red:227/255, green:83/255, blue:86/255, alpha: 1)
+            }
+            else
+            {
+                self.KPIActualLabel.backgroundColor = UIColor.init(hexString: "#6aa5c4")
+            }
         }
         if currentstatus == "vulnerable"
         {
+            if DataManager.datamanager.darkmode!
+            {
              self.KPIActualLabel.backgroundColor = UIColor(red:218/255, green:160/255, blue:58/255, alpha: 1)
+            }
+            else{
+                 self.KPIActualLabel.backgroundColor = UIColor.init(hexString: "#c086d1")
+            }
         }
     }
 

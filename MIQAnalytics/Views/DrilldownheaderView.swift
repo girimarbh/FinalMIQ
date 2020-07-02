@@ -30,20 +30,29 @@ class DrilldownheaderView: UIView {
     
     func setupViews() {
         addSubview(containerView)
+        
+        
         containerView.anchor(top: topAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: self.frame.size.width, height: 300, enableInsets:true)
         
 //        containerView.leftAnchor.constraint(equalTo: leftAnchor).isActive=true
 //        containerView.topAnchor.constraint(equalTo: topAnchor).isActive=true
 //        containerView.rightAnchor.constraint(equalTo: rightAnchor).isActive=true
 //        containerView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive=true
-      containerView.backgroundColor = UIColor.init(hexString: "#2C2A2A")
+     // containerView.backgroundColor = UIColor.init(hexString: "#2C2A2A")
+        
+        if DataManager.datamanager.darkmode!{
+              containerView.backgroundColor = UIColor.init(hexString: "#2C2A2A")
+               }
+               else{
+                   containerView.backgroundColor = UIColor.white
+               }
         
         containerView.addSubview(loacatePlantbutton)
         loacatePlantbutton.anchor(top: containerView.topAnchor, left: containerView.leftAnchor, bottom: nil, right: nil, paddingTop: 10, paddingLeft: 10, paddingBottom: 0, paddingRight: 0, width: 30, height: 30, enableInsets: true)
         
         
         containerView.addSubview(locatePlantLabel)
-        locatePlantLabel.anchor(top: containerView.topAnchor, left: loacatePlantbutton.rightAnchor, bottom: nil, right: nil, paddingTop: 10, paddingLeft: 10, paddingBottom: 0, paddingRight: 0, width: 100, height: 30, enableInsets: true)
+        locatePlantLabel.anchor(top: containerView.topAnchor, left: loacatePlantbutton.rightAnchor, bottom: nil, right: nil, paddingTop: 10, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 100, height: 30, enableInsets: true)
         
         loacatePlantbutton.addTarget(self, action: #selector(buttonPress(button:)), for: .touchUpInside)
 //        loacatePlantbutton.leftAnchor.constraint(equalTo: containerView.leftAnchor, constant: 10).isActive=true
@@ -81,8 +90,13 @@ class DrilldownheaderView: UIView {
         btn.backgroundColor = UIColor.white
        btn.setTitleColor(.black, for: .normal)
        // btn.setTitle(" locate Plant ", for: .normal)
-        btn.setImage(UIImage(named: "Backbutton"), for: .normal)
-      
+       // btn.setImage(UIImage(named: "fb"), for: .normal)
+      if DataManager.datamanager.darkmode!{
+       btn.setImage(UIImage(named: "twoo"), for: .normal)
+      }
+      else{
+           btn.setImage(UIImage(named: "twoo2"), for: .normal)
+      }
      
         return btn
     }()
@@ -90,7 +104,7 @@ class DrilldownheaderView: UIView {
     public let locatePlantLabel : UILabel = {
            let lbl = UILabel()
         lbl.textColor = .lightGray
-            lbl.font = UIFont(name: "Apple SD Gothic Neo", size: 16)
+            lbl.font = UIFont(name: "Apple SD Gothic Neo", size: 12)
            lbl.textAlignment = .left
            lbl.backgroundColor = UIColor.clear
         lbl.text = "Dashboard"

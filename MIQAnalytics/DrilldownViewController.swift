@@ -143,7 +143,8 @@ class DrilldownViewController: UIViewController , UITableViewDelegate, UITableVi
         headerView  = DrilldownheaderView(frame: CGRect(x: 0, y: barHeight, width: self.view.frame.size.width, height: 50 ))
         headerView.delegate = self
         self.view.addSubview(headerView)
-        myTableView = UITableView(frame: CGRect(x: 0, y: barHeight + 50 , width: displayWidth, height: displayHeight - barHeight))
+       
+        myTableView = UITableView(frame: CGRect(x: 0, y: barHeight + 53 , width: displayWidth, height: displayHeight - barHeight))
         myTableView.register(KPIChartCell.self, forCellReuseIdentifier: cellId)
         myTableView.register(KPIBarChartCell.self, forCellReuseIdentifier: cellId2)
          //myTableView.register(OperationCell.self, forCellReuseIdentifier: cellId3)

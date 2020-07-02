@@ -61,19 +61,24 @@ class DashboardHeaderView: UIView {
         }
         
         containerView.addSubview(loacatePlantbutton)
+        
         containerView.addSubview(Notificationbutton)
-        loacatePlantbutton.anchor(top: containerView.topAnchor, left: containerView.leftAnchor, bottom: nil, right: nil, paddingTop: 10, paddingLeft: 10, paddingBottom: 0, paddingRight: 0, width: 30, height: 30, enableInsets: true)
+        containerView.addSubview(centreLabel)
+        loacatePlantbutton.anchor(top: containerView.topAnchor, left: containerView.leftAnchor, bottom: nil, right: nil, paddingTop: 10, paddingLeft: 5, paddingBottom: 0, paddingRight: 0, width: 30, height: 30, enableInsets: true)
         
         
         containerView.addSubview(locatePlantLabel)
-        locatePlantLabel.anchor(top: containerView.topAnchor, left: loacatePlantbutton.rightAnchor, bottom: nil, right: nil, paddingTop: 10, paddingLeft: 10, paddingBottom: 0, paddingRight: 0, width: 100, height: 30, enableInsets: true)
+        locatePlantLabel.anchor(top: containerView.topAnchor, left: loacatePlantbutton.rightAnchor, bottom: nil, right: nil, paddingTop: 10, paddingLeft: -5, paddingBottom: 0, paddingRight: 0, width: 100, height: 30, enableInsets: true)
         
         loacatePlantbutton.addTarget(self, action: #selector(buttonPress(button:)), for: .touchUpInside)
+        
+        centreLabel.anchor(top: containerView.topAnchor, left: locatePlantLabel.rightAnchor, bottom: containerView.bottomAnchor, right: nil, paddingTop: 3, paddingLeft: 5, paddingBottom: 3, paddingRight: 0, width: 100, height: 30, enableInsets: true)
+        //centreLabel.center.y = self.containerView.center.x
         
         Notificationbutton.addTarget(self, action: #selector(buttonPressnotification(button:)), for: .touchUpInside)
         
         
-        Notificationbutton.anchor(top: containerView.topAnchor, left: nil, bottom: nil, right: containerView.rightAnchor, paddingTop: 4, paddingLeft: 0, paddingBottom: 0, paddingRight: 5, width: 40, height: 40, enableInsets: true)
+        Notificationbutton.anchor(top: containerView.topAnchor, left: nil, bottom: nil, right: containerView.rightAnchor, paddingTop: 10, paddingLeft: 0, paddingBottom: 0, paddingRight: 5, width: 30, height: 30, enableInsets: true)
 //        loacatePlantbutton.leftAnchor.constraint(equalTo: containerView.leftAnchor, constant: 10).isActive=true
 //        loacatePlantbutton.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 10).isActive=true
 //        loacatePlantbutton.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: 30).isActive=true
@@ -109,8 +114,13 @@ class DashboardHeaderView: UIView {
         btn.backgroundColor = UIColor.white
        btn.setTitleColor(.green, for: .normal)
        // btn.setTitle(" locate Plant ", for: .normal)
-        btn.setImage(UIImage(named: "Backbutton"), for: .normal)
-      
+      //  btn.setImage(UIImage(named: "twoo"), for: .normal)
+      if DataManager.datamanager.darkmode!{
+       btn.setImage(UIImage(named: "twoo"), for: .normal)
+      }
+      else{
+           btn.setImage(UIImage(named: "twoo2"), for: .normal)
+      }
      
         return btn
     }()
@@ -118,12 +128,22 @@ class DashboardHeaderView: UIView {
     public let locatePlantLabel : UILabel = {
            let lbl = UILabel()
            lbl.textColor = .lightGray
-           lbl.font = UIFont(name: "Apple SD Gothic Neo", size: 16)
+           lbl.font = UIFont(name: "Apple SD Gothic Neo", size: 12)
            lbl.textAlignment = .left
            lbl.backgroundColor = UIColor.clear
         lbl.text = "Locate Plant"
            return lbl
        }()
+    
+    public let centreLabel : UILabel = {
+              let lbl = UILabel()
+              lbl.textColor = .lightGray
+              lbl.font = UIFont(name: "Apple SD Gothic Neo", size: 12)
+              lbl.textAlignment = .left
+              lbl.backgroundColor = UIColor.clear
+           lbl.text = "Dashboard"
+              return lbl
+          }()
     
     let dashboardButton: UIButton = {
         let btn = UIButton()
@@ -138,7 +158,12 @@ class DashboardHeaderView: UIView {
          btn.backgroundColor = UIColor.white
         btn.setTitleColor(.green, for: .normal)
         // btn.setTitle(" locate Plant ", for: .normal)
-         btn.setImage(UIImage(named: "blacknoti"), for: .normal)
+        if DataManager.datamanager.darkmode!{
+         btn.setImage(UIImage(named: "goldnoti"), for: .normal)
+        }
+        else{
+             btn.setImage(UIImage(named: "onee2"), for: .normal)
+        }
         return btn
     }()
     

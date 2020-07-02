@@ -324,11 +324,13 @@ class KPIStstusCell: UITableViewCell  {
         
         
                            let attachment = NSTextAttachment()
-                           attachment.image = UIImage(named: "quality_icon")
+                       // attachment.bounds = CGRect.init(x: -10, y: 0, width: 95, height: 95)
+                           attachment.image = UIImage(named: "quality_icon8")
                            let attachmentString = NSAttributedString(attachment: attachment)
                            let labelImg = NSMutableAttributedString(string: "")
                            labelImg.append(attachmentString)
-         chart2.centerAttributedText = labelImg
+       //  chart2.centerAttributedText = labelImg
+        
         //chart2.holeColor = UIColor.black
         if DataManager.datamanager.darkmode! {
                chart2.holeColor = UIColor.black
@@ -338,15 +340,16 @@ class KPIStstusCell: UITableViewCell  {
                }
         
         if DataManager.datamanager.darkmode! {
+            var capStr = categoryhealth.categoryName?.capitalized
 
-        let attributedString = NSMutableAttributedString(string: (categoryhealth.categoryName)!, attributes: [NSAttributedString.Key.foregroundColor:UIColor.white , NSAttributedString.Key.font: UIFont(name: "Apple SD Gothic Neo", size: 16.0)])
+            let attributedString = NSMutableAttributedString(string: (categoryhealth.categoryName?.capitalized)!, attributes: [NSAttributedString.Key.foregroundColor:UIColor.white , NSAttributedString.Key.font: UIFont(name: "Apple SD Gothic Neo", size: 16.0)])
         
-      //  chart2.centerAttributedText = attributedString
+       chart2.centerAttributedText = attributedString
         }
         else{
-            let attributedString = NSMutableAttributedString(string: (categoryhealth.categoryName)!, attributes: [NSAttributedString.Key.foregroundColor:UIColor.gray , NSAttributedString.Key.font: UIFont(name: "Apple SD Gothic Neo", size: 16.0)])
+            let attributedString = NSMutableAttributedString(string: (categoryhealth.categoryName?.capitalized)!, attributes: [NSAttributedString.Key.foregroundColor:UIColor.black , NSAttributedString.Key.font: UIFont(name: "Apple SD Gothic Neo", size: 16.0)])
             
-         //   chart2.centerAttributedText = attributedString
+            chart2.centerAttributedText = attributedString
         }
         chart2.isUserInteractionEnabled = false
     }
@@ -461,7 +464,7 @@ class KPIStstusCell: UITableViewCell  {
         
         containerView.anchor(top: topAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 10, paddingLeft: 20, paddingBottom: 10, paddingRight: 20, width: self.frame.width, height: self.frame.height, enableInsets: true)
         
-        chart2.anchor(top: topAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, paddingTop: 20, paddingLeft: 20, paddingBottom: 20, paddingRight: 20, width: 240, height: 240, enableInsets: true)
+        chart2.anchor(top: topAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, paddingTop: 20, paddingLeft: 20, paddingBottom: 20, paddingRight: 20, width: 239, height: 239, enableInsets: true)
         
         onTargetValueLabel.anchor(top: chart2.bottomAnchor, left: nil, bottom: nil, right: onTargetLabel.leftAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: -5, width: 25, height: 25, enableInsets: true)
         

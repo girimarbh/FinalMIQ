@@ -32,7 +32,13 @@ let containerView: UIView = {
         v.layer.masksToBounds = true
         v.layer.borderColor = yourColor.cgColor
         v.layer.borderWidth = 1.0
-        v.backgroundColor = UIColor.black
+        //v.backgroundColor = UIColor.black
+    if DataManager.datamanager.darkmode! {
+           v.backgroundColor = UIColor.black
+           }
+           else{
+               v.backgroundColor = UIColor.init(hexString: "#edf8fa")
+           }
         v.translatesAutoresizingMaskIntoConstraints=false
          v.layer.borderWidth = 0.5
              v.layer.borderColor = UIColor.lightGray.cgColor
@@ -48,7 +54,13 @@ let containerView: UIView = {
         v.layer.masksToBounds = true
         v.layer.borderColor = yourColor.cgColor
         v.layer.borderWidth = 1.0
-        v.backgroundColor = UIColor.black
+      //  v.backgroundColor = UIColor.black
+        if DataManager.datamanager.darkmode! {
+               v.backgroundColor = UIColor.black
+               }
+               else{
+                   v.backgroundColor = UIColor.init(hexString: "#edf8fa")
+               }
         v.translatesAutoresizingMaskIntoConstraints=false
         v.layer.borderWidth = 0.5
         v.layer.borderColor = UIColor.lightGray.cgColor
@@ -60,7 +72,13 @@ let containerView: UIView = {
     
     let containerview3: UIView = {
            let v=UIView()
-           v.backgroundColor = UIColor.black
+          // v.backgroundColor = UIColor.black
+        if DataManager.datamanager.darkmode! {
+        v.backgroundColor = UIColor.black
+        }
+        else{
+            v.backgroundColor = UIColor.init(hexString: "#edf8fa")
+        }
            v.translatesAutoresizingMaskIntoConstraints=false
            v.layer.cornerRadius = 0.25
         v.layer.borderWidth = 0
@@ -72,7 +90,13 @@ let containerView: UIView = {
     
     let barchartcontainerView: UIView = {
         let v=UIView()
+       // v.backgroundColor = UIColor.black
+        if DataManager.datamanager.darkmode! {
         v.backgroundColor = UIColor.black
+        }
+        else{
+            v.backgroundColor = UIColor.init(hexString: "#daecf0")
+        }
         v.translatesAutoresizingMaskIntoConstraints=false
         v.layer.cornerRadius = 0.25
         v.layer.borderWidth = 0.5
@@ -84,7 +108,7 @@ let containerView: UIView = {
     
     public let lastupdatedLabel : UILabel = {
         let lbl = UILabel()
-        lbl.textColor = UIColor.white
+        lbl.textColor = UIColor.gray
         lbl.font = UIFont.systemFont(ofSize: 8)
         lbl.textAlignment = .center
         lbl.layer.cornerRadius = 0.5
@@ -94,7 +118,7 @@ let containerView: UIView = {
     }()
     public let lastupdatedDateLabel : UILabel = {
         let lbl = UILabel()
-        lbl.textColor = UIColor.white
+        lbl.textColor = UIColor.gray
         lbl.font = UIFont.systemFont(ofSize: 8)
         lbl.textAlignment = .center
         lbl.layer.cornerRadius = 0.5
@@ -154,7 +178,12 @@ public let scnearioDateLabel : UILabel = {
     lbl.textAlignment = .center
   lbl.layer.borderColor = UIColor.lightGray.cgColor
     lbl.layer.borderWidth = 0
+    if DataManager.datamanager.darkmode! {
     lbl.backgroundColor = UIColor.init(hexString: "#2C2A2A")
+    }
+    else{
+         lbl.backgroundColor = UIColor.init(hexString: "#daecf0")
+    }
     
    // lbl.layer.borderWidth = 0.5
     lbl.layer.addBorder(edge: UIRectEdge.top, color: UIColor.green, thickness: 0.5)
@@ -185,7 +214,13 @@ public let scnearioDateLabel : UILabel = {
 //        lbl.layer.addBorder(edge: UIRectEdge.left, color: UIColor.red, thickness: 0)
          lbl.text = "9th August  \n 2019"
         lbl.numberOfLines = 2
-         lbl.backgroundColor = UIColor.init(hexString: "#2C2A2A")
+//         lbl.backgroundColor = UIColor.init(hexString: "#2C2A2A")
+          if DataManager.datamanager.darkmode! {
+        lbl.backgroundColor = UIColor.init(hexString: "#2C2A2A")
+           }
+           else{
+                lbl.backgroundColor = UIColor.init(hexString: "#daecf0")
+           }
          return lbl
     }()
     
@@ -200,7 +235,13 @@ public let scnearioDateLabel : UILabel = {
            lbl.layer.borderWidth = 0
         lbl.numberOfLines = 2
         lbl.text = "Target \n  Value"
-         lbl.backgroundColor = UIColor.init(hexString: "#2C2A2A")
+         //lbl.backgroundColor = UIColor.init(hexString: "#2C2A2A")
+          if DataManager.datamanager.darkmode! {
+        lbl.backgroundColor = UIColor.init(hexString: "#2C2A2A")
+           }
+           else{
+                lbl.backgroundColor = UIColor.init(hexString: "#daecf0")
+           }
         return lbl
     }()
         
@@ -215,7 +256,13 @@ public let scnearioDateLabel : UILabel = {
                lbl.layer.borderWidth = 0
             lbl.numberOfLines = 2
              lbl.text = "64%"
-             lbl.backgroundColor = UIColor.init(hexString: "#2C2A2A")
+             //lbl.backgroundColor = UIColor.init(hexString: "#2C2A2A")
+              if DataManager.datamanager.darkmode! {
+            lbl.backgroundColor = UIColor.init(hexString: "#2C2A2A")
+               }
+               else{
+                    lbl.backgroundColor = UIColor.init(hexString: "#daecf0")
+               }
              return lbl
         }()
 
@@ -230,7 +277,13 @@ public let scnearioDateLabel : UILabel = {
            lbl.layer.borderWidth = 0
         lbl.numberOfLines = 2
         lbl.text = "Actual \n Value"
-         lbl.backgroundColor = UIColor.init(hexString: "#2C2A2A")
+        // lbl.backgroundColor = UIColor.init(hexString: "#2C2A2A")
+          if DataManager.datamanager.darkmode! {
+        lbl.backgroundColor = UIColor.init(hexString: "#2C2A2A")
+           }
+           else{
+                lbl.backgroundColor = UIColor.init(hexString: "#daecf0")
+           }
         return lbl
     }()
         
@@ -245,7 +298,13 @@ public let scnearioDateLabel : UILabel = {
              lbl.backgroundColor = UIColor.clear
              lbl.text = "63 \n %"
             lbl.numberOfLines = 2
-             lbl.backgroundColor = UIColor.init(hexString: "#2C2A2A")
+           //  lbl.backgroundColor = UIColor.init(hexString: "#2C2A2A")
+              if DataManager.datamanager.darkmode! {
+            lbl.backgroundColor = UIColor.init(hexString: "#2C2A2A")
+               }
+               else{
+                    lbl.backgroundColor = UIColor.init(hexString: "#daecf0")
+               }
              return lbl
         }()
 
@@ -254,10 +313,17 @@ public let scnearioDateLabel : UILabel = {
         let btn = UIButton()
         btn.setTitle("Operation View", for: .normal)
         btn.titleLabel?.textAlignment = .left
-        btn.titleLabel?.textColor = UIColor.green
+//        btn.titleLabel?.textColor = UIColor.green
+         btn.setTitleColor(UIColor.gray, for: .normal)
         btn.layer.cornerRadius = 0.5
        // btn.backgroundColor = UIColor.black
+         if DataManager.datamanager.darkmode!{
         btn.backgroundColor = UIColor.init(hexString: "#2C2A2A")
+        }
+        else
+        {
+             btn.backgroundColor = UIColor.init(hexString: "#daecf0")
+        }
         btn.tag = 1
         return btn
     }()
@@ -266,9 +332,15 @@ public let scnearioDateLabel : UILabel = {
         let btn = UIButton()
         btn.setTitle("Management view", for: .normal)
         btn.titleLabel?.textAlignment = .left
-        btn.titleLabel?.textColor = UIColor.green
+        btn.setTitleColor(UIColor.gray, for: .normal)
         btn.layer.cornerRadius = 0.5
+        if DataManager.datamanager.darkmode!{
         btn.backgroundColor = UIColor.init(hexString: "#2C2A2A")
+        }
+        else
+        {
+             btn.backgroundColor = UIColor.init(hexString: "#daecf0")
+        }
         btn.tag = 2
         
         return btn
@@ -363,7 +435,7 @@ public let chart2 : BarChartView = {
     
     public let currentrunningtargetValueLabel : UILabel = {
          let lbl = UILabel()
-        lbl.textColor = .white
+        lbl.textColor = .gray
          lbl.font = UIFont.systemFont(ofSize: 10)
          lbl.textAlignment = .center
          lbl.translatesAutoresizingMaskIntoConstraints = false
@@ -386,7 +458,15 @@ override func awakeFromNib() {
 }
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
     super.init(style: style, reuseIdentifier: reuseIdentifier)
-    self.backgroundColor = UIColor.black
+   // self.backgroundColor = UIColor.black
+        if DataManager.datamanager.darkmode! {
+            self.backgroundColor = UIColor.black
+            
+        }
+        
+        else {
+            self.backgroundColor = UIColor.init(hexString: "edf8fa")
+        }
         chart2.delegate = self
     addSubview(containerview3)
     addSubview(operationViewbtn)
@@ -462,14 +542,21 @@ required init?(coder: NSCoder) {
          let chartData = BarChartData(dataSet: chartDataSet)
 
         chart2.backgroundColor = UIColor.black
+    if DataManager.datamanager.darkmode!{
         chartDataSet.colors = [UIColor(red: 16/255, green: 135/255, blue: 72/255, alpha: 1)]
+    }
+    else {
+       chartDataSet.colors = [UIColor(red: 177/255, green: 109/255, blue: 198/255, alpha: 1)]
+    }
         chart2.animate(xAxisDuration: 2.0, yAxisDuration: 2.0, easingOption: .easeInCubic)
        // let ll = ChartLimitLine(limit: Double(x[0]), label: "Target")
        // chart2.rightAxis.addLimitLine(ll)
       //  var xAxis = chart2.xAxis
         var yAxis = chart2.leftAxis
-     //   xAxis.labelTextColor = UIColor.white
+        //xAxis.labelTextColor = UIColor.black
         yAxis.labelTextColor = UIColor.white
+       yAxis.drawGridLinesEnabled = true
+    
         chartData.barWidth = Double(0.30)
         chart2.data = chartData
 
@@ -747,7 +834,13 @@ required init?(coder: NSCoder) {
             dataEntries.append(dataEntry)
         }
         let chartDataSet = BarChartDataSet(entries: dataEntries, label: "MIQ")
-        chartDataSet.colors = [UIColor(red: 16/255, green: 135/255, blue: 72/255, alpha: 1)]
+       // chartDataSet.colors = [UIColor(red: 16/255, green: 135/255, blue: 72/255, alpha: 1)]
+        if DataManager.datamanager.darkmode!{
+            chartDataSet.colors = [UIColor(red: 16/255, green: 135/255, blue: 72/255, alpha: 1)]
+        }
+        else {
+           chartDataSet.colors = [UIColor(red: 177/255, green: 109/255, blue: 198/255, alpha: 1)]
+        }
         chart2.animate(xAxisDuration: 2.0, yAxisDuration: 2.0, easingOption: .easeInCubic)
         let chartData = BarChartData(dataSet: chartDataSet)
         chart2.data = chartData
@@ -756,12 +849,13 @@ required init?(coder: NSCoder) {
         marker.minimumSize = CGSize(width: 55.0, height: 55.0)
         marker.setLabel("abc")
         chart2.marker = marker
-        chart2.drawMarkers = true
+        chart2.drawMarkers = false
         chart2.leftAxis.axisMinimum = 0.0
-        chart2.xAxis.labelTextColor = UIColor.white
+        chart2.xAxis.labelTextColor = UIColor.gray
         var yAxis = chart2.leftAxis
-        yAxis.labelTextColor = UIColor.white
-        chartData.barWidth = Double(0.50)
+        yAxis.labelTextColor = UIColor.gray
+        
+        chartData.barWidth = Double(0.30)
         chart2.xAxis.valueFormatter = IndexAxisValueFormatter(values: dataPoints)
         chart2.xAxis.labelPosition = .bottom
         chart2.xAxis.labelCount = 30
@@ -774,6 +868,7 @@ required init?(coder: NSCoder) {
         chart2.data?.highlightEnabled = true
         chart2.drawMarkers = true
         chart2.data?.highlightEnabled = true
+        chart2.drawGridBackgroundEnabled = false
     }
     
 

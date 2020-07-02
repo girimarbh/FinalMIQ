@@ -41,25 +41,25 @@ class LeftSideMenuView: UIView {
         containerView.rightAnchor.constraint(equalTo: rightAnchor).isActive=true
         //containerView.heightAnchor.constraint(equalToConstant: 40).isActive=true
         containerView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive=true
-        containerView.backgroundColor = UIColor.gray
-        containerView.alpha = 0.8
-        
-        containerView.addSubview(imgView)
-        imgView.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 20).isActive=true
-        imgView.centerXAnchor.constraint(equalTo: containerView.centerXAnchor).isActive = true
-       // imgView.leftAnchor.constraint(equalTo: containerView.leftAnchor, constant: 20).isActive=true
-       // imgView.rightAnchor.constraint(equalTo: containerView.rightAnchor, constant: 20).isActive=true
-        imgView.heightAnchor.constraint(equalToConstant: 60).isActive=true
-        imgView.widthAnchor.constraint(equalToConstant: 60).isActive=true
+        containerView.backgroundColor = UIColor.black
+      //  containerView.alpha = 0.8
+//
+//        //containerView.addSubview(imgView)
+//        imgView.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 20).isActive=true
+//        imgView.centerXAnchor.constraint(equalTo: containerView.centerXAnchor).isActive = true
+//       // imgView.leftAnchor.constraint(equalTo: containerView.leftAnchor, constant: 20).isActive=tr
+//       // imgView.rightAnchor.constraint(equalTo: containerView.rightAnchor, constant: 20).isActive=true
+//        imgView.heightAnchor.constraint(equalToConstant: 60).isActive=true
+//        imgView.widthAnchor.constraint(equalToConstant: 60).isActive=true
         
 
-        imgView.makeRounded()
+       // imgView.makeRounded()
         
-        containerView.addSubview(nameLabel)
-         //nameLabel.leftAnchor.constraint(equalTo: containerView.leftAnchor, constant: 10).isActive=true
-         nameLabel.topAnchor.constraint(equalTo: imgView.bottomAnchor, constant: 0).isActive=true
-        nameLabel.centerXAnchor.constraint(equalTo: containerView.centerXAnchor).isActive = true
-         //nameLabel.rightAnchor.constraint(equalTo: containerView.rightAnchor, constant: 20).isActive=true
+         containerView.addSubview(nameLabel)
+         nameLabel.leftAnchor.constraint(equalTo: containerView.leftAnchor, constant: 10).isActive=true
+         nameLabel.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 0).isActive=true
+      // nameLabel.centerXAnchor.constraint(equalTo: containerView.centerXAnchor).isActive = true
+         nameLabel.rightAnchor.constraint(equalTo: containerView.rightAnchor, constant: 20).isActive=true
          nameLabel.heightAnchor.constraint(equalToConstant: 30).isActive=true
          //nameLabel.widthAnchor.constraint(equalToConstant: 200).isActive=true
          nameLabel.layer.cornerRadius =  5
@@ -68,10 +68,10 @@ class LeftSideMenuView: UIView {
          lineView.leftAnchor.constraint(equalTo: containerView.leftAnchor, constant: 0).isActive=true
          lineView.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 0).isActive=true
          lineView.rightAnchor.constraint(equalTo: containerView.rightAnchor, constant: 0).isActive=true
-         lineView.heightAnchor.constraint(equalToConstant: 3).isActive=true
-         //nameLabel.widthAnchor.constraint(equalToConstant: 200).isActive=true
-        // nameLabel.layer.cornerRadius =  5
-        
+         lineView.heightAnchor.constraint(equalToConstant: 1).isActive=true
+//         //nameLabel.widthAnchor.constraint(equalToConstant: 200).isActive=true
+//        // nameLabel.layer.cornerRadius =  5
+//
         
 //        containerView.addSubview(lblTitle)
 //        lblTitle.leftAnchor.constraint(equalTo: containerView.leftAnchor, constant: 10).isActive=true
@@ -80,34 +80,34 @@ class LeftSideMenuView: UIView {
 //        lblTitle.heightAnchor.constraint(equalToConstant: 40).isActive=true
         
         containerView.addSubview(mapMenuButton)
-        mapMenuButton.leftAnchor.constraint(equalTo: containerView.leftAnchor, constant: 10).isActive=true
-        mapMenuButton.topAnchor.constraint(equalTo: lineView.bottomAnchor, constant: 10).isActive=true
-        //mapMenuButton.rightAnchor.constraint(equalTo: containerView.rightAnchor, constant: 40).isActive=true
-        mapMenuButton.heightAnchor.constraint(equalToConstant: 40).isActive=true
+        mapMenuButton.leftAnchor.constraint(equalTo: containerView.leftAnchor, constant: 30).isActive=true
+        mapMenuButton.topAnchor.constraint(equalTo: lineView.bottomAnchor, constant: 05).isActive=true
+        mapMenuButton.rightAnchor.constraint(equalTo: containerView.rightAnchor, constant: 10).isActive=true
+        mapMenuButton.heightAnchor.constraint(equalToConstant: 20).isActive=true
         mapMenuButton.widthAnchor.constraint(equalToConstant: 180).isActive=true
 
         containerView.addSubview(DashboardButton)
-        DashboardButton.leftAnchor.constraint(equalTo: containerView.leftAnchor, constant: 10).isActive=true
-        DashboardButton.topAnchor.constraint(equalTo: mapMenuButton.bottomAnchor, constant: 10).isActive=true
-       // DashboardButton.rightAnchor.constraint(equalTo: containerView.rightAnchor, constant: 20).isActive=true
-        DashboardButton.heightAnchor.constraint(equalToConstant: 40).isActive=true
+        DashboardButton.leftAnchor.constraint(equalTo: containerView.leftAnchor, constant: 30).isActive=true
+        DashboardButton.topAnchor.constraint(equalTo: mapMenuButton.bottomAnchor, constant: 05).isActive=true
+        DashboardButton.rightAnchor.constraint(equalTo: containerView.rightAnchor, constant: 10).isActive=true
+        DashboardButton.heightAnchor.constraint(equalToConstant: 20).isActive=true
         DashboardButton.widthAnchor.constraint(equalToConstant: 180).isActive=true
 
 
         containerView.addSubview(settingButton)
-        settingButton.leftAnchor.constraint(equalTo: containerView.leftAnchor, constant: 10).isActive=true
-        settingButton.topAnchor.constraint(equalTo: DashboardButton.bottomAnchor, constant: 10).isActive=true
-        //settingButton.rightAnchor.constraint(equalTo: containerView.rightAnchor, constant: 20).isActive=true
-        settingButton.heightAnchor.constraint(equalToConstant: 40).isActive=true
+        settingButton.leftAnchor.constraint(equalTo: containerView.leftAnchor, constant: 30).isActive=true
+        settingButton.topAnchor.constraint(equalTo: DashboardButton.bottomAnchor, constant: 05).isActive=true
+        settingButton.rightAnchor.constraint(equalTo: containerView.rightAnchor, constant: 10).isActive=true
+        settingButton.heightAnchor.constraint(equalToConstant: 20).isActive=true
         settingButton.widthAnchor.constraint(equalToConstant: 180).isActive=true
         
         
         containerView.addSubview(darkmodelbl)
         containerView.addSubview(switchbtn)
         
-        darkmodelbl.anchor(top: settingButton.bottomAnchor, left: containerView.leftAnchor, bottom: nil, right: nil, paddingTop: 5, paddingLeft: 15, paddingBottom: 0, paddingRight: 0, width: 100, height: 40, enableInsets: true)
-        
-        switchbtn.anchor(top: settingButton.bottomAnchor, left: darkmodelbl.rightAnchor, bottom: nil, right: nil, paddingTop: 15, paddingLeft: 5, paddingBottom: 0, paddingRight: 0, width: 50, height: 20, enableInsets: true)
+        darkmodelbl.anchor(top: settingButton.bottomAnchor, left: containerView.leftAnchor, bottom: nil, right: nil, paddingTop: 5, paddingLeft: 30, paddingBottom: 0, paddingRight: 0, width: 70, height: 20, enableInsets: true)
+        switchbtn.transform = CGAffineTransform(scaleX: 0.75, y: 0.75)
+        switchbtn.anchor(top: settingButton.bottomAnchor, left: darkmodelbl.rightAnchor, bottom: nil, right: nil, paddingTop: 2, paddingLeft: 5, paddingBottom: 0, paddingRight: 0, width: 30, height: 30, enableInsets: true)
 
 
         
@@ -148,7 +148,7 @@ class LeftSideMenuView: UIView {
     
     let lineView: UIView = {
            let v=UIView()
-           v.backgroundColor = UIColor.lightGray
+           v.backgroundColor = UIColor.green
            v.translatesAutoresizingMaskIntoConstraints=false
            //v.layer.borderWidth  = 2.0
            //  v.layer.borderColor = (UIColor.red as! CGColor)
@@ -169,9 +169,10 @@ class LeftSideMenuView: UIView {
     let darkmodelbl: UILabel = {
         let lbl=UILabel()
         lbl.text = "Dark mode"
-        lbl.font=UIFont.boldSystemFont(ofSize: 18)
-        lbl.textColor = UIColor.white
-        lbl.backgroundColor = UIColor.gray
+       lbl.font = UIFont(name: "Apple SD Gothic Neo", size: 14)!
+       // lbl.font=UIFont.boldSystemFont(ofSize: 18)
+        lbl.textColor = UIColor.green
+       // lbl.backgroundColor = UIColor.gray
         lbl.textAlignment = .left
         lbl.translatesAutoresizingMaskIntoConstraints=false
         return lbl
@@ -197,9 +198,9 @@ class LeftSideMenuView: UIView {
     
     let nameLabel: UILabel = {
         let lbl=UILabel()
-        lbl.text = "Girish@wipro.com "
-        lbl.font=UIFont.boldSystemFont(ofSize: 14)
-        lbl.textColor = UIColor.black
+        lbl.text = "Hello ," + "Girish@wipro.com"
+        lbl.font = UIFont(name: "Apple SD Gothic Neo", size: 12)!
+        lbl.textColor = UIColor.red
         lbl.backgroundColor = UIColor.clear
         lbl.textAlignment = .left
         lbl.translatesAutoresizingMaskIntoConstraints=false
@@ -230,33 +231,45 @@ class LeftSideMenuView: UIView {
     let mapMenuButton : UIButton = {
         let btn = UIButton()
 //        btn.titleLabel?.text = "MAP"
-//        btn.backgroundColor = UIColor.gray
+        btn.backgroundColor = UIColor.black
       btn.titleLabel?.textColor = UIColor.green
         
-        btn.backgroundColor = UIColor.lightGray
-        btn.setTitle("Settings", for: .normal)
+        btn.backgroundColor = UIColor.black
+        btn.setTitle("Sales", for: .normal)
         
         btn.translatesAutoresizingMaskIntoConstraints=false
+        btn.titleLabel?.font = UIFont(name: "Apple SD Gothic Neo", size: 14)!
         btn.addTarget(self, action: #selector(handleButton(_:)), for: .touchUpInside)
+       // btn.titleLabel?.textAlignment = .right
+        btn.contentHorizontalAlignment = .left
+        btn.setTitleColor(.green, for: .normal)
         return btn
         
     }()
     let DashboardButton : UIButton = {
         let btn = UIButton()
-        btn.backgroundColor = UIColor.lightGray
-        btn.setTitle("Data Center", for: .normal)
+        btn.backgroundColor = UIColor.clear
+         btn.backgroundColor = UIColor.black
+        btn.setTitle("Manufacture", for: .normal)
         btn.titleLabel?.textColor = UIColor.green
         btn.translatesAutoresizingMaskIntoConstraints=false
+        btn.titleLabel?.font = UIFont(name: "Apple SD Gothic Neo", size: 14)!
+        //btn.titleLabel?.textAlignment = .left
+        btn.contentHorizontalAlignment = .left
+        btn.setTitleColor(.green, for: .normal)
         return btn
         
     }()
     let settingButton : UIButton = {
         let btn = UIButton()
-        btn.backgroundColor = UIColor.lightGray
+        btn.backgroundColor = UIColor.black
         btn.setTitle("Logout", for: .normal)
          btn.titleLabel?.textColor = UIColor.green
-        
+         btn.titleLabel?.textAlignment = .left
         btn.translatesAutoresizingMaskIntoConstraints=false
+        btn.titleLabel?.font = UIFont(name: "Apple SD Gothic Neo", size: 14)!
+        btn.contentHorizontalAlignment = .left
+        btn.setTitleColor(.green, for: .normal)
         return btn
         
     }()
@@ -294,10 +307,18 @@ class LeftSideMenuView: UIView {
             print("UISwitch state is now ON")
            DataManager.datamanager.darkmode = true
             mapdelegate?.Notifymap()
+            let nc = NotificationCenter.default
+            var DataDict:[String: Bool] = ["data" : DataManager.datamanager.darkmode!]
+            nc.post(name: Notification.Name("darkmode"), object: nil, userInfo: DataDict)
         }
         else{
             print("UISwitch state is now Off")
+            let nc = NotificationCenter.default
+            
+           
             DataManager.datamanager.darkmode = false
+            var DataDict:[String: Bool] = ["data" : DataManager.datamanager.darkmode!]
+             nc.post(name: Notification.Name("darkmode"), object: nil, userInfo: DataDict)
             mapdelegate?.Notifymap()
         }
     }

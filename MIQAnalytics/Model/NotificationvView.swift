@@ -16,7 +16,13 @@ class NotificationvView: UIView , UITableViewDelegate , UITableViewDataSource{
     
         override init(frame: CGRect) {
         super.init(frame: frame)
-        self.backgroundColor=UIColor.black
+            if DataManager.datamanager.darkmode! {
+           self.backgroundColor=UIColor.black
+            }
+            else{
+                self.backgroundColor = UIColor.init(hexString: "#daecf0")
+            }
+        //self.backgroundColor=UIColor.black
         self.clipsToBounds=true
         self.layer.masksToBounds=true
 
@@ -76,7 +82,7 @@ class NotificationvView: UIView , UITableViewDelegate , UITableViewDataSource{
         table.register(NotificationPopupCell.self, forCellReuseIdentifier: cellId)
         table.separatorStyle = .singleLine
 
-        table.estimatedRowHeight = 300
+        table.estimatedRowHeight = 100
         table.rowHeight = UITableView.automaticDimension
          table.allowsSelection = false
 
@@ -123,7 +129,7 @@ class NotificationvView: UIView , UITableViewDelegate , UITableViewDataSource{
 
     let imgView: UIImageView = {
         let v=UIImageView()
-        v.image=#imageLiteral(resourceName: "quality_icon")
+       // v.image=#imageLiteral(resourceName: "quality_icon")
         v.contentMode = .scaleAspectFill
         v.translatesAutoresizingMaskIntoConstraints=false
         return v
@@ -159,14 +165,11 @@ class NotificationPopupCell: UITableViewCell {
         return v
     }()
 
-
-    private let notificationLabel : UILabel = {
+    public let notificationLabel : UILabel = {
         let lbl = UILabel()
         lbl.textColor = .green
         lbl.font = UIFont.boldSystemFont(ofSize: 16)
-        lbl.textAlignment = .center
-        lbl.numberOfLines = 0
-       // lbl.backgroundColor = UIColor.white
+        lbl.textAlignment = .left
         return lbl
     }()
     
@@ -177,9 +180,29 @@ class NotificationPopupCell: UITableViewCell {
         lbl.font = UIFont.systemFont(ofSize: 14)
         lbl.textAlignment = .left
         lbl.numberOfLines = 0
-        // lbl.backgroundColor = UIColor.white
         return lbl
     }()
+    
+//    private let notificationLabel : UILabel = {
+//        let lbl = UILabel()
+//        lbl.textColor = .green
+//        lbl.font = UIFont.boldSystemFont(ofSize: 16)
+//        lbl.textAlignment = .center
+//        lbl.numberOfLines = 0
+//       // lbl.backgroundColor = UIColor.white
+//        return lbl
+//    }()
+//
+//
+//    private let notificationContentLabel : UILabel = {
+//        let lbl = UILabel()
+//        lbl.textColor = .gray
+//        lbl.font = UIFont.systemFont(ofSize: 14)
+//        lbl.textAlignment = .left
+//        lbl.numberOfLines = 0
+//        // lbl.backgroundColor = UIColor.white
+//        return lbl
+//    }()
     
 //    private let notificationContentLabel : UILabel = {
 //           let lbl = UILabel()
@@ -214,7 +237,14 @@ class NotificationPopupCell: UITableViewCell {
     }
         override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        self.backgroundColor = UIColor.black
+      //  self.backgroundColor = UIColor.black
+            if DataManager.datamanager.darkmode! {
+                      self.backgroundColor=UIColor.black
+                       }
+                       else{
+                           self.backgroundColor = UIColor.init(hexString: "#daecf0")
+                       }
+            
 //        addSubview(containerView)
         addSubview(notificationLabel)
         addSubview(notificationContentLabel)
@@ -245,11 +275,15 @@ class NotificationPopupCell: UITableViewCell {
 //        containerView.anchor(top: topAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: self.frame.width, height: self.frame.height, enableInsets: true)
 
 //        notificationLabel.anchor(top: topAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, paddingTop: 10.0, paddingLeft: 10.0, paddingBottom: 0, paddingRight: 10, width: 100.0, height: 20.0, enableInsets: true)
-        notificationLabel.anchor(top: topAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, paddingTop: 20, paddingLeft: 10, paddingBottom: 0, paddingRight: 5, width: 0, height: 0, enableInsets: false)
+        notificationLabel.anchor(top: topAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, paddingTop: 10, paddingLeft: 10, paddingBottom: 0, paddingRight: 5, width: 0, height: 0, enableInsets: false)
         
         
         notificationContentLabel.anchor(top: notificationLabel.bottomAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 10, paddingLeft: 10, paddingBottom: 10, paddingRight: 10, width: 0, height: 120, enableInsets: false)
 //        notificationContentLabel.anchor(top: notificationLabel.bottomAnchor, left: containerView.leftAnchor, bottom: containerView.bottomAnchor, right: containerView.rightAnchor, paddingTop: 0, paddingLeft: 10, paddingBottom: 0, paddingRight: 10, width: 100, height: 0, enableInsets: true)
+        
+        notificationLabel.anchor(top: topAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, paddingTop: 10, paddingLeft: 10, paddingBottom: 0, paddingRight: 5, width: 0, height: 0, enableInsets: false)
+        
+        notificationContentLabel.anchor(top: notificationLabel.bottomAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 10, paddingLeft: 10, paddingBottom: 10, paddingRight: 10, width: 0, height: 0, enableInsets: false)
         
         }
     

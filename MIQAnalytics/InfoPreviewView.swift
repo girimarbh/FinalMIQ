@@ -106,6 +106,7 @@ class InfoPreviewView: UIView {
         
         
         
+        
         containerView.addSubview(lblTitle)
         lblTitle.leftAnchor.constraint(equalTo: containerView.leftAnchor, constant: 10).isActive=true
         lblTitle.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 0).isActive=true

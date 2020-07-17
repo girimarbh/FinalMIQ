@@ -49,6 +49,17 @@ struct PreviewDemoData {
 }
 
 class MapViewController : UIViewController, CLLocationManagerDelegate, GMSMapViewDelegate, GMSAutocompleteViewControllerDelegate, UITextFieldDelegate , NotificationProtocal , NotificationSettingbtn ,Notificationmapbtn {
+    func Notifyexecutiveview() {
+        print("Executive view")
+        
+       // let v
+       let v = ExecutiveViewController()
+        v.modalPresentationStyle = .fullScreen
+//        v.passdata = mapviewmodel.placearray[tag].plantID
+       // print("passed value is \(mapviewmodel.placearray[tag].plantID)")
+        self.present(v , animated: true , completion: nil)
+    }
+    
     func Notifymap() {
         if DataManager.datamanager.darkmode!  {
             darkmode = true

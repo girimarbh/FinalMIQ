@@ -10,6 +10,7 @@ import UIKit
 
 protocol Notificationmapbtn {
  func Notifymap()
+ func Notifyexecutiveview()
 // func updateError()
  
 }
@@ -235,7 +236,7 @@ class LeftSideMenuView: UIView {
       btn.titleLabel?.textColor = UIColor.green
         
         btn.backgroundColor = UIColor.black
-        btn.setTitle("Sales", for: .normal)
+        btn.setTitle("Executive view", for: .normal)
         
         btn.translatesAutoresizingMaskIntoConstraints=false
         btn.titleLabel?.font = UIFont(name: "Apple SD Gothic Neo", size: 14)!
@@ -299,7 +300,7 @@ class LeftSideMenuView: UIView {
 
         @objc func handleButton(_ sender: AnyObject) {
 
-//         delegate?.updateContentOnView()
+         mapdelegate?.Notifyexecutiveview()
     }
     
     @objc func switchStateDidChange(_ sender:UISwitch){

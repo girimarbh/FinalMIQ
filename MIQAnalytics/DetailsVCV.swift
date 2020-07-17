@@ -156,7 +156,7 @@ var activityView: UIActivityIndicatorView?
 
     override func viewDidLoad() {
         
-        
+       
         
         notificationCenter.delegate = self as! UNUserNotificationCenterDelegate
         

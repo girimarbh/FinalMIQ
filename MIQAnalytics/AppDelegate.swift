@@ -40,8 +40,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate  {
         
        // GMSServices.provideAPIKey("AIzaSyBU0SPK0agG9uyGpUwXsc0uEwLe01OVLis")
       //  GMSPlacesClient.provideAPIKey("AIzaSyBU0SPK0agG9uyGpUwXsc0uEwLe01OVLis")
-        
-        
+        //UIApplication.shared.sta
         return true
     }
 

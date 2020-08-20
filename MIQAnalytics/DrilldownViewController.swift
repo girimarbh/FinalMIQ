@@ -7,14 +7,34 @@
 //
 
 import UIKit
+import AVFoundation
 
 class DrilldownViewController: UIViewController , UITableViewDelegate, UITableViewDataSource , DrilldownDelegate , NotificationProtocaldrill , NotificationSelect{
     func managementoperationSelected(str: Int) {
+        
         DataManager.datamanager.operationSelected = str
         if DataManager.datamanager.operationSelected == 2 {
+            if DataManager.datamanager.voiceEnabled!{
+                   
+                     let utterance = AVSpeechUtterance(string: "You  selected management view")
+                                         utterance.voice = AVSpeechSynthesisVoice(language: "en-uk")
+                                         utterance.rate = 0.5
+                     
+                                         let synthesizer = AVSpeechSynthesizer()
+                                         synthesizer.speak(utterance)
+                     }
         drildownviewModel.managementviewfetchdata(id: 3, Kpiid: passedkpiid!, plantid: passedPlantID!)
         }
         if DataManager.datamanager.operationSelected == 1 {
+            if DataManager.datamanager.voiceEnabled!{
+                   
+                     let utterance = AVSpeechUtterance(string: "You Selected operation view")
+                                         utterance.voice = AVSpeechSynthesisVoice(language: "en-uk")
+                                         utterance.rate = 0.5
+                     
+                                         let synthesizer = AVSpeechSynthesizer()
+                                         synthesizer.speak(utterance)
+                     }
             drildownviewModel.drilldownKPIarraynew.removeAll()
             drildownviewModel.fetchdata(id: 1 ,  Kpiid: passedkpiid! , plantid: passedPlantID!)
             DataManager.datamanager.selectbtn = 1
@@ -23,7 +43,92 @@ class DrilldownViewController: UIViewController , UITableViewDelegate, UITableVi
         
     }
     
+    
     func NotifySelect(str: Int) {
+        
+        if DataManager.datamanager.operationSelected == 1 {
+        if str == 1{
+            if DataManager.datamanager.voiceEnabled!{
+                              
+                                let utterance = AVSpeechUtterance(string: "You  selected Daily option in operation view")
+                                                    utterance.voice = AVSpeechSynthesisVoice(language: "en-uk")
+                                                    utterance.rate = 0.5
+                                
+                                                    let synthesizer = AVSpeechSynthesizer()
+                                                    synthesizer.speak(utterance)
+                                }
+            
+        }
+        if str == 2
+        {
+            if DataManager.datamanager.voiceEnabled!{
+                              
+                                let utterance = AVSpeechUtterance(string: "You  selected weekly option in operation view")
+                                                    utterance.voice = AVSpeechSynthesisVoice(language: "en-uk")
+                                                    utterance.rate = 0.5
+                                
+                                                    let synthesizer = AVSpeechSynthesizer()
+                                                    synthesizer.speak(utterance)
+                                }
+            
+        }
+        if str == 3
+        {
+            if DataManager.datamanager.voiceEnabled!{
+                              
+                                let utterance = AVSpeechUtterance(string: "You  selected monthly option in operation view")
+                                                    utterance.voice = AVSpeechSynthesisVoice(language: "en-uk")
+                                                    utterance.rate = 0.5
+                                
+                                                    let synthesizer = AVSpeechSynthesizer()
+                                                    synthesizer.speak(utterance)
+                                }
+        }
+       
+        }
+        
+        
+        if DataManager.datamanager.operationSelected == 2 {
+         if str == 1{
+             if DataManager.datamanager.voiceEnabled!{
+                               
+                                 let utterance = AVSpeechUtterance(string: "You  selected Daily option in management view")
+                                                     utterance.voice = AVSpeechSynthesisVoice(language: "en-uk")
+                                                     utterance.rate = 0.5
+                                 
+                                                     let synthesizer = AVSpeechSynthesizer()
+                                                     synthesizer.speak(utterance)
+                                 }
+             
+         }
+         if str == 2
+         {
+             if DataManager.datamanager.voiceEnabled!{
+                               
+                                 let utterance = AVSpeechUtterance(string: "You  selected weekly option in management view")
+                                                     utterance.voice = AVSpeechSynthesisVoice(language: "en-uk")
+                                                     utterance.rate = 0.5
+                                 
+                                                     let synthesizer = AVSpeechSynthesizer()
+                                                     synthesizer.speak(utterance)
+                                 }
+             
+         }
+         if str == 3
+         {
+             if DataManager.datamanager.voiceEnabled!{
+                               
+                                 let utterance = AVSpeechUtterance(string: "You  selected monthly option in management view")
+                                                     utterance.voice = AVSpeechSynthesisVoice(language: "en-uk")
+                                                     utterance.rate = 0.5
+                                 
+                                                     let synthesizer = AVSpeechSynthesizer()
+                                                     synthesizer.speak(utterance)
+                                 }
+         }
+        
+         }
+         
         
         if DataManager.datamanager.operationSelected == 1
         {
@@ -156,6 +261,16 @@ class DrilldownViewController: UIViewController , UITableViewDelegate, UITableVi
 //        myTableView.showsVerticalScrollIndicator = false
         
         self.view.addSubview(myTableView)
+        
+        if DataManager.datamanager.voiceEnabled!{
+        
+          let utterance = AVSpeechUtterance(string: "You are on Drill down screen and currenctly selected is operation view")
+                              utterance.voice = AVSpeechSynthesisVoice(language: "en-uk")
+                              utterance.rate = 0.5
+          
+                              let synthesizer = AVSpeechSynthesizer()
+                              synthesizer.speak(utterance)
+          }
          
         
     }

@@ -25,6 +25,7 @@ protocol StoreDelegate {
 
 protocol insightdelegate {
     func didPressnotificationButton(button:UIButton)
+    func scanPressnotification()
 }
 
 class DashboardHeaderView: UIView {
@@ -61,13 +62,14 @@ class DashboardHeaderView: UIView {
         }
         
         containerView.addSubview(loacatePlantbutton)
-        
+         containerView.addSubview(scanbuttom)
         containerView.addSubview(Notificationbutton)
         containerView.addSubview(centreLabel)
         loacatePlantbutton.anchor(top: containerView.topAnchor, left: containerView.leftAnchor, bottom: nil, right: nil, paddingTop: 10, paddingLeft: 5, paddingBottom: 0, paddingRight: 0, width: 30, height: 30, enableInsets: true)
         
         
         containerView.addSubview(locatePlantLabel)
+       
         locatePlantLabel.anchor(top: containerView.topAnchor, left: loacatePlantbutton.rightAnchor, bottom: nil, right: nil, paddingTop: 10, paddingLeft: -5, paddingBottom: 0, paddingRight: 0, width: 100, height: 30, enableInsets: true)
         
         loacatePlantbutton.addTarget(self, action: #selector(buttonPress(button:)), for: .touchUpInside)
@@ -76,7 +78,9 @@ class DashboardHeaderView: UIView {
         //centreLabel.center.y = self.containerView.center.x
         
         Notificationbutton.addTarget(self, action: #selector(buttonPressnotification(button:)), for: .touchUpInside)
+        scanbuttom.addTarget(self, action: #selector(scanPressnotification(button:)), for: .touchUpInside)
         
+        //scanbuttom.anchor(top: containerView.topAnchor, left: locatePlantLabel.rightAnchor, bottom: containerView.bottomAnchor, right: nil, paddingTop: 5, paddingLeft: 0, paddingBottom: 5, paddingRight: 0, width: 100, height: 30, enableInsets: true)
         
         Notificationbutton.anchor(top: containerView.topAnchor, left: nil, bottom: nil, right: containerView.rightAnchor, paddingTop: 10, paddingLeft: 0, paddingBottom: 0, paddingRight: 5, width: 30, height: 30, enableInsets: true)
 //        loacatePlantbutton.leftAnchor.constraint(equalTo: containerView.leftAnchor, constant: 10).isActive=true
@@ -152,6 +156,22 @@ class DashboardHeaderView: UIView {
         return btn
     }()
     
+    
+     private let scanbuttom : UIButton = {
+               let lblbtn = UIButton()
+               lblbtn.titleLabel?.textColor = UIColor.black
+               lblbtn.titleLabel?.font = UIFont.systemFont(ofSize: 16)
+               lblbtn.titleLabel?.textAlignment = .left
+               lblbtn.backgroundColor = UIColor.red
+               lblbtn.setTitleColor(UIColor.black, for: .normal)
+             lblbtn.setTitle(" scan ", for: .normal)
+         //let btnImage = UIImage(named: "goldnoti")
+       //  lblbtn.setImage(btnImage , for: .normal)
+        // lblbtn.imageView?.image = UIImage.image
+               return lblbtn
+               }()
+       
+    
     let Notificationbutton: UIButton = {
         let btn = UIButton()
          //btn.titleLabel?.text = "locate Plant"
@@ -179,6 +199,11 @@ class DashboardHeaderView: UIView {
     @objc func buttonPressnotification(button:UIButton) {
         notidelegate.didPressnotificationButton(button: button)
     }
+    
+    @objc func scanPressnotification(button:UIButton) {
+        notidelegate.scanPressnotification()
+    }
+    
 }
 
 

@@ -8,6 +8,7 @@
 
 import UIKit
 import Charts
+import AVFoundation
 
 class PieChartCell: UITableViewCell {
 
@@ -300,7 +301,7 @@ required init?(coder: NSCoder) {
 //    }
 
 
-    func updateCellContentt( categoryhealth : Health)
+    func updateCellContentt( categoryhealth : Health , plantname : String)
        {
         
         var percentagearray = self.convertnumbertopercentage(first: Double(categoryhealth.onTarget ?? Int(0.0)), second: Double(categoryhealth.vulenrable ?? Int(0.0)), third: Double(categoryhealth.offTarget ?? Int(0.0)))
@@ -309,6 +310,22 @@ required init?(coder: NSCoder) {
         valuearray.append(percentagearray[1])
         valuearray.append(percentagearray[2])
         
+        
+        if DataManager.datamanager.voiceEnabled!{
+        var captureSession: AVCaptureSession!
+               var previewLayer: AVCaptureVideoPreviewLayer!
+              // var a = percentagearray[0]
+        
+        
+        
+        
+        let utterance = AVSpeechUtterance(string: "You are in dashboard screen , Selected plant is" +  plantname + " Plant health is" +  String(Int(percentagearray[0])) + "percentage healthy")
+                                     utterance.voice = AVSpeechSynthesisVoice(language: "en-uk")
+                                     utterance.rate = 0.5
+                 
+                                     let synthesizer = AVSpeechSynthesizer()
+                                     synthesizer.speak(utterance)
+        }
         
 //           valuearray.append(categoryhealth.onTarget ?? 0)
 //           valuearray.append(categoryhealth.vulenrable ?? 0)

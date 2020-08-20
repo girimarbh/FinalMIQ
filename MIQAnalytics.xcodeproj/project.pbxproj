@@ -12,6 +12,7 @@
 		683320F52429EEC900D7A236 /* BalloonMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683320F22429EEC900D7A236 /* BalloonMarker.swift */; };
 		683320F62429EEC900D7A236 /* RadarMarkerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683320F32429EEC900D7A236 /* RadarMarkerView.swift */; };
 		683320F72429EEC900D7A236 /* XYMarkerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683320F42429EEC900D7A236 /* XYMarkerView.swift */; };
+		683FA7CA24EBAA1F00809E4D /* ScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683FA7C924EBAA1F00809E4D /* ScanViewController.swift */; };
 		685552802463F3A900E148F5 /* LeftSideMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6855527F2463F3A900E148F5 /* LeftSideMenuView.swift */; };
 		68598CFE23D02B5200BF216B /* PieChartCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68598CFD23D02B5200BF216B /* PieChartCell.swift */; };
 		68598D0023D02B7D00BF216B /* PlantStatusCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68598CFF23D02B7D00BF216B /* PlantStatusCell.swift */; };
@@ -48,6 +49,7 @@
 		68A25458248E15BB003E1EA9 /* stylenew.json in Sources */ = {isa = PBXBuildFile; fileRef = 68A25457248E15BB003E1EA9 /* stylenew.json */; };
 		68A2545A248E1B43003E1EA9 /* mapnewstyle.json in Resources */ = {isa = PBXBuildFile; fileRef = 68A25459248E1B43003E1EA9 /* mapnewstyle.json */; };
 		68A2DDFC240E2B6F00E0612B /* DrillNewtworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68A2DDFB240E2B6F00E0612B /* DrillNewtworkManager.swift */; };
+		68BF5EEB24C7382F0071F071 /* AccountSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68BF5EEA24C7382F0071F071 /* AccountSettingsViewController.swift */; };
 		68C43BAA23F3CE2500DEE6E8 /* DrilldownModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C43BA923F3CE2500DEE6E8 /* DrilldownModel.swift */; };
 		68C43BAC23F3CE3F00DEE6E8 /* DrildownViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C43BAB23F3CE3F00DEE6E8 /* DrildownViewModel.swift */; };
 		68C43BAE23F3CE7200DEE6E8 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C43BAD23F3CE7200DEE6E8 /* DataManager.swift */; };
@@ -85,6 +87,7 @@
 		683320F22429EEC900D7A236 /* BalloonMarker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BalloonMarker.swift; sourceTree = "<group>"; };
 		683320F32429EEC900D7A236 /* RadarMarkerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadarMarkerView.swift; sourceTree = "<group>"; };
 		683320F42429EEC900D7A236 /* XYMarkerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XYMarkerView.swift; sourceTree = "<group>"; };
+		683FA7C924EBAA1F00809E4D /* ScanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanViewController.swift; sourceTree = "<group>"; };
 		6855527F2463F3A900E148F5 /* LeftSideMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftSideMenuView.swift; sourceTree = "<group>"; };
 		68598CFD23D02B5200BF216B /* PieChartCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieChartCell.swift; sourceTree = "<group>"; };
 		68598CFF23D02B7D00BF216B /* PlantStatusCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantStatusCell.swift; sourceTree = "<group>"; };
@@ -128,6 +131,7 @@
 		68A25457248E15BB003E1EA9 /* stylenew.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = stylenew.json; sourceTree = "<group>"; };
 		68A25459248E1B43003E1EA9 /* mapnewstyle.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = mapnewstyle.json; sourceTree = "<group>"; };
 		68A2DDFB240E2B6F00E0612B /* DrillNewtworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrillNewtworkManager.swift; sourceTree = "<group>"; };
+		68BF5EEA24C7382F0071F071 /* AccountSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSettingsViewController.swift; sourceTree = "<group>"; };
 		68C43BA923F3CE2500DEE6E8 /* DrilldownModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrilldownModel.swift; sourceTree = "<group>"; };
 		68C43BAB23F3CE3F00DEE6E8 /* DrildownViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrildownViewModel.swift; sourceTree = "<group>"; };
 		68C43BAD23F3CE7200DEE6E8 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
@@ -234,6 +238,7 @@
 				68C43BB323F3FF4E00DEE6E8 /* KPIBarChartCell.swift */,
 				68A25453248E0CF7003E1EA9 /* style.metal */,
 				68A25459248E1B43003E1EA9 /* mapnewstyle.json */,
+				68BF5EEA24C7382F0071F071 /* AccountSettingsViewController.swift */,
 			);
 			path = MIQAnalytics;
 			sourceTree = "<group>";
@@ -264,6 +269,7 @@
 				68598D0923D032C100BF216B /* Dashboard.swift */,
 				68C43BA923F3CE2500DEE6E8 /* DrilldownModel.swift */,
 				68A2541324878D2B003E1EA9 /* NotificationvView.swift */,
+				683FA7C924EBAA1F00809E4D /* ScanViewController.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -616,6 +622,7 @@
 				68A25458248E15BB003E1EA9 /* stylenew.json in Sources */,
 				686DCB782397CB9200360A8E /* DownloadManager.swift in Sources */,
 				68598D1423D966F500BF216B /* DashboardHeaderView.swift in Sources */,
+				683FA7CA24EBAA1F00809E4D /* ScanViewController.swift in Sources */,
 				68C43BAA23F3CE2500DEE6E8 /* DrilldownModel.swift in Sources */,
 				683320F62429EEC900D7A236 /* RadarMarkerView.swift in Sources */,
 				68A2541424878D2B003E1EA9 /* NotificationvView.swift in Sources */,
@@ -636,6 +643,7 @@
 				68598D0223D02B9F00BF216B /* KPIStstusCell.swift in Sources */,
 				68598D1623E3E5BD00BF216B /* KPIPopupView.swift in Sources */,
 				68598CFE23D02B5200BF216B /* PieChartCell.swift in Sources */,
+				68BF5EEB24C7382F0071F071 /* AccountSettingsViewController.swift in Sources */,
 				68C43BB223F3FF2E00DEE6E8 /* KPIChartCell.swift in Sources */,
 				683320F52429EEC900D7A236 /* BalloonMarker.swift in Sources */,
 				68A2DDFC240E2B6F00E0612B /* DrillNewtworkManager.swift in Sources */,

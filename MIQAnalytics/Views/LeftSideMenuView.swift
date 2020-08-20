@@ -11,6 +11,7 @@ import UIKit
 protocol Notificationmapbtn {
  func Notifymap()
  func Notifyexecutiveview()
+    func NotifyAccountsettings()
 // func updateError()
  
 }
@@ -109,8 +110,16 @@ class LeftSideMenuView: UIView {
         darkmodelbl.anchor(top: settingButton.bottomAnchor, left: containerView.leftAnchor, bottom: nil, right: nil, paddingTop: 5, paddingLeft: 30, paddingBottom: 0, paddingRight: 0, width: 70, height: 20, enableInsets: true)
         switchbtn.transform = CGAffineTransform(scaleX: 0.75, y: 0.75)
         switchbtn.anchor(top: settingButton.bottomAnchor, left: darkmodelbl.rightAnchor, bottom: nil, right: nil, paddingTop: 2, paddingLeft: 5, paddingBottom: 0, paddingRight: 0, width: 30, height: 30, enableInsets: true)
+        
+        
+        containerView.addSubview(voiceEnableLabel)
+        containerView.addSubview(Voiceswitchbtn)
+        voiceEnableLabel.anchor(top: darkmodelbl.bottomAnchor, left: containerView.leftAnchor, bottom: nil, right: nil, paddingTop: 10, paddingLeft: 30, paddingBottom: 0, paddingRight: 0, width: 70, height: 20, enableInsets: true)
+        Voiceswitchbtn.transform = CGAffineTransform(scaleX: 0.75, y: 0.75)
+        Voiceswitchbtn.anchor(top: switchbtn.bottomAnchor, left: voiceEnableLabel.rightAnchor, bottom: nil, right: nil, paddingTop: 5, paddingLeft: 5, paddingBottom: 0, paddingRight: 0, width: 30, height: 30, enableInsets: true)
 
-
+        
+        
         
 //        containerView.addSubview(lblPrice)
 //        lblPrice.leftAnchor.constraint(equalTo: containerView.leftAnchor, constant: 10).isActive=true
@@ -167,9 +176,29 @@ class LeftSideMenuView: UIView {
         
     }()
     
+    let Voiceswitchbtn : UISwitch = {
+        let switchbtn = UISwitch()
+        switchbtn.addTarget(self, action: #selector(VoiceswitchStateDidChange(_:)), for: .valueChanged)
+        switchbtn.setOn(false, animated: false)
+        return switchbtn
+        
+    }()
+    
     let darkmodelbl: UILabel = {
         let lbl=UILabel()
         lbl.text = "Dark mode"
+       lbl.font = UIFont(name: "Apple SD Gothic Neo", size: 14)!
+       // lbl.font=UIFont.boldSystemFont(ofSize: 18)
+        lbl.textColor = UIColor.green
+       // lbl.backgroundColor = UIColor.gray
+        lbl.textAlignment = .left
+        lbl.translatesAutoresizingMaskIntoConstraints=false
+        return lbl
+    }()
+    
+    let voiceEnableLabel: UILabel = {
+        let lbl=UILabel()
+        lbl.text = "Voice"
        lbl.font = UIFont(name: "Apple SD Gothic Neo", size: 14)!
        // lbl.font=UIFont.boldSystemFont(ofSize: 18)
         lbl.textColor = UIColor.green
@@ -251,10 +280,11 @@ class LeftSideMenuView: UIView {
         let btn = UIButton()
         btn.backgroundColor = UIColor.clear
          btn.backgroundColor = UIColor.black
-        btn.setTitle("Manufacture", for: .normal)
+        btn.setTitle("Account Settings", for: .normal)
         btn.titleLabel?.textColor = UIColor.green
         btn.translatesAutoresizingMaskIntoConstraints=false
         btn.titleLabel?.font = UIFont(name: "Apple SD Gothic Neo", size: 14)!
+         btn.addTarget(self, action: #selector(handleSettingsButton(_:)), for: .touchUpInside)
         //btn.titleLabel?.textAlignment = .left
         btn.contentHorizontalAlignment = .left
         btn.setTitleColor(.green, for: .normal)
@@ -303,6 +333,11 @@ class LeftSideMenuView: UIView {
          mapdelegate?.Notifyexecutiveview()
     }
     
+    @objc func handleSettingsButton(_ sender: AnyObject) {
+
+          mapdelegate?.NotifyAccountsettings()
+     }
+    
     @objc func switchStateDidChange(_ sender:UISwitch){
         if (sender.isOn == true){
             print("UISwitch state is now ON")
@@ -321,6 +356,27 @@ class LeftSideMenuView: UIView {
             var DataDict:[String: Bool] = ["data" : DataManager.datamanager.darkmode!]
              nc.post(name: Notification.Name("darkmode"), object: nil, userInfo: DataDict)
             mapdelegate?.Notifymap()
+        }
+    }
+    
+    @objc func VoiceswitchStateDidChange(_ sender:UISwitch){
+        if (sender.isOn == true){
+            print("UISwitch state is now ON")
+           DataManager.datamanager.voiceEnabled = true
+            //mapdelegate?.Notifymap()
+           let nc = NotificationCenter.default
+            var DataDict:[String: Bool] = ["data" : DataManager.datamanager.voiceEnabled!]
+            nc.post(name: Notification.Name("VoiceEnabled"), object: nil, userInfo: DataDict)
+        }
+        else{
+            print("UISwitch state is now Off")
+            let nc = NotificationCenter.default
+            
+           
+            DataManager.datamanager.voiceEnabled = false
+          // let nc = NotificationCenter.default
+           var DataDict:[String: Bool] = ["data" : DataManager.datamanager.voiceEnabled!]
+           nc.post(name: Notification.Name("VoiceEnabled"), object: nil, userInfo: DataDict)
         }
     }
 }

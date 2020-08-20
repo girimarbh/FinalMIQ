@@ -51,7 +51,7 @@ class NotificationvView: UIView , UITableViewDelegate , UITableViewDataSource{
 
         func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
             let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! NotificationPopupCell
-            cell.updateCellContentt(kpiPopupElement: self.kpipopuparray[indexPath.row])
+            cell.updateCellContentt(kpiPopupElement: self.kpipopuparray[indexPath.row], rowvalue: indexPath.row )
             return cell
         }
         func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -147,9 +147,14 @@ protocol NotificationInsigtview {
 
 }
 
+protocol voicebuttonenabled {
+    func NotifyVoicebutton (str : Int)
+}
+
 class NotificationPopupCell: UITableViewCell {
 
         var delegatepopup : NotificationInsigtview?
+    var voicebuttondelegate : voicebuttonenabled?
         let CalenderimgView: UIImageView = {
             let v=UIImageView()
             v.image=#imageLiteral(resourceName: "calendar")
@@ -182,6 +187,20 @@ class NotificationPopupCell: UITableViewCell {
         lbl.numberOfLines = 0
         return lbl
     }()
+    
+    
+    private let voiceButton : UIButton = {
+              let lblbtn = UIButton()
+              lblbtn.titleLabel?.textColor = UIColor.black
+              lblbtn.titleLabel?.font = UIFont.systemFont(ofSize: 16)
+              lblbtn.titleLabel?.textAlignment = .left
+              lblbtn.backgroundColor = UIColor.white
+              lblbtn.setTitleColor(UIColor.black, for: .normal)
+        let btnImage = UIImage(named: "goldnoti")
+        lblbtn.setImage(btnImage , for: .normal)
+       // lblbtn.imageView?.image = UIImage.image
+              return lblbtn
+              }()
     
 //    private let notificationLabel : UILabel = {
 //        let lbl = UILabel()
@@ -247,6 +266,7 @@ class NotificationPopupCell: UITableViewCell {
             
 //        addSubview(containerView)
         addSubview(notificationLabel)
+        addSubview(voiceButton)
         addSubview(notificationContentLabel)
       
         updateUII()
@@ -257,13 +277,27 @@ class NotificationPopupCell: UITableViewCell {
     }
 
 
-        func updateCellContentt(kpiPopupElement : Insights )
+    func updateCellContentt(kpiPopupElement : Insights , rowvalue : Int )
     {
         
         notificationLabel.text = kpiPopupElement.header
         notificationContentLabel.text = kpiPopupElement.insight
+        voiceButton.tag = rowvalue
     }
 
+    
+    @objc func voicebuttonpressed(_ sender: UIButton)  {
+        var tag = sender.tag
+        //self.voicebuttondelegate?.NotifyVoicebutton(str: tag)
+        print("Button is pressed voice")
+        
+        
+        var DataDict:[String: Int] = ["data" : sender.tag]
+                var btn = sender
+                  let nc = NotificationCenter.default
+                  nc.post(name: Notification.Name("Voicebutton"), object: nil, userInfo: DataDict)
+                   
+    }
         @objc func pressed(_ sender: UIButton)  {
             var DataDict:[String: String] = ["data" : sender.accessibilityLabel!]
              self.delegatepopup?.NotifyInsightview(str: "abc")
@@ -281,7 +315,15 @@ class NotificationPopupCell: UITableViewCell {
         notificationContentLabel.anchor(top: notificationLabel.bottomAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 10, paddingLeft: 10, paddingBottom: 10, paddingRight: 10, width: 0, height: 120, enableInsets: false)
 //        notificationContentLabel.anchor(top: notificationLabel.bottomAnchor, left: containerView.leftAnchor, bottom: containerView.bottomAnchor, right: containerView.rightAnchor, paddingTop: 0, paddingLeft: 10, paddingBottom: 0, paddingRight: 10, width: 100, height: 0, enableInsets: true)
         
-        notificationLabel.anchor(top: topAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, paddingTop: 10, paddingLeft: 10, paddingBottom: 0, paddingRight: 5, width: 0, height: 0, enableInsets: false)
+        notificationLabel.anchor(top: topAnchor, left: leftAnchor, bottom: nil, right: nil, paddingTop: 10, paddingLeft: 10, paddingBottom: 0, paddingRight: 5, width: 100, height: 0, enableInsets: false)
+        
+        voiceButton.titleLabel?.text = "voice"
+        voiceButton.anchor(top: topAnchor, left: notificationLabel.rightAnchor, bottom: nil, right: rightAnchor, paddingTop: 10, paddingLeft: 5, paddingBottom: 5, paddingRight: 5, width: 40, height: 40, enableInsets: false)
+        voiceButton.addTarget(self, action: #selector(voicebuttonpressed(_:)), for: .touchUpInside)
+        
+//        if DataManager.datamanager.voiceEnabled!{
+//            voiceButton.isHidden = false
+//        }
         
         notificationContentLabel.anchor(top: notificationLabel.bottomAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 10, paddingLeft: 10, paddingBottom: 10, paddingRight: 10, width: 0, height: 0, enableInsets: false)
         

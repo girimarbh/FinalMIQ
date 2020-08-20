@@ -21,6 +21,7 @@ class DataManager: NSObject {
     var selectbtn : Int?
     var operationSelected : Int?
     var darkmode : Bool?
+    var voiceEnabled : Bool?
     
     public override init() {
         

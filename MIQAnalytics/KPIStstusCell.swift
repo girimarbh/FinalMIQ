@@ -236,7 +236,7 @@ class KPIStstusCell: UITableViewCell  {
             }
             
             if recognizer.state == .ended {
-                label.textColor = UIColor.gray
+                label.textColor = UIColor.white
             }
 
             self.delegate?.NotifyKPIPopup(str: popuptag!)

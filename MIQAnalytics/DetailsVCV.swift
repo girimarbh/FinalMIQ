@@ -11,9 +11,31 @@
 import UIKit
 
 import UserNotifications
+import AVFoundation
 
 
-class DetailsVC : UIViewController, UITableViewDelegate, UITableViewDataSource , DashbardNotificationProtocal , StoreDelegate , NotificationProtocalKPIPopup , NotificationProtocalDrilldown , insightdelegate  {
+class DetailsVC : UIViewController, UITableViewDelegate, UITableViewDataSource , DashbardNotificationProtocal , StoreDelegate , NotificationProtocalKPIPopup , NotificationProtocalDrilldown , insightdelegate ,voicebuttonenabled  {
+    func scanPressnotification() {
+        let v=ScanViewController()
+        v.modalPresentationStyle = .fullScreen
+
+               //v.passdata = mapviewmodel.placearray[tag].comments
+            //print("passed value is \(mapviewmodel.placearray[tag].comments)")
+             self.present(v , animated: true , completion: nil)
+    }
+    
+    func NotifyVoicebutton(str: Int) {
+        if DataManager.datamanager.voiceEnabled!{
+      
+        let utterance = AVSpeechUtterance(string: dashboardviewmodel.insightsarray[str].insight!)
+                            utterance.voice = AVSpeechSynthesisVoice(language: "en-uk")
+                            utterance.rate = 0.5
+        
+                            let synthesizer = AVSpeechSynthesizer()
+                            synthesizer.speak(utterance)
+        }
+    }
+    
     func didPressnotificationButton(button: UIButton) {
         print("pressed notification button")
         
@@ -61,6 +83,17 @@ class DetailsVC : UIViewController, UITableViewDelegate, UITableViewDataSource ,
         let items = str.components(separatedBy: " ")
         var categoryname = items[0]
         var statusstring = items[1]
+        
+               var captureSession: AVCaptureSession!
+                      var previewLayer: AVCaptureVideoPreviewLayer!
+        
+        let utterance = AVSpeechUtterance(string: "You clicked on" + "   "  + categoryname + statusstring )
+                                            utterance.voice = AVSpeechSynthesisVoice(language: "en-uk")
+                                            utterance.rate = 0.5
+        
+                                            let synthesizer = AVSpeechSynthesizer()
+                                            synthesizer.speak(utterance)
+        
         kpipopupview = KPIPopupView(frame: CGRect(x: 10.0, y: 200.0, width: 350, height: h))
         print("the Kpi array is \(kpipopuparr)")
         kpipopupview.setData(popuparray: kpipopuparr ,status: statusstring , category : categoryname )
@@ -153,10 +186,33 @@ var activityView: UIActivityIndicatorView?
 //               }
 //
 //    }
+    @objc func orientationChanged(notification: Notification) {
+        if UIDevice.current.orientation.isLandscape {
+            print("Landscape")
+            self.view.layoutSubviews()
+            
+        }
 
+        if UIDevice.current.orientation.isPortrait {
+            print("Portrait")
+            self.view.layoutSubviews()
+           
+        }
+
+    }
     override func viewDidLoad() {
         
-       
+//       var captureSession: AVCaptureSession!
+//              var previewLayer: AVCaptureVideoPreviewLayer!
+//
+//              let utterance = AVSpeechUtterance(string: "You are dashboard screen , Selected plant is" +  self.passdata!)
+//                                    utterance.voice = AVSpeechSynthesisVoice(language: "en-uk")
+//                                    utterance.rate = 0.5
+//
+//                                    let synthesizer = AVSpeechSynthesizer()
+//                                    synthesizer.speak(utterance)
+//
+        NotificationCenter.default.addObserver(self, selector: #selector(orientationChanged), name: UIDevice.orientationDidChangeNotification, object: nil)
         
         notificationCenter.delegate = self as! UNUserNotificationCenterDelegate
         
@@ -171,7 +227,9 @@ var activityView: UIActivityIndicatorView?
         
        
          let nc = NotificationCenter.default
-nc.addObserver(self, selector: #selector(userLoggedIn(_:)), name: Notification.Name("UserLoggedIn"), object: nil)
+        nc.addObserver(self, selector: #selector(userLoggedIn(_:)), name: Notification.Name("UserLoggedIn"), object: nil)
+        nc.addObserver(self, selector: #selector(voiceFunction(_:)), name: Notification.Name("Voicebutton"), object: nil)
+        
       super.viewDidLoad()
       var cell = PopupCell()
       cell.delegatepopup = self
@@ -257,6 +315,26 @@ nc.addObserver(self, selector: #selector(userLoggedIn(_:)), name: Notification.N
 
     }
     
+    
+    
+    @objc func voiceFunction(_ notification: NSNotification){
+        if DataManager.datamanager.voiceEnabled!{
+        print(notification.userInfo ?? "")
+        if let dict = notification.userInfo as NSDictionary? {
+            if let id = dict["data"] as? Int{
+             print("The string in voice is \(id)")
+                let utterance = AVSpeechUtterance(string: dashboardviewmodel.insightsarray[id].insight!)
+                                    utterance.voice = AVSpeechSynthesisVoice(language: "en-uk")
+                                    utterance.rate = 0.5
+                
+                                    let synthesizer = AVSpeechSynthesizer()
+                synthesizer.speak(utterance)
+                
+            }
+        
+    }
+        }
+    }
     @objc func userLoggedIn(_ notification: NSNotification) {
            print(notification.userInfo ?? "")
            if let dict = notification.userInfo as NSDictionary? {
@@ -323,7 +401,7 @@ nc.addObserver(self, selector: #selector(userLoggedIn(_:)), name: Notification.N
                            cell.properties = ["United States","Mexico","Canada","Chile"]
                            cell.values = [1000.0,2000.0,3000.0,4000.0]
                 //   cell.updateCellContentt(property:properties , value: values
-            cell.updateCellContentt(categoryhealth: dashboardviewmodel.health!)
+            cell.updateCellContentt(categoryhealth: dashboardviewmodel.health!, plantname: self.passdata!  )
                            return cell
                }
 

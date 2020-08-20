@@ -11,6 +11,7 @@
 import UIKit
 import GoogleMaps
 import GooglePlaces
+import AVFoundation
 
 
 
@@ -49,6 +50,15 @@ struct PreviewDemoData {
 }
 
 class MapViewController : UIViewController, CLLocationManagerDelegate, GMSMapViewDelegate, GMSAutocompleteViewControllerDelegate, UITextFieldDelegate , NotificationProtocal , NotificationSettingbtn ,Notificationmapbtn {
+    func NotifyAccountsettings() {
+        print("settings")
+         let v = AccountSettingsViewController()
+                v.modalPresentationStyle = .fullScreen
+        //        v.passdata = mapviewmodel.placearray[tag].plantID
+               // print("passed value is \(mapviewmodel.placearray[tag].plantID)")
+                self.present(v , animated: true , completion: nil)
+    }
+    
     func Notifyexecutiveview() {
         print("Executive view")
         
@@ -120,7 +130,11 @@ class MapViewController : UIViewController, CLLocationManagerDelegate, GMSMapVie
 //    let previewDemoData = [(title: "washington", img: #imageLiteral(resourceName: "restaurant1"), price: "wa"), (title: "Newyork", img: #imageLiteral(resourceName: "restaurant2"), price: "Nw"), (title: "Dallas", img: #imageLiteral(resourceName: "restaurant3"), price: "Da")]
     
     override func viewDidLoad() {
+         let nc = NotificationCenter.default
+         nc.addObserver(self, selector: #selector(VoiceEnabledfunc(_:)), name: Notification.Name("VoiceEnabled"), object: nil)
+        
         DataManager.datamanager.darkmode = true
+        DataManager.datamanager.voiceEnabled = false
         if ReachabilityTest.isConnectedToNetwork() {
             
             mapviewmodel.fetchData()
@@ -172,6 +186,29 @@ class MapViewController : UIViewController, CLLocationManagerDelegate, GMSMapVie
 //
         
     }
+    @objc func VoiceEnabledfunc(_ notification: NSNotification)
+       {
+           if let dict = notification.userInfo as NSDictionary? {
+                        if let id = dict["data"] as? Bool{
+                           if id == true {
+                              // containerView.backgroundColor = UIColor.black
+                            var captureSession: AVCaptureSession!
+                            var previewLayer: AVCaptureVideoPreviewLayer!
+                              let utterance = AVSpeechUtterance(string: "Hi welcome to M I Q application you are on the map screen ,Please select any plant to see dashboard screen.")
+                                                  utterance.voice = AVSpeechSynthesisVoice(language: "en-uk")
+                                                  utterance.rate = 0.5
+                              
+                                                  let synthesizer = AVSpeechSynthesizer()
+                                                  synthesizer.speak(utterance)
+                              
+                              }
+                           else
+                           {
+                             
+                           }
+               }
+               }
+          }
     
     func setupMapview()  {
         
@@ -506,7 +543,7 @@ class MapViewController : UIViewController, CLLocationManagerDelegate, GMSMapVie
     
     func setupViews() {
         
-        leftmenu=LeftSideMenuView(frame: CGRect(x: self.view.frame.width - 155, y: 105.0, width: 155, height: 160 ))
+        leftmenu=LeftSideMenuView(frame: CGRect(x: self.view.frame.width - 155, y: 105.0, width: 155, height: 190 ))
         headerview = MapheaderView(frame: CGRect(x: 0.0, y: 96.0, width: self.view.frame.width, height: 300 ))
         
         view.addSubview(myMapView)
@@ -538,6 +575,14 @@ class MapViewController : UIViewController, CLLocationManagerDelegate, GMSMapVie
 //        settingsbutton.addTarget(self, action: #selector(add), for: .touchUpInside)
 
         infoPreviewView=InfoPreviewView(frame: CGRect(x: 0.0, y: 0.0, width: self.view.frame.width - 10, height: 150))
+        
+        if UIDevice().userInterfaceIdiom == .phone {
+            infoPreviewView=InfoPreviewView(frame: CGRect(x: 0.0, y: 0.0, width: self.view.frame.width - 10, height: 150))
+        } else if UIDevice().userInterfaceIdiom == .pad {
+            infoPreviewView=InfoPreviewView(frame: CGRect(x: 0.0, y: 0.0, width: 400 , height: 150))
+        }
+        
+       //  infoPreviewView=InfoPreviewView(frame: CGRect(x: 0.0, y: 0.0, width: 350, height: 150))
         
         self.view.addSubview(btnMyLocation)
         btnMyLocation.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -30).isActive=true
